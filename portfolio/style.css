@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Merriweather', serif;
+  src: url(./assets/fonts/Merriweather-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Merriweather', serif;
+  src: url(./assets/fonts/Merriweather-Bold.ttf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Inter', sans-serif;
+  src: url(./assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+* {
+  box-sizing: border-box;
+}
