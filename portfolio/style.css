@@ -11,12 +11,17 @@
 
 @font-face {
   font-family: 'Inter', sans-serif;
-  src: url(./assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+  src: url(./assets/fonts/Inter-VariableFont_slnt,wght.ttf);
 }
 
 html {
   scroll-behavior: smooth; 
 }
+
+/* body {
+  margin: 0;
+  background-color: #000000;
+} */
 
 * {
   box-sizing: border-box;
@@ -69,13 +74,28 @@ html {
   color: #bdae82;
 }
 
-.lang {
-  padding-left: 16px;
+.nav-item {
+  letter-spacing: 0.046em;
 }
 
-.lang a,
-p {
-  line-height: 50px;
+.header .container {
+  background: url('./assets/img/header-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center 0;
+  height: 90px;
+}
+
+.changeLang {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  width: 86px;
+}
+
+.lang,
+.slashLang {
+  padding: 0;
   font-family: Inter, sans-serif;
   font-size: 20px;
   font-weight: bold;
@@ -84,12 +104,12 @@ p {
   transition: .3s;
 }
 
-.lang a:hover {
+.slashLang {
+  padding-top: 3px;
+}
+
+.lang:hover {
+  cursor: pointer;
   color: #bdae82;
 }
 
-.header .container {
-  background: url('./assets/img/header-bg.jpg');
-  background-repeat: no-repeat;
-  background-position: center 0;
-}
