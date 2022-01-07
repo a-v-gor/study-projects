@@ -108,8 +108,16 @@ html {
   padding-top: 3px;
 }
 
-.lang:hover {
+.lang:hover,
+.lang-active {
   cursor: pointer;
   color: #bdae82;
 }
 
+.hero {
+  position: relative;
+  bottom: 90px;
+  z-index: -1;
+  height: 910px;
+  background-image: url(./assets/img/header-bg.jpg);
+}
