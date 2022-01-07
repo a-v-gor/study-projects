@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'Merriweather', serif;
+  font-family: 'Merriweather';
   src: url(./assets/fonts/Merriweather-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'Merriweather', serif;
+  font-family: 'Merriweather';
   src: url(./assets/fonts/Merriweather-Bold.ttf);
   font-weight: bold;
 }
 
 @font-face {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter';
   src: url(./assets/fonts/Inter-VariableFont_slnt,wght.ttf);
 }
 
@@ -63,19 +63,16 @@ html {
 .nav-link {
   padding: 0px 15px;
   line-height: 50px;
-  font-family: Inter, sans-serif;
+  font-family: Inter;
   font-size: 20px;
   text-decoration: none;
   color: #ffffff;
   transition: .3s;
+  letter-spacing: 0.1px;
 }
 
 .nav-link:hover {
   color: #bdae82;
-}
-
-.nav-item {
-  letter-spacing: 0.046em;
 }
 
 .header .container {
@@ -93,19 +90,14 @@ html {
   width: 86px;
 }
 
-.lang,
-.slashLang {
+.lang {
   padding: 0;
-  font-family: Inter, sans-serif;
+  font-family: Inter;
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
   color: #ffffff;
   transition: .3s;
-}
-
-.slashLang {
-  padding-top: 3px;
 }
 
 .lang:hover,
@@ -118,6 +110,16 @@ html {
   position: relative;
   bottom: 90px;
   z-index: -1;
+  width: 1440px;
   height: 910px;
+  margin: 0 -20px;
   background-image: url(./assets/img/header-bg.jpg);
+}
+
+h1.section-title {
+  font-family: Merriweather;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 60px;
+  padding: 250px 80px;
 }
