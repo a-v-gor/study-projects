@@ -106,20 +106,45 @@ html {
   color: #bdae82;
 }
 
-.hero {
-  position: relative;
-  bottom: 90px;
-  z-index: -1;
+.container-hero {
   width: 1440px;
   height: 910px;
   margin: 0 -20px;
   background-image: url(./assets/img/header-bg.jpg);
+  background-position: center -90px;
+  background-repeat: no-repeat;
 }
 
-h1.section-title {
+.hero {
+  padding-top: 182px;
+  padding-left: 80px;
+  width: 560px;
+}
+
+.hero h1 {
   font-family: Merriweather;
   font-weight: bold;
   color: #ffffff;
   font-size: 60px;
-  padding: 250px 80px;
+  margin: 0;
+}
+
+.hero p {
+  font-family: Inter;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 2;
+  margin-top: 33px;
+}
+
+.hero p a {
+  text-decoration: none;
+  color: #000000;
+  background-color: #bdae82;
+  padding: 16px 74px 15px;
+  transition: .3s;
+}
+
+.hero a:hover {
+  color: #ffffff;
 }
