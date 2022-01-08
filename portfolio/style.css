@@ -18,10 +18,10 @@ html {
   scroll-behavior: smooth; 
 }
 
-/* body {
-  margin: 0;
+body {
+  /* margin: 0; */
   background-color: #000000;
-} */
+}
 
 * {
   box-sizing: border-box;
@@ -109,16 +109,21 @@ html {
 }
 
 .container-hero {
+  padding-top: 132px;
   width: 1440px;
   height: 820px;
-  margin: 0 -20px;
+  margin: 0 -20px 50px;
   background-image: url(./assets/img/header-bg.jpg);
   background-position: center -90px;
   background-repeat: no-repeat;
 }
 
+.section {
+  width: 100%;
+  padding: 50px 0 59px;
+}
+
 .hero {
-  margin-top: 43px;
   padding-left: 80px;
   width: 560px;
 }
@@ -127,12 +132,12 @@ h1,
 h2 {
   font-family: Merriweather;
   font-weight: bold;
-  margin: 0;
 }
 
 h1 {
   font-size: 60px;
   color: #ffffff;
+  margin: 0;
 }
 
 h2 {
@@ -142,12 +147,18 @@ h2 {
   background-color: #bdae82;
   text-align: center;
   width: 50%;
-  margin: 0 auto;
+  margin: 0 auto 3.45em;
+  position: relative;
+  top: 39px;
+}
+
+p {
+  font-family: Inter;
+  color: #ffffff;
+  margin: 0;
 }
 
 .hero p {
-  font-family: Inter;
-  color: #ffffff;
   font-size: 20px;
   line-height: 2;
   margin-top: 33px;
@@ -157,7 +168,7 @@ h2 {
   text-decoration: none;
   color: #000000;
   background-color: #bdae82;
-  padding: 16px 74px 15px;
+  padding: 16px 73px 15px 74px;
   transition: .3s;
 }
 
@@ -166,17 +177,57 @@ h2 {
 }
 
 .section-title a {
-  background-color: white;
+  background-color: #000000;
   position: relative;
   top: -24px;
   padding: 0 20px;
 }
 
-.section {
-  padding-top: 139px;
-  width: 100%;
+.skills-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.section-head-wrapper {
-  width: 100%;
+.skill-item {
+  background-position: center top;
+  background-repeat: no-repeat;
+  width: 320px;
+  padding: 88px 20px 0;
+}
+
+.skill-item:nth-child(1) {
+  background-image: url('./assets/svg/camera.svg');
+  background-size: 62px 50px;
+}
+
+.skill-item:nth-child(2) {
+  background-image: url('./assets/svg/video.svg');
+  background-size: 60px 50px;
+}
+
+.skill-item:nth-child(3) {
+  background-image: url('./assets/svg/image.png');
+  background-size: 66px 50px;
+}
+
+.skill-item:nth-child(4) {
+  background-image: url('./assets/svg/mic.png');
+  background-size: 32px 50px;
+}
+
+.skill-item h3 {
+  font-family: Inter;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  padding-bottom: 9px;
+}
+
+.skill-item p {
+  font-size: 18px;
+  text-align: center;
+  line-height: 2;
 }
