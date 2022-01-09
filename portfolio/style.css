@@ -127,7 +127,7 @@ a {
 
 .section {
   width: 100%;
-  padding-bottom: 109px;
+  padding-bottom: 100px;
 }
 
 .hero {
@@ -235,6 +235,10 @@ p {
   line-height: 2;
 }
 
+.portfolio {
+  padding-top: 10px;
+}
+
 .portfolio-buttons {
   display: flex;
   justify-content: center;
@@ -264,3 +268,30 @@ p {
   flex-wrap: wrap;
   gap: 25px;
 }
+
+.video-player {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-play-button {
+  background-color: transparent;
+  position: absolute;
+  padding: 0;
+  margin: auto;
+  background-image: url(./assets/svg/video-button.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+  width: 130px;
+  height: 130px;
+}
+
+.video-play-button:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+}
+
+    
