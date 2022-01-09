@@ -24,6 +24,19 @@ body {
   font-family: Inter;
 }
 
+ul {
+  list-style: none;
+  color: #ffffff;  
+  padding: 0;
+  margin: 0;  
+  line-height: 2;
+}
+
+li {
+  display: block;
+  text-align: center;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -31,11 +44,12 @@ body {
 button {
   width: 220px;
   height: 55px;
-  transition: .3s;
+  transition: 0.3s;
   font-size: 20px;
   border: none;
   font-family: inherit;
   cursor: pointer;
+  padding: 0;
 }
 
 .container {
@@ -69,7 +83,6 @@ button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  list-style: none;
 }
 
 .nav-link {
@@ -77,8 +90,7 @@ button {
   line-height: 50px;
   font-size: 20px;
   text-decoration: none;
-  color: #ffffff;
-  transition: .3s;
+  transition: 0.3s;
   letter-spacing: 0.1px;
 }
 
@@ -171,14 +183,6 @@ p {
   padding-bottom: 25px;
 }
 
-.hire-me {
-  color: #000000;
-  background-color: #bdae82;
-}
-
-.hire-me:hover {
-  color: #ffffff;
-}
 
 .section-title a {
   background-color: #000000;
@@ -236,7 +240,7 @@ p {
 }
 
 .portfolio {
-  padding-top: 10px;
+  padding-top: 9px;
 }
 
 .portfolio-buttons {
@@ -252,15 +256,17 @@ p {
   border: 2px solid #bdae82;
 }
 
-.portfolio-button:active,
-.portfolio-button:hover {
+.hire-me:hover,
+.portfolio-button:hover,
+.price-button:hover {
   color: #ffffff;
 }
 
-.portfolio-button:focus {
+.hire-me,
+.portfolio-button:focus,
+.price-button {
   color: #000000;
   background: #bdae82;
-  border: 2px solid #bdae82;
 }
 
 .portfolio-images {
@@ -294,4 +300,45 @@ p {
     contrast(87%);
 }
 
-    
+.price-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-card {
+  width: 450px;
+  height: 505px;
+  border: 3px solid #bdae82;  
+  padding-top: 21px;
+}
+
+.price-head {
+  font-family: 'Merriweather';
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 12px;
+}
+
+.price-cost {
+  font-family: 'Merriweather';
+  font-size: 24px;
+  font-weight: bold;
+  color: #bdae82;
+  text-align: center;
+  padding-bottom: 29px;
+}
+
+.price-description-item {
+  font-size: 18px;
+}
+
+.price-button {
+  display: block;
+  margin: 0 auto;
+}
+
+.price-description-list {
+  padding-bottom: 39px;
+}
