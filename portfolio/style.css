@@ -116,10 +116,10 @@ a {
 }
 
 .container-hero {
-  padding-top: 132px;
+  padding-top: 182px;
   width: 1440px;
   height: 820px;
-  margin: 0 -20px 50px;
+  margin: 0 -20px 100px;
   background-image: url(./assets/img/header-bg.jpg);
   background-position: center -90px;
   background-repeat: no-repeat;
@@ -127,7 +127,7 @@ a {
 
 .section {
   width: 100%;
-  padding: 50px 0 59px;
+  padding-bottom: 109px;
 }
 
 .hero {
@@ -239,15 +239,13 @@ p {
   display: flex;
   justify-content: center;
   gap: 5px;
+  padding-bottom: 60px;
 }
 
 .portfolio-button {
   color: #bdae82;
   background: transparent;
-  border: 1px solid #bdae82;
-  font-family: inherit;
-  cursor: pointer;
-  font-size: 20px;
+  border: 2px solid #bdae82;
 }
 
 .portfolio-button:active,
@@ -259,4 +257,10 @@ p {
   color: #000000;
   background: #bdae82;
   border: 2px solid #bdae82;
+}
+
+.portfolio-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
 }
