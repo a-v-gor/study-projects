@@ -9,20 +9,20 @@
   <title>portfolio</title>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
+  <header>
+    <div class="header-container">
       <div class="logo"></div>
       <nav class="nav">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-          <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li class="nav-item"><a href="#video" class="nav-link">Video</a></li>
-          <li class="nav-item"><a href="#price" class="nav-link">Price</a></li>
-          <li class="nav-item"><a href="#contacts" class="nav-link">Contacts</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#video" class="nav-link">Video</a></li>
+          <li><a href="#price" class="nav-link">Price</a></li>
+          <li><a href="#contacts" class="nav-link">Contacts</a></li>
         </ul>
       </nav>
-      <div class="changeLang">
-        <span class="language"><a href="#en" id="en">en</a> / <a href="#ru" id="ru">ru</a></span>
+      <div class="change-lang">
+        <span class="lang"><a href="#en" id="en">en</a> / <a href="#ru" id="ru">ru</a></span>
       </div>
     </div>
   </header>
@@ -30,8 +30,8 @@
   <main class="main">
     <div class="container">
       <div class="container-hero">
-        <section class="section hero">
-          <h1><a id="hero">Alexa Rise</a></h1>
+        <section class="section-hero">
+          <h1 class="hero-header"><a id="hero">Alexa Rise</a></h1>
           <p>Save sincere emotions, romantic feelings and happy moments of life
             together with professional photographer Alexa Rise</p>
           <button class="hire-me">Hire me</button>
@@ -63,7 +63,7 @@
         </div>
       </section>
 
-      <section class="section portfolio">
+      <section class="section">
         <h2 class="section-title"><a id="portfolio">Portfolio</a></h2>
         <div class="portfolio-buttons">
           <button class="portfolio-button">Winter</button>
@@ -96,11 +96,11 @@
             <h3 class="price-head">Standard</h3>
             <p class="price-cost">500 $</p>
               <ul class="price-description-list">
-                <li class="price-description-item">One location</li>
-                <li class="price-description-item">120 photos in color</li>
-                <li class="price-description-item">12 photos in retouch</li>
-                <li class="price-description-item">Readiness 2-3 weeks</li>
-                <li class="price-description-item">Make up, visage</li>
+                <li>One location</li>
+                <li>120 photos in color</li>
+                <li>12 photos in retouch</li>
+                <li>Readiness 2-3 weeks</li>
+                <li>Make up, visage</li>
               </ul>
             <button class="price-button">Order shooting</button>
           </div>
@@ -108,11 +108,11 @@
             <h3 class="price-head">Premium</h3>
             <p class="price-cost">700 $</p>
             <ul class="price-description-list">
-              <li class="price-description-item">One or two locations</li>
-              <li class="price-description-item">200 photos in color</li>
-              <li class="price-description-item">20 photos in retouch</li>
-              <li class="price-description-item">Readiness 1-2 weeks</li>
-              <li class="price-description-item">Make up, visage</li>
+              <li>One or two locations</li>
+              <li>200 photos in color</li>
+              <li>20 photos in retouch</li>
+              <li>Readiness 1-2 weeks</li>
+              <li>Make up, visage</li>
             </ul>
             <button class="price-button">Order shooting</button>
           </div>
@@ -120,11 +120,11 @@
             <h3 class="price-head">Gold</h3>
             <p class="price-cost">1000 $</p>
             <ul class="price-description-list">
-              <li class="price-description-item">Three locations or more</li>
-              <li class="price-description-item">300 photos in color</li>
-              <li class="price-description-item">50 photos in retouch</li>
-              <li class="price-description-item">Readiness 1 week</li>
-              <li class="price-description-item">Make up, visage, hairstyle</li>
+              <li>Three locations or more</li>
+              <li>300 photos in color</li>
+              <li>50 photos in retouch</li>
+              <li>Readiness 1 week</li>
+              <li>Make up, visage, hairstyle</li>
             </ul>
             <button class="price-button">Order shooting</button>
           </div>
@@ -132,12 +132,12 @@
       </section>
 
       <div class="container-contacts">
-        <section class="section contact">
-          <h2 class="section-title contacts"><a id="contacts">Contact me</a></h2>
+        <section class="section-contact">
+          <h2 class="header-contacts"><a id="contacts">Contact me</a></h2>
           <form action="" method="post">
             <input class="contacts-input" type="email" name="e-mail" placeholder="E-mail">
             <input class="contacts-input" type="tel" name="tel" placeholder="Phone">
-            <textarea class="contacts-textarea" name="text" cols="30" rows="10" wrap="soft" placeholder="Message"></textarea>
+            <textarea class="contacts-textarea" name="text" wrap="soft" placeholder="Message"></textarea>
             <input class="contacts-button" type="submit" value="Send message">
           </form>
         </section>

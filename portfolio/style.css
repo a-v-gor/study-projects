@@ -53,7 +53,8 @@ button,
   transition: 0.3s;
 }
 
-.container {
+.container,
+.header-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +73,8 @@ button,
 }
 
 .logo:hover {
-  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+  filter:
+    invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
 
@@ -82,8 +84,6 @@ button,
 
 .nav-list {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .nav-link {
@@ -99,15 +99,13 @@ button,
   color: #bdae82;
 }
 
-.header .container {
+.header-container {
   flex-direction: row;
   height: 90px;
   background: url("./assets/img/header-bg.jpg");
-  background-repeat: no-repeat;
-  background-position: center 0;
 }
 
-.changeLang {
+.change-lang {
   padding-left: 16px;
 }
 
@@ -116,15 +114,15 @@ a {
   text-decoration: none;
 }
 
-.language {
+.lang {
   font-weight: bold;
   font-size: 20px;
   color: #ffffff;
-  letter-spacing: 0.06em;
+  word-spacing: 4px;
 }
 
-.language a:hover,
-.language :target {
+.lang a:hover,
+.lang :target {
   color: #bdae82;
 }
 
@@ -132,18 +130,19 @@ a {
   width: 1440px;
   height: 820px;
   margin: 0 -20px 100px;
-  padding-top: 182px;
+  padding-top: 143px;
   background-image: url("./assets/img/header-bg.jpg");
-  background-repeat: no-repeat;
   background-position: center -90px;
 }
 
-.section {
+.section,
+.section-hero {
   width: 100%;
+  padding-top: 39px;
   padding-bottom: 100px;
 }
 
-.hero {
+.section-hero {
   width: 560px;
   padding-left: 80px;
 }
@@ -152,24 +151,22 @@ h1,
 h2 {
   font-weight: bold;
   font-family: "Merriweather";
+  font-size: 40px;
+  color: #bdae82;
 }
 
-.hero h1 {
+.hero-header {
   margin: 0;
   padding-bottom: 33px;
   font-size: 60px;
   color: #ffffff;
 }
 
-h2.section-title {
-  position: relative;
-  top: 39px;
+.section-title {
   width: 50%;
   height: 2px;
-  margin: 0 auto 3.45em;
-  font-size: 40px;
+  margin: 0 auto 99px;
   text-align: center;
-  color: #bdae82;
   background-color: #bdae82;
 }
 
@@ -178,7 +175,7 @@ p {
   color: #ffffff;
 }
 
-.hero p {
+.section-hero p {
   padding-bottom: 25px;
   font-size: 20px;
   line-height: 2;
@@ -196,6 +193,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding-bottom: 9px;
 }
 
 .skill-item {
@@ -238,10 +236,6 @@ p {
   font-size: 18px;
   line-height: 2;
   text-align: center;
-}
-
-.portfolio {
-  padding-top: 9px;
 }
 
 .portfolio-buttons {
@@ -289,17 +283,13 @@ p {
   position: absolute;
   width: 130px;
   height: 130px;
-  margin: auto;
-  padding: 0;
   background-color: transparent;
   background-image: url("./assets/svg/video-button.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  transition: 0.3s;
 }
 
 .video-play-button:hover {
-  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+  filter:
+    invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
 
@@ -333,10 +323,6 @@ p {
   color: #bdae82;
 }
 
-.price-description-item {
-  font-size: 18px;
-}
-
 .price-button {
   display: block;
   margin: 0 auto;
@@ -344,22 +330,17 @@ p {
 
 .price-description-list {
   padding-bottom: 39px;
+  font-size: 18px;
 }
 
 .container-contacts {
-  display: block;
   width: 1440px;
   height: 700px;
+  padding: 75px 20px;
   background-image: url("./assets/img/contacts.jpg");
 }
 
-.container-contacts a {
-  position: static;
-  padding: 0;
-  background: none;
-}
-
-h2.section-title.contacts {
+.header-contacts {
   position: static;
   width: auto;
   height: auto;
@@ -369,18 +350,12 @@ h2.section-title.contacts {
   background: none;
 }
 
-.section.contact {
-  padding-top: 75px;
-}
-
-.contact {
-  width: 470px;
+.section-contact {
+  width: 450px;
   margin-left: auto;
-  padding-right: 20px;
 }
 
 ::placeholder {
-  padding-left: 18px;
   font-family: inherit;
   color: #bdae82;
 }
@@ -389,10 +364,11 @@ h2.section-title.contacts {
 .contacts-textarea {
   width: 100%;
   margin-bottom: 20px;
-  padding: 0;
+  padding: 0 19px;
   font-size: 20px;
   line-height: 46px;
   font-family: inherit;
+  color: #bdae82;
   background: rgba(0, 0, 0, 0.5);
   border: 2px solid #bdae82;
 }
@@ -401,4 +377,9 @@ h2.section-title.contacts {
   height: 100px;
   margin-bottom: 26px;
   resize: none;
+}
+
+.contacts-input:focus,
+.contacts-textarea:focus {
+  outline-width: 0;
 }
