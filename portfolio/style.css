@@ -19,7 +19,6 @@ html {
 }
 
 body {
-  /* margin: 0; */
   font-family: "Inter";
   background-color: #000000;
 }
@@ -41,8 +40,7 @@ li {
   box-sizing: border-box;
 }
 
-button,
-.contacts-button {
+button {
   width: 220px;
   height: 55px;
   padding: 0;
@@ -54,11 +52,12 @@ button,
 }
 
 .container,
-.header-container {
+.header-container,
+.footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -72,7 +71,9 @@ button,
   transition: 0.3s;
 }
 
-.logo:hover {
+.logo:hover,
+.video-play-button:hover,
+.social-icon:hover {
   filter:
     invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
@@ -92,11 +93,6 @@ button,
   line-height: 50px;
   text-decoration: none;
   letter-spacing: 0.1px;
-  transition: 0.3s;
-}
-
-.nav-link:hover {
-  color: #bdae82;
 }
 
 .header-container {
@@ -109,9 +105,12 @@ button,
   padding-left: 16px;
 }
 
-a {
+a,
+.footer-link,
+.social-icon {
   color: unset;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .lang {
@@ -121,6 +120,7 @@ a {
   word-spacing: 4px;
 }
 
+.nav-link:hover,
 .lang a:hover,
 .lang :target {
   color: #bdae82;
@@ -254,7 +254,8 @@ p {
 .hire-me:hover,
 .portfolio-button:hover,
 .price-button:hover,
-.contacts-button:hover {
+.contacts-button:hover,
+.footer-link {
   color: #ffffff;
 }
 
@@ -285,12 +286,6 @@ p {
   height: 130px;
   background-color: transparent;
   background-image: url("./assets/svg/video-button.svg");
-}
-
-.video-play-button:hover {
-  filter:
-    invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
-    contrast(87%);
 }
 
 .price-items {
@@ -355,7 +350,8 @@ p {
   margin-left: auto;
 }
 
-::placeholder {
+::placeholder,
+.footer-link:hover {
   font-family: inherit;
   color: #bdae82;
 }
@@ -379,7 +375,31 @@ p {
   resize: none;
 }
 
+button:focus,
 .contacts-input:focus,
 .contacts-textarea:focus {
   outline-width: 0;
+}
+
+.footer-container {
+  flex-direction: row;
+  justify-content: space-between;
+  height: 150px;
+  font-size: 20px;
+}
+
+.copyright {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 168px;
+  margin-right: 18px;
+}
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 188px;
+  height: 32px;
 }
