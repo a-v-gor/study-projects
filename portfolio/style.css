@@ -19,6 +19,7 @@ html {
 }
 
 body {
+  margin: 0;
   font-family: "Inter";
   background-color: #000000;
 }
@@ -53,6 +54,7 @@ button {
 
 .container,
 .header-container,
+.hero-container,
 .footer-container {
   display: flex;
   flex-direction: column;
@@ -97,8 +99,11 @@ button {
 
 .header-container {
   flex-direction: row;
+  width: 100%;
+  max-width: 1440px;
   height: 90px;
   background: url("./assets/img/header-bg.jpg");
+  background-size: 100% auto;
 }
 
 .change-lang {
@@ -126,32 +131,36 @@ a,
   color: #bdae82;
 }
 
-.container-hero {
-  width: 1440px;
+.hero-container {
+  display: block;
+  width: 100%;
+  max-width: 1440px;
   height: 820px;
-  margin: 0 -20px 100px;
+  margin: 0 auto 100px;
   padding-top: 143px;
   background-image: url("./assets/img/header-bg.jpg");
+  background-repeat: no-repeat;
   background-position: center -90px;
+  background-size: 100% auto;
 }
 
 .section,
-.section-hero {
+.hero-section {
   width: 100%;
   padding-top: 39px;
   padding-bottom: 100px;
 }
 
-.section-hero {
-  width: 560px;
-  padding-left: 80px;
+.hero-section {
+  width: 540px;
+  padding-left: 60px;
 }
 
 h1,
 h2 {
   font-weight: bold;
-  font-family: "Merriweather";
   font-size: 40px;
+  font-family: "Merriweather";
   color: #bdae82;
 }
 
@@ -175,7 +184,7 @@ p {
   color: #ffffff;
 }
 
-.section-hero p {
+.hero-section p {
   padding-bottom: 25px;
   font-size: 20px;
   line-height: 2;
