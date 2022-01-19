@@ -126,10 +126,10 @@ button {
 .header-container {
   flex-direction: row;
   width: 100%;
-  max-width: 1440px;
   height: 90px;
-  background: url("./assets/img/header-bg.jpg");
-  background-size: 100% auto;
+  background: transparent;
+  z-index: 2;
+  position: relative;
 }
 
 .change-lang {
@@ -146,7 +146,6 @@ a,
 
 .lang {
   font-weight: bold;
-  font-size: 20px;
   color: #ffffff;
   word-spacing: 4px;
 }
@@ -154,32 +153,34 @@ a,
 .nav-link:hover,
 .lang a:hover,
 .lang :target {
+  font-weight: bold;
   color: #bdae82;
 }
 
 .hero-container {
+  position: relative;
+  top: -90px;
   display: block;
   width: 100%;
   max-width: 1440px;
-  height: 820px;
-  margin: 0 auto 100px;
-  padding-top: 143px;
+  min-height: 910px;
+  padding-top: 241px;
   background-image: url("./assets/img/header-bg.jpg");
   background-repeat: no-repeat;
-  background-position: center -90px;
   background-size: 100% auto;
 }
 
-.section,
-.hero-section {
+.section {
   width: 100%;
-  padding-top: 39px;
-  padding-bottom: 100px;
+  padding-top: 49px;
+  padding-bottom: 90px;
 }
+
+
 
 .hero-section {
   width: 540px;
-  padding-left: 60px;
+  padding: 39px 0 0 60px;
 }
 
 h1,
@@ -192,7 +193,7 @@ h2 {
 
 .hero-header {
   margin: 0;
-  padding-bottom: 33px;
+  padding-bottom: 40px;
   font-size: 60px;
   color: #ffffff;
 }
@@ -219,7 +220,7 @@ p {
 
 .section-title a {
   position: relative;
-  top: -24px;
+  top: -19px;
   padding: 0 20px;
   background-color: #000000;
 }
@@ -233,7 +234,7 @@ p {
 
 .skill-item {
   width: 320px;
-  padding: 88px 20px 0;
+  padding: 110px 20px 0;
   background-repeat: no-repeat;
   background-position: center top;
 }
@@ -259,9 +260,8 @@ p {
 }
 
 .skill-item h3 {
-  padding-bottom: 9px;
+  padding-bottom: 31px;
   font-weight: bold;
-  font-size: 20px;
   text-align: center;
   color: #ffffff;
   letter-spacing: 0.02em;
@@ -331,12 +331,12 @@ p {
 .price-card {
   width: 450px;
   height: 505px;
-  padding-top: 21px;
+  padding-top: 54px;
   border: 3px solid #bdae82;
 }
 
 .price-head {
-  padding-bottom: 12px;
+  padding-bottom: 47px;
   font-weight: bold;
   font-size: 28px;
   font-family: "Merriweather";
@@ -345,7 +345,7 @@ p {
 }
 
 .price-cost {
-  padding-bottom: 29px;
+  padding-bottom: 32px;
   font-weight: bold;
   font-size: 24px;
   font-family: "Merriweather";
@@ -368,6 +368,7 @@ p {
   height: 700px;
   padding: 75px 20px;
   background-image: url("./assets/img/contacts.jpg");
+  margin-top: 10px;
 }
 
 .header-contacts {
@@ -375,7 +376,7 @@ p {
   width: auto;
   height: auto;
   margin: 0;
-  padding-bottom: 55px;
+  padding-bottom: 60px;
   text-align: left;
   background: none;
 }
@@ -383,6 +384,7 @@ p {
 .section-contact {
   width: 450px;
   margin-left: auto;
+  padding-top: 5px;
 }
 
 ::placeholder,
@@ -395,7 +397,7 @@ p {
 .contacts-textarea {
   width: 100%;
   margin-bottom: 20px;
-  padding: 0 19px;
+  padding: 0 18px;
   font-size: 20px;
   line-height: 46px;
   font-family: inherit;
@@ -406,7 +408,7 @@ p {
 
 .contacts-textarea {
   height: 100px;
-  margin-bottom: 26px;
+  margin-bottom: 27px;
   resize: none;
 }
 
