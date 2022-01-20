@@ -102,10 +102,6 @@ h2 {
   .footer-container {
     padding: 0 60px;
   }
-  button {
-    width: 219px;
-    height: 54px;
-  }
 }
 /* HEADER */
 .logo {
@@ -325,6 +321,10 @@ a,
     line-height: 2;
     font-weight: normal;
   }
+  .hire-me {
+    width: 219px;
+    height: 54px;
+  }
 }
 /* Section */
 .section {
@@ -411,13 +411,14 @@ p {
 /* PORTFOLIO */
 .portfolio-buttons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 5px;
   padding-bottom: 60px;
 }
 @media (max-width:768px) {
   .portfolio-buttons {
-    
+    padding-top: 5px;
   }
 }
 .portfolio-button {
@@ -437,7 +438,8 @@ p {
 .hire-me,
 .portfolio-button:focus,
 .price-button,
-.contacts-button {
+.contacts-button,
+.portfolio-button-active {
   color: #000000;
   background: #bdae82;
 }
@@ -445,6 +447,7 @@ p {
 .portfolio-images {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 25px;
 }
 
