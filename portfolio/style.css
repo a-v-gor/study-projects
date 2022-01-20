@@ -165,10 +165,11 @@ a,
 }
 .nav-link:hover,
 .lang a:hover,
-.lang :target {
+.lang-active {
   color: #bdae82;
 }
-.lang a:hover {
+.lang a:hover,
+.lang-active {
   font-weight: bold;
 }
 
