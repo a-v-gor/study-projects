@@ -280,6 +280,9 @@ a,
     width: 40px;
     height: 40px;
   }
+  .nav-list {
+    padding-left: 54px;
+  }
 }
 /* HERO */
 .hero-container {
@@ -676,7 +679,7 @@ p {
 }
 @media (max-width:360px) {
   .price-description-list {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.2;
   }
   .price-card {
