@@ -275,13 +275,15 @@ a,
     right: 0;
   }
 }
+@media (max-width:619px) {
+  .nav-list {
+    width: 100%;
+  }
+}
 @media (max-width:425px) {
   .menu-btn {
     width: 40px;
     height: 40px;
-  }
-  .nav-list {
-    padding-left: 54px;
   }
 }
 /* HERO */
