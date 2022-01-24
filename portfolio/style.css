@@ -309,6 +309,7 @@ a,
   width: 540px;
   padding-top: 39px;
   padding-bottom: 60px;
+  padding-left: 61px;
 }
 .hero-header {
   margin: 0;
@@ -345,7 +346,7 @@ a,
   }
   .hero-section {
     padding: 0;
-    width: 59%;
+    width: 63%;
     line-height: calc(24.2/20);
   }
   .hero-section p {
@@ -410,6 +411,9 @@ a,
     align-items: center;
     text-align: center;
     width: 100%;
+  }
+  .hero-container {
+    padding-top: 98px;
   }
 }
 /* Section */
@@ -478,6 +482,16 @@ p {
   text-align: center;
   padding-top: 21px;
 }
+@media (max-width:1323px) {
+  .skill-item {
+    max-width: 90%;
+    padding: 80px 10px 75px;
+    margin: 0 auto;
+  }
+  .skill-item p {
+    line-height: 1.2;
+  }
+}
 @media (max-width:1299px) {
   .container {
     margin-top: -90px;
@@ -489,16 +503,14 @@ p {
     width: 364px;
     margin: 0 auto 84px;
   }
+}
+@media (max-width:768px) {
+  .skill-item {
+    width: 300px;
+    margin: 0;
+  }
   .skills-items {
     padding-right: 4px;
-  }
-  .skill-item {
-    max-width: 90%;
-    width: 300px;
-    padding: 80px 10px 75px;
-  }
-  .skill-item p {
-    line-height: 1.2;
   }
 }
 @media (max-width:723px) {
@@ -620,16 +632,14 @@ p {
 }
 .price-card {
   width: 450px;
+  max-width: 100%;
   height: 505px;
   padding-top: 54px;
   border: 3px solid #bdae82;
 }
 @media (max-width:1389px) {
-  .price-items > .price-card:not(:last-child) {
-    margin-bottom: 50px;
-  }
   .price-card {
-    margin: 0 auto;
+    margin: 0 auto 50px;
     width: 420px;
   }
 }
@@ -637,7 +647,6 @@ p {
   .price-items {
     position: relative;
     top: 5px;
-    padding-bottom: 50px;
   }
 }
 .price-head {
@@ -658,11 +667,21 @@ p {
 }
 .price-button {
   display: block;
+  max-width: 90%;
   margin: 0 auto;
 }
 .price-description-list {
   padding-bottom: 39px;
   font-size: 18px;
+}
+@media (max-width:360px) {
+  .price-description-list {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .price-card {
+    height: 392px;
+  }
 }
 /* CONTACTS */
 .contacts-container {
