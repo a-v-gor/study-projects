@@ -215,6 +215,11 @@ a,
     height: 50px;
     z-index: 3;
   }
+  .menu-btn:active > span,
+  .menu-btn:active > span::before,
+  .menu-btn:active > span::after {
+    background-color: #bdae82;
+  }
   .menu-btn > span,
   .menu-btn > span::before,
   .menu-btn > span::after {
