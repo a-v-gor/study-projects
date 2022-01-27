@@ -639,10 +639,9 @@ a,
 }
 
 .hire-me,
-.portfolio-button:focus,
 .price-button,
 .contacts-button,
-.portfolio-button-active {
+.portfolio-button.active {
   color: #000000;
   background: #bdae82;
 }
