@@ -10,10 +10,3 @@ function toggleMenu () {
 };
 
 link.addEventListener('click', toggleMenu);
-
-console.log(`
-Ваша отметка - 85 балла(ов)
-Отзыв по пунктам ТЗ:
-
-Все пункты выполнены полностью!
-`);
