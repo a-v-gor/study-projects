@@ -21,3 +21,7 @@ const LanguageGroup = document.querySelector('.change-lang');
 
 LanguageGroup.addEventListener('click', changeClassActive);
 LanguageGroup.addEventListener('click', getTranslate);
+
+// Change theme
+// const themeGroup = document.querySelector('.change-theme');
+// themeGroup.addEventListener('click', changeClassActive);
