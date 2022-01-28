@@ -2,10 +2,7 @@
 
 const portfolioImages = document.querySelectorAll('.portfolio-img');
 
-
-
 export default function changeImage(event) {
-
   const season = event.target.dataset.i18n;
 
   if(event.target.classList.contains('portfolio-button')) {
