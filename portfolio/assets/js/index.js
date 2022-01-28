@@ -3,14 +3,13 @@
 import i18Obj from './translate.js';
 import toggleMenu from './toggleMenu.js';
 import changeClassActive from './changeClassActive.js';
+import changeImage from './changeImage.js';
 
 // Hamburger menu
 document.querySelector('.nav-list').addEventListener('click', toggleMenu);
 
 // Portfolio
 const portfolioButtonsGroup = document.querySelector('.portfolio-buttons');
-const portfolioImages = document.querySelectorAll('.portfolio-img');
-let season = '';
 
 function preloadSeasonsImages() {
   const seasons = ['winter', 'spring', 'summer', 'autumn'];
@@ -22,21 +21,7 @@ function preloadSeasonsImages() {
   })
 }
 
-function setSeason(event) {
-  season = event.target.dataset.i18n;
-}
-
-function changeImage(event) {
-  if(event.target.classList.contains('portfolio-button')) {
-    portfolioImages.forEach(function (img, index) {
-      img.src = `./assets/img/${season}/${index + 1}.jpg`;
-      img.alt = `${season}` + ' ' + `${index + 1}`;
-    })
-  }
-}
-
 preloadSeasonsImages();
-portfolioButtonsGroup.addEventListener('click', setSeason);
 portfolioButtonsGroup.addEventListener('click', changeClassActive);
 portfolioButtonsGroup.addEventListener('click', changeImage);
 
