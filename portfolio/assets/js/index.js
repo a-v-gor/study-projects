@@ -2,6 +2,7 @@
 
 import i18Obj from './translate.js';
 import toggleMenu from './toggleMenu.js';
+import changeClassActive from './changeClassActive.js';
 
 // Hamburger menu
 document.querySelector('.nav-list').addEventListener('click', toggleMenu);
@@ -23,12 +24,6 @@ function preloadSeasonsImages() {
 
 function setSeason(event) {
   season = event.target.dataset.i18n;
-}
-
-function changeClassActive (event) {
-  let elements = document.querySelectorAll(`.${event.target.classList}`);
-  elements.forEach((element) => element.classList.remove('active'));
-  event.target.classList.add('active');
 }
 
 function changeImage(event) {
