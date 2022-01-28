@@ -1,19 +1,12 @@
 'use strict';
 
+import i18Obj from './translate.js';
+import toggleMenu from './toggleMenu.js';
+
 // Hamburger menu
-const hamburger = document.querySelector('#menu-toggle');
-const link = document.querySelector('.nav-list');
-
-function toggleMenu () {
-  if (hamburger.checked) {
-    hamburger.checked = false;
-  };
-};
-
-link.addEventListener('click', toggleMenu);
+document.querySelector('.nav-list').addEventListener('click', toggleMenu);
 
 // Portfolio
-const portfolioButtons = document.querySelectorAll('.portfolio-button');
 const portfolioButtonsGroup = document.querySelector('.portfolio-buttons');
 const portfolioImages = document.querySelectorAll('.portfolio-img');
 let season = '';
@@ -29,7 +22,7 @@ function preloadSeasonsImages() {
 }
 
 function setSeason(event) {
-  season = event.target.dataset.season;
+  season = event.target.dataset.i18n;
 }
 
 function changeClassActive (event) {
@@ -51,3 +44,26 @@ preloadSeasonsImages();
 portfolioButtonsGroup.addEventListener('click', setSeason);
 portfolioButtonsGroup.addEventListener('click', changeClassActive);
 portfolioButtonsGroup.addEventListener('click', changeImage);
+
+// Change language
+const LanguageGroup = document.querySelector('.change-lang');
+let lang = '';
+
+function setLang(event) {
+  lang = event.target.dataset.i18n;
+}
+
+function getTranslate() {
+  document.querySelectorAll('[data-i18n]').forEach(function (item) {
+    let translate = i18Obj[lang][item.dataset.i18n];
+    item.innerHTML = translate;
+    if (item.placeholder) {
+      item.placeholder = translate;
+      item.textContent = '';
+    };
+  })
+}
+
+LanguageGroup.addEventListener('click', setLang);
+LanguageGroup.addEventListener('click', changeClassActive);
+LanguageGroup.addEventListener('click', getTranslate);
