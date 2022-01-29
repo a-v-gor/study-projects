@@ -580,11 +580,20 @@ a,
   background-color: #bdae82;
 }
 
+.section-title.light-theme {
+  background-color: #1c1c1c;
+}
+
 .sec-title-span {
   position: relative;
   top: -19px;
   padding: 0 20px;
   background-color: #000000;
+}
+
+.sec-title-span.light-theme {
+  color: #1c1c1c;
+  background-color: #ffffff;
 }
 
 /* SKILLS */
@@ -626,7 +635,6 @@ a,
   font-weight: bold;
   line-height: 2;
   text-align: center;
-  color: #ffffff;
   letter-spacing: 0.02em;
 }
 
@@ -883,6 +891,11 @@ a,
 .contacts-button:hover,
 .footer-link {
   color: #ffffff;
+}
+
+.hire-me.light-theme:hover {
+  color: #bdae82;
+  background: #000000;
 }
 
 @media (max-width: 360px) {
