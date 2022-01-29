@@ -716,6 +716,21 @@ a,
   border: 2px solid #bdae82;
 }
 
+.portfolio-buttons.light-theme > .portfolio-button {
+  color: #1c1c1c;
+  background-color: #bdae82;
+}
+
+.portfolio-buttons.light-theme > .portfolio-button:hover,
+.portfolio-buttons.light-theme > .portfolio-button.active {
+  color: #bdae82;
+  background-color: #1c1c1c;
+}
+
+.portfolio-buttons.light-theme > .portfolio-button:hover {
+  color: #ffffff;
+}
+
 .hire-me,
 .price-button,
 .contacts-button,
