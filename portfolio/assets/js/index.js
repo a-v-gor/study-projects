@@ -28,7 +28,7 @@ const changeThemeGroup = document.querySelector('.change-theme');
 function changeTheme(event) {
   const themes = ['dark-theme', 'light-theme'];
   const classesToChange = ['.body', '.hero-container', '.logo', '.change-lang', '.hire-me', '.section-title', '.sec-title-span',
-'.portfolio-buttons', '.price-card'];
+'.portfolio-buttons', '.video-play-button', '.price-card', '.contacts-container', '.footer-container'];
 
   // Change icon in header
   event.target.classList = (event.target.classList == themes[0]+'-icon') ? themes[1]+'-icon' : themes[0]+'-icon';
