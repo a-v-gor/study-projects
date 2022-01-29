@@ -17,11 +17,27 @@ portfolioButtonsGroup.addEventListener('click', changeClassActive);
 portfolioButtonsGroup.addEventListener('click', changeImage);
 
 // Change language
-const LanguageGroup = document.querySelector('.change-lang');
+const languageGroup = document.querySelector('.change-lang');
 
-LanguageGroup.addEventListener('click', changeClassActive);
-LanguageGroup.addEventListener('click', getTranslate);
+languageGroup.addEventListener('click', changeClassActive);
+languageGroup.addEventListener('click', getTranslate);
 
 // Change theme
-// const themeGroup = document.querySelector('.change-theme');
-// themeGroup.addEventListener('click', changeClassActive);
+const changeThemeGroup = document.querySelector('.change-theme');
+
+function changeTheme(event) {
+  const themes = ['dark-theme', 'light-theme'];
+  const classesToChange = ['.body', '.hero-container', '.logo', '.change-lang', '.hire-me'];
+
+  // Change icon in header
+  event.target.classList = (event.target.classList == themes[0]+'-icon') ? themes[1]+'-icon' : themes[0]+'-icon';
+
+  // Change styles on page
+  if (event.target.classList == themes[1]+'-icon') {
+    classesToChange.forEach((element) => document.querySelectorAll(`${element}`).forEach((item) => item.classList.add(`${themes[1]}`)))
+  } else {
+    classesToChange.forEach((element) => document.querySelectorAll(`${element}`).forEach((item) => item.classList.remove(`${themes[1]}`)))
+  }
+}
+
+changeThemeGroup.addEventListener('click', changeTheme);

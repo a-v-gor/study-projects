@@ -48,26 +48,18 @@ h6 {
   font-size: inherit;
 }
 
-html,
-body {
+html {
   height: 100%;
   font-size: 20px;
   line-height: 1;
   font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
-  background-color: #000000;
 }
 
 /* Общие стили */
-p {
-  margin: 0;
-  color: #ffffff;
-}
 
 ul {
-  list-style: none;
   line-height: 2;
-  color: #ffffff;
 }
 
 li {
@@ -100,6 +92,16 @@ h2 {
     font-size: 32px;
     line-height: 1.25;
   }
+}
+
+.body {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.body.light-theme {
+  color: #1c1c1c;
+  background-color: #ffffff;
 }
 
 .container,
@@ -144,6 +146,10 @@ h2 {
   transition: 0.3s;
 }
 
+.logo.light-theme {
+  background-image: url("./assets/svg/logo-black.svg");
+}
+
 a,
 .footer-link,
 .social-icon {
@@ -181,7 +187,16 @@ a,
 .lang {
   font-weight: bold;
   color: #ffffff;
+  text-transform: uppercase;
   word-spacing: 4px;
+}
+
+.change-lang.light-theme > .lang {
+  color: #1c1c1c;
+}
+
+.change-lang.light-theme > .lang.active {
+  color: #ffffff;
 }
 
 .nav-link:hover,
@@ -196,12 +211,27 @@ a,
   cursor: default;
 }
 
+.change-lang.light-theme > .lang.nonactive,
+.change-lang.light-theme > .lang.nonactive:hover {
+  color: #1c1c1c;
+}
+
 .change-theme {
+  transition: 0.3s;
+}
+
+.dark-theme-icon {
   width: 45px;
   height: 45px;
   background-image: url("./assets/svg/sun.svg");
   background-repeat: no-repeat;
-  transition: 0.3s;
+}
+
+.light-theme-icon {
+  width: 45px;
+  height: 40px;
+  background-image: url("./assets/svg/moon.svg");
+  background-repeat: no-repeat;
 }
 
 .lang:hover,
@@ -382,6 +412,10 @@ a,
   padding-top: 241px;
 }
 
+.hero-container.light-theme::before {
+  background-image: url("./assets/img/bg-white.jpg");
+}
+
 .hero-container::before {
   content: "";
   position: absolute;
@@ -407,7 +441,7 @@ a,
   margin: 0;
   padding-bottom: 40px;
   font-size: 60px;
-  color: #ffffff;
+  color: inherit;
 }
 
 .hero-section p {
@@ -682,6 +716,12 @@ a,
   background: #bdae82;
 }
 
+.hire-me.light-theme {
+  color: #1c1c1c;
+  background: #ffffff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 .portfolio-images {
   display: flex;
   flex-wrap: wrap;
@@ -741,8 +781,12 @@ a,
 .video-play-button:hover,
 .social-icon:hover {
   filter:
-    invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
-    contrast(87%);
+    invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+
+.logo.light-theme:hover {
+  filter:
+   invert(79%) sepia(8%) saturate(1308%) hue-rotate(7deg) brightness(89%) contrast(83%);
 }
 
 @media (max-width: 768px) {
