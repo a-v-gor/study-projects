@@ -23,6 +23,7 @@ function getLocalStorage() {
   if (localStorage.getItem('lang')) {
     lang = localStorage.getItem('lang');
   };
+  document.querySelector(`[data-i18n="${lang}"]`).classList.add('active');
   if (localStorage.getItem('theme')) {
     theme = localStorage.getItem('theme');
   };
