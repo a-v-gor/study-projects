@@ -208,6 +208,7 @@ a,
   color: #ffffff;
 }
 
+.header-container.light-theme .lang:hover,
 .nav-link:hover,
 .lang:hover,
 .lang.active {
@@ -329,19 +330,25 @@ a,
     position: absolute;
     display: block;
     width: 100%;
-    height: 2px;
+    height: 3px;
     background-color: #ffffff;
     transition-duration: 0.3s;
   }
 
+  .header-container.light-theme .menu-btn > span,
+  .header-container.light-theme .menu-btn > span::before,
+  .header-container.light-theme .menu-btn > span::after {
+    background-color: #1c1c1c;
+  }
+
   .menu-btn > span::before {
     content: "";
-    top: -12px;
+    top: -12.5px;
   }
 
   .menu-btn > span::after {
     content: "";
-    top: 12px;
+    top: 12.5px;
   }
 
   .menu-btn:active > span,
@@ -359,11 +366,16 @@ a,
     height: 100%;
     margin: 0;
     padding: 145px 0 0 122px;
+    overflow-y: auto;
     list-style: none;
     background-color: #000000;
     box-shadow: 0 0 0 9999px rgba(0, 0, 0, 50%);
     visibility: hidden;
     transition-duration: 0.3s;
+  }
+
+  .header-container.light-theme .nav-list {
+    background-color: #ffffff;
   }
 
   .nav-link {
@@ -1038,6 +1050,7 @@ a,
 
 .contacts-container.light-theme .contacts-input,
 .contacts-container.light-theme .contacts-textarea {
+  color: #1c1c1c;
   background: rgba(255, 255, 255, 50%);
 }
 
