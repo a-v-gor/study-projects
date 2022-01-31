@@ -76,7 +76,6 @@ button {
   border: none;
   cursor: pointer;
   transition: 0.3s;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 h1,
@@ -308,7 +307,7 @@ a,
   }
 }
 
-/* Adaptive menu */
+/* ADAPTIVE MENU */
 .menu-toggle {
   display: none;
 }
@@ -593,7 +592,7 @@ a,
   }
 }
 
-/* Section */
+/* SECTION */
 .section,
 .video-section,
 .portfolio-section {
@@ -755,7 +754,7 @@ a,
 .portfolio-buttons.light-theme > .portfolio-button.active,
 .price-card.light-theme > .price-button:hover {
   color: #bdae82;
-  background-color: #1c1c1c;
+  box-shadow: inset -7em 0 0 0 #1c1c1c, inset 7em 0 0 0 #1c1c1c;
 }
 
 .portfolio-buttons.light-theme > .portfolio-button:hover,
@@ -771,13 +770,8 @@ a,
   background: #bdae82;
 }
 
-.hire-me.light-theme {
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 .hire-me.light-theme,
 .contacts-container.light-theme .contacts-button {
-  color: #1c1c1c;
   background: #ffffff;
 }
 
@@ -810,7 +804,7 @@ a,
   }
 }
 
-/* Video */
+/* VIDEO */
 .video-player {
   display: flex;
   justify-content: center;
@@ -954,10 +948,12 @@ a,
   color: #ffffff;
 }
 
+
 .hire-me.light-theme:hover,
+.hire-me.light-theme:focus,
 .contacts-container.light-theme .contacts-button:hover {
   color: #bdae82;
-  background: #000000;
+  box-shadow: inset -110px 0 0 0 #000000, inset 110px 0 0 0 #000000;
 }
 
 @media (max-width: 360px) {
@@ -1065,10 +1061,12 @@ a,
   resize: none;
 }
 
+button:hover,
 button:focus,
 .contacts-input:focus,
 .contacts-textarea:focus {
   outline-width: 0;
+  transition: 0.3s;
 }
 
 /* FOOTER */
