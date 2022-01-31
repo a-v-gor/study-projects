@@ -78,6 +78,13 @@ button {
   transition: 0.3s;
 }
 
+button:hover,
+button:focus,
+input:focus,
+textarea:focus {
+  outline-width: 0;
+}
+
 h1,
 h2 {
   font-weight: bold;
@@ -755,6 +762,7 @@ a,
 .price-card.light-theme > .price-button:hover {
   color: #bdae82;
   box-shadow: inset -7em 0 0 0 #1c1c1c, inset 7em 0 0 0 #1c1c1c;
+  transform: none;
 }
 
 .portfolio-buttons.light-theme > .portfolio-button:hover,
@@ -948,12 +956,20 @@ a,
   color: #ffffff;
 }
 
+.hire-me:hover,
+.portfolio-button:hover,
+.price-button:hover,
+.contacts-button:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em #ffffff;
+  transform: translateY(-0.65em);
+}
 
 .hire-me.light-theme:hover,
 .hire-me.light-theme:focus,
 .contacts-container.light-theme .contacts-button:hover {
   color: #bdae82;
   box-shadow: inset -110px 0 0 0 #000000, inset 110px 0 0 0 #000000;
+  transform: none;
 }
 
 @media (max-width: 360px) {
@@ -1059,14 +1075,6 @@ a,
   height: 100px;
   margin-bottom: 27px;
   resize: none;
-}
-
-button:hover,
-button:focus,
-.contacts-input:focus,
-.contacts-textarea:focus {
-  outline-width: 0;
-  transition: 0.3s;
 }
 
 /* FOOTER */
