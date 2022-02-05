@@ -95,7 +95,7 @@ const player = document.querySelector('.video-player');
 const video = player.querySelector('.viewer');
 const progress = player.querySelector('.progress-video');
 const progressBar = player.querySelector('.progress-video-filled');
-const toggle = player.querySelector('.toggle');
+const videoControlsButton = player.querySelector('.video-controls-button');
 
 function togglePlay(){
   if (video.paused) {
@@ -105,4 +105,12 @@ function togglePlay(){
   }
 }
 
+function updateButton() {
+  const icon = this.paused ? './assets/svg/play.svg' : './assets/svg/pause.svg';
+  videoControlsButton.style.backgroundImage = `url("${icon}")`;
+}
+
 video.addEventListener('click', togglePlay);
+videoControlsButton.addEventListener('click', togglePlay);
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
