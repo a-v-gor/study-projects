@@ -91,3 +91,18 @@ function changeThemeOnClick(event) {
 changeThemeGroup.addEventListener('click', changeThemeOnClick);
 
 // VIDEO PLAYER
+const player = document.querySelector('.video-player');
+const video = player.querySelector('.viewer');
+const progress = player.querySelector('.progress-video');
+const progressBar = player.querySelector('.progress-video-filled');
+const toggle = player.querySelector('.toggle');
+
+function togglePlay(){
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+}
+
+video.addEventListener('click', togglePlay);
