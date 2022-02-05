@@ -118,10 +118,16 @@ function volumeUpdate() {
   video.volume = volume.value;
 }
 
+function handleProgress() {
+  const percent = (video.currentTime / video.duration) * 100;
+  progressBar.style.flexBasis = `${percent}%`;
+}
+
 video.addEventListener('click', togglePlay);
 videoControlsButton.addEventListener('click', togglePlay);
 videoPlayButton.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
+video.addEventListener('timeupdate', handleProgress);
 volume.addEventListener('change', volumeUpdate);
 volume.addEventListener('mousemove', volumeUpdate);
