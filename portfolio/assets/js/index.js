@@ -96,6 +96,8 @@ const video = player.querySelector('.viewer');
 const progress = player.querySelector('.progress-video');
 const progressBar = player.querySelector('.progress-video-filled');
 const videoControlsButton = player.querySelector('.video-controls-button');
+const videoPlayButton = document.querySelector('.video-play-button');
+const volume = player.querySelector('.video-volume');
 
 function togglePlay(){
   if (video.paused) {
@@ -107,10 +109,19 @@ function togglePlay(){
 
 function updateButton() {
   const icon = this.paused ? './assets/svg/play.svg' : './assets/svg/pause.svg';
+  const display = this.paused ? 'block' : 'none';
   videoControlsButton.style.backgroundImage = `url("${icon}")`;
+  videoPlayButton.style.display = display;
+}
+
+function volumeUpdate() {
+  video.volume = volume.value;
 }
 
 video.addEventListener('click', togglePlay);
 videoControlsButton.addEventListener('click', togglePlay);
+videoPlayButton.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
+volume.addEventListener('change', volumeUpdate);
+volume.addEventListener('mousemove', volumeUpdate);

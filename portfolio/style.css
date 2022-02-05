@@ -830,8 +830,9 @@ a,
 }
 
 .video-play-button {
-  align-self: center;
   position: absolute;
+  z-index: 1;
+  align-self: center;
   width: 9vw;
   max-width: 130px;
   height: 9vw;
@@ -839,6 +840,7 @@ a,
   background-color: transparent;
   background-image: url("./assets/svg/video-button.svg");
   background-size: 100% auto;
+  transition: 0.3s;
 }
 
 .video-play-button.light-theme {
