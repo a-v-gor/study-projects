@@ -850,6 +850,8 @@ a,
 .logo:hover,
 .change-theme:hover,
 .video-play-button:hover,
+.video-controls-button:hover,
+.volume-btn:hover,
 .social-icon:hover {
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
 }
