@@ -882,6 +882,10 @@ a,
   background-position: center;
 }
 
+.video-controls-button.pause {
+  background-image: url("./assets/svg/pause.svg");
+}
+
 .progress-video {
   display: flex;
   flex-basis: 100%;

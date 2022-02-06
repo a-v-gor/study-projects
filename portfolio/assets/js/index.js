@@ -108,10 +108,11 @@ function togglePlay(){
 }
 
 function updateButton() {
-  const icon = this.paused ? './assets/svg/play.svg' : './assets/svg/pause.svg';
-  const display = this.paused ? 'block' : 'none';
-  videoControlsButton.style.backgroundImage = `url("${icon}")`;
-  videoPlayButton.style.display = display;
+  if (this.paused) {
+    videoControlsButton.classList.remove('pause')
+  } else {
+    videoControlsButton.classList.add('pause')
+  }
 }
 
 function volumeUpdate() {
