@@ -123,6 +123,12 @@ function handleProgress() {
   progressBar.style.flexBasis = `${percent}%`;
 }
 
+function scrub (event) {
+  const scrubTime = (event.offsetX / progress.offsetWidth) * video.duration;
+  video.currentTime = scrubTime;
+  console.log(event);
+}
+
 video.addEventListener('click', togglePlay);
 videoControlsButton.addEventListener('click', togglePlay);
 videoPlayButton.addEventListener('click', togglePlay);
@@ -131,3 +137,4 @@ video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
 volume.addEventListener('change', volumeUpdate);
 volume.addEventListener('mousemove', volumeUpdate);
+progress.addEventListener('click', scrub);
