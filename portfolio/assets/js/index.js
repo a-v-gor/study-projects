@@ -109,9 +109,11 @@ function togglePlay(){
 
 function updateButton() {
   if (this.paused) {
-    videoControlsButton.classList.remove('pause')
+    videoControlsButton.classList.remove('pause');
+    videoPlayButton.style.display = 'block';
   } else {
-    videoControlsButton.classList.add('pause')
+    videoControlsButton.classList.add('pause');
+    videoPlayButton.style.display = 'none';
   }
 }
 

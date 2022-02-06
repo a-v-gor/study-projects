@@ -907,6 +907,9 @@ a,
 }
 
 .video-volume {
+  height: 10px;
+  background-color: #c8c8c8;
+  -webkit-appearance: none;
 }
 
 @media (max-width: 768px) {
