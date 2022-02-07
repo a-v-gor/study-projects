@@ -96,9 +96,12 @@ const video = player.querySelector('.viewer');
 const progressBar = player.querySelector('.video-progress');
 const videoControlsButton = player.querySelector('.video-controls-button');
 const videoPlayButton = document.querySelector('.video-play-button');
+const volumeButton = document.querySelector('.volume-btn');
 const volume = player.querySelector('.video-volume');
+const videoControls = player.querySelector('.video-controls');
 
 function togglePlay(){
+  videoControls.classList.remove('hide');
   if (video.paused) {
     video.play();
   } else {
@@ -116,17 +119,46 @@ function updateButton() {
   }
 }
 
+function handleProgress() {
+  progressBar.value = video.currentTime / video.duration;
+  progressBar.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${progressBar.value*100}%, #c8c8c8 ${progressBar.value*100}%, #c8c8c8 100%)`;
+}
+
+function scrub () {
+  const scrubTime = progressBar.value * video.duration;
+  video.currentTime = scrubTime;
+}
+
 function volumeUpdate() {
+  if (video.muted) {
+    video.muted = false;
+  };
+
   video.volume = volume.value;
 }
 
-function handleProgress() {
-  progressBar.value = video.currentTime / video.duration;
+function updateVolumeIcon() {
+  if (video.muted || video.volume == 0) {
+    volumeButton.classList.add('mute');
+  } else {
+    volumeButton.classList.remove('mute');
+  }
 }
 
-function scrub (event) {
-  const scrubTime = progressBar.value * video.duration;
-  video.currentTime = scrubTime;
+function toggleMute () {
+  video.muted = !video.muted;
+
+  if (video.muted) {
+    volume.setAttribute('data-volume', volume.value);
+    volume.value = 0;
+  } else {
+    volume.value = volume.dataset.volume;
+  }
+}
+
+function backgroundProgress () {
+  const value = this.value;
+  this.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${value*100}%, #c8c8c8 ${value*100}%, #c8c8c8 100%)`;
 }
 
 video.addEventListener('click', togglePlay);
@@ -135,7 +167,9 @@ videoPlayButton.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
-volume.addEventListener('change', volumeUpdate);
-volume.addEventListener('mousemove', volumeUpdate);
-progressBar.addEventListener('timeupdate', scrub);
+// video.addEventListener('timeupdate', backgroundProgressVideo);
 progressBar.addEventListener('input', scrub);
+volume.addEventListener('input', volumeUpdate);
+volume.addEventListener('input', backgroundProgress);
+video.addEventListener('volumechange', updateVolumeIcon);
+volumeButton.addEventListener('click', toggleMute);
