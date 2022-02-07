@@ -137,6 +137,5 @@ video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
 volume.addEventListener('change', volumeUpdate);
 volume.addEventListener('mousemove', volumeUpdate);
-progressBar.addEventListener('click', scrub);
 progressBar.addEventListener('timeupdate', scrub);
 progressBar.addEventListener('input', scrub);

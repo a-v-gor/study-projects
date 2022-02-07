@@ -905,6 +905,12 @@ a,
   -webkit-appearance: none;
 }
 
+
+.video-progress:hover,
+.video-volume:hover {
+  cursor: ew-resize;
+}
+
 @media (max-width: 768px) {
   .video-section {
     padding: 29px 0 1px;
