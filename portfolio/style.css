@@ -261,7 +261,8 @@ a,
 
 @media (max-width: 768px) {
   .header-container {
-    padding-right: 140px;
+    padding-right: 140px;    
+    z-index: 2;
   }
 
   .nav {
@@ -832,6 +833,7 @@ a,
   background-size: cover;
   cursor: pointer;
   transition: 1s;
+  z-index: 1;
 }
 
 .video-large {
@@ -864,6 +866,7 @@ a,
   background-image: url("./assets/svg/video-button.svg");
   background-size: 100% auto;
   transition: 0.3s;
+  z-index: 1;
 }
 
 .video-play-button.light-theme {
