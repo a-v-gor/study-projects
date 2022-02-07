@@ -886,7 +886,11 @@ a,
   background-image: url("./assets/svg/pause.svg");
 }
 
-.progress-video {
+.video-progress {
+  width: 100%;
+}
+
+/* .progress-video {
   display: flex;
   flex-basis: 100%;
   height: 10px;
@@ -896,7 +900,7 @@ a,
 .progress-video-filled {
   flex-basis: 50%;
   background-color: #bdae82;
-}
+} */
 
 .volume-btn {
   width: 46px;
@@ -906,7 +910,8 @@ a,
   background-position: center;
 }
 
-.video-volume {
+.video-volume,
+.video-progress {
   height: 10px;
   background-color: #c8c8c8;
   -webkit-appearance: none;
