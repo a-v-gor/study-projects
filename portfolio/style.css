@@ -791,6 +791,10 @@ a,
   gap: 25px;
 }
 
+.portfolio-img {
+  transition: 0.3s;
+}
+
 @media (max-width: 768px) {
   .portfolio-section {
     padding: 115px 0 90px;
