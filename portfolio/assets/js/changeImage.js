@@ -7,8 +7,12 @@ export default function changeImage(event) {
 
   if(event.target.classList.contains('portfolio-button')) {
     portfolioImages.forEach(function (img, index) {
-      img.src = `./assets/img/${season}/${index + 1}.jpg`;
-      img.alt = `${season}` + ' ' + `${index + 1}`;
+      img.style.opacity = '0';
+      img.addEventListener('transitionend', function() {
+        img.src = `./assets/img/${season}/${index + 1}.jpg`;
+        img.alt = `${season}` + ' ' + `${index + 1}`;
+        img.style.opacity = '1';
+      })
     })
   }
 }

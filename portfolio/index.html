@@ -92,9 +92,23 @@
       <section class="video-section">
         <h2 class="section-title"><span class="sec-title-span"><a id="video" data-i18n="video">Video</a></span></h2>
         <div class="video-player">
-          <img class="video-large" src="./assets/img/video-player.jpg" alt="wedding" >
-          <img class="video-small" src="./assets/img/video-player-768.jpg" alt="wedding" >
+          <div class="video-large poster"></div>
+          <div class="video-small poster"></div>
           <button class="video-play-button"></button>
+          <video class = "viewer" src="./assets/video/video.mp4" preload="metadata"></video>
+          <div class="video-controls">
+            <button class="video-controls-button"></button>
+            <input class="video-progress" type="range" name="progressBar" id="" value="0" min="0" max = "1" step="0.01">
+            <div class="volume-group">
+              <button class="volume-btn"></button>
+              <input class="video-volume" type="range" name="volume" id="" min="0" max = "1" step="0.01">
+            </div>
+            <div class="time">
+              <time class="time-elapsed">00:00</time>
+              <span> / </span>
+              <time class="duration">00:00</time>
+            </div>
+          </div>
         </div>
       </section>
 
