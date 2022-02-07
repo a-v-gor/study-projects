@@ -890,18 +890,6 @@ a,
   width: 100%;
 }
 
-/* .progress-video {
-  display: flex;
-  flex-basis: 100%;
-  height: 10px;
-  background-color: #c8c8c8;
-}
-
-.progress-video-filled {
-  flex-basis: 50%;
-  background-color: #bdae82;
-} */
-
 .volume-btn {
   width: 46px;
   background: transparent;

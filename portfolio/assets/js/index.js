@@ -93,9 +93,6 @@ changeThemeGroup.addEventListener('click', changeThemeOnClick);
 // VIDEO PLAYER
 const player = document.querySelector('.video-player');
 const video = player.querySelector('.viewer');
-
-// const progress = player.querySelector('.progress-video');
-// const progressBar = player.querySelector('.progress-video-filled');
 const progressBar = player.querySelector('.video-progress');
 const videoControlsButton = player.querySelector('.video-controls-button');
 const videoPlayButton = document.querySelector('.video-play-button');
@@ -127,15 +124,9 @@ function handleProgress() {
   progressBar.value = video.currentTime / video.duration;
 }
 
-// function handleProgress() {
-//   const percent = (video.currentTime / video.duration) * 100;
-//   progressBar.style.flexBasis = `${percent}%`;
-// }
-
 function scrub (event) {
-  const scrubTime = (event.offsetX / progress.offsetWidth) * video.duration;
+  const scrubTime = progressBar.value * video.duration;
   video.currentTime = scrubTime;
-  console.log(event);
 }
 
 video.addEventListener('click', togglePlay);
@@ -146,4 +137,6 @@ video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
 volume.addEventListener('change', volumeUpdate);
 volume.addEventListener('mousemove', volumeUpdate);
-// progress.addEventListener('click', scrub);
+progressBar.addEventListener('click', scrub);
+progressBar.addEventListener('timeupdate', scrub);
+progressBar.addEventListener('input', scrub);
