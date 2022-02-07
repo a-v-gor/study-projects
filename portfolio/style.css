@@ -828,6 +828,7 @@ a,
   background-size: cover;
   cursor: pointer;
   transition: 1s;
+  z-index: 1;
 }
 
 .video-large {

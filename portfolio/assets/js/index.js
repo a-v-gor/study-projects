@@ -98,18 +98,17 @@ const videoControlsButton = player.querySelector('.video-controls-button');
 const videoPlayButton = document.querySelector('.video-play-button');
 const volumeButton = document.querySelector('.volume-btn');
 const volume = player.querySelector('.video-volume');
-const videoControls = player.querySelector('.video-controls');
 const timeElapsed = player.querySelector('.time-elapsed');
 const duration = player.querySelector('.duration');
+const posters = player.querySelectorAll('.poster');
 
 function togglePlay(){
-  videoControls.classList.remove('hide');
   player.querySelector('.video-large').classList.add('hide');
   player.querySelector('.video-small').classList.add('hide');
   function displayNone() {
     ['.video-large', '.video-small'].map((item) => player.querySelector(`${item}`).style.display = 'none');
   }
-  setTimeout(displayNone, 1000);
+  setTimeout(displayNone, 500);
   if (video.paused) {
     video.play();
   } else {
@@ -204,3 +203,4 @@ video.addEventListener('volumechange', updateVolumeIcon);
 volumeButton.addEventListener('click', toggleMute);
 video.addEventListener('loadedmetadata', initializeVideo);
 video.addEventListener('timeupdate', updateTimeElapsed);
+posters.forEach(poster => poster.addEventListener('click', togglePlay));
