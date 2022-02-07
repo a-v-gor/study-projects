@@ -102,6 +102,12 @@ const videoControls = player.querySelector('.video-controls');
 
 function togglePlay(){
   videoControls.classList.remove('hide');
+  player.querySelector('.video-large').classList.add('hide');
+  player.querySelector('.video-small').classList.add('hide');
+  function displayNone() {
+    ['.video-large', '.video-small'].map((item) => player.querySelector(`${item}`).style.display = 'none');
+  }
+  setTimeout(displayNone, 1000);
   if (video.paused) {
     video.play();
   } else {
