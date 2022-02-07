@@ -99,6 +99,8 @@ const videoPlayButton = document.querySelector('.video-play-button');
 const volumeButton = document.querySelector('.volume-btn');
 const volume = player.querySelector('.video-volume');
 const videoControls = player.querySelector('.video-controls');
+const timeElapsed = player.querySelector('.time-elapsed');
+const duration = player.querySelector('.duration');
 
 function togglePlay(){
   videoControls.classList.remove('hide');
@@ -167,15 +169,38 @@ function backgroundProgress () {
   this.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${value*100}%, #c8c8c8 ${value*100}%, #c8c8c8 100%)`;
 }
 
+function formatTime(timeInSecs) {
+  const result = new Date(timeInSecs * 1000).toISOString().slice(11,19);
+
+  return {
+    minutes: result.slice(3, 5),
+    seconds: result.slice(6),
+  };
+};
+
+function initializeVideo() {
+  const videoDuration = Math.round(video.duration);
+  const time = formatTime(videoDuration);
+  duration.innerText = `${time.minutes}:${time.seconds}`;
+  duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`)
+}
+
+function updateTimeElapsed() {
+  const time = formatTime(Math.round(video.currentTime));
+  timeElapsed.innerText = `${time.minutes}:${time.seconds}`;
+  timeElapsed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`)
+}
+
 video.addEventListener('click', togglePlay);
 videoControlsButton.addEventListener('click', togglePlay);
 videoPlayButton.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
-// video.addEventListener('timeupdate', backgroundProgressVideo);
 progressBar.addEventListener('input', scrub);
 volume.addEventListener('input', volumeUpdate);
 volume.addEventListener('input', backgroundProgress);
 video.addEventListener('volumechange', updateVolumeIcon);
 volumeButton.addEventListener('click', toggleMute);
+video.addEventListener('loadedmetadata', initializeVideo);
+video.addEventListener('timeupdate', updateTimeElapsed);
