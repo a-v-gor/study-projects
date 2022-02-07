@@ -832,7 +832,6 @@ a,
   background-size: cover;
   cursor: pointer;
   transition: 1s;
-  z-index: 1;
 }
 
 .video-large {
@@ -856,7 +855,6 @@ a,
 
 .video-play-button {
   position: absolute;
-  z-index: 1;
   align-self: center;
   width: 9vw;
   max-width: 130px;
