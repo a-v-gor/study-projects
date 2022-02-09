@@ -161,6 +161,7 @@ function toggleMute () {
   } else {
     volume.value = volume.dataset.volume;
   }
+  volume.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${volume.value*100}%, #c8c8c8 ${volume.value*100}%, #c8c8c8 100%)`;
 }
 
 function backgroundProgress () {
