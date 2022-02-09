@@ -261,8 +261,8 @@ a,
 
 @media (max-width: 768px) {
   .header-container {
-    padding-right: 140px;    
     z-index: 2;
+    padding-right: 140px;
   }
 
   .nav {
@@ -827,13 +827,13 @@ a,
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   cursor: pointer;
   transition: 1s;
-  z-index: 1;
 }
 
 .video-large {
@@ -857,6 +857,7 @@ a,
 
 .video-play-button {
   position: absolute;
+  z-index: 1;
   align-self: center;
   width: 9vw;
   max-width: 130px;
@@ -866,7 +867,6 @@ a,
   background-image: url("./assets/svg/video-button.svg");
   background-size: 100% auto;
   transition: 0.3s;
-  z-index: 1;
 }
 
 .video-play-button.light-theme {
@@ -983,8 +983,8 @@ a,
   }
 
   .video-progress {
-    width: 100%;
     order: -1;
+    width: 100%;
   }
 
   .volume-group {
@@ -1006,6 +1006,7 @@ a,
   }
 
   .video-play-button {
+    top: calc(50% - 87px);
     width: 75px;
     height: 75px;
   }
