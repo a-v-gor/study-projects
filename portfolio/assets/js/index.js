@@ -114,6 +114,7 @@ function togglePlay(){
   } else {
     video.pause();
   }
+  videoPlayButton.style.top = 'calc(50% - 3.8em)';
 }
 
 function updateButton() {
