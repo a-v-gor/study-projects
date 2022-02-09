@@ -992,7 +992,7 @@ a,
   }
 
   .video-volume {
-    width: 28vw;
+    width: 23vw;
   }
 
   .video-section {
@@ -1006,7 +1006,6 @@ a,
   }
 
   .video-play-button {
-    top: calc(50% - 87px);
     width: 75px;
     height: 75px;
   }
