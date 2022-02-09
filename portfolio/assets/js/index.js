@@ -128,7 +128,8 @@ function updateButton() {
 
 function handleProgress() {
   progressBar.value = video.currentTime / video.duration;
-  progressBar.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${progressBar.value*100}%, #c8c8c8 ${progressBar.value*100}%, #c8c8c8 100%)`;
+  progressBar.b = backgroundProgress;
+  progressBar.b();
 }
 
 function scrub () {
@@ -161,7 +162,8 @@ function toggleMute () {
   } else {
     volume.value = volume.dataset.volume;
   }
-  volume.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${volume.value*100}%, #c8c8c8 ${volume.value*100}%, #c8c8c8 100%)`;
+  volume.b = backgroundProgress;
+  volume.b();
 }
 
 function backgroundProgress () {
