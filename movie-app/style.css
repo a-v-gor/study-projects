@@ -119,6 +119,20 @@ h6 {
   background-image: url("./assets/img/background.png");
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #8e95a9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #121829;
+  border-radius: 4px;
+}
+
 /* HEADER */
 
 .header {
@@ -223,17 +237,18 @@ h6 {
 .movie-card {
   width: 282px;
   height: 480px;
-  padding: 8px;
   background-color: rgba(32, 40, 62, 80%);
   border-radius: 12px;
-  transition: 0.3s;
   position: relative;
+  overflow: hidden;
+  border: 8px solid rgba(0, 0, 0, 0%);
 }
 
 .movie-poster {
   width: 266px;
   height: 400px;
   border-radius: 8px;
+  transition: 0.9s;
 }
 
 .container-movie-title {
@@ -251,48 +266,29 @@ h6 {
 
 .container-movie-overview {
   position: absolute;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
+  bottom: -100%;
   background-color: #323b54;
   padding: 10px;
   border-radius: 5px;
-  overflow-y: hidden;
   max-height: 464px;
-  padding-right: 2px;
+  overflow-y: auto;
+  opacity: 0;
+  transition: 0.9s;
+}
+
+.movie-card:hover > .container-movie-overview {
+  bottom: 0;
+  opacity: 1;
+}
+
+.movie-card:hover > .movie-poster {
+  opacity: 0.2;
 }
 
 .movie-overview { 
   font-size: 20px;
   line-height: 1.6;
   color: #8e95a9;
-  max-width: 238px;
-}
-
-.container-movie-overview:hover {
-  overflow-y: auto;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #8e95a9;
-  border-radius: 2px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #121829;
-  border-radius: 2px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
 
 .footer {
