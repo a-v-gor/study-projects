@@ -13,11 +13,12 @@ function getData(url) {
 }
 
 function showData(data) {
+  console.log(data);
   data['results'].forEach(element => {
-    const pathPosterImg = element['poster_path'];
+    const pathPosterImg = (element['poster_path']) ? imgPath+element['poster_path'] : './assets/img/Image-Placeholder.png';
     const movieCard = `
     <article class="movie-card">
-      <img class="movie-poster" src=${imgPath+pathPosterImg} alt="${element['title']} poster">
+      <img class="movie-poster" src=${pathPosterImg} alt="${element['title']} poster">
       <div class="container-movie-title">
         <h3 class="movie-title">${element['title']}</h3>
       </div>
