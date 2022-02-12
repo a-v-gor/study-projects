@@ -113,10 +113,14 @@ h6 {
 }
 
 .body-container {
+  background-image: url("./assets/img/background.png");
+}
+
+.header-container,
+.main-container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 120px;
-  background-image: url("./assets/img/background.png");
+  padding: 0 120px;  
 }
 
 ::-webkit-scrollbar {
@@ -137,8 +141,8 @@ h6 {
 
 .header {
   height: 80px;
-  padding: 20px 0;  
-  background-color: #121829;
+  padding: 20px 0;
+  background-color: rgba(18, 24, 41, 80%);
 }
 
 .logo-group {
@@ -232,7 +236,7 @@ h6 {
   flex-wrap: wrap;
   padding: 24px 0 0;
   row-gap: 20px;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .movie-card {
@@ -294,14 +298,21 @@ h6 {
   color: #8e95a9;
 }
 
+/* FOOTER */
+
 .footer {
-  border-top: 2px solid #323b54;
+  background-color: rgba(18, 24, 41, 80%);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
   height: 100px;
+  border-top: 2px solid #323b54;
   color: #a8aebf;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #121829;
 }
 
 .github,
