@@ -3,9 +3,13 @@
 
 const moviesCardsContainer = document.querySelector('.movies-cards');
 const imgPath = 'https://image.tmdb.org/t/p/w300';
+const searchSection = document.querySelector('.search-section');
 const searchForm = document.querySelector('.search-form');
 const search = document.querySelector('.search');
+const moviesSection = document.querySelector('.movies-section');
 const moviesСards = document.querySelector('.movies-cards');
+const misContainer = document.querySelector('.mis-container');
+const misButton = document.querySelector('.mis-button');
 
 function onLoad () {
   const startUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=f5a4c4a8d947d8097d8aba9c57c93c96';
@@ -18,7 +22,15 @@ function onLoad () {
 async function getData(url) {
   const res = await fetch(url);
   const data = await res.json();
-  showData(data);
+  checkData(data);
+}
+
+function checkData(data) {
+  if (data['total_results']) {
+    showData(data)
+  } else {
+    showMistake()
+  }
 }
 
 function showData(data) {
@@ -42,6 +54,14 @@ function showData(data) {
   });
 }
 
+function showMistake() {
+  console.log('showMistake() works!');
+  searchSection.style.display = "none";
+  moviesSection.style.display = "none";
+  // moviesSection.style.padding = '0';
+  misContainer.style.display = "flex";
+}
+
 function findMovie () {
   moviesСards.innerHTML = '';
   if (search.value) {
@@ -51,8 +71,13 @@ function findMovie () {
   }
 }
 
+function reloadPage () {
+  document.location.reload();
+}
+
 window.addEventListener('load', onLoad);
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   findMovie();
 });
+misButton.addEventListener('click', reloadPage);
