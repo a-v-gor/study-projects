@@ -346,10 +346,18 @@ h6 {
   display: block;
   background-size: 100% auto;
   background-repeat: no-repeat;
+  filter: invert(76%) sepia(10%) saturate(386%) hue-rotate(187deg) brightness(90%) contrast(90%);
+  transition: 0.5s;
+}
+
+.github:hover,
+.rss:hover {
+  cursor: pointer;
+  filter: invert(99%) sepia(1%) saturate(5%) hue-rotate(355deg) brightness(103%) contrast(103%);
 }
 
 .github {
-  background-image: url("./assets/img/GitHub_Logo_White.png");
+  background-image: url("./assets/svg/GitHub_Logo.svg");
 }
 
 .year {
@@ -360,5 +368,4 @@ h6 {
 
 .rss {
   background-image: url("./assets/svg/rs_school_js.svg");
-  filter: invert(76%) sepia(10%) saturate(386%) hue-rotate(187deg) brightness(90%) contrast(90%);
 }

@@ -1,15 +1,24 @@
 'use strict';
 
-const startUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=f5a4c4a8d947d8097d8aba9c57c93c96';
+
 const moviesCardsContainer = document.querySelector('.movies-cards');
 const imgPath = 'https://image.tmdb.org/t/p/w300';
 const searchForm = document.querySelector('.search-form');
 const search = document.querySelector('.search');
 const moviesСards = document.querySelector('.movies-cards');
 
-getData(startUrl);
-function getData(url) {
-  fetch(url).then(res => res.json()).then(data => showData(data));
+function onLoad () {
+  const startUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=f5a4c4a8d947d8097d8aba9c57c93c96';
+  getData(startUrl);
+}
+// function getData(url) {
+//   fetch(url).then(res => res.json()).then(data => showData(data));
+// }
+
+async function getData(url) {
+  const res = await fetch(url);
+  const data = await res.json();
+  showData(data);
 }
 
 function showData(data) {
@@ -38,10 +47,11 @@ function findMovie () {
   if (search.value) {
     getData(`https://api.themoviedb.org/3/search/movie?query=${search.value}&api_key=f5a4c4a8d947d8097d8aba9c57c93c96`);
   } else {
-    getData(startUrl);
+    onLoad();
   }
 }
 
+window.addEventListener('load', onLoad);
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   findMovie();
