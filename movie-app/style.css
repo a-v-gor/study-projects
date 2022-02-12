@@ -221,6 +221,8 @@ h6 {
   color: #8e95a9;
 }
 
+/* MOVIES */
+
 .movies-section {
   padding: 80px 0 0;
 }
@@ -247,6 +249,26 @@ h6 {
   position: relative;
   overflow: hidden;
   border: 8px solid rgba(0, 0, 0, 0%);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.rating {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 60px;
+  height: 40px;
+  padding: 8px 8px 8px 28px;
+  background-color: rgba(0, 0, 0, 65%);
+  font-size: 16px;
+  line-height: 26px;
+  color: #ffad49;
+  border-radius: 8px;
+  background-image: url("./assets/svg/star.svg");
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  transition: 0.9s;
+  z-index: 1;
 }
 
 .movie-poster {
@@ -281,6 +303,7 @@ h6 {
   overflow-y: auto;
   opacity: 0;
   transition: 0.9s;
+  z-index: 2;
 }
 
 .movie-card:hover > .container-movie-overview {
@@ -288,7 +311,8 @@ h6 {
   opacity: 1;
 }
 
-.movie-card:hover > .movie-poster {
+.movie-card:hover > .movie-poster,
+.movie-card:hover > .rating {
   opacity: 0.2;
 }
 

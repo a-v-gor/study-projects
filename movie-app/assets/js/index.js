@@ -19,6 +19,7 @@ function showData(data) {
     const overview = (!element['overview']) ? 'No overview.' : element['overview'];
     const movieCard = `
     <article class="movie-card">
+      <div class="rating">${element['vote_average']}</div>
       <img class="movie-poster" src=${pathPosterImg} alt="${element['title']} poster">
       <div class="container-movie-title">
         <h3 class="movie-title">${element['title']}</h3>
