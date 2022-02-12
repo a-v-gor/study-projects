@@ -230,9 +230,9 @@ h6 {
 .movies-cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   padding: 24px 0 0;
   row-gap: 20px;
+  justify-content: space-evenly;
 }
 
 .movie-card {
@@ -262,12 +262,13 @@ h6 {
 
 .movie-title {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   color: #ebeef5;
 }
 
 .container-movie-overview {
   position: absolute;
+  width: 100%;
   bottom: -100%;
   background-color: #323b54;
   padding: 10px;

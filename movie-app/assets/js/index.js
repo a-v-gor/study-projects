@@ -16,6 +16,7 @@ function showData(data) {
   console.log(data);
   data['results'].forEach(element => {
     const pathPosterImg = (element['poster_path']) ? imgPath+element['poster_path'] : './assets/img/Image-Placeholder.png';
+    const overview = (!element['overview']) ? 'No overview.' : element['overview'];
     const movieCard = `
     <article class="movie-card">
       <img class="movie-poster" src=${pathPosterImg} alt="${element['title']} poster">
@@ -23,7 +24,7 @@ function showData(data) {
         <h3 class="movie-title">${element['title']}</h3>
       </div>
       <div class="container-movie-overview">
-        <p class="movie-overview">${element['overview']}</p>
+        <p class="movie-overview">${overview}</p>
       </div>
     </article>
     `;
