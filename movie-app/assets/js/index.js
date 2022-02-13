@@ -22,9 +22,6 @@ function onLoad () {
   const startUrl = `${baseUrl}discover/movie?sort_by=popularity.desc&${apiKey}&language=${lang}`;
   getData(startUrl);
 }
-// function getData(url) {
-//   fetch(url).then(res => res.json()).then(data => console.log(data));
-// }
 
 async function getData(url) {
   const res = await fetch(url);

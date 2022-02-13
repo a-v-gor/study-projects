@@ -142,7 +142,6 @@ h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
   padding: 20px 120px;
   background-color: rgb(18 24 41 / 80%);
 }
@@ -176,21 +175,26 @@ h6 {
 
 .change-lang {
   display: flex;
+  align-items: center;
   font-weight: 600;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   color: #a8aebf;
 }
 
 .lang {
   display: block;
-  padding: 0 5px;
   cursor: pointer;
   transition: 0.9s;
 }
 
 .lang.active {
   color: #ebeef5;
+  cursor: default;
+}
+
+.lang.nonactive {
+  padding: 0 10px;
 }
 
 .lang.nonactive:hover,
@@ -203,11 +207,76 @@ h6 {
   font-size: 20px;
 }
 
+@media (max-width: 1307px) {
+  .header-container {
+    padding: 15px 90px;
+  }
+
+  .logo {
+    width: 35px;
+    height: 35px;
+    background-size: 24px auto;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  .change-lang {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  .lang.nonactive:hover,
+  .lang.active:hover {
+    font-size: 15px;
+  }
+
+  .lang:hover {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 10px 60px;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+    background-size: 20px auto;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .change-lang {
+    font-size: 14px;
+  }
+
+  .lang.nonactive:hover,
+  .lang.active:hover {
+    font-size: 14px;
+  }
+
+  .lang:hover {
+    font-size: 16px;
+  }
+}
+
 /* MAIN */
 
 .main-container {
   min-height: 84vh;
-  padding: 80px 0 60px;
+  padding-top: 80px;
+}
+
+@media (max-width: 1307px) {
+  .main-container {
+    padding-top: 5vw;
+  }
 }
 
 /* SEARCH */
@@ -254,10 +323,69 @@ h6 {
   color: #8e95a9;
 }
 
+@media (max-width: 1307px) {
+  .search-section {
+    gap: 18px;
+  }
+
+  .search {
+    width: 23em;
+    height: 48px;
+    padding: 10px 10px 10px 40px;
+    background-position: 11px center;
+    background-size: 18px auto;
+  }
+
+  .search-button,
+  .mis-button {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  .search-section-text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-section {
+    gap: 12px;
+  }
+
+  .search {
+    height: 32px;
+    padding: 5px 5px 5px 28px;
+    background-position: 5px center;
+    background-size: 18px auto;
+  }
+
+  .search-button,
+  .mis-button {
+    padding: 5px 14px;
+    font-size: 14px;
+  }
+
+  .search-section-text {
+    font-size: 14px;
+  }
+}
+
 /* MOVIES */
 
 .movies-section {
   padding: 80px 120px 0;
+}
+
+@media (max-width: 1307px) {
+  .movies-section {
+    padding: 60px 90px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .movies-section {
+    padding: 40px 60px 0;
+  }
 }
 
 .movies-title {
@@ -270,8 +398,31 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 24px 0 0;
+  padding: 24px 0 60px;
+  border-bottom: 2px solid #323b54;
   row-gap: 20px;
+}
+
+@media (max-width: 1307px) {
+  .movies-title {
+    font-size: 28px;
+  }
+
+  .movies-cards {
+    padding: 18px 0 45px;
+    row-gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .movies-title {
+    font-size: 26px;
+  }
+
+  .movies-cards {
+    padding: 12px 0 30px;
+    row-gap: 10px;
+  }
 }
 
 .movie-card {
@@ -369,7 +520,6 @@ h6 {
 }
 
 .mis-img {
-  /* max-width: 400px; */
   padding-bottom: 40px;
 }
 
@@ -390,10 +540,26 @@ h6 {
   color: #8e95a9;
 }
 
+@media (max-width: 768px) {
+  .mis-img {
+    padding-bottom: 20px;
+  }
+
+  .mis-title {
+    padding-bottom: 8px;
+    font-size: 32px;
+  }
+
+  .mis-text {
+    padding-bottom: 12px;
+    font-size: 12px;
+  }
+}
+
+
 /* FOOTER */
 
 .footer {
-  height: 80px;
   background-color: rgb(18 24 41 / 80%);
 }
 
@@ -401,11 +567,10 @@ h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px 120px;
   color: #a8aebf;
-  border-top: 2px solid #323b54;
 }
 
 .github,
@@ -414,6 +579,7 @@ h6 {
   width: 100px;
   height: 40px;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: 100% auto;
   filter: invert(76%) sepia(10%) saturate(386%) hue-rotate(187deg) brightness(90%) contrast(90%);
   transition: 0.5s;
@@ -437,4 +603,20 @@ h6 {
 
 .rss {
   background-image: url("./assets/svg/rs_school_js.svg");
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 10px 60px;
+  }
+
+  .github,
+  .rss {
+    width: 75px;
+    height: 30px;
+  }
+
+  .year {
+    font-size: 20px;
+  }
 }
