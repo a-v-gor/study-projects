@@ -16,11 +16,13 @@ const languageGroup = document.querySelector('.change-lang');
 let lang = 'en';
 const baseUrl = 'https://api.themoviedb.org/3/';
 const apiKey = 'api_key=f5a4c4a8d947d8097d8aba9c57c93c96';
+const bodyContainer = document.querySelector('.body-container');
 
 function onLoad () {  
   moviesСards.innerHTML = '';
   const startUrl = `${baseUrl}discover/movie?sort_by=popularity.desc&${apiKey}&language=${lang}`;
   getData(startUrl);
+  
 }
 
 async function getData(url) {
@@ -41,7 +43,7 @@ function showData(data) {
   console.log(data);
   data['results'].forEach(element => {
     const pathPosterImg = (element['poster_path']) ? imgPath+element['poster_path'] : './assets/img/Image-Placeholder.png';
-    const overview = (element['overview']) ? element['overview'] : (lang == 'en') ? 'No overview.' : 'Описание отсутствует.' ;
+    const overview = (element['overview']) ? element['overview'] : (lang == 'en') ? 'No overview.' : 'Описание отсутствует.';
     const movieCard = `
     <article class="movie-card">
       <div class="rating">${element['vote_average']}</div>
@@ -80,7 +82,16 @@ function reloadPage () {
 
 // TRANSLATION
 
-function getTranslate(lang) {
+function changeLang(event) {
+  if (!(lang == event.target.dataset.i18n)) {
+    lang = event.target.dataset.i18n;
+    setLocalStorage();
+    bodyContainer.style.opacity = '0';
+    bodyContainer.addEventListener('transitionend', translateFunc);
+  }
+}
+
+function getTranslate() {
   document.querySelectorAll('[data-i18n]').forEach(function (item) {
     let translate = i18Obj[lang][item.dataset.i18n];
     item.innerHTML = translate;
@@ -91,11 +102,11 @@ function getTranslate(lang) {
   })
 }
 
-function changeLang(event) {
-  lang = event.target.dataset.i18n;
-  setLocalStorage();
-  getTranslate(lang);
+function translateFunc () {
+  getTranslate();
   onLoad();
+  bodyContainer.removeEventListener('transitionend', translateFunc);
+  bodyContainer.style.opacity = '1';
 }
 
 // Local storage
