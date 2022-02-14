@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./style.css">
+  <title>Movie App</title>
+</head>
+<body class="body">
+  <div class="body-container">
+    <header class="header">
+      <div class="header-container">
+        <div class="logo-group">
+          <div class="logo"></div>
+          <h1 class="brand"><span class="brand-left">Movie</span><span class="brand-right">Application</span></h1>
+        </div>
+        <div class="change-lang">
+          <span class="lang" data-i18n="en"></span>
+          <span class="lang nonactive"> / </span>
+          <span class="lang" data-i18n="ru"></span>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="main-container">
+        <div class="search-section">
+          <form class="search-form">
+            <input class="search" type="search" placeholder="Search Movies" autofocus data-i18n="search">
+            <button class="search-button" data-i18n="search-button"></button>
+          </form>
+          <div class="search-section-text">
+            <p data-i18n="search-section-text-1"></p>
+            <p data-i18n="search-section-text-2"></p>
+          </div>
+        </div>
+        <div class="movies-section">
+          <a href="#" class="up-button"></a>
+          <h2 class="movies-title" data-i18n="movies-title"></h2>
+          <div class="movies-cards"></div>
+        </div>
+        <div class="mis-container">
+          <img class="mis-img" src="./assets/svg/mis.svg" alt="film rolls-rafiki">
+          <h1 class="mis-title" data-i18n="mis-title"></h1>
+          <p class="mis-text" data-i18n="mis-text"></p>
+          <button class="mis-button" data-i18n="mis-button"></button>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-container">
+        <a class="github" href="https://github.com/a-v-gor"></a>
+        <span class="year">2022</span>
+        <a class="rss" href="https://rs.school/js-stage0/"></a>
+      </div>
+    </footer>
+  </div>
+  <script type="module" src="./assets/js/index.js"></script>
+</body>
+</html>
