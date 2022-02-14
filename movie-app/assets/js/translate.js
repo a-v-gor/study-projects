@@ -7,8 +7,8 @@ const i18Obj = {
     'search-section-text-1': 'Input the movie name in the field before.',
     'search-section-text-2': 'Push "Search" with empty field for show most popular movies.',
     'movies-title': 'Movies',
-    'mis-title': 'Lost your way?',
-    'mis-text': "Oops! This is awkward. You are looking for something that doesn't actually exist.",
+    'mis-title': 'Sorry, No results found.',
+    'mis-text': "There are no movies matching your search terms.",
     'mis-button': 'Go Home'
   },
   'ru': {
@@ -19,8 +19,8 @@ const i18Obj = {
     'search-section-text-1': 'Введите название фильма в поле, расположенное выше.',
     'search-section-text-2': 'Нажмите «Найти» с пустым полем ввода, чтобы найти самые популярные фильмы.',
     'movies-title': 'Фильмы',
-    'mis-title': 'Заблудились?',
-    'mis-text': "Ой! Неловко вышло. Вы ищете то, чего на самом деле не существует.",
+    'mis-title': 'Извините, результатов не найдено.',
+    'mis-text': "Нет фильмов, соответствующих вашему поисковому запросу",
     'mis-button': 'Вернуться'
   }
 }

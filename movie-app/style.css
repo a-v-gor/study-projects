@@ -109,6 +109,7 @@ h6 {
 .body {
   font-family: "Poppins", sans-serif;
   background-color: #121829;
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 }
 
 .body-container {
@@ -601,6 +602,11 @@ h6 {
   background-image: url("./assets/svg/GitHub_Logo.svg");
 }
 
+.github:hover,
+.rss:hover {
+  filter: invert(99%) sepia(1%) saturate(5%) hue-rotate(-5deg) brightness(103%) contrast(103%);
+}
+
 .year {
   display: block;
   font-weight: 600;
@@ -609,11 +615,6 @@ h6 {
 
 .rss {
   background-image: url("./assets/svg/rs_school_js.svg");
-}
-
-.github:hover,
-.rss:hover {
-  filter: invert(99%) sepia(1%) saturate(5%) hue-rotate(355deg) brightness(103%) contrast(103%);
 }
 
 @media (max-width: 768px) {
@@ -639,14 +640,16 @@ h6 {
   width: 60px;
   height: 60px;
   background-image: url("./assets/svg/upButton.svg");
+  background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: 100% auto;
   cursor: pointer;
-  transition: 0.3s;
+  opacity: 0.65;
+  transition: 0.5s;
 }
 
 .up-button:hover {
-  filter: brightness(0) saturate(100%) invert(99%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(108%) contrast(100%);
+  opacity: 1;
 }
 
 @media (max-width: 1440px) {
