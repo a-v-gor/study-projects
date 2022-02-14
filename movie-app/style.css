@@ -55,6 +55,7 @@ body {
   font-size: 14px;
   line-height: 1.2;
   text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 input,
@@ -596,12 +597,6 @@ h6 {
   transition: 0.5s;
 }
 
-.github:hover,
-.rss:hover {
-  cursor: pointer;
-  filter: invert(99%) sepia(1%) saturate(5%) hue-rotate(355deg) brightness(103%) contrast(103%);
-}
-
 .github {
   background-image: url("./assets/svg/GitHub_Logo.svg");
 }
@@ -614,6 +609,11 @@ h6 {
 
 .rss {
   background-image: url("./assets/svg/rs_school_js.svg");
+}
+
+.github:hover,
+.rss:hover {
+  filter: invert(99%) sepia(1%) saturate(5%) hue-rotate(355deg) brightness(103%) contrast(103%);
 }
 
 @media (max-width: 768px) {
@@ -629,5 +629,42 @@ h6 {
 
   .year {
     font-size: 20px;
+  }
+}
+
+.up-button {
+  position: fixed;
+  right: calc((100vw - 1440px) / 2 + 30px);
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
+  background-image: url("./assets/svg/upButton.svg");
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.up-button:hover {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(108%) contrast(100%);
+}
+
+@media (max-width: 1440px) {
+  .up-button {
+    right: 30px;
+  }
+}
+
+@media (max-width: 1307px) {
+  .up-button {
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .up-button {
+    right: 5px;
   }
 }
