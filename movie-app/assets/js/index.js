@@ -86,7 +86,7 @@ function changeLang(event) {
   if (!(lang == event.target.dataset.i18n)) {
     lang = event.target.dataset.i18n;
     setLocalStorage();
-    bodyContainer.style.opacity = '0';
+    bodyContainer.classList.add('hide');
     bodyContainer.addEventListener('transitionend', translateFunc);
   }
 }
@@ -105,8 +105,8 @@ function getTranslate() {
 function translateFunc () {
   getTranslate();
   onLoad();
+  bodyContainer.classList.remove('hide');
   bodyContainer.removeEventListener('transitionend', translateFunc);
-  bodyContainer.style.opacity = '1';
 }
 
 // Local storage

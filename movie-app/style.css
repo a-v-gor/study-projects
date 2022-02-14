@@ -117,10 +117,13 @@ h6 {
   transition: 0.9s;
 }
 
+.body-container.hide {
+  opacity: 0;
+}
+
 .header-container,
 .main-container {
   max-width: 1440px;
-  margin: 0 auto;
 }
 
 ::-webkit-scrollbar {
@@ -137,12 +140,17 @@ h6 {
   border-radius: 4px;
 }
 
+.body::-webkit-scrollbar {
+  display: none;
+}
+
 /* HEADER */
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
   padding: 20px 120px;
   background-color: rgb(18 24 41 / 80%);
 }
@@ -271,6 +279,7 @@ h6 {
 
 .main-container {
   min-height: 84vh;
+  margin: 0 auto;
   padding-top: 80px;
 }
 
@@ -572,6 +581,7 @@ h6 {
   margin: 0 auto;
   padding: 20px 120px;
   color: #a8aebf;
+  transition: 0.9s;
 }
 
 .github,
