@@ -1,21 +1,33 @@
 'use strict';
 
 const gameArea = document.querySelector('.game-area');
+const btnWinner = document.querySelector('.btn-winner');
+const cells = gameArea.querySelectorAll('.cell');
+const signs = ['X','O']
 let moveCounter = 0;
 let markedX = [];
 let markedO = [];
 let winner = '';
-const btnWinner = document.querySelector('.btn-winner');
+let sign;
+let arrWin = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [1,4,7],
+  [2,4,6]
+];
 
 function makeMove (event) {
-  let sign;
   let numId = Number(event.target.id);
-  if (event.target.className == 'cell') {    
-    if (moveCounter % 2 == 0) {
-      sign = 'X';
+  if (event.target.className == 'cell') {
+    sign = signs[Math.round(moveCounter % 2)];
+    if (sign == signs[0]) {
       markedX.push(numId);
     } else {
-      sign = 'O';
       markedO.push(numId);
     }
     moveCounter++;
@@ -29,6 +41,7 @@ function makeMove (event) {
       showStandoff();
     }
   }
+  choosePlayer ();
 }
 
 function showWinner () {
@@ -39,18 +52,6 @@ function showWinner () {
 }
 
 function checkWin (arrCheck) {  
-  let arrWin = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [1,4,7],
-    [2,4,6]
-  ];
-
   arrWin.forEach (function (item) {
     if (arrCheck.includes(item[0]) && arrCheck.includes(item[1]) && arrCheck.includes(item[2])) {
       winner = (arrCheck == markedX) ? 'крестики' : 'нолики';
@@ -60,7 +61,7 @@ function checkWin (arrCheck) {
 }
 
 function startGame () {
-  gameArea.querySelectorAll('.cell').forEach(function (node) {
+  cells.forEach(function (node) {
     node.classList.remove('sign-x');
     node.classList.remove('sign-o');
     node.innerHTML = '';
@@ -82,6 +83,37 @@ function showStandoff () {
   const winnerString = `<p class="win-p"><span class="win-sign">Ничья!</span></p>`;
   document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
   document.querySelector('.winner-container').classList.remove('hide');
+}
+
+function autoMove () {
+  chooseCell();
+}
+
+function chooseCell () {
+  if (sign == signs[1]) {
+    let emptyCells = [];
+    let myCells = [];
+    let enemyCells = [];
+    cells.forEach(function (node) {
+      if (node.innerHTML == '') {
+        emptyCells.push(Number(node.id));
+      };
+      if (node.innerHTML == signs[1]) {
+        myCells.push(Number(node.id));
+      };
+      if (node.innerHTML == signs[0]) {
+        enemyCells.push(Number(node.id));
+      };
+    });
+    console.log(myCells);
+
+  }
+}
+
+function choosePlayer () {
+  if (sign == signs[1]) {
+    autoMove();
+  }
 }
 
 gameArea.addEventListener('click', makeMove);
