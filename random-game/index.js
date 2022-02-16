@@ -5,6 +5,7 @@ let moveCounter = 0;
 let markedX = [];
 let markedO = [];
 let winner = '';
+const btnWinner = document.querySelector('.btn-winner');
 
 
 function increaseMoveCounter () {
@@ -29,9 +30,16 @@ function writeInCell (event) {
     // console.log(markedO);
     (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
     if (winner) {
+      showWinner();
       console.log(winner);
     }
   }
+}
+
+function showWinner () {
+  const winnerString = `<p class="win-p"><span class="win-sign">${winner}!</span></p>`;
+  document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
+  document.querySelector('.winner-container').classList.remove('hide');
 }
 
 function checkWin (arrCheck) {  
