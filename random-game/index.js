@@ -26,8 +26,6 @@ function writeInCell (event) {
     increaseMoveCounter ();
     event.target.innerHTML = sign;
     event.target.classList.add(`sign-${sign.toLowerCase()}`);
-    // console.log(markedX);
-    // console.log(markedO);
     (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
     if (winner) {
       showWinner();
@@ -37,7 +35,8 @@ function writeInCell (event) {
 }
 
 function showWinner () {
-  const winnerString = `<p class="win-p"><span class="win-sign">${winner}!</span></p>`;
+  const winnerString = `<p class="win-p">Победитель -<br>
+  <span class="win-sign">${winner}!</span></p>`;
   document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
   document.querySelector('.winner-container').classList.remove('hide');
 }
@@ -63,4 +62,24 @@ function checkWin (arrCheck) {
   });
 }
 
+function startGame () {
+  gameArea.querySelectorAll('.cell').forEach(function (node) {
+    node.classList.remove('sign-x');
+    node.classList.remove('sign-o');
+    node.innerHTML = '';
+  });
+  nullVariables ();
+  document.querySelector('.winner-container').classList.add('hide');
+  document.querySelector('.winner-txt').innerHTML = '';
+  
+}
+
+function nullVariables () {
+  moveCounter = 0;
+  markedX = [];
+  markedO = [];
+  winner = '';
+}
+
 gameArea.addEventListener('click', writeInCell);
+btnWinner.addEventListener('click', startGame);
