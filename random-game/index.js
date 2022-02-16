@@ -7,35 +7,32 @@ let markedO = [];
 let winner = '';
 const btnWinner = document.querySelector('.btn-winner');
 
-
-function increaseMoveCounter () {
-  moveCounter++;
-}
-
-function writeInCell (event) {
+function makeMove (event) {
   let sign;
-  let numIid = Number(event.target.id);
+  let numId = Number(event.target.id);
   if (event.target.className == 'cell') {    
     if (moveCounter % 2 == 0) {
       sign = 'X';
-      markedX.push(numIid);
+      markedX.push(numId);
     } else {
       sign = 'O';
-      markedO.push(numIid);
+      markedO.push(numId);
     }
-    increaseMoveCounter ();
+    moveCounter++;
     event.target.innerHTML = sign;
     event.target.classList.add(`sign-${sign.toLowerCase()}`);
     (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
     if (winner) {
       showWinner();
-      console.log(winner);
+    }
+    if (moveCounter == 9) {
+      showStandoff();
     }
   }
 }
 
 function showWinner () {
-  const winnerString = `<p class="win-p">Победитель -<br>
+  const winnerString = `<p class="win-p">Победили<br>
   <span class="win-sign">${winner}!</span></p>`;
   document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
   document.querySelector('.winner-container').classList.remove('hide');
@@ -56,7 +53,7 @@ function checkWin (arrCheck) {
 
   arrWin.forEach (function (item) {
     if (arrCheck.includes(item[0]) && arrCheck.includes(item[1]) && arrCheck.includes(item[2])) {
-      winner = (arrCheck == markedX) ? 'Крестики' : 'Нолики';
+      winner = (arrCheck == markedX) ? 'крестики' : 'нолики';
     };
     return winner;
   });
@@ -81,5 +78,11 @@ function nullVariables () {
   winner = '';
 }
 
-gameArea.addEventListener('click', writeInCell);
+function showStandoff () {
+  const winnerString = `<p class="win-p"><span class="win-sign">Ничья!</span></p>`;
+  document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
+  document.querySelector('.winner-container').classList.remove('hide');
+}
+
+gameArea.addEventListener('click', makeMove);
 btnWinner.addEventListener('click', startGame);
