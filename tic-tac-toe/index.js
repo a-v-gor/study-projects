@@ -19,6 +19,7 @@ let arrWin = [
   [0,3,6],
   [2,5,8]
 ];
+let play = true;
 
 function makeMove (event) {
   let numId = Number(event.target.id);
@@ -36,14 +37,14 @@ function makeMove (event) {
     if (winner) {
       showWinner();
     }
-    if (moveCounter == 9) {
-      showStandoff();
-    }
-  }
-  choosePlayer ();
+  };
+  if (play) {
+    choosePlayer ();
+  };
 }
 
 function showWinner () {
+  play = false;
   const winnerString = `<p class="win-p">Победили<br>
   <span class="win-sign">${winner}!</span></p>`;
   document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
@@ -60,6 +61,7 @@ function checkWin (arrCheck) {
 }
 
 function startGame () {
+  play = true;
   cells.forEach(function (node) {
     node.classList.remove('sign-x');
     node.classList.remove('sign-o');
@@ -79,6 +81,7 @@ function nullVariables () {
 }
 
 function showStandoff () {
+  play = false;
   const winnerString = `<p class="win-p"><span class="win-sign">Ничья!</span></p>`;
   document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
   document.querySelector('.winner-container').classList.remove('hide');
@@ -86,31 +89,21 @@ function showStandoff () {
 
 function chooseCell () {
   let emptyCells = [];
-  let myCells = [];
+  let ourCells = [];
   let enemyCells = [];
   let resultChooseCell = '';
 
-  cells.forEach(function (node) {
-    if (node.innerHTML == '') {
-      emptyCells.push(Number(node.id));
-    };
-    if (node.innerHTML == signs[1]) {
-      myCells.push(Number(node.id));
-    };
-    if (node.innerHTML == signs[0]) {
-      enemyCells.push(Number(node.id));
-    };
-  });
+  // Функция выбора всех вариантов, где не мешает противник
 
-  function getVersion () {
+  function getVersionsWithoutEnemy (thisOurCells, thisEenemyCells) {
     let moveVersions = [];
     let versionsWithoutEnemy = [];
 
-    // Выбираем возможные варианты с заполненными нашим знаком клетками
+    // Выбираем все возможные варианты с заполненными нашим знаком клетками
 
-    myCells.forEach(function(myCell) {
+    thisOurCells.forEach(function(thisOurCell) {
       arrWin.forEach(function(winItem){
-        if (winItem.includes(myCell)) {
+        if (winItem.includes(thisOurCell) && !(moveVersions.includes(winItem))) {
           moveVersions.push(winItem);
         }
       })
@@ -118,57 +111,82 @@ function chooseCell () {
 
     // Отсеиваем те варианты, где есть знак противника
 
-    moveVersions.forEach(function(version){
+    moveVersions.forEach(function(moveVersion){
       let withEnemy = false;
-      enemyCells.forEach(function(enemyCell){
-        if(version.includes(enemyCell)){
+
+      thisEenemyCells.forEach(function(thisEenemyCell){
+        if(moveVersion.includes(thisEenemyCell)){
           withEnemy = true;          
         }
-      })
+      });
+
       if (!withEnemy) {
-        versionsWithoutEnemy.push(version);
+        versionsWithoutEnemy.push(moveVersion);
       } else {
         withEnemy = false;
       }
     })
 
-    if (versionsWithoutEnemy.length) {
-      return (versionsWithoutEnemy.length > 1) ? bestVersion(versionsWithoutEnemy) : versionsWithoutEnemy[0];
-    } else {
-      return false;
-    }
+    return versionsWithoutEnemy;
   }
 
-  // Выбираем наилучший вариант из нескольких
-
-  function bestVersion (versionsArray){
-    versionsArray.forEach(function(version) {
+  function getIdForWin(playerCells, winVersions) {
+    let resGetIdForWin;
+    winVersions.forEach(function(winVersion) {
       let count = 0;
-      version.forEach(function(numInVersion) {
-        if (myCells.includes(numInVersion)) {
+      let resWinVersion;
+      winVersion.forEach(function(numInWinVersion) {
+        if (playerCells.includes(numInWinVersion)) {
           count++;
+        } else {
+          resWinVersion = numInWinVersion;
         }
       });
       if (count == 2) {
-        return version
-      };
-      if (version = versionsArray[versionsArray.length-1]) {
-        return versionsArray[0];
+        resGetIdForWin = resWinVersion;
       }
-    }) 
+    })
+    return resGetIdForWin;
+  };
+
+  // Записываем значения ячеек в массивы
+
+  function updateCellsInfo () {
+      emptyCells = [];
+      ourCells = [];
+      enemyCells = [];
+
+    cells.forEach(function (node) {
+      if (node.innerHTML == '') {
+        emptyCells.push(Number(node.id));
+      };
+      if (node.innerHTML == signs[1]) {
+        ourCells.push(Number(node.id));
+      };
+      if (node.innerHTML == signs[0]) {
+        enemyCells.push(Number(node.id));
+      };
+    });
   }
 
+  // Тело функции
+  updateCellsInfo ();
   if (moveCounter == 1) {
     resultChooseCell = (emptyCells.includes(4)) ? 4 : 0;
   } else {
-    let finalVersion = getVersion();
-    if (finalVersion) {
-      finalVersion.forEach(function(numOfFinalVersion) {
-        if (!(myCells.includes(numOfFinalVersion))) {
-          resultChooseCell = numOfFinalVersion;
-        }
-      })
-    }
+    let ourMoveVersions = getVersionsWithoutEnemy (ourCells, enemyCells);
+    let ourIdForWin = getIdForWin(ourCells, ourMoveVersions);
+    if (ourIdForWin) {
+      resultChooseCell = ourIdForWin;
+      return resultChooseCell;
+    };
+    let enemyMoveVersions = getVersionsWithoutEnemy (enemyCells, ourCells);
+    let enemyIdForWin = getIdForWin(enemyCells, enemyMoveVersions);
+    if (typeof enemyIdForWin == 'number') {
+      resultChooseCell = enemyIdForWin;
+      return resultChooseCell;
+    };
+    showStandoff ();
   }
   return resultChooseCell;
 }
