@@ -10,15 +10,14 @@ let markedO = [];
 let winner = '';
 let sign;
 let arrWin = [
-  [0,1,2],
+  [0,4,8],
+  [2,4,6],
+  [1,4,7],
   [3,4,5],
+  [0,1,2],
   [6,7,8],
   [0,3,6],
-  [1,4,7],
-  [2,5,8],
-  [0,4,8],
-  [1,4,7],
-  [2,4,6]
+  [2,5,8]
 ];
 
 function makeMove (event) {
@@ -90,6 +89,7 @@ function chooseCell () {
   let myCells = [];
   let enemyCells = [];
   let resultChooseCell = '';
+
   cells.forEach(function (node) {
     if (node.innerHTML == '') {
       emptyCells.push(Number(node.id));
@@ -101,14 +101,81 @@ function chooseCell () {
       enemyCells.push(Number(node.id));
     };
   });
-  if (moveCounter == 2) {
-    resultChooseCell = (emptyCells.includes(4)) ? 0 : 4;
+
+  function getVersion () {
+    let moveVersions = [];
+    let versionsWithoutEnemy = [];
+
+    // Выбираем возможные варианты с заполненными нашим знаком клетками
+
+    myCells.forEach(function(myCell) {
+      arrWin.forEach(function(winItem){
+        if (winItem.includes(myCell)) {
+          moveVersions.push(winItem);
+        }
+      })
+    });
+
+    // Отсеиваем те варианты, где есть знак противника
+
+    moveVersions.forEach(function(version){
+      let withEnemy = false;
+      enemyCells.forEach(function(enemyCell){
+        if(version.includes(enemyCell)){
+          withEnemy = true;          
+        }
+      })
+      if (!withEnemy) {
+        versionsWithoutEnemy.push(version);
+      } else {
+        withEnemy = false;
+      }
+    })
+
+    if (versionsWithoutEnemy.length) {
+      return (versionsWithoutEnemy.length > 1) ? bestVersion(versionsWithoutEnemy) : versionsWithoutEnemy[0];
+    } else {
+      return false;
+    }
+  }
+
+  // Выбираем наилучший вариант из нескольких
+
+  function bestVersion (versionsArray){
+    versionsArray.forEach(function(version) {
+      let count = 0;
+      version.forEach(function(numInVersion) {
+        if (myCells.includes(numInVersion)) {
+          count++;
+        }
+      });
+      if (count == 2) {
+        return version
+      };
+      if (version = versionsArray[versionsArray.length-1]) {
+        return versionsArray[0];
+      }
+    }) 
+  }
+
+  if (moveCounter == 1) {
+    resultChooseCell = (emptyCells.includes(4)) ? 4 : 0;
+  } else {
+    let finalVersion = getVersion();
+    if (finalVersion) {
+      finalVersion.forEach(function(numOfFinalVersion) {
+        if (!(myCells.includes(numOfFinalVersion))) {
+          resultChooseCell = numOfFinalVersion;
+        }
+      })
+    }
   }
   return resultChooseCell;
 }
 
 function autoMove () {
-  gameArea.querySelector(`#${chooseCell()}`).click();
+  let cellToClick = chooseCell();
+  document.getElementById(`${cellToClick}`).click();
 }
 
 function choosePlayer () {
