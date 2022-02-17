@@ -85,33 +85,34 @@ function showStandoff () {
   document.querySelector('.winner-container').classList.remove('hide');
 }
 
-function autoMove () {
-  chooseCell();
+function chooseCell () {
+  let emptyCells = [];
+  let myCells = [];
+  let enemyCells = [];
+  let resultChooseCell = '';
+  cells.forEach(function (node) {
+    if (node.innerHTML == '') {
+      emptyCells.push(Number(node.id));
+    };
+    if (node.innerHTML == signs[1]) {
+      myCells.push(Number(node.id));
+    };
+    if (node.innerHTML == signs[0]) {
+      enemyCells.push(Number(node.id));
+    };
+  });
+  if (moveCounter == 2) {
+    resultChooseCell = (emptyCells.includes(4)) ? 0 : 4;
+  }
+  return resultChooseCell;
 }
 
-function chooseCell () {
-  if (sign == signs[1]) {
-    let emptyCells = [];
-    let myCells = [];
-    let enemyCells = [];
-    cells.forEach(function (node) {
-      if (node.innerHTML == '') {
-        emptyCells.push(Number(node.id));
-      };
-      if (node.innerHTML == signs[1]) {
-        myCells.push(Number(node.id));
-      };
-      if (node.innerHTML == signs[0]) {
-        enemyCells.push(Number(node.id));
-      };
-    });
-    console.log(myCells);
-
-  }
+function autoMove () {
+  gameArea.querySelector(`#${chooseCell()}`).click();
 }
 
 function choosePlayer () {
-  if (sign == signs[1]) {
+  if (sign == signs[0]) {
     autoMove();
   }
 }
