@@ -12,7 +12,13 @@
   <header class="header"></header>
   <main class="main">
     <div class="main-wrap">
-      <h1>Крестики-нолики</h1>
+      <h1><span class="sign-x">Крестики</span>-<span class="sign-o">нолики</span></h1>
+      <p class="main-text">Правила игры.</p>
+      <p class="main-text">Игроки по очереди ставят на свободные клетки поля знаки
+        (один всегда <span class="sign-x">крестики</span>, другой всегда <span class="sign-o">нолики</span>).
+        Первый, выстроивший в ряд три своих фигуры по вертикали,
+        горизонтали или диагонали, выигрывает.
+        Первый ход делает игрок, ставящий крестики.</p>
       <div class="game-area">
         <div class="cell" id="0"></div>
         <div class="cell" id="1"></div>
@@ -33,7 +39,13 @@
       </div>
     </div>
   </main>
-  <footer class="footer"></footer>
+  <footer class="footer">
+    <div class="footer-container">
+      <a class="github" href="https://github.com/a-v-gor"></a>
+      <span class="year">2022</span>
+      <a class="rss" href="https://rs.school/js-stage0/"></a>
+    </div>
+  </footer>
   <script src="./index.js"></script>
 </body>
 </html>

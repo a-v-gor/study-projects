@@ -4,6 +4,12 @@
   src: url("./assets/fonts/Pacifico-Regular.ttf");
 }
 
+@font-face {
+  font-weight: 400;
+  font-family: "Caveat";
+  src: url("./assets/fonts/Caveat-Regular.ttf");
+}
+
 /* Обнуление */
 
 * {
@@ -102,14 +108,17 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  background-color: #dbdbdb;
 }
 
 .main-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  max-width: 800px;
+  height: 90vh;
+  padding: 0 100px;
+  background-color: #ffffff;
 }
 
 h1 {
@@ -117,6 +126,12 @@ h1 {
   padding-bottom: 30px;
   font-size: 52px;
   line-height: 2;
+}
+
+.main-text {
+  padding-bottom: 30px;
+  font-size: 25px;
+  font-family: "Caveat", cursive;
 }
 
 .game-area {
@@ -199,4 +214,48 @@ h1 {
 }
 
 .footer {
+  display: flex;
+  height: 10vh;
+  background-color: #bbbbbb;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 100px;
+}
+
+.github,
+.rss {
+  display: block;
+  width: 100px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+  transition: 0.3s;
+}
+
+.github {
+  background-image: url("./assets/svg/GitHub_Logo.svg");
+}
+
+.github:hover,
+.rss:hover {
+  filter: invert(100%) sepia(94%) saturate(26%) hue-rotate(21deg) brightness(107%) contrast(108%);
+}
+
+.year {
+  display: block;
+  font-weight: 600;
+  font-size: 46px;
+  font-family: "Caveat", cursive;
+}
+
+.rss {
+  background-image: url("./assets/svg/rs_school_js.svg");
 }
