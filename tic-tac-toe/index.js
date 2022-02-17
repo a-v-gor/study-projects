@@ -38,9 +38,7 @@ function makeMove (event) {
       showWinner();
     }
   };
-  if (play) {
     choosePlayer ();
-  };
 }
 
 function showWinner () {
@@ -212,7 +210,9 @@ function chooseCell () {
 
 function autoMove () {
   let cellToClick = chooseCell();
-  document.getElementById(`${cellToClick}`).click();
+  if (play) {
+    document.getElementById(`${cellToClick}`).click();
+  }
 }
 
 function choosePlayer () {

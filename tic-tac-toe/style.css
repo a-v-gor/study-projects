@@ -132,7 +132,7 @@ h1 {
   font-size: 50px;
   line-height: 0.9;
   font-family: "Pacifico", cursive;
-  background-image: url("./assets/svg/square.svg");
+  border: 1px solid #7b61ff;
 }
 
 .sign-x {
