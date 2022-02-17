@@ -170,9 +170,14 @@ function chooseCell () {
   }
 
   // Тело функции
+
   updateCellsInfo ();
   if (moveCounter == 1) {
     resultChooseCell = (emptyCells.includes(4)) ? 4 : 0;
+  } else if (moveCounter == 3 && enemyCells.includes(5) && enemyCells.includes(1)) {
+    resultChooseCell = 2;
+  } else if (moveCounter == 3 && enemyCells.includes(5) && enemyCells.includes(7)) {
+    resultChooseCell = 8;
   } else {
     let ourMoveVersions = getVersionsWithoutEnemy (ourCells, enemyCells);
     let ourIdForWin = getIdForWin(ourCells, ourMoveVersions);
@@ -186,7 +191,21 @@ function chooseCell () {
       resultChooseCell = enemyIdForWin;
       return resultChooseCell;
     };
-    showStandoff ();
+    if (ourMoveVersions.length) {
+      ourMoveVersions.forEach(function(version) {
+        version.forEach(function(numInVersion) {
+          if (emptyCells.includes(numInVersion)) {
+            resultChooseCell = numInVersion;
+            return resultChooseCell;
+          }
+        })
+      })
+    };
+    if (emptyCells.length) {
+      resultChooseCell = emptyCells[0];
+    } else {
+      showStandoff ();
+    }
   }
   return resultChooseCell;
 }
