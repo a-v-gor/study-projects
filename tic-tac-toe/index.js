@@ -35,6 +35,7 @@ function makeMove (event) {
     event.target.classList.add(`sign-${sign.toLowerCase()}`);
     (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
     if (winner) {
+      setWinnerInLocalStorage();
       showWinner();
     }
   };
@@ -225,6 +226,12 @@ function choosePlayer() {
   if (sign == signs[0]) {
     autoMove();
   }
+}
+
+function setWinnerInLocalStorage() {
+  localStorage.setItem('time', String(Date.now()));
+  localStorage.setItem('winner', winner);
+  localStorage.setItem('moves', Math.floor(moveCounter / 2));
 }
 
 gameArea.addEventListener('click', makeMove);
