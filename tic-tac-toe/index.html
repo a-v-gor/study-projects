@@ -8,17 +8,26 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
 </head>
-<body>
-  <header class="header"></header>
+<body class="body">
+  <header class="header">
+    <div class="header-wrap">
+      <h1><span class="sign-x">Крестики</span>-<span class="sign-o">нолики</span></h1>
+      <ul class="menu">
+        <li class="menu-item show-rules">Правила игры.</li>
+        <li class="menu-item">Рекорды.</li>
+      </ul>
+    </div>
+  </header>
   <main class="main">
     <div class="main-wrap">
-      <h1><span class="sign-x">Крестики</span>-<span class="sign-o">нолики</span></h1>
-      <p class="main-text">Правила игры.</p>
-      <p class="main-text">Игроки по очереди ставят на свободные клетки поля знаки
+      <div class="rules">
+        <p class="rules-text">Игроки по очереди ставят на свободные клетки поля знаки
         (один всегда <span class="sign-x">крестики</span>, другой всегда <span class="sign-o">нолики</span>).
         Первый, выстроивший в ряд три своих фигуры по вертикали,
         горизонтали или диагонали, выигрывает.
         Первый ход делает игрок, ставящий крестики.</p>
+        <button class="rules-button">Закрыть</button>
+      </div>
       <div class="game-area">
         <div class="cell" id="0"></div>
         <div class="cell" id="1"></div>

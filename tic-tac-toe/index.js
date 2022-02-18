@@ -3,6 +3,10 @@
 const gameArea = document.querySelector('.game-area');
 const btnWinner = document.querySelector('.btn-winner');
 const cells = gameArea.querySelectorAll('.cell');
+const rules = document.querySelector('.rules');
+const linkShowRules = document.querySelector('.show-rules');
+const rulesBtn = document.querySelector('.rules-button');
+
 const signs = ['X','O']
 let moveCounter = 0;
 let markedX = [];
@@ -234,5 +238,15 @@ function setWinnerInLocalStorage() {
   localStorage.setItem('moves', Math.floor(moveCounter / 2));
 }
 
+function showRules () {
+  rules.classList.add('show');
+}
+
+function hideRules () {
+  rules.classList.remove('show');
+}
+
 gameArea.addEventListener('click', makeMove);
 btnWinner.addEventListener('click', startGame);
+linkShowRules.addEventListener('click', showRules);
+rulesBtn.addEventListener('click', hideRules);
