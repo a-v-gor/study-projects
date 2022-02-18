@@ -24,6 +24,42 @@ let arrWin = [
   [2,5,8]
 ];
 let play = true;
+let winnersTable = {};
+
+// LOCAL STORAGE
+
+function setWinnerInLocalStorage() {
+  localStorage.setItem('ttt-time', String(Date.now()));
+  localStorage.setItem('ttt-winner', winner);
+  localStorage.setItem('ttt-moves', Math.floor(moveCounter / 2));
+}
+
+function getWinnersfromLocalStorage() {
+  let objForWinnersTable = {};
+  for (let i = 0; i<localStorage.length; i++) {    
+    let key = localStorage.key(i);
+    let data = localStorage.getItem(key);
+
+    if (key.includes('ttt-time')) {
+      objForWinnersTable['date'] = Date(data);
+    } else if (key.includes('ttt-winner')) {
+      objForWinnersTable['sign'] = data;
+    } else if (key.includes('ttt-moves')) {
+      objForWinnersTable['moves'] = Number(data);
+    };
+  }
+  if (Object.keys(objForWinnersTable).length) {
+    addDataToWinnersTable(objForWinnersTable);
+    objForWinnersTable = {};
+  }
+};
+  
+
+function addDataToWinnersTable(dataObj) {
+  let numKey = Object.keys(winnersTable).length;
+  winnersTable[numKey] = dataObj;
+  console.log(winnersTable);
+}
 
 function makeMove (event) {
   let numId = Number(event.target.id);
@@ -46,48 +82,17 @@ function makeMove (event) {
     choosePlayer();
 }
 
-function showWinner() {
-  play = false;
-  const winnerString = `<p class="win-p">Победили<br>
-  <span class="win-sign">${winner}!</span><br> Победа в ${Math.floor(moveCounter / 2)} хода.</p>`;
-  document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
-  document.querySelector('.winner-container').classList.remove('hide');
+function choosePlayer() {
+  if (sign == signs[0]) {
+    autoMove();
+  }
 }
 
-function checkWin (arrCheck) {  
-  arrWin.forEach (function (item) {
-    if (arrCheck.includes(item[0]) && arrCheck.includes(item[1]) && arrCheck.includes(item[2])) {
-      winner = (arrCheck == markedX) ? 'крестики' : 'нолики';
-    };
-    return winner;
-  });
-}
-
-function startGame() {
-  play = true;
-  cells.forEach(function (node) {
-    node.classList.remove('sign-x');
-    node.classList.remove('sign-o');
-    node.innerHTML = '';
-  });
-  nullVariables();
-  document.querySelector('.winner-container').classList.add('hide');
-  document.querySelector('.winner-txt').innerHTML = '';
-  
-}
-
-function nullVariables() {
-  moveCounter = 0;
-  markedX = [];
-  markedO = [];
-  winner = '';
-}
-
-function showStandoff() {
-  play = false;
-  const winnerString = `<p class="win-p"><span class="win-sign">Ничья!</span></p>`;
-  document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
-  document.querySelector('.winner-container').classList.remove('hide');
+function autoMove() {
+  let cellToClick = chooseCell();
+  if (play) {
+    document.getElementById(`${cellToClick}`).click();
+  }
 }
 
 function chooseCell() {
@@ -95,6 +100,60 @@ function chooseCell() {
   let ourCells = [];
   let enemyCells = [];
   let resultChooseCell = '';
+
+  // Записываем значения ячеек в массивы
+
+  function updateCellsInfo() {
+      emptyCells = [];
+      ourCells = [];
+      enemyCells = [];
+
+    cells.forEach(function (node) {
+      if (node.innerHTML == '') {
+        emptyCells.push(Number(node.id));
+      };
+      if (node.innerHTML == signs[1]) {
+        ourCells.push(Number(node.id));
+      };
+      if (node.innerHTML == signs[0]) {
+        enemyCells.push(Number(node.id));
+      };
+    });
+  }
+
+  function returnFirstMove() {
+    return (emptyCells.includes(4)) ? 4 : 0;
+  }
+
+  function returnSecondMove() {
+    if ((enemyCells.includes(5) && enemyCells.includes(1)) || (enemyCells.includes(5) && enemyCells.includes(7))) {
+      return 2;
+    };
+    if ((enemyCells.includes(0) && enemyCells.includes(8)) || (enemyCells.includes(2) && enemyCells.includes(6))) {
+      return 1;
+    };
+    return returnOtherMove();
+  }
+
+  function returnOtherMove() {
+    let ourMoveVersions = getVersionsWithoutEnemy (ourCells, enemyCells);
+    let ourIdForWin = getIdForWin(ourCells, ourMoveVersions);
+    if (typeof ourIdForWin == 'number') {
+       return ourIdForWin;
+    };
+    let enemyMoveVersions = getVersionsWithoutEnemy (enemyCells, ourCells);
+    let enemyIdForWin = getIdForWin(enemyCells, enemyMoveVersions);
+    if (typeof enemyIdForWin == 'number') {
+      return enemyIdForWin;
+    };
+    if (ourMoveVersions.length) {
+      return ourMoveVersions[0][0];
+    } else if (emptyCells.length) {
+      return emptyCells[0];
+    } else {
+      showStandoff();
+    }    
+  }
 
   // Функция выбора всех вариантов, где не мешает противник
 
@@ -152,60 +211,6 @@ function chooseCell() {
     return resGetIdForWin;
   };
 
-  // Записываем значения ячеек в массивы
-
-  function updateCellsInfo() {
-      emptyCells = [];
-      ourCells = [];
-      enemyCells = [];
-
-    cells.forEach(function (node) {
-      if (node.innerHTML == '') {
-        emptyCells.push(Number(node.id));
-      };
-      if (node.innerHTML == signs[1]) {
-        ourCells.push(Number(node.id));
-      };
-      if (node.innerHTML == signs[0]) {
-        enemyCells.push(Number(node.id));
-      };
-    });
-  }
-
-  function returnFirstMove() {
-    return (emptyCells.includes(4)) ? 4 : 0;
-  }
-
-  function returnSecondMove() {
-    if ((enemyCells.includes(5) && enemyCells.includes(1)) || (enemyCells.includes(5) && enemyCells.includes(7))) {
-      return 2;
-    };
-    if ((enemyCells.includes(0) && enemyCells.includes(8)) || (enemyCells.includes(2) && enemyCells.includes(6))) {
-      return 1;
-    };
-    return returnOtherMove();
-  }
-
-  function returnOtherMove() {
-    let ourMoveVersions = getVersionsWithoutEnemy (ourCells, enemyCells);
-    let ourIdForWin = getIdForWin(ourCells, ourMoveVersions);
-    if (typeof ourIdForWin == 'number') {
-       return ourIdForWin;
-    };
-    let enemyMoveVersions = getVersionsWithoutEnemy (enemyCells, ourCells);
-    let enemyIdForWin = getIdForWin(enemyCells, enemyMoveVersions);
-    if (typeof enemyIdForWin == 'number') {
-      return enemyIdForWin;
-    };
-    if (ourMoveVersions.length) {
-      return ourMoveVersions[0][0];
-    } else if (emptyCells.length) {
-      return emptyCells[0];
-    } else {
-      showStandoff();
-    }    
-  }
-
   // Тело функции
 
   updateCellsInfo();
@@ -219,23 +224,48 @@ function chooseCell() {
   return resultChooseCell;
 }
 
-function autoMove() {
-  let cellToClick = chooseCell();
-  if (play) {
-    document.getElementById(`${cellToClick}`).click();
-  }
+function checkWin (arrCheck) {  
+  arrWin.forEach (function (item) {
+    if (arrCheck.includes(item[0]) && arrCheck.includes(item[1]) && arrCheck.includes(item[2])) {
+      winner = (arrCheck == markedX) ? 'крестики' : 'нолики';
+    };
+    return winner;
+  });
 }
 
-function choosePlayer() {
-  if (sign == signs[0]) {
-    autoMove();
-  }
+function showWinner() {
+  play = false;
+  const winnerString = `<p class="win-p">Победили<br>
+  <span class="win-sign">${winner}!</span><br> Победа в ${Math.floor(moveCounter / 2)} хода.</p>`;
+  document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
+  document.querySelector('.winner-container').classList.remove('hide');
 }
 
-function setWinnerInLocalStorage() {
-  localStorage.setItem('time', String(Date.now()));
-  localStorage.setItem('winner', winner);
-  localStorage.setItem('moves', Math.floor(moveCounter / 2));
+function showStandoff() {
+  play = false;
+  const winnerString = `<p class="win-p"><span class="win-sign">Ничья!</span></p>`;
+  document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
+  document.querySelector('.winner-container').classList.remove('hide');
+}
+
+function startGame() {
+  play = true;
+  cells.forEach(function (node) {
+    node.classList.remove('sign-x');
+    node.classList.remove('sign-o');
+    node.innerHTML = '';
+  });
+  nullVariables();
+  document.querySelector('.winner-container').classList.add('hide');
+  document.querySelector('.winner-txt').innerHTML = '';
+  
+}
+
+function nullVariables() {
+  moveCounter = 0;
+  markedX = [];
+  markedO = [];
+  winner = '';
 }
 
 function showRules () {
@@ -246,6 +276,7 @@ function hideRules () {
   rules.classList.remove('show');
 }
 
+document.addEventListener('DOMContentLoaded', getWinnersfromLocalStorage);
 gameArea.addEventListener('click', makeMove);
 btnWinner.addEventListener('click', startGame);
 linkShowRules.addEventListener('click', showRules);

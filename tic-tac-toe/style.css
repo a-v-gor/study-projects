@@ -116,17 +116,16 @@ h6 {
 
 .header-wrap {
   display: flex;
-  justify-content: start;
+  align-items: baseline;
   width: 100%;
   max-width: 1200px;
-  padding: 30px 135px;
+  padding: 10px 135px;
 }
 
 h1 {
   display: block;
   flex-grow: 1;
   font-size: 40px;
-  line-height: 2;
 }
 
 .menu {
