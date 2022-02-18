@@ -44,7 +44,7 @@ function makeMove (event) {
 function showWinner() {
   play = false;
   const winnerString = `<p class="win-p">Победили<br>
-  <span class="win-sign">${winner}!</span></p>`;
+  <span class="win-sign">${winner}!</span><br> Победа в ${Math.floor(moveCounter / 2)} хода.</p>`;
   document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
   document.querySelector('.winner-container').classList.remove('hide');
 }
