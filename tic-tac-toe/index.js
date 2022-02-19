@@ -9,6 +9,7 @@ const linkShowRules = document.querySelector('.show-rules');
 const linkShowRecords = document.querySelector('.show-records');
 const rulesBtn = document.querySelector('.rules-button');
 const recordsBtn = document.querySelector('.records-button');
+const recordsTable = document.querySelector('.records-table');
 
 const signs = ['X','O']
 let moveCounter = 0;
@@ -37,8 +38,33 @@ let winnersTable = {};
 //   localStorage.setItem('ttt-moves', Math.floor(moveCounter / 2));
 // }
 
-function showWinnersTable() {
+function setDataToRecords() {
+  recordsTable.innerHTML = '';
+  let recordsToTable = `<tr>
+  <th>№</th>
+  <th>Дата</th>
+  <th>Ходы</th>
+  <th>Победитель</th>
+  </tr>`;
+  function firstZero (str) {
+    return (str.length == 1) ? 0 + str : str;
+  }
 
+  for (let i = 0; i < Object.keys(winnersTable).length; i++) {
+    let date = new Date(winnersTable[i]['date']);
+    let month = String(Number(date.getMonth())+1);
+    recordsToTable += `<tr>
+    <td>${i}</td>
+    <td>${date.getDate() + '.' +
+    firstZero(month) + '.' +
+    String(date.getFullYear()).slice(2) + ' ' +
+    firstZero(String(date.getHours())) + ':' +
+    firstZero(String(date.getMinutes()))}</td>
+    <td>${winnersTable[i]['moves']}</td>
+    <td>${winnersTable[i]['sign']}</td>
+    </tr>\n`
+  };
+  recordsTable.insertAdjacentHTML('beforeend', recordsToTable);
 }
 
 function setWinnerInWinnersTable() {
@@ -98,6 +124,7 @@ function makeMove (event) {
     (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
     if (winner) {
       setWinnerInWinnersTable();
+      setDataToRecords();
       showWinner();
     }
   };
@@ -175,6 +202,7 @@ function chooseCell() {
     } else {
       winner = 'ничья';
       setWinnerInWinnersTable();
+      setDataToRecords();
       showStandoff();
     }    
   }

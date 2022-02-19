@@ -106,6 +106,10 @@ h6 {
   flex-direction: column;
 }
 
+h2 {
+  color: #0acf83;
+}
+
 /* HEADER */
 
 .header {
@@ -147,7 +151,8 @@ h1 {
   color: #0acf83;
 }
 
-.rules {
+.rules,
+.records {
   position: absolute;
   top: -100%;
   display: flex;
@@ -162,14 +167,16 @@ h1 {
   transition: 1s;
 }
 
-.rules.show {
+.rules.show,
+.records.show {
   top: calc(50% - 70px);
   align-self: center;
   box-shadow: 0 0 0 9999px rgb(255 255 255 / 50%);
   opacity: 1;
 }
 
-.rules-text {
+.rules-text,
+.records-title {
   display: block;
   padding-bottom: 10px;
   font-size: 25px;
@@ -183,30 +190,23 @@ h1 {
   border-radius: 8px;
 }
 
-.records {
-  position: absolute;
-  top: -100%;
-  max-width: 650px;
-  padding: 15px 25px;
-  font-family: "Caveat", cursive;
-  background-color: #d4d3d3;
-  border-radius: 20px;
-  opacity: 0;
-  transition: 1s;
-}
-
-.records.show {
-  top: calc(50% - 70px);
-  align-self: center;
-  box-shadow: 0 0 0 9999px rgb(255 255 255 / 50%);
-  opacity: 1;
-}
-
 .records-button {
   padding: 5px 10px;
   font-size: 18px;
   background-color: #ffffff;
   border-radius: 8px;
+}
+
+.records-table {
+  margin-bottom: 10px;
+  border-spacing: 0;
+  font-size: 25px;
+  border: 2px solid #ffffff;
+}
+
+.records-table * {
+  padding: 5px 8px;
+  border: 1px solid #ffffff;
 }
 
 /* MAIN */
@@ -296,8 +296,9 @@ h1 {
 
 .btn-winner {
   display: block;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 18px;
+  border-radius: 8px;
   box-shadow: 2px 2px 1px 1px rgb(0 0 0 / 20%);
   transition: 0.9s;
 }
