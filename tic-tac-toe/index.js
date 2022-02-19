@@ -42,11 +42,12 @@ function showWinnersTable() {
 }
 
 function setWinnerInWinnersTable() {
-  const i = Object.keys(winnersTable).length
+  let i = Object.keys(winnersTable).length
   if (i == 10) {
     for (let j = 9; j > 0; j--) {
       winnersTable[j-1] = winnersTable[j];
-    }
+    };
+    i--;
   };
   winnersTable[i] = {
     ['date']: Date.now(),
@@ -96,7 +97,6 @@ function makeMove (event) {
     event.target.classList.add(`sign-${sign.toLowerCase()}`);
     (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
     if (winner) {
-
       setWinnerInWinnersTable();
       showWinner();
     }
@@ -173,6 +173,8 @@ function chooseCell() {
     } else if (emptyCells.length) {
       return emptyCells[0];
     } else {
+      winner = 'ничья';
+      setWinnerInWinnersTable();
       showStandoff();
     }    
   }
@@ -291,6 +293,7 @@ function nullVariables() {
 }
 
 function showRules () {
+  hideRecords();
   rules.classList.add('show');
 }
 
@@ -299,6 +302,7 @@ function hideRules () {
 }
 
 function showRecords () {
+  hideRules();
   records.classList.add('show');
 }
 
