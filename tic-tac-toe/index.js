@@ -4,8 +4,11 @@ const gameArea = document.querySelector('.game-area');
 const btnWinner = document.querySelector('.btn-winner');
 const cells = gameArea.querySelectorAll('.cell');
 const rules = document.querySelector('.rules');
+const records = document.querySelector('.records');
 const linkShowRules = document.querySelector('.show-rules');
+const linkShowRecords = document.querySelector('.show-records');
 const rulesBtn = document.querySelector('.rules-button');
+const recordsBtn = document.querySelector('.records-button');
 
 const signs = ['X','O']
 let moveCounter = 0;
@@ -295,8 +298,18 @@ function hideRules () {
   rules.classList.remove('show');
 }
 
+function showRecords () {
+  records.classList.add('show');
+}
+
+function hideRecords () {
+  records.classList.remove('show');
+}
+
 document.addEventListener('DOMContentLoaded', getWinnersfromLocalStorage);
 gameArea.addEventListener('click', makeMove);
 btnWinner.addEventListener('click', startGame);
 linkShowRules.addEventListener('click', showRules);
 rulesBtn.addEventListener('click', hideRules);
+linkShowRecords.addEventListener('click', showRecords);
+recordsBtn.addEventListener('click', hideRecords);

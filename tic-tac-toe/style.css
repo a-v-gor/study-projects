@@ -183,6 +183,32 @@ h1 {
   border-radius: 8px;
 }
 
+.records {
+  position: absolute;
+  top: -100%;
+  max-width: 650px;
+  padding: 15px 25px;
+  font-family: "Caveat", cursive;
+  background-color: #d4d3d3;
+  border-radius: 20px;
+  opacity: 0;
+  transition: 1s;
+}
+
+.records.show {
+  top: calc(50% - 70px);
+  align-self: center;
+  box-shadow: 0 0 0 9999px rgb(255 255 255 / 50%);
+  opacity: 1;
+}
+
+.records-button {
+  padding: 5px 10px;
+  font-size: 18px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
 /* MAIN */
 
 .main {
