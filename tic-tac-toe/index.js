@@ -28,10 +28,29 @@ let winnersTable = {};
 
 // LOCAL STORAGE
 
-function setWinnerInLocalStorage() {
-  localStorage.setItem('ttt-time', String(Date.now()));
-  localStorage.setItem('ttt-winner', winner);
-  localStorage.setItem('ttt-moves', Math.floor(moveCounter / 2));
+// function setWinnerInLocalStorage() {
+//   localStorage.setItem('ttt-time', String(Date.now()));
+//   localStorage.setItem('ttt-winner', winner);
+//   localStorage.setItem('ttt-moves', Math.floor(moveCounter / 2));
+// }
+
+function showWinnersTable() {
+
+}
+
+function setWinnerInWinnersTable() {
+  const i = Object.keys(winnersTable).length
+  if (i == 10) {
+    for (let j = 9; j > 0; j--) {
+      winnersTable[j-1] = winnersTable[j];
+    }
+  };
+  winnersTable[i] = {
+    ['date']: Date.now(),
+    ['moves']: Math.floor(moveCounter / 2),
+    ['sign']: winner
+  }
+  console.log(winnersTable);
 }
 
 function getWinnersfromLocalStorage() {
@@ -53,7 +72,6 @@ function getWinnersfromLocalStorage() {
     objForWinnersTable = {};
   }
 };
-  
 
 function addDataToWinnersTable(dataObj) {
   let numKey = Object.keys(winnersTable).length;
@@ -75,7 +93,8 @@ function makeMove (event) {
     event.target.classList.add(`sign-${sign.toLowerCase()}`);
     (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
     if (winner) {
-      setWinnerInLocalStorage();
+
+      setWinnerInWinnersTable();
       showWinner();
     }
   };
