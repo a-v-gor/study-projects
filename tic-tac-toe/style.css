@@ -169,17 +169,23 @@ h1 {
 
 .rules.show,
 .records.show {
-  top: calc(50% - 70px);
+  top: calc(50% - 150px);
   align-self: center;
   box-shadow: 0 0 0 9999px rgb(255 255 255 / 50%);
   opacity: 1;
 }
 
 .rules-text,
+.rules-title,
 .records-title {
   display: block;
   padding-bottom: 10px;
   font-size: 25px;
+}
+
+.rules-title,
+.records-title {
+  font-size: 32px;
 }
 
 .rules-button {

@@ -32,11 +32,46 @@ let winnersTable = {};
 
 // LOCAL STORAGE
 
-// function setWinnerInLocalStorage() {
-//   localStorage.setItem('ttt-time', String(Date.now()));
-//   localStorage.setItem('ttt-winner', winner);
-//   localStorage.setItem('ttt-moves', Math.floor(moveCounter / 2));
-// }
+function getWinnersfromLocalStorage() {
+  let objForWinnersTable = {};
+  
+  for (let i = 0; i<localStorage.length; i++) {    
+    let key = localStorage.key(i);
+    let data = localStorage.getItem(key);
+    let id;
+
+    if (key.includes('ttt-time') || key.includes('ttt-winner') || key.includes('ttt-moves')) {
+      id = Number(key.slice(-1));
+      if (!objForWinnersTable[id]) {
+        objForWinnersTable[id] = {};
+      }      
+    };
+    if (key.includes('ttt-time')) {
+      objForWinnersTable[id]['date'] = Date(data);
+    } else if (key.includes('ttt-winner')) {
+      objForWinnersTable[id]['sign'] = data;
+    } else if (key.includes('ttt-moves')) {
+      objForWinnersTable[id]['moves'] = Number(data);
+    };
+  }
+  if (Object.keys(objForWinnersTable).length) {
+    winnersTable = objForWinnersTable
+    objForWinnersTable = {};
+  }
+  setDataToRecords();
+};
+
+function setWinnersTableToLocalStorage() {
+  for (let i = 0; i < Object.keys(winnersTable).length; i++) {
+    const id = i;
+    const date = winnersTable[i]['date'];
+    const moves = winnersTable[i]['moves'];
+    const winner = winnersTable[i]['sign'];
+    localStorage.setItem(`ttt-time-${id}`, date);
+    localStorage.setItem(`ttt-winner-${id}`, winner);
+    localStorage.setItem(`ttt-moves-${id}`, moves);
+  }
+}
 
 function setDataToRecords() {
   recordsTable.innerHTML = '';
@@ -46,6 +81,7 @@ function setDataToRecords() {
   <th>Ходы</th>
   <th>Победитель</th>
   </tr>`;
+  
   function firstZero (str) {
     return (str.length == 1) ? 0 + str : str;
   }
@@ -54,7 +90,7 @@ function setDataToRecords() {
     let date = new Date(winnersTable[i]['date']);
     let month = String(Number(date.getMonth())+1);
     recordsToTable += `<tr>
-    <td>${i}</td>
+    <td>${i+1}</td>
     <td>${date.getDate() + '.' +
     firstZero(month) + '.' +
     String(date.getFullYear()).slice(2) + ' ' +
@@ -80,32 +116,6 @@ function setWinnerInWinnersTable() {
     ['moves']: Math.floor(moveCounter / 2),
     ['sign']: winner
   }
-  console.log(winnersTable);
-}
-
-function getWinnersfromLocalStorage() {
-  let objForWinnersTable = {};
-  for (let i = 0; i<localStorage.length; i++) {    
-    let key = localStorage.key(i);
-    let data = localStorage.getItem(key);
-
-    if (key.includes('ttt-time')) {
-      objForWinnersTable['date'] = Date(data);
-    } else if (key.includes('ttt-winner')) {
-      objForWinnersTable['sign'] = data;
-    } else if (key.includes('ttt-moves')) {
-      objForWinnersTable['moves'] = Number(data);
-    };
-  }
-  if (Object.keys(objForWinnersTable).length) {
-    addDataToWinnersTable(objForWinnersTable);
-    objForWinnersTable = {};
-  }
-};
-
-function addDataToWinnersTable(dataObj) {
-  let numKey = Object.keys(winnersTable).length;
-  winnersTable[numKey] = dataObj;
   console.log(winnersTable);
 }
 
@@ -347,3 +357,4 @@ linkShowRules.addEventListener('click', showRules);
 rulesBtn.addEventListener('click', hideRules);
 linkShowRecords.addEventListener('click', showRecords);
 recordsBtn.addEventListener('click', hideRecords);
+window.addEventListener('beforeunload', setWinnersTableToLocalStorage);
