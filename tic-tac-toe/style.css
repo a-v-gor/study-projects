@@ -295,6 +295,12 @@ h1 {
   color: #0acf83;
 }
 
+.sign-x,
+.sign-o,
+.sign-standoff {
+  text-transform: uppercase;
+}
+
 .winner-container {
   position: absolute;
   top: 0;
@@ -332,10 +338,9 @@ h1 {
   color: #0acf83;
 }
 
-.win-sign {
+.winner-txt .sign-x,
+.winner-txt .sign-o {
   font-size: 32px;
-  color: #f24e1e;
-  text-transform: uppercase;
 }
 
 .btn-winner {

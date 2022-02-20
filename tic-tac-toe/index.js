@@ -323,8 +323,9 @@ function checkWin (arrCheck) {
 
 function showWinner() {
   play = false;
+  let spanClass = (winner == 'крестики') ? 'sign-x' : 'sign-o';
   const winnerString = `<p class="win-p">Победили<br>
-  <span class="win-sign">${winner}!</span><br> Победа в ${Math.ceil(moveCounter / 2)} хода.</p>`;
+  <span class="${spanClass}">${winner}!</span><br> Победа в ${Math.ceil(moveCounter / 2)} хода.</p>`;
   document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
   document.querySelector('.winner-container').classList.remove('hide');
 }
