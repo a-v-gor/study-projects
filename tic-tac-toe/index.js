@@ -17,7 +17,7 @@ const recordsBtn = document.querySelector('.records-button');
 const recordsTable = document.querySelector('.records-table');
 const signs = ['X','O'];
 
-let moveCounter = 1;
+let moveCounter = 0;
 let markedX = [];
 let markedO = [];
 let winner = '';
@@ -35,7 +35,7 @@ let arrWin = [
 let play = true;
 let winnersTable = {};
 const players = ['robot','human'];
-let player = players[1];
+let player = players[0];
 
 // LOCAL STORAGE
 
@@ -47,7 +47,7 @@ function getWinnersfromLocalStorage() {
     let data = localStorage.getItem(key);
     let id;
 
-    if (key.includes('ttt-time') || key.includes('ttt-winner') || key.includes('ttt-moves')) {
+    if (key.includes('ttt-time') || key.includes('ttt-winner') || key.includes('ttt-moves') || key.includes('ttt-enemy')) {
       id = Number(key.slice(-1));
       if (!objForWinnersTable[id]) {
         objForWinnersTable[id] = {};
@@ -59,7 +59,9 @@ function getWinnersfromLocalStorage() {
       objForWinnersTable[id]['sign'] = data;
     } else if (key.includes('ttt-moves')) {
       objForWinnersTable[id]['moves'] = Number(data);
-    };
+    } else if (key.includes('ttt-enemy')) {
+      objForWinnersTable[id]['player'] = data;
+    }
   }
   if (Object.keys(objForWinnersTable).length) {
     winnersTable = objForWinnersTable
@@ -75,9 +77,11 @@ function setWinnersTableToLocalStorage() {
     const date = winnersTable[i]['date'];
     const moves = winnersTable[i]['moves'];
     const winner = winnersTable[i]['sign'];
+    const player = winnersTable[i]['player'];
     localStorage.setItem(`ttt-time-${id}`, date);
     localStorage.setItem(`ttt-winner-${id}`, winner);
     localStorage.setItem(`ttt-moves-${id}`, moves);
+    localStorage.setItem(`ttt-enemy-${id}`, player);
   }
 }
 
@@ -88,6 +92,7 @@ function setDataToRecords() {
   <th>Дата</th>
   <th>Ходы</th>
   <th>Победитель</th>
+  <th>Противник</th>
   </tr>`;
   
   function firstZero (str) {
@@ -101,6 +106,8 @@ function setDataToRecords() {
     recordsSign = (recordsSign == 'крестики') ? '<span class="sign-x">крестики</span>' :
     (recordsSign == 'нолики') ? '<span class="sign-o">нолики</span>' :
     '<span class="sign-standoff">ничья</span>';
+    let enemy = (winnersTable[i]['player'] == players[0]) ? 'робот' : 'человек';
+
     recordsToTable += `<tr>
     <td>${i+1}</td>
     <td>${date.getDate() + '.' +
@@ -109,7 +116,8 @@ function setDataToRecords() {
     firstZero(String(date.getHours())) + ':' +
     firstZero(String(date.getMinutes()))}</td>
     <td>${winnersTable[i]['moves']}</td>
-    <td>${recordsSign}</td>
+    <td>${recordsSign}</td>    
+    <td>${enemy}</td>
     </tr>\n`
   };
   recordsTable.insertAdjacentHTML('beforeend', recordsToTable);
@@ -123,8 +131,9 @@ function setWinnerInWinnersTable() {
   };
   winnersTable[9] = {
     ['date']: Date.now(),
-    ['moves']: Math.floor(moveCounter / 2),
-    ['sign']: winner
+    ['moves']: Math.ceil(moveCounter / 2),
+    ['sign']: winner,
+    ['player']: player,
   }
   console.log(winnersTable);
 }
