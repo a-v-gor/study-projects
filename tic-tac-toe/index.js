@@ -196,7 +196,9 @@ function chooseCell() {
       return enemyIdForWin;
     };
     if (ourMoveVersions.length) {
-      return ourMoveVersions[0][0];
+      return (emptyCells.includes(ourMoveVersions[0][0])) ? ourMoveVersions[0][0] :
+      (emptyCells.includes(ourMoveVersions[0][2])) ? ourMoveVersions[0][2] :
+      ourMoveVersions[0][1];
     } else if (emptyCells.length) {
       return emptyCells[0];
     } else {
