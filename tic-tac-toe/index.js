@@ -47,7 +47,7 @@ function getWinnersfromLocalStorage() {
       }      
     };
     if (key.includes('ttt-time')) {
-      objForWinnersTable[id]['date'] = Date(data);
+      objForWinnersTable[id]['date'] = Number(data);
     } else if (key.includes('ttt-winner')) {
       objForWinnersTable[id]['sign'] = data;
     } else if (key.includes('ttt-moves')) {
@@ -59,6 +59,7 @@ function getWinnersfromLocalStorage() {
     objForWinnersTable = {};
   }
   setDataToRecords();
+  console.log(winnersTable);
 };
 
 function setWinnersTableToLocalStorage() {
@@ -104,14 +105,12 @@ function setDataToRecords() {
 }
 
 function setWinnerInWinnersTable() {
-  let i = Object.keys(winnersTable).length
-  if (i == 10) {
-    for (let j = 9; j > 0; j--) {
-      winnersTable[j-1] = winnersTable[j];
+  if (Object.keys(winnersTable).length == 10) {
+    for (let i = 0; i < 9; i++) {
+      winnersTable[i] = winnersTable[i+1];
     };
-    i--;
   };
-  winnersTable[i] = {
+  winnersTable[9] = {
     ['date']: Date.now(),
     ['moves']: Math.floor(moveCounter / 2),
     ['sign']: winner

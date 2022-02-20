@@ -123,7 +123,7 @@ h2 {
   align-items: baseline;
   width: 100%;
   max-width: 1200px;
-  padding: 10px 135px;
+  padding: 20px 135px;
 }
 
 h1 {
@@ -141,6 +141,7 @@ h1 {
 
 .menu-item {
   display: block;
+  padding: 10px;
   font-size: 32px;
   font-family: "Caveat", cursive;
   cursor: pointer;
@@ -149,6 +150,8 @@ h1 {
 
 .menu-item:hover {
   color: #0acf83;
+  border-top: 1px solid #0acf83;
+  border-bottom: 1px solid #0acf83;
 }
 
 .rules,
@@ -169,7 +172,7 @@ h1 {
 
 .rules.show,
 .records.show {
-  top: calc(50% - 150px);
+  top: 90px;
   align-self: center;
   box-shadow: 0 0 0 9999px rgb(255 255 255 / 50%);
   opacity: 1;
