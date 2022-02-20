@@ -10,7 +10,6 @@ const linkShowRecords = document.querySelector('.show-records');
 const rulesBtn = document.querySelector('.rules-button');
 const recordsBtn = document.querySelector('.records-button');
 const recordsTable = document.querySelector('.records-table');
-
 const signs = ['X','O']
 let moveCounter = 0;
 let markedX = [];
@@ -29,6 +28,8 @@ let arrWin = [
 ];
 let play = true;
 let winnersTable = {};
+const players = ['algorithm','human'];
+let player = players[1];
 
 // LOCAL STORAGE
 
@@ -90,6 +91,10 @@ function setDataToRecords() {
   for (let i = 0; i < Object.keys(winnersTable).length; i++) {
     let date = new Date(winnersTable[i]['date']);
     let month = String(Number(date.getMonth())+1);
+    let recordsSign = winnersTable[i]['sign'];
+    recordsSign = (recordsSign == 'крестики') ? '<span class="sign-x">крестики</span>' :
+    (recordsSign == 'нолики') ? '<span class="sign-o">нолики</span>' :
+    '<span class="sign-standoff">ничья</span>';
     recordsToTable += `<tr>
     <td>${i+1}</td>
     <td>${date.getDate() + '.' +
@@ -98,7 +103,7 @@ function setDataToRecords() {
     firstZero(String(date.getHours())) + ':' +
     firstZero(String(date.getMinutes()))}</td>
     <td>${winnersTable[i]['moves']}</td>
-    <td>${winnersTable[i]['sign']}</td>
+    <td>${recordsSign}</td>
     </tr>\n`
   };
   recordsTable.insertAdjacentHTML('beforeend', recordsToTable);
@@ -131,7 +136,7 @@ function makeMove (event) {
     event.target.innerHTML = sign;
     event.target.classList.add(`sign-${sign.toLowerCase()}`);
     (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
-    if (winner) {
+    if (winner && (winner == 'крестики' || winner == 'нолики')) {
       setWinnerInWinnersTable();
       setDataToRecords();
       showWinner();
@@ -141,7 +146,7 @@ function makeMove (event) {
 }
 
 function choosePlayer() {
-  if (sign == signs[0]) {
+  if ((sign == signs[0]) && (player == 'algorithm')) {
     autoMove();
   }
 }
@@ -211,10 +216,7 @@ function chooseCell() {
     } else if (emptyCells.length) {
       return emptyCells[0];
     } else {
-      winner = 'ничья';
-      setWinnerInWinnersTable();
-      setDataToRecords();
-      showStandoff();
+      returnStandoff();
     }    
   }
 
@@ -287,6 +289,13 @@ function chooseCell() {
   return resultChooseCell;
 }
 
+function returnStandoff() {
+  winner = 'ничья';
+  setWinnerInWinnersTable();
+  setDataToRecords();
+  showStandoff();
+}
+
 function checkWin (arrCheck) {  
   arrWin.forEach (function (item) {
     if (arrCheck.includes(item[0]) && arrCheck.includes(item[1]) && arrCheck.includes(item[2])) {
@@ -294,12 +303,15 @@ function checkWin (arrCheck) {
     };
     return winner;
   });
+  if (moveCounter == 9) {
+    returnStandoff()
+  }
 }
 
 function showWinner() {
   play = false;
   const winnerString = `<p class="win-p">Победили<br>
-  <span class="win-sign">${winner}!</span><br> Победа в ${Math.floor(moveCounter / 2)} хода.</p>`;
+  <span class="win-sign">${winner}!</span><br> Победа в ${Math.ceil(moveCounter / 2)} хода.</p>`;
   document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
   document.querySelector('.winner-container').classList.remove('hide');
 }

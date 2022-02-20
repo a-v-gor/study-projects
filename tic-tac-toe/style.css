@@ -145,7 +145,7 @@ h1 {
   font-size: 32px;
   font-family: "Caveat", cursive;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.2s;
 }
 
 .menu-item:hover {
@@ -172,7 +172,7 @@ h1 {
 
 .rules.show,
 .records.show {
-  top: 90px;
+  top: 3vh;
   align-self: center;
   box-shadow: 0 0 0 9999px rgb(255 255 255 / 50%);
   opacity: 1;
@@ -213,7 +213,8 @@ h1 {
   border: 2px solid #ffffff;
 }
 
-.records-table * {
+.records-table th,
+.records-table td {
   padding: 5px 8px;
   border: 1px solid #ffffff;
 }
@@ -258,6 +259,10 @@ h1 {
 
 .sign-o {
   color: #27aaff;
+}
+
+.sign-standoff {
+  color: #0acf83;
 }
 
 .winner-container {
@@ -315,6 +320,8 @@ h1 {
 .btn-winner:hover {
   background-color: #ffffff;
 }
+
+/* FOOTER */
 
 .footer {
   display: flex;
