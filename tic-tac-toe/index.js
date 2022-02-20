@@ -5,13 +5,19 @@ const btnWinner = document.querySelector('.btn-winner');
 const cells = gameArea.querySelectorAll('.cell');
 const rules = document.querySelector('.rules');
 const records = document.querySelector('.records');
+const enemy = document.querySelector('.enemy');
 const linkShowRules = document.querySelector('.show-rules');
 const linkShowRecords = document.querySelector('.show-records');
+const linkShowEnemy = document.querySelector('.game-settings');
+const enemyImages = document.querySelector('.enemy-images');
+
+
 const rulesBtn = document.querySelector('.rules-button');
 const recordsBtn = document.querySelector('.records-button');
 const recordsTable = document.querySelector('.records-table');
-const signs = ['X','O']
-let moveCounter = 0;
+const signs = ['X','O'];
+
+let moveCounter = 1;
 let markedX = [];
 let markedO = [];
 let winner = '';
@@ -28,7 +34,7 @@ let arrWin = [
 ];
 let play = true;
 let winnersTable = {};
-const players = ['algorithm','human'];
+const players = ['robot','human'];
 let player = players[1];
 
 // LOCAL STORAGE
@@ -146,7 +152,7 @@ function makeMove (event) {
 }
 
 function choosePlayer() {
-  if ((sign == signs[0]) && (player == 'algorithm')) {
+  if ((sign == signs[0]) && (player == players[0])) {
     autoMove();
   }
 }
@@ -213,11 +219,9 @@ function chooseCell() {
       return (emptyCells.includes(ourMoveVersions[0][0])) ? ourMoveVersions[0][0] :
       (emptyCells.includes(ourMoveVersions[0][2])) ? ourMoveVersions[0][2] :
       ourMoveVersions[0][1];
-    } else if (emptyCells.length) {
-      return emptyCells[0];
     } else {
-      returnStandoff();
-    }    
+      return emptyCells[0];
+    }   
   }
 
   // Функция выбора всех вариантов, где не мешает противник
@@ -343,22 +347,41 @@ function nullVariables() {
   winner = '';
 }
 
-function showRules () {
+function showRules() {
   hideRecords();
+  hideEnemy();
   rules.classList.add('show');
 }
 
-function hideRules () {
+function hideRules() {
   rules.classList.remove('show');
 }
 
-function showRecords () {
+function showRecords() {
   hideRules();
+  hideEnemy();
   records.classList.add('show');
 }
 
-function hideRecords () {
+function hideRecords() {
   records.classList.remove('show');
+}
+
+function showEnemy() {
+  hideRecords();
+  hideRules();
+  enemy.classList.add('show');
+}
+
+function hideEnemy() {
+  hideRules();
+  enemy.classList.remove('show');
+}
+
+function setEnemy(event) {
+  player = (event.target.className == players[0]) ? players[0] : players[1];
+  hideEnemy();
+  startGame();
 }
 
 document.addEventListener('DOMContentLoaded', getWinnersfromLocalStorage);
@@ -368,4 +391,6 @@ linkShowRules.addEventListener('click', showRules);
 rulesBtn.addEventListener('click', hideRules);
 linkShowRecords.addEventListener('click', showRecords);
 recordsBtn.addEventListener('click', hideRecords);
+linkShowEnemy.addEventListener('click', showEnemy);
+enemyImages.addEventListener('click', setEnemy);
 window.addEventListener('beforeunload', setWinnersTableToLocalStorage);

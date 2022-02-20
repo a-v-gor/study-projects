@@ -113,6 +113,7 @@ h2 {
 /* HEADER */
 
 .header {
+  z-index: 1;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -155,6 +156,7 @@ h1 {
 }
 
 .rules,
+.enemy,
 .records {
   position: absolute;
   top: -100%;
@@ -164,15 +166,16 @@ h1 {
   max-width: 650px;
   padding: 15px 25px;
   font-family: "Caveat", cursive;
-  background-color: #d4d3d3;
+  background-color: #e5e5e5;
   border-radius: 20px;
   opacity: 0;
   transition: 1s;
 }
 
 .rules.show,
+.enemy.show,
 .records.show {
-  top: 3vh;
+  top: 80px;
   align-self: center;
   box-shadow: 0 0 0 9999px rgb(255 255 255 / 50%);
   opacity: 1;
@@ -180,30 +183,48 @@ h1 {
 
 .rules-text,
 .rules-title,
+.enemy-title,
 .records-title {
   display: block;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+}
+
+.rules-text {
   font-size: 25px;
 }
 
 .rules-title,
+.enemy-title,
 .records-title {
   font-size: 32px;
 }
 
-.rules-button {
-  display: block;
-  padding: 5px 10px;
-  font-size: 18px;
-  background-color: #ffffff;
-  border-radius: 8px;
+.enemy-images {
+  display: flex;
 }
 
-.records-button {
-  padding: 5px 10px;
-  font-size: 18px;
-  background-color: #ffffff;
-  border-radius: 8px;
+.robot,
+.human {
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 170px;
+  cursor: pointer;
+  transition: 0.6s;
+}
+
+.robot {
+  background-image: url("./assets/svg/robot.svg");
+}
+
+.human {
+  background-image: url("./assets/svg/human.svg");
+}
+
+.robot:hover,
+.human:hover {
+  background-size: auto 200px;
 }
 
 .records-table {
@@ -217,6 +238,15 @@ h1 {
 .records-table td {
   padding: 5px 8px;
   border: 1px solid #ffffff;
+}
+
+.rules-button,
+.records-button {
+  display: block;
+  padding: 5px 10px;
+  font-size: 18px;
+  background-color: #ffffff;
+  border-radius: 8px;
 }
 
 /* MAIN */
