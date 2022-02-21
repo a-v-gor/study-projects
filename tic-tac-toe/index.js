@@ -10,8 +10,6 @@ const linkShowRules = document.querySelector('.show-rules');
 const linkShowRecords = document.querySelector('.show-records');
 const linkShowEnemy = document.querySelector('.game-settings');
 const enemyImages = document.querySelector('.enemy-images');
-
-
 const rulesBtn = document.querySelector('.rules-button');
 const recordsBtn = document.querySelector('.records-button');
 const recordsTable = document.querySelector('.records-table');
@@ -124,12 +122,14 @@ function setDataToRecords() {
 }
 
 function setWinnerInWinnersTable() {
-  if (Object.keys(winnersTable).length == 10) {
-    for (let i = 0; i < 9; i++) {
-      winnersTable[i] = winnersTable[i+1];
+  let i = Object.keys(winnersTable).length;
+  if (i == 10) {
+    for (let j = 0; j < 9; j++) {
+      winnersTable[j] = winnersTable[j+1];
     };
+    i--;
   };
-  winnersTable[9] = {
+  winnersTable[i] = {
     ['date']: Date.now(),
     ['moves']: Math.ceil(moveCounter / 2),
     ['sign']: winner,
