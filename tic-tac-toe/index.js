@@ -35,6 +35,13 @@ let winnersTable = {};
 const players = ['robot','human'];
 let player = players[0];
 
+function playSound () {
+  let audioPlayer = new Audio();
+  audioPlayer.volume = 1;
+  audioPlayer.src = './assets/audio/sign.mp3'
+  audioPlayer.play();
+}
+
 // LOCAL STORAGE
 
 function getWinnersfromLocalStorage() {
@@ -396,6 +403,7 @@ function setEnemy(event) {
 
 document.addEventListener('DOMContentLoaded', getWinnersfromLocalStorage);
 gameArea.addEventListener('click', makeMove);
+gameArea.addEventListener('click', playSound);
 btnWinner.addEventListener('click', startGame);
 linkShowRules.addEventListener('click', showRules);
 rulesBtn.addEventListener('click', hideRules);
