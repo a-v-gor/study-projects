@@ -113,7 +113,7 @@ h2 {
 /* HEADER */
 
 .header {
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -127,10 +127,15 @@ h2 {
   padding: 20px 135px;
 }
 
-h1 {
+h1,
+.title-header {
   display: block;
   flex-grow: 1;
   font-size: 40px;
+}
+
+.title-header {
+  display: none;
 }
 
 .menu {
@@ -155,16 +160,60 @@ h1 {
   border-bottom: 1px solid #0acf83;
 }
 
+@media (max-width: 1152px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  .menu {
+    column-gap: 10px;
+  }
+
+  .menu-item {
+    padding: 8px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1016px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .menu {
+    column-gap: 5px;
+  }
+
+  .menu-item {
+    padding: 6px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 930px) {
+  h1 {
+    display: none;
+  }
+
+  .title-header {
+    display: block;
+    font-size: 28px;
+  }
+}
+
 .rules,
 .enemy,
 .records {
   position: absolute;
   top: -100%;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 650px;
+  max-height: 100%;
   padding: 15px 25px;
+  overflow-y: auto;
   font-family: "Caveat", cursive;
   background-color: #e5e5e5;
   border-radius: 20px;
@@ -177,6 +226,8 @@ h1 {
 .records.show {
   top: 80px;
   align-self: center;
+  max-height: 80vh;
+  border: 2px solid rgb(0 0 0 / 0%);
   box-shadow: 0 0 0 9999px rgb(255 255 255 / 50%);
   opacity: 1;
 }
@@ -249,6 +300,72 @@ h1 {
   border-radius: 8px;
 }
 
+@media (max-width: 1152px) {
+  .rules-text {
+    font-size: 21px;
+  }
+
+  .rules-title,
+  .enemy-title,
+  .records-title {
+    font-size: 28px;
+  }
+
+  .rules-text,
+  .rules-title,
+  .enemy-title,
+  .records-title {
+    padding-bottom: 10px;
+  }
+
+  .records-table th,
+  .records-table td {
+    padding: 3px 4px;
+  }
+
+  .records-table {
+    margin-bottom: 7px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1016px) {
+  .rules-text {
+    font-size: 20px;
+  }
+
+  .rules-title,
+  .enemy-title,
+  .records-title {
+    font-size: 25px;
+  }
+
+  .rules-text,
+  .rules-title,
+  .enemy-title,
+  .records-title {
+    padding-bottom: 9px;
+  }
+
+  .records-table th,
+  .records-table td {
+    padding: 2px 3px;
+  }
+
+  .records-table {
+    margin-bottom: 6px;
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 600px) {
+  .rules.show,
+  .enemy.show,
+  .records.show {
+    top: 60px;
+  }
+}
+
 /* MAIN */
 
 .main {
@@ -265,6 +382,13 @@ h1 {
   max-width: 1200px;
   padding: 0 135px;
   background-color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .header-wrap,
+  .main-wrap {
+    padding: 10px 50px;
+  }
 }
 
 .game-area {
@@ -361,7 +485,6 @@ h1 {
 .footer {
   display: flex;
   justify-content: center;
-  height: 80px;
   background-color: #2c2c2c;
 }
 
@@ -371,7 +494,7 @@ h1 {
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  padding: 0 135px;
+  padding: 20px 135px;
 }
 
 .github,
@@ -405,4 +528,40 @@ h1 {
 
 .rss {
   background-image: url("./assets/svg/rs_school_js.svg");
+}
+
+@media (max-width: 1152px) {
+  .footer-container {
+    padding: 18px 135px;
+  }
+
+  .github,
+  .rss {
+    width: 80px;
+  }
+
+  .year {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 1016px) {
+  .footer-container {
+    padding: 15px 135px;
+  }
+
+  .github,
+  .rss {
+    width: 70px;
+  }
+
+  .year {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    padding: 10px 50px;
+  }
 }
