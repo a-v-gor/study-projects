@@ -405,6 +405,12 @@ h1,
   line-height: 0.9;
   font-family: "Pacifico", cursive;
   border: 1px solid #7b61ff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cell:hover {
+  background-color: #c8ffea;
 }
 
 .sign-x {
