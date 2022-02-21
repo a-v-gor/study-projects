@@ -143,25 +143,29 @@ function setWinnerInWinnersTable() {
 }
 
 function makeMove (event) {
-  let numId = Number(event.target.id);
-  if (event.target.className == 'cell') {
-    sign = signs[Math.round(moveCounter % 2)];
-    if (sign == signs[0]) {
-      markedX.push(numId);
-    } else {
-      markedO.push(numId);
-    }
-    moveCounter++;
-    event.target.innerHTML = sign;
-    event.target.classList.add(`sign-${sign.toLowerCase()}`);
-    (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
-    if (winner && (winner == 'крестики' || winner == 'нолики')) {
-      setWinnerInWinnersTable();
-      setDataToRecords();
-      setTimeout(showWinner, 500);
-    }
-  };
-    choosePlayer();
+  if (play) {
+    let numId = Number(event.target.id);
+    if (event.target.className == 'cell') {
+      sign = signs[Math.round(moveCounter % 2)];
+      if (sign == signs[0]) {
+        markedX.push(numId);
+      } else {
+        markedO.push(numId);
+      }
+      moveCounter++;
+      event.target.innerHTML = sign;
+      event.target.classList.add(`sign-${sign.toLowerCase()}`);
+      (sign == 'X') ? checkWin(markedX) : checkWin(markedO);
+      if (winner && (winner == 'крестики' || winner == 'нолики')) {
+        play = false;
+        setWinnerInWinnersTable();
+        setDataToRecords();
+        setTimeout(showWinner, 500);
+      }
+    };
+      choosePlayer();
+  }
+  
 }
 
 function choosePlayer() {
@@ -333,7 +337,6 @@ function returnStandoff() {
 }
 
 function showWinner() {
-  play = false;
   let spanClass = (winner == 'крестики') ? 'sign-x' : 'sign-o';
   const winnerString = `<p class="win-p">Победили<br>
   <span class="${spanClass}">${winner}!</span><br> Победа в ${Math.ceil(moveCounter / 2)} хода.</p>`;
