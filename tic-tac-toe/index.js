@@ -169,7 +169,7 @@ function makeMove (event) {
 
 function choosePlayer() {
   if ((sign == signs[0]) && (player == players[0])) {
-    autoMove();
+    setTimeout(autoMove, 400);    
   }
 }
 
@@ -309,13 +309,6 @@ function chooseCell() {
   return resultChooseCell;
 }
 
-function returnStandoff() {
-  winner = 'ничья';
-  setWinnerInWinnersTable();
-  setDataToRecords();
-  showStandoff();
-}
-
 function checkWin (arrCheck) {  
   arrWin.forEach (function (item) {
     if (arrCheck.includes(item[0]) && arrCheck.includes(item[1]) && arrCheck.includes(item[2])) {
@@ -323,9 +316,16 @@ function checkWin (arrCheck) {
     };
     return winner;
   });
-  if (moveCounter == 9) {
+  if (moveCounter == 9 && !(winner)) {
     returnStandoff()
   }
+}
+
+function returnStandoff() {
+  winner = 'ничья';
+  setWinnerInWinnersTable();
+  setDataToRecords();
+  showStandoff();
 }
 
 function showWinner() {
