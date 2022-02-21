@@ -14,7 +14,6 @@ const rulesBtn = document.querySelector('.rules-button');
 const recordsBtn = document.querySelector('.records-button');
 const recordsTable = document.querySelector('.records-table');
 const signs = ['X','O'];
-
 let moveCounter = 0;
 let markedX = [];
 let markedO = [];
@@ -159,7 +158,7 @@ function makeMove (event) {
     if (winner && (winner == 'крестики' || winner == 'нолики')) {
       setWinnerInWinnersTable();
       setDataToRecords();
-      showWinner();
+      setTimeout(showWinner, 500);
     }
   };
     choosePlayer();
@@ -311,12 +310,19 @@ function checkWin (arrCheck) {
   arrWin.forEach (function (item) {
     if (arrCheck.includes(item[0]) && arrCheck.includes(item[1]) && arrCheck.includes(item[2])) {
       winner = (arrCheck == markedX) ? 'крестики' : 'нолики';
+      markWinCells([item[0],item[1],item[2]]);
     };
     return winner;
   });
   if (moveCounter == 9 && !(winner)) {
     returnStandoff()
   }
+}
+
+function markWinCells(arrOfCells) {
+  arrOfCells.forEach(function (cell) {
+    document.getElementById(cell).classList.add('winner');
+  })
 }
 
 function returnStandoff() {
@@ -345,6 +351,7 @@ function showStandoff() {
 function startGame() {
   play = true;
   cells.forEach(function (node) {
+    node.classList.remove('winner');
     node.classList.remove('sign-x');
     node.classList.remove('sign-o');
     node.innerHTML = '';

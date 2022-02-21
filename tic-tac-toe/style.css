@@ -409,6 +409,10 @@ h1,
   transition: 0.2s;
 }
 
+.cell.winner {
+  background-color: #a5ffa2;
+}
+
 .cell:hover {
   background-color: #c8ffea;
 }
@@ -447,7 +451,7 @@ h1,
 }
 
 .winner-container.hide {
-  display: none;
+  top: -100%;
   opacity: 0;
 }
 
