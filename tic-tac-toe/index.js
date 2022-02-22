@@ -14,6 +14,7 @@ const rulesBtn = document.querySelector('.rules-button');
 const recordsBtn = document.querySelector('.records-button');
 const recordsTable = document.querySelector('.records-table');
 const signs = ['X','O'];
+const hamburger = document.querySelector('.menu-toggle');
 let moveCounter = 0;
 let markedX = [];
 let markedO = [];
@@ -40,6 +41,13 @@ function playSound () {
   audioPlayer.src = './assets/audio/sign.mp3'
   audioPlayer.play();
 }
+
+// BURGER-MENU
+function toggleMenu () {
+  if (hamburger.checked) {
+    hamburger.checked = false;
+  };
+};
 
 // LOCAL STORAGE
 
@@ -420,6 +428,7 @@ recordsBtn.addEventListener('click', hideRecords);
 linkShowEnemy.addEventListener('click', showEnemy);
 enemyImages.addEventListener('click', setEnemy);
 window.addEventListener('beforeunload', setWinnersTableToLocalStorage);
+document.querySelector('.menu').addEventListener('click', toggleMenu);
 
 console.log(`Ваша отметка - 70 балла(ов)
 Отзыв по пунктам ТЗ:
