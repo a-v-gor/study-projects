@@ -52,29 +52,7 @@ function toggleMenu () {
 // LOCAL STORAGE
 
 function getWinnersfromLocalStorage() {
-  let objForWinnersTable = {};
-  
-  for (let i = 0; i<localStorage.length; i++) {    
-    let key = localStorage.key(i);
-    let data = localStorage.getItem(key);
-    let id;
-
-    if (key.includes('ttt-time') || key.includes('ttt-winner') || key.includes('ttt-moves') || key.includes('ttt-enemy')) {
-      id = Number(key.slice(-1));
-      if (!objForWinnersTable[id]) {
-        objForWinnersTable[id] = {};
-      }      
-    };
-    if (key.includes('ttt-time')) {
-      objForWinnersTable[id]['date'] = Number(data);
-    } else if (key.includes('ttt-winner')) {
-      objForWinnersTable[id]['sign'] = data;
-    } else if (key.includes('ttt-moves')) {
-      objForWinnersTable[id]['moves'] = Number(data);
-    } else if (key.includes('ttt-enemy')) {
-      objForWinnersTable[id]['player'] = data;
-    }
-  }
+  let objForWinnersTable = JSON.parse(localStorage.getItem('ttt-data'));
   if (Object.keys(objForWinnersTable).length) {
     winnersTable = objForWinnersTable
     objForWinnersTable = {};
@@ -83,17 +61,7 @@ function getWinnersfromLocalStorage() {
 };
 
 function setWinnersTableToLocalStorage() {
-  for (let i = 0; i < Object.keys(winnersTable).length; i++) {
-    const id = i;
-    const date = winnersTable[i]['date'];
-    const moves = winnersTable[i]['moves'];
-    const winner = winnersTable[i]['sign'];
-    const player = winnersTable[i]['player'];
-    localStorage.setItem(`ttt-time-${id}`, date);
-    localStorage.setItem(`ttt-winner-${id}`, winner);
-    localStorage.setItem(`ttt-moves-${id}`, moves);
-    localStorage.setItem(`ttt-enemy-${id}`, player);
-  }
+  localStorage.setItem(`ttt-data`, JSON.stringify(winnersTable));
 }
 
 function setDataToRecords() {
@@ -148,6 +116,7 @@ function setWinnerInWinnersTable() {
     ['sign']: winner,
     ['player']: player,
   }
+  console.log(winnersTable);
 }
 
 function makeMove (event) {
