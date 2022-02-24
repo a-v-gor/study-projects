@@ -52,12 +52,15 @@ function toggleMenu () {
 // LOCAL STORAGE
 
 function getWinnersfromLocalStorage() {
-  let objForWinnersTable = JSON.parse(localStorage.getItem('ttt-data'));
-  if (Object.keys(objForWinnersTable).length) {
-    winnersTable = objForWinnersTable
-    objForWinnersTable = {};
+  if (localStorage.getItem('ttt-data')) {
+    let objForWinnersTable = JSON.parse(localStorage.getItem('ttt-data'));
+    if (Object.keys(objForWinnersTable).length) {
+      winnersTable = objForWinnersTable
+      objForWinnersTable = {};
+    }
+    setDataToRecords();
   }
-  setDataToRecords();
+  
 };
 
 function setWinnersTableToLocalStorage() {
