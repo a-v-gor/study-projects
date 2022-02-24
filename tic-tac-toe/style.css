@@ -475,13 +475,6 @@ h1,
 
 /* MAIN */
 
-.main {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
-}
-
 .main-wrap {
   display: flex;
   flex-direction: column;
@@ -491,10 +484,26 @@ h1,
   background-color: #ffffff;
 }
 
+.main {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 600px) {
   .header-wrap,
   .main-wrap {
     padding: 10px 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-wrap,
+  .main-wrap {
+    padding: 10px 0px;
+    margin: 0 auto;
+    max-width: 300px;
   }
 }
 
@@ -680,5 +689,13 @@ h1,
 @media (max-width: 600px) {
   .footer-container {
     padding: 10px 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer-container {
+    padding: 10px 0px;
+    margin: 0 auto;
+    max-width: 300px;
   }
 }
