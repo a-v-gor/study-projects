@@ -116,7 +116,6 @@ function setWinnerInWinnersTable() {
     ['sign']: winner,
     ['player']: player,
   }
-  console.log(winnersTable);
 }
 
 function makeMove (event) {
@@ -315,8 +314,9 @@ function returnStandoff() {
 
 function showWinner() {
   let spanClass = (winner == 'крестики') ? 'sign-x' : 'sign-o';
+  let wordMoves = (Math.ceil(moveCounter / 2) < 5) ? 'хода' : 'ходов';
   const winnerString = `<p class="win-p">Победили<br>
-  <span class="${spanClass}">${winner}!</span><br> Победа в ${Math.ceil(moveCounter / 2)} хода.</p>`;
+  <span class="${spanClass}">${winner}!</span><br> Победа в ${Math.ceil(moveCounter / 2)} ${wordMoves}.</p>`;
   document.querySelector('.winner-txt').insertAdjacentHTML('beforeend', winnerString);
   document.querySelector('.winner-container').classList.remove('hide');
 }
