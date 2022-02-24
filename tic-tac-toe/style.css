@@ -376,10 +376,20 @@ h1,
 }
 
 .records-table {
+  display: block;
   margin-bottom: 10px;
+  overflow-y: auto;
   border-spacing: 0;
   font-size: 25px;
   border: 2px solid #ffffff;
+}
+
+.records-table::-webkit-scrollbar {
+  width: 8px;
+}
+
+.records-table::-webkit-scrollbar-thumb {
+  background-color: rgb(0 0 0 / 20%);
 }
 
 .records-table th,
