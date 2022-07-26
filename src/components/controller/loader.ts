@@ -6,7 +6,7 @@ interface iGetRespObj {
 class Loader {
 
   _baseLink: string;
-  _options: any;
+  _options: {apikey: string};
 
     constructor(baseLink: string, options: any) {
         this._baseLink = baseLink;
