@@ -1,3 +1,5 @@
+import { iResDataArticle } from '../view/iDataArticle';
+
 interface iObjResData {
   category: string;
   country: string;
@@ -8,20 +10,6 @@ interface iObjResData {
   url: string;
 }
 
-interface iResDataArticle {
-  author: string;
-  content: string;
-  description: string;
-  publishedAt: Date;
-  source: {
-    id: string,
-    name: string
-  }
-  title: string;
-  url: string;
-  urlToImage: string;
-}
-
 interface iResData {
   status: string;
   sources?: iObjResData[];
@@ -29,7 +17,36 @@ interface iResData {
   totalResults?: number;
 }
 
-class Loader {
+interface IOptions {
+  sources?: string
+}
+
+interface IURLOptions extends IOptions {
+  apiKey: string
+}
+
+interface IGetRespObj {
+  endpoint: string;
+  options?: IOptions
+}
+
+interface ILoader {
+  _baseLink: string;
+  _options: {apiKey: string};
+
+  getResp(
+    obj: IGetRespObj,
+    callback:()=>void
+  ): void;
+
+  errorHandler(res: Response): Response;
+
+  makeUrl(options: IOptions, endpoint: string): string;
+
+  load(method: string, endpoint: string, callback: (data:iResData)=>void, options?: IOptions): void;
+}
+
+class Loader implements ILoader {
   
   _baseLink: string;
   _options: {apiKey: string};
@@ -39,13 +56,14 @@ class Loader {
     this._options = options;
   }
   
-  getResp(obj: {
-    endpoint: string;
-    options?: {sources?: string}
-  },
-  callback:()=>void = () => {
-    console.error('No callback for GET response');
-  }
+  getResp(
+    obj: {
+      endpoint: string;
+      options?: IOptions;
+    },
+    callback:()=>void = () => {
+      console.error('No callback for GET response');
+    }
   ) {
     if (!obj.options) {
       obj.options = {};
@@ -62,8 +80,8 @@ class Loader {
     return res;
   }
   
-  makeUrl(options: {sources?: string}, endpoint: string): string {
-    const urlOptions: {apiKey: string, sources?: string} = { ...this._options, ...options };
+  makeUrl(options: IOptions, endpoint: string): string {
+    const urlOptions: IURLOptions = { ...this._options, ...options };
     
     let url = `${this._baseLink}${endpoint}?`;
     
@@ -74,7 +92,7 @@ class Loader {
     return url.slice(0, -1);
   }
   
-  load(method: string, endpoint:string, callback:(data:iResData)=>void, options = {}) {
+  load(method: string, endpoint:string, callback:(data:iResData)=>void, options: IOptions) {
     fetch(this.makeUrl(options, endpoint), { method })
     .then(this.errorHandler)
     .then((res) => res.json())
