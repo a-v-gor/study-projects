@@ -6,4 +6,7 @@ module.exports = {
   //   "@typescript-eslint/rule-name": "error"
   // },
   root: true,
+  env: {
+    "browser": true
+  }
 };
