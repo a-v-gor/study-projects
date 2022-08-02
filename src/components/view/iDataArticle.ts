@@ -1,4 +1,4 @@
-export interface iResDataArticle {
+export interface IResDataArticle {
   author: string;
   content: string;
   description: string;

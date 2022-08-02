@@ -1,19 +1,10 @@
-import { iResDataArticle } from '../view/iDataArticle';
+import { IResDataArticle } from '../view/iDataArticle';
+import { ISourceObj } from '../view/iSrcObj';
 
-interface iObjResData {
-  category: string;
-  country: string;
-  description: string;
-  id: string;
-  language: string;
-  name: string;
-  url: string;
-}
-
-interface iResData {
+interface IResData {
   status: string;
-  sources?: iObjResData[];
-  articles?: iResDataArticle[];
+  sources?: ISourceObj[];
+  articles?: IResDataArticle[];
   totalResults?: number;
 }
 
@@ -43,7 +34,7 @@ interface ILoader {
 
   makeUrl(options: IOptions, endpoint: string): string;
 
-  load(method: string, endpoint: string, callback: (data:iResData)=>void, options?: IOptions): void;
+  load(method: string, endpoint: string, callback: (data:IResData)=>void, options?: IOptions): void;
 }
 
 class Loader implements ILoader {
@@ -92,11 +83,11 @@ class Loader implements ILoader {
     return url.slice(0, -1);
   }
   
-  load(method: string, endpoint:string, callback:(data:iResData)=>void, options: IOptions) {
+  load(method: string, endpoint:string, callback:(data:IResData)=>void, options: IOptions) {
     fetch(this.makeUrl(options, endpoint), { method })
     .then(this.errorHandler)
     .then((res) => res.json())
-    .then((data:iResData) => callback(data))
+    .then((data:IResData) => callback(data))
     .catch((err) => console.error(err));
   }
 }
