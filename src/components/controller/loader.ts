@@ -1,12 +1,4 @@
-import { IResDataArticle } from '../view/iDataArticle';
-import { ISourceObj } from '../view/iSrcObj';
-
-interface IResData {
-  status: string;
-  sources?: ISourceObj[];
-  articles?: IResDataArticle[];
-  totalResults?: number;
-}
+import { IDataNews } from '../view/iDataNews';
 
 interface IOptions {
   sources?: string
@@ -34,7 +26,7 @@ interface ILoader {
 
   makeUrl(options: IOptions, endpoint: string): string;
 
-  load(method: string, endpoint: string, callback: (data:IResData)=>void, options?: IOptions): void;
+  load(method: string, endpoint: string, callback: (data:IDataNews)=>void, options?: IOptions): void;
 }
 
 class Loader implements ILoader {
@@ -83,11 +75,11 @@ class Loader implements ILoader {
     return url.slice(0, -1);
   }
   
-  load(method: string, endpoint:string, callback:(data:IResData)=>void, options: IOptions) {
+  load(method: string, endpoint:string, callback:(data:IDataNews)=>void, options: IOptions) {
     fetch(this.makeUrl(options, endpoint), { method })
     .then(this.errorHandler)
     .then((res) => res.json())
-    .then((data:IResData) => callback(data))
+    .then((data:IDataNews) => callback(data))
     .catch((err) => console.error(err));
   }
 }
