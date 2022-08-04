@@ -1,7 +1,8 @@
 import AppLoader from './appLoader';
+import { ValidTypes } from '../view/callbackTypes';
 
 class AppController extends AppLoader {
-    getSources(callback:()=>void) {
+    getSources(callback: ValidTypes) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -12,7 +13,7 @@ class AppController extends AppLoader {
 
     
 
-    getNews(e: Event, callback:()=>void) {
+    getNews(e: Event, callback: ValidTypes) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 

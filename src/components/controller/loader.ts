@@ -1,4 +1,5 @@
 import { IDataNews } from '../view/iDataNews';
+import { ValidTypes } from '../view/callbackTypes';
 
 interface IOptions {
   sources?: string
@@ -19,7 +20,7 @@ interface ILoader {
 
   getResp(
     obj: IGetRespObj,
-    callback:()=>void
+    callback:ValidTypes
   ): void;
 
   errorHandler(res: Response): Response;
@@ -44,7 +45,7 @@ class Loader implements ILoader {
       endpoint: string;
       options?: IOptions;
     },
-    callback:()=>void = () => {
+    callback:ValidTypes = () => {
       console.error('No callback for GET response');
     }
   ) {
