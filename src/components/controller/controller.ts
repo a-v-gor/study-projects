@@ -1,7 +1,13 @@
 import AppLoader from './appLoader';
 import { ValidTypes } from '../view/callbackTypes';
+import { ILoader } from './loader';
 
-class AppController extends AppLoader {
+interface IAppController extends ILoader {
+  getSources(callback: ValidTypes): void,
+  getNews(e: Event, callback: ValidTypes): void
+}
+
+class AppController extends AppLoader implements IAppController {
     getSources(callback: ValidTypes) {
         super.getResp(
             {

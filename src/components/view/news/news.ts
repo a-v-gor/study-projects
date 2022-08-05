@@ -1,7 +1,11 @@
 import './news.css';
 import { IResDataArticle } from '../iDataArticle';
 
-class News {
+interface INews {
+  draw(data: IResDataArticle[]): void  
+}
+
+class News implements INews {
     draw(data: IResDataArticle[]) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 

@@ -2,7 +2,14 @@ import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 import { IDataNews } from '../view/iDataNews';
 
-class App {
+interface IApp {
+  _controller: AppController;
+  _view: AppView;
+
+  start(): void;
+}
+
+class App implements IApp {
   _controller: AppController;
   _view: AppView;
   constructor() {

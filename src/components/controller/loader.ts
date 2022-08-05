@@ -14,7 +14,7 @@ interface IGetRespObj {
   options?: IOptions
 }
 
-interface ILoader {
+export interface ILoader {
   _baseLink: string;
   _options: {apiKey: string};
 
@@ -30,7 +30,7 @@ interface ILoader {
   load(method: string, endpoint: string, callback: (data:IDataNews)=>void, options?: IOptions): void;
 }
 
-class Loader implements ILoader {
+export class Loader implements ILoader {
   
   _baseLink: string;
   _options: {apiKey: string};
@@ -85,4 +85,4 @@ class Loader implements ILoader {
   }
 }
 
-export default Loader;
+// export default Loader;
