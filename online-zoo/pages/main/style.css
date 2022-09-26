@@ -286,6 +286,7 @@
   border-radius: 5px;
   border: 1px solid #f9804b;
   overflow: hidden;
+  transition: all 1s;
 }
 
 .pets-card__img-wrap {
@@ -333,12 +334,14 @@
   flex-direction: row-reverse;
 }
 
+.pets-card:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
 .pets-card:hover .pets-card__img {
   transform: scale(1.055);
-  transition: all 1s;
 }
 
 .pets-card:hover > .pets-card__descr {
   top: 0;
-  transition: all 1s;
 }
