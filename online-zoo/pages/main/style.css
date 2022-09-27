@@ -311,7 +311,7 @@
   padding: 7px 12px 14px 14px;
   grid-template-columns: 1fr 48px;
   position: relative;
-  top: 52px;
+  top: 0;
   transition: all 1s;
 }
 
@@ -344,16 +344,15 @@
   flex-direction: row-reverse;
 }
 
-.pets-card:hover {
-  background-color: rgba(0, 0, 0, 0.25);
-}
-
 .pets-card:hover .pets-card__img {
   transform: scale(1.055);
 }
 
 .pets-card:hover > .pets-card__descr {
-  top: 0;
+  top: -58px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
+
 }
 
 /* PICK-AND-FEED */
