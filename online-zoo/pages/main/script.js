@@ -1,5 +1,7 @@
 'use strict';
 
+alert('Работа не закончена. Если не сложно, отложите, пожалуйста, проверку. Спасибо.')
+
 function changeClassActive (event) {
   
   if (!event.target.classList.toString().endsWith('_active') && event.target.innerHTML) {
