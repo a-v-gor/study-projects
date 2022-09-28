@@ -47,39 +47,43 @@
   margin: 0 auto;
 }
 
-.button-round {
-  display: block;
-  width: 298px;
-  height: 54px;
-  text-transform: uppercase;
-  font-weight: 500;
-  border-radius: 25px;
-}
-
-.button-round,
-.pets__btn-navi-left,
-.pets__btn-navi-right {
+.button {
   color: #ffffff;
   background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
   border-width: 0;
+  width: 298px;
+  height: 54px;
   padding: 0;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-.button-round:hover {
+.button:hover {
   background: #e47209;
 }
 
-.button-round:active,
-.pets__btn-navi-left:active,
-.pets__btn-navi-right:active {
+.pets__btn-navi-left:hover,
+.pets__btn-navi-right:hover {
+  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
+}
+
+.button-round {
+  border-radius: 25px;
+}
+.button:active {
   background: #4b9200;
 }
 
 .link-button {
+  display: block;
   text-decoration: none;  
   text-align: center;
   padding: 17px;
   margin: 0 auto;
+}
+
+.button-cornered {
+  border-radius: 5px;
 }
 
 /* HEADER */
@@ -349,7 +353,7 @@
 }
 
 .pets-card:hover > .pets-card__descr {
-  top: -59px;
+  top: -62px;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.3);
 
@@ -482,6 +486,13 @@
 
 /* TESTIMONIALS */
 
+.testimonials {
+  background-image: url("../../assets/images/leav_foto.jpg");
+  background-position: right bottom -133px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
 .testimonials__wrapper {
   padding: 140px 0 180px;
   display: flex;
@@ -569,11 +580,21 @@
   line-height: 1.2;
 }
 
-.testimonials__range {
-  -webkit-appearance: none;
+.testimonials__range-wrapper {
+  position: relative;
   width: 599px;
   height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to top left, #febdab 25%, #f3a9f8 53%, #e0d8f0 84%, #eaf7fe 110%, #eaf7fe 110%);
+  padding: 1px 0;
   margin: 21px auto 31px;
+}
+
+.testimonials__range {
+  position: absolute;
+  -webkit-appearance: none;
+  width: 599px;
+  height: 6px;
   background: #f5f7f6;
   border-radius: 4px;
   border: 1px solid transparent;
@@ -595,3 +616,6 @@
   background: transparent;
 }
 
+.cornered-button {
+
+}
