@@ -1,6 +1,6 @@
 'use strict';
 
-alert('Работа не закончена. Если не сложно, отложите, пожалуйста, проверку. Спасибо.')
+alert('Страница Donate в работе. Если не сложно, отложите, пожалуйста, проверку. Спасибо.')
 
 function changeClassActive (event) {
   
@@ -16,4 +16,7 @@ function changeClassActive (event) {
 }
 
 const navigation = document.querySelector('.nav-ul');
+const footerNavigation = document.querySelector('.footer-nav__ul');
+
 navigation.addEventListener('click', changeClassActive);
+footerNavigation.addEventListener('click', changeClassActive);
