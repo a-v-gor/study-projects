@@ -674,13 +674,24 @@
   left: 6px;
 }
 
+.footer__subscribe-textbox:valid,
+.footer__subscribe-textbox:focus:valid {
+  border: 1px solid #fe9013;
+  color: #bdbdbd;
+}
+
+.footer__subscribe-textbox:valid ~ .footer__subscribe-button,
+.footer__subscribe-textbox:focus:valid ~ .footer__subscribe-button {
+  color: #000000;
+}
+
 .footer__subscribe-textbox:invalid::placeholder {
   color: #d31414;
 }
 
 .footer__subscribe-textbox:invalid {
   border: 1px solid #d31414;
-
+  color: #d31414;
 }
 
 .footer__subscribe-textbox:invalid ~ .footer__subscribe-button {
@@ -689,9 +700,7 @@
 }
 
 .footer__subscribe-textbox:focus,
-.footer__subscribe-textbox:valid,
-.footer__subscribe-textbox:focus ~ .footer__subscribe-button,
-.footer__subscribe-textbox:valid ~ .footer__subscribe-button
+.footer__subscribe-textbox:focus ~ .footer__subscribe-button
  {
   border: 1px solid #4b9200;
   color: #4b9200;
