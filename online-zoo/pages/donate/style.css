@@ -2,3 +2,27 @@
   height: 386px;
   background-position: center;
 }
+
+.pick-and-feed {
+  padding-top: 43px;
+}
+
+.donation-wrapper__article {
+  color: #ffffff;
+}
+
+.donation-wrapper__article-title {
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.donation-wrapper__article-p_select {
+  font-weight: 500;
+}
+
+.donation-wrapper__article-p {
+  line-height: 1.34;
+  letter-spacing: 0.04px;
+  margin-top: 14px;
+}
