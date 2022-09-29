@@ -403,7 +403,7 @@
   text-align: center;
   font-size: 48px;
   font-weight: 400;
-  color: #fe9013;
+  color: #f9804b;
   margin: 0;  
   max-width: 96%;
 }
@@ -426,7 +426,7 @@
 
 .pick-and-feed__article-link {
   text-decoration: none;
-  border-bottom: 1px solid #fe9013;
+  border-bottom: 1px solid #f9804b;
   padding-bottom: 2px;
 }
 
@@ -614,7 +614,7 @@
   height: 6px;
   width: 115px;
   border-radius: 4px;
-  background: #fe9013;
+  background: #f9804b;
   cursor: ew-resize;
 }
   
@@ -676,7 +676,7 @@
 
 .footer__subscribe-textbox:valid,
 .footer__subscribe-textbox:focus:valid {
-  border: 1px solid #fe9013;
+  border: 1px solid #f9804b;
   color: #bdbdbd;
 }
 
