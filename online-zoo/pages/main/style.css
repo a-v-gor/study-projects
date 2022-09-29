@@ -735,6 +735,14 @@
   column-gap: 12px;
 }
 
+.socials-ul__li:hover > .socials-ul__link {
+  color: #4b9200;
+}
+
+.socials-ul__li:hover > .socials-ul__circle {
+  background-color: #4b9200;
+}
+
 .socials-ul__circle {
   width: 26px;
   height: 26px;
@@ -791,12 +799,27 @@
   flex-direction: column;
   display: flex;
   row-gap: 12px;
+  padding: 5px;
+  position: relative;
+  top: 5px;
+  left: 5px;
 }
 
 .footer-copyright__p {
-  color: #ffffff;
-  font-family: "Roboto";
   font-weight: 100;
   margin: 0;
-  text-align: left;
+}
+
+.footer-copyright__link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.footer-copyright:hover {
+  background-color: #ffffff;
+}
+
+.footer-copyright:hover .footer-copyright__link {
+  color: #4b9200;
+  text-decoration: underline;
 }
