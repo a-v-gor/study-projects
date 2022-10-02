@@ -700,8 +700,7 @@
 }
 
 .footer__subscribe-textbox:focus,
-.footer__subscribe-textbox:focus ~ .footer__subscribe-button
- {
+.footer__subscribe-textbox:focus ~ .footer__subscribe-button {
   border: 1px solid #4b9200;
   color: #4b9200;
 }

@@ -35,8 +35,7 @@
 }
 
 .pick-and-feed__wrapper {
-  padding-left: 93px;
-  padding-right: 93px;
+  padding: 41px 92px;
 }
 
 .pick-and-feed__title {
@@ -95,31 +94,115 @@
 
 .pick-and-feed__amount-label {
   display: block;
-  padding-bottom: 17px;
+  padding: 0 0 18px 4px;
 }
 
 .pick-and-feed__amount-range {
   width: 100%;
   -webkit-appearance: none;
+  background-color: transparent;
   height: 27px;
-  padding: 0 22px;
   background-color: #404950;
+  border-radius: 2px;
 }
 
 .pick-and-feed__amount-range::-webkit-slider-runnable-track  {
   -webkit-appearance: none;
   box-shadow: none;
-  border: none;
-  background: #72828e;
-  height: 2px;
+  padding: 0 14px;
+  position: relative;
+  z-index: 2;
 }
 
 .pick-and-feed__amount-range::-webkit-slider-thumb {
   -webkit-appearance: none;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-image: url("../../assets/icons/roller_icon.svg");
-    cursor: ew-resize;
-    margin-top: -20px;
-  }
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-image: url("../../assets/icons/roller_icon.svg");
+  cursor: ew-resize;
+  position: relative;
+  z-index: 2;
+}
+
+.pick-and-feed__amount-track {
+  position: relative;
+  bottom: 19px;
+  border: none;
+  background: #72828e;
+  height: 2px;
+  width: 915px;
+  margin: 0 auto;
+}
+
+.pick-and-feed__amount-dots {
+  display: flex;
+  column-gap: 120px;
+  margin: 0 29px;
+  position: relative;
+  bottom: 25px;
+}
+
+.pick-and-feed__amount-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ffee2e;
+}
+
+.pick-and-feed__amount-pays {
+  display: flex;
+}
+
+.pick-and-feed__amount-pay,
+.pick-and-feed__amount-pay_active {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.pick-and-feed__amount-pay_active {
+  color: #fe9013;
+}
+
+.pick-and-feed__usd-sign {
+  font-size: 24px;
+}
+
+.pick-and-feed__amount-pay-space-1{
+  width: 5.8%;
+}
+
+.pick-and-feed__amount-pay-space-2{
+  width: 7.3%;
+}
+
+.pick-and-feed__amount-pay-space-3{
+  width: 7.5%;
+}
+
+.pick-and-feed__amount-pay-space-4{
+  width: 9%;
+}
+
+.pick-and-feed__amount-number {
+  display: block;
+  width: 268px;
+  height: 54px;
+  background-image: url("../../assets/icons/usd-sign.svg");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  margin: 52px auto;
+  padding: 0 7px;
+  border: 1px solid #929699;
+  border-radius: 2px;
+}
+
+.pick-and-feed__amount-number::-webkit-outer-spin-button,
+.pick-and-feed__amount-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.pick-and-feed__amount-number:active {
+  border: 1px solid #4b9200;
+  color: #4b9200;
+}
