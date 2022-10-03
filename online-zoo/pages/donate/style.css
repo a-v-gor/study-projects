@@ -4,7 +4,7 @@
 }
 
 .pick-and-feed {
-  padding-top: 43px;
+  padding: 43px 0 180px;
 }
 
 .donation-wrapper__article {
@@ -35,7 +35,7 @@
 }
 
 .pick-and-feed__wrapper {
-  padding: 41px 92px;
+  padding: 41px 92px 45px;
 }
 
 .pick-and-feed__title {
@@ -168,33 +168,49 @@
   font-size: 24px;
 }
 
-.pick-and-feed__amount-pay-space-1{
+.pick-and-feed__amount-pay-space-1 {
   width: 5.8%;
 }
 
-.pick-and-feed__amount-pay-space-2{
+.pick-and-feed__amount-pay-space-2 {
   width: 7.3%;
 }
 
-.pick-and-feed__amount-pay-space-3{
+.pick-and-feed__amount-pay-space-3 {
   width: 7.5%;
 }
 
-.pick-and-feed__amount-pay-space-4{
+.pick-and-feed__amount-pay-space-4 {
   width: 9%;
 }
 
+.pick-and-feed__amount-number-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 52px auto 0;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 268px;
+}
+
 .pick-and-feed__amount-number {
+  outline: none;
   display: block;
   width: 268px;
   height: 54px;
-  background-image: url("../../assets/icons/usd-sign.svg");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  margin: 52px auto;
   padding: 0 7px;
   border: 1px solid #929699;
   border-radius: 2px;
+  background-color: transparent;
+}
+
+.pick-and-feed__amount-usd-sign {
+  position: absolute;
+  right: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #929699;
 }
 
 .pick-and-feed__amount-number::-webkit-outer-spin-button,
@@ -202,7 +218,66 @@
   -webkit-appearance: none;
 }
 
-.pick-and-feed__amount-number:active {
+.pick-and-feed__amount-number:focus {
+  appearance: none;
   border: 1px solid #4b9200;
   color: #4b9200;
+}
+
+.pick-and-feed__amount-number:focus::placeholder,
+.pick-and-feed__amount-number:focus ~ .pick-and-feed__amount-usd-sign {
+  color: #4b9200;
+}
+
+.pick-and-feed__amount-number:invalid,
+.pick-and-feed__amount-number:focus:invalid
+.pick-and-feed__amount-number:invalid ~ .pick-and-feed__amount-usd-sign,
+.pick-and-feed__amount-number:focus:invalid ~ .pick-and-feed__amount-usd-sign {
+  color: #d31414;
+}
+
+.pick-and-feed__amount-radioblock-wrapper {
+  margin: 0 auto;
+  max-width: 268px;
+  padding: 27px 0 32px;
+  display: flex;
+  position: relative;
+  right: 8px;
+  justify-content: center;
+  column-gap: 50px;
+}
+
+.pick-and-feed__amount-radio-wrapper {
+  column-gap: 10px;
+  display: flex;
+}
+
+
+.pick-and-feed__amount-radio {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #fe9013;
+  display: inline-block;
+}
+
+.pick-and-feed__amount-radio:checked {
+  border: none;
+  background-color: #4b9200;
+}
+
+.pick-and-feed__amount-radio-label {
+  color: #333b41;
+}
+
+.pick-and-feed__amount-submit {
+  display: block;
+  margin: 0 auto;
+}
+
+.pick-and-feed__p {
+  text-align: center;
+  max-width: none;
+  padding-top: 20px;
 }

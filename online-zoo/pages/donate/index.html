@@ -87,11 +87,24 @@
                 <div class="pick-and-feed__amount-pay-space-4"></div>
                 <div class="pick-and-feed__amount-pay"><span class="pick-and-feed__usd-sign">$</span>25</div>
               </div>
-              <input type="number" name="pick-and-feed-amount" id="pick-and-feed-amount" class="pick-and-feed__amount-number" placeholder="Another amount" maxlength="4">
-              
-              <input type="submit" class="pick-and-feed__amount-submit" value="Feed a friend now">
+              <div class="pick-and-feed__amount-number-wrapper">
+                <input type="number" name="pick-and-feed-amount" id="pick-and-feed-amount" class="pick-and-feed__amount-number" placeholder="Another amount" maxlength="4">
+                <div class="pick-and-feed__amount-usd-sign">$</div>
+              </div>
+              <div class="pick-and-feed__amount-radioblock-wrapper">
+                <div class="pick-and-feed__amount-radio-wrapper">
+                    <input type="radio" class="pick-and-feed__amount-radio" name="pick-and-feed-amount" id="monthly" value="Monthly">
+                  <label for="monthly" class="pick-and-feed__amount-radio-label">Monthly</label>
+                </div>
+                <div class="pick-and-feed__amount-radio-wrapper">
+                  <input type="radio" class="pick-and-feed__amount-radio" name="pick-and-feed-amount" id="once" value="Once" checked>
+                  <label for="once" class="pick-and-feed__amount-radio-label">Once</label>
+                </div>
+                
+              </div>
+              <input type="submit" class="button button-round pick-and-feed__amount-submit" value="Feed a friend now">
             </form>
-            
+            <p class="pick-and-feed__p">Share with your friends on social networks</p>
           </div>
         </div>
       </div>
