@@ -105,6 +105,12 @@ html {
 
 /* HEADER */
 
+.header {
+  background-color: #000000;
+  height: 80px;
+  width: 100%;
+}
+
 .header__wrapper {
   display: flex;
   align-items: center;
@@ -117,14 +123,13 @@ html {
   display: none;
 }
 
-.header {
-  background-color: #000000;
-  height: 80px;
-}
-
 .logo {
   position: relative;
   top: 2px;
+}
+
+.logo__small {
+  display: none;
 }
 
 .header__nav {
@@ -195,15 +200,29 @@ html {
 }
 
 @media (max-width: 640px) {
+  .header {
+    position: fixed;
+    height: 3.4rem;
+  }
+
+  .header__wrapper {
+    padding: 0 2rem;
+  }
+
+  .logo__big {
+    display: none;
+  }
+
+  .logo__small {
+    display: inline;
+  }
+
   .header__nav-label {
     position: fixed;
-    top: 20px;
-    right: 64px;
+    top: 15px;
+    right: 20px;
     z-index: 3;
-    display: flex;
-    align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 18px;
   }
 
   .header__nav-ul {
@@ -229,19 +248,20 @@ html {
     position: absolute;
     display: block;
     width: 100%;
-    height: 3px;
+    height: 2px;
+    border-radius: 50%;
     background-color: #ffffff;
     transition-duration: 0.3s;
   }
 
   .header__nav-label > .header__nav-menu-toggle-sign::before {
     content: "";
-    top: -12.5px;
+    top: -4px;
   }
 
   .header__nav-label > .header__nav-menu-toggle-sign::after {
     content: "";
-    top: 12.5px;
+    top: 4px;
   }
 
   .header__nav-checkbox:checked ~ .header__nav-label > .header__nav-menu-toggle-sign {
