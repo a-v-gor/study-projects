@@ -298,6 +298,8 @@ html {
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
+  overflow: hidden;
+  background-size: auto 100%;  
 }
 
 .banner__wrapper {
@@ -346,14 +348,42 @@ html {
 
 @media (max-width: 1599px) {
   .banner {
-    min-height: 584px;
-    background-size: 100% auto;
-  
+    background-size: auto 117%;
+    background-position-x: -106px;
+    background-position-y: -84px;
   }
 
   .banner__title,
   .banner__btn {
     left: auto;
+  }
+}
+
+@media (max-width: 1220px) {
+  .banner {
+    height: 504px;
+  }
+
+  .banner__wrapper {
+    row-gap: unset;
+  }
+
+  .banner__circle {
+    width: 367px;
+    height: 367px;
+    top: -11px;
+    right: 147px;
+  }
+
+  .banner__title {
+    font-size: 85px;    
+    bottom: 44px;
+    right: 21px;
+  }
+
+  .banner__btn {
+    right: 21px;
+    top: -3px;
   }
 }
 
