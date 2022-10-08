@@ -16,7 +16,7 @@ function changeClassActive (event) {
 }
 
 const navigation = document.querySelector('.nav-ul');
-const footerNavigation = document.querySelector('.footer-nav__ul');
+// const footerNavigation = document.querySelector('.footer-nav__ul');
 
 navigation.addEventListener('click', changeClassActive);
-footerNavigation.addEventListener('click', changeClassActive);
+// footerNavigation.addEventListener('click', changeClassActive);
