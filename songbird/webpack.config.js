@@ -18,13 +18,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       }
     ],
+  },
+  devServer: {
+    port: 3000,
+    static: {
+      directory: path.join(__dirname, 'src'),
+    },
   },
 };
