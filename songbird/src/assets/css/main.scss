@@ -1,5 +1,98 @@
-$body-color: red;
+@font-face {
+  font-family: pacifico;
+  src: url("../fonts/Pacifico-Regular.ttf");
+}
 
-body {
-  color: $body-color;
+$color-dark-green: #1c361c;
+$color-mid-green: #cde4cd;
+$color-success: #3ca33c;
+
+html {
+  box-sizing: content-box;
+  font-size: 10px;
+}
+
+.body {
+  min-height: 100%;
+  background-color: $color-mid-green;
+  font-family: pacifico, cursive;
+}
+
+.main {
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 80vw;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  right: 144px;
+  bottom: -232px;
+  display: block;
+  width: 108vw;
+  height: 108vw;
+  border-radius: 50%;
+  background-color: rgba(0 163 0 / 10%);
+}
+
+.title {
+  color: $color-dark-green;
+  font-weight: 400;
+  font-size: 6.4rem;
+}
+
+.title::after {
+  content: "";
+  position: relative;
+  bottom: 98px;
+  left: 225px;
+  display: block;
+  width: 35px;
+  height: 32px;
+  background-image: url("../img/bird.svg");
+  background-size: 35px;
+  filter: invert(7%) sepia(21%) saturate(7433%) hue-rotate(105deg) brightness(92%) contrast(78%);
+  transform: scaleX(-1);
+}
+
+.main__wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 11.4rem;
+  padding-top: 21.9rem;
+}
+
+.main__start::before {
+  content: "";
+  position: relative;
+  top: 4px;
+  right: 32px;
+  display: inline-block;
+  width: 52px;
+  height: 47px;
+  background-image: url("../img/bird.svg");
+  background-size: 52px;
+  background-repeat: no-repeat;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(73deg) brightness(100%) contrast(103%);
+}
+
+.main__start {
+  display: block;
+  width: 279px;
+  height: 102px;
+  padding: 0 0 5px 18px;
+  border: none;
+  border-radius: 0.8rem;
+  background-color: $color-success;
+  color: #ffffff;
+  font-size: 4rem;
 }
