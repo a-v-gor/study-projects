@@ -10,8 +10,10 @@
   "rules": {
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
+    "color-hex-case":"lower",
     "color-hex-length": "long",
     "import-notation": "url",
+    "no-eol-whitespace": true,
     "selector-class-pattern": "\\w+",
     "order/order": [
       [
