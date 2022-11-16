@@ -8,10 +8,11 @@
   src: url("../fonts/Sniglet-Regular.ttf");
 }
 
-$color-dark-green: #1c361c;
-$color-mid-green: #cde4cd;
+$color-dark: #1c361c;
+$color-mid: #cde4cd;
 $color-success: #3ca33c;
 $color-success-pressed: #266626;
+$color-superlight: #ffffff;
 
 // Common styles
 
@@ -21,7 +22,7 @@ html {
 }
 
 .body {
-  background-color: $color-mid-green;
+  background-color: $color-mid;
   font-family: pacifico, cursive;
 }
 
@@ -49,7 +50,7 @@ html {
 
 .header__logo-wrapper {
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   transition-duration: .5s;
 
   &:hover {
@@ -59,10 +60,13 @@ html {
 }
 
 .header__logo {
-  width: 52px;
+  min-width: 52px;
   height: 47px;
+  padding-left: 8rem;
   background-image: url("../img/bird.svg");
   background-size: 52px;
+  background-repeat: no-repeat;
+  font-size: 3.4rem;
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(103%) contrast(103%);
 }
 
@@ -73,8 +77,8 @@ html {
 
 .nav__li {
   padding: 3.2rem;
-  border-radius: 1rem;
-  color: #ffffff;
+  border-radius: 0.8rem;
+  color: $color-superlight;
   list-style: none;
   font-size: 2rem;
   font-family: sniglet, monospace;
@@ -110,7 +114,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  min-height: calc(100vh - 87px);
+  min-height: calc(100vh - 160px);
 }
 
 .main__wrapper::after {
@@ -143,7 +147,7 @@ html {
 }
 
 .title {
-  color: $color-dark-green;
+  color: $color-dark;
   font-weight: 400;
   font-size: 6.4rem;
   text-align: center;
@@ -185,7 +189,7 @@ html {
   border: none;
   border-radius: 0.8rem;
   background-color: $color-success;
-  color: #ffffff;
+  color: $color-superlight;
   font-size: 4rem;
   transition-duration: .5s;
 
@@ -193,4 +197,67 @@ html {
     background-color: $color-success-pressed;
     cursor: pointer;
   }
+}
+
+// Footer
+.footer {
+  background-color: $color-success-pressed;
+  color: $color-superlight;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.footer__github-wrapper {
+  width: 120px;
+}
+
+.footer__rss-wrapper {
+  justify-content: end;
+  width: 89px;
+}
+
+.footer__github-wrapper,
+.footer__rss-wrapper {
+  display: flex;
+  padding: 20px;
+  border-radius: 0.8rem;
+  transition-duration: .5s;
+
+  &:hover {
+    background-color: $color-success;
+    cursor: pointer;
+  }
+}
+
+.footer__github,
+.footer__rss-logo {
+  display: block;
+  height: 33px;
+  background-repeat: no-repeat;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(73deg) brightness(100%) contrast(103%);
+}
+
+.footer__github {
+  width: 120px;
+  background-image: url("../img/GitHub_Logo.svg");
+  background-size: 120px;
+}
+
+.footer__year {
+  font-size: 2rem;
+
+  &:hover {
+    cursor: default;
+  }
+}
+
+.footer__rss-logo {
+  width: 89px;
+  background-image: url("../img/rs_school_js.svg");
+  background-size: 89px;
 }
