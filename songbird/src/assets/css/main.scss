@@ -97,53 +97,11 @@ html {
   overflow: hidden;
 }
 
-.main__wrapper::before {
-  content: "";
-  position: absolute;
-  top: 264px;
-  left: -132px;
-  z-index: -1;
-  width: 399px;
-  height: 361px;
-  background-image: url("../img/bird.svg");
-  background-size: 399px;
-  filter: invert(96%) sepia(8%) saturate(546%) hue-rotate(60deg) brightness(96%) contrast(85%);
-}
-
 .main__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   min-height: calc(100vh - 160px);
-}
-
-.main__wrapper::after {
-  content: "";
-  position: absolute;
-  top: 431px;
-  right: -98px;
-  z-index: -1;
-  width: 249px;
-  height: 226px;
-  background-image: url("../img/bird.svg");
-  background-size: 249px;
-  filter: invert(90%) sepia(2%) saturate(1254%) hue-rotate(71deg) brightness(110%) contrast(92%);
-  transform: scaleX(-1);
-}
-
-.title::before {
-  content: "";
-  position: absolute;
-  top: -523px;
-  left: -307px;
-  z-index: -2;
-  display: block;
-  width: 109vw;
-  max-width: 1296px;
-  height: 109vw;
-  max-height: 1296px;
-  border-radius: 50%;
-  background-color: #e5f5e5;
 }
 
 .title {
@@ -199,7 +157,49 @@ html {
   }
 }
 
+// Background
+
+.main__back-circle,
+.main__back-lbird,
+.main__back-rbird {
+  position: absolute;
+  z-index: -1;
+}
+
+.main__back-circle {
+  top: -523px;
+  left: -307px;
+  width: 109vw;
+  max-width: 1296px;
+  height: 109vw;
+  max-height: 1296px;
+  border-radius: 50%;
+  background-color: #e5f5e5;
+}
+
+.main__back-lbird {
+  top: 264px;
+  left: -132px;
+  width: 399px;
+  height: 361px;
+  background-image: url("../img/bird.svg");
+  background-size: 399px;
+  filter: invert(96%) sepia(8%) saturate(546%) hue-rotate(60deg) brightness(96%) contrast(85%);
+}
+
+.main__back-rbird {
+  top: 433px;
+  right: -106px;
+  width: 249px;
+  height: 226px;
+  background-image: url("../img/bird.svg");
+  background-size: 249px;
+  filter: invert(90%) sepia(2%) saturate(1254%) hue-rotate(71deg) brightness(110%) contrast(92%);
+  transform: scaleX(-1);
+}
+
 // Footer
+
 .footer {
   background-color: $color-success-pressed;
   color: $color-superlight;
