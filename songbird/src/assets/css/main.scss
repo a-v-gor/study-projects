@@ -54,7 +54,7 @@ html {
 
 .header__logo-wrapper {
   padding: 2rem;
-  border-radius: 0.8rem;
+  border-radius: 5px;
   transition-duration: .5s;
 
   &:hover {
@@ -64,22 +64,34 @@ html {
 }
 
 .header__logo {
-  min-width: 52px;
   height: 47px;
   padding-left: 8rem;
   background-image: url("../img/bird.svg");
   background-size: 52px;
   background-repeat: no-repeat;
-  font-size: 3.4rem;
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(103%) contrast(103%);
+
+  @media (max-width: 768px) {
+    height: 25px;
+    padding-left: 28px;
+    background-size: 28px;
+  }
+}
+
+.header__logo-text{
+  font-size: 3.4rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .header-nav__menu-btn {
   @media (max-width: 768px) {
     position: fixed;
-    top: 20px;
-    right: 64px;
-    z-index: 3;
+    top: 8px;
+    right: calc(2rem + 10%);
+    z-index: 2;
     display: flex;
     align-items: center;
     width: 50px;
@@ -102,14 +114,14 @@ html {
     overflow-y: auto;
     height: 100%;
     margin: 0;
-    padding: 145px 122px 0;
+    padding: 145px 104px 0;
     background-color: $color-success;
   }
 }
 
 .header-nav__li {
   padding: 3.2rem;
-  border-radius: 0.8rem;
+  border-radius: 5px;
   color: $color-superlight;
   list-style: none;
   font-size: 2rem;
@@ -119,7 +131,7 @@ html {
   @media (max-width: 768px) {
     display: block;
     margin: 0 0 39px;
-    padding: 0;
+    padding: 10px;
     font-size: 35px;
     text-align: left;
     transition-duration: .5s;
@@ -226,6 +238,10 @@ html {
   flex-direction: column;
   justify-content: space-evenly;
   min-height: calc(100vh - 160px);
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 104px);
+  }
 }
 
 .title {
@@ -233,34 +249,32 @@ html {
   font-weight: 400;
   font-size: 6.4rem;
   text-align: center;
-}
 
-.title::after {
-  content: "";
-  position: relative;
-  bottom: 97px;
-  left: 244px;
-  display: block;
-  width: 35px;
-  height: 32px;
-  background-image: url("../img/bird.svg");
-  background-size: 35px;
-  filter: invert(7%) sepia(21%) saturate(7433%) hue-rotate(105deg) brightness(92%) contrast(78%);
-  transform: scaleX(-1);
-}
+  @media (max-width: 768px) {
+    font-size: 4rem;
+  }
 
-.main__start::before {
-  content: "";
-  position: relative;
-  top: 4px;
-  right: 32px;
-  display: inline-block;
-  width: 52px;
-  height: 47px;
-  background-image: url("../img/bird.svg");
-  background-size: 52px;
-  background-repeat: no-repeat;
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(73deg) brightness(100%) contrast(103%);
+  &::after {
+    content: "";
+    position: relative;
+    bottom: 97px;
+    left: 244px;
+    display: block;
+    width: 35px;
+    height: 32px;
+    background-image: url("../img/bird.svg");
+    background-size: 35px;
+    filter: invert(7%) sepia(21%) saturate(7433%) hue-rotate(105deg) brightness(92%) contrast(78%);
+    transform: scaleX(-1);
+
+    @media (max-width: 768px) {
+      bottom: 61px;
+      left: 145px;
+      width: 23px;
+      height: 21px;
+      background-size: 23px;
+    }
+  }
 }
 
 .main__start {
@@ -269,15 +283,44 @@ html {
   height: 102px;
   padding: 0 0 5px 18px;
   border: none;
-  border-radius: 0.8rem;
+  border-radius: 5px;
   background-color: $color-success;
   color: $color-superlight;
   font-size: 4rem;
   transition-duration: .5s;
 
+  @media (max-width: 768px) {
+    width: 160px;
+    height: 64px;
+    padding: 0 0 2px 9px;
+    border-radius: 5px;
+    font-size: 2.4rem;
+  }
+
   &:hover {
     background-color: $color-success-pressed;
     cursor: pointer;
+  }
+
+  &::before {
+    content: "";
+    position: relative;
+    top: 4px;
+    right: 32px;
+    display: inline-block;
+    width: 52px;
+    height: 47px;
+    background-image: url("../img/bird.svg");
+    background-size: 52px;
+    background-repeat: no-repeat;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(73deg) brightness(100%) contrast(103%);
+
+    @media (max-width: 768px) {
+      right: 16px;
+      width: 30px;
+      height: 27px;
+      background-size: 30px;
+    }
   }
 }
 
@@ -297,6 +340,14 @@ html {
   height: 1296px;
   border-radius: 50%;
   background-color: #e5f5e5;
+
+  @media (max-width: 768px) {
+    top: auto;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    border-radius: unset;
+  }
 }
 
 .main__back-lbird {
@@ -309,6 +360,8 @@ html {
   filter: invert(96%) sepia(8%) saturate(546%) hue-rotate(60deg) brightness(96%) contrast(85%);
 
   @media (max-width: 768px) {
+    top: 35%;
+    left: -18%;
     width: 52vw;
     height: 47vw;
     background-size: 52vw;
@@ -326,6 +379,8 @@ html {
   transform: scaleX(-1);
 
   @media (max-width: 768px) {
+    top: 53%;
+    right: -9%;
     width: 32vw;
     height: 29vw;
     background-size: 32vw;
@@ -351,7 +406,6 @@ html {
 }
 
 .footer__rss-wrapper {
-  justify-content: end;
   width: 89px;
 }
 
@@ -359,12 +413,39 @@ html {
 .footer__rss-wrapper {
   display: flex;
   padding: 20px;
-  border-radius: 0.8rem;
+  border-radius: 5px;
   transition-duration: .5s;
+
+  @media (max-width: 768px) {
+    width: 70px;
+    padding: 10px;
+  }
 
   &:hover {
     background-color: $color-success;
     cursor: pointer;
+  }
+}
+
+.footer__github {
+  width: 120px;
+  background-image: url("../img/GitHub_Logo.svg");
+  background-size: 120px;
+
+  @media (max-width: 768px) {
+    width: 70px;
+    background-size: 70px;
+  }
+}
+
+.footer__rss-logo {
+  width: 89px;
+  background-image: url("../img/rs_school_js.svg");
+  background-size: 89px;
+
+  @media (max-width: 768px) {
+    width: 53px;
+    background-size: 53px;
   }
 }
 
@@ -374,24 +455,23 @@ html {
   height: 33px;
   background-repeat: no-repeat;
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(73deg) brightness(100%) contrast(103%);
-}
 
-.footer__github {
-  width: 120px;
-  background-image: url("../img/GitHub_Logo.svg");
-  background-size: 120px;
+  @media (max-width: 768px){
+    height: 19px;
+  }
 }
 
 .footer__year {
+  position: relative;
+  right: 15px;
   font-size: 2rem;
+
+  @media (max-width: 768px) {
+    right: 8px;
+    font-size: 1.2rem;
+  }
 
   &:hover {
     cursor: default;
   }
-}
-
-.footer__rss-logo {
-  width: 89px;
-  background-image: url("../img/rs_school_js.svg");
-  background-size: 89px;
 }
