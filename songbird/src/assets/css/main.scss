@@ -55,7 +55,7 @@ html {
 .header__logo-wrapper {
   padding: 2rem;
   border-radius: 5px;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 
   &:hover {
     background-color: $color-success-pressed;
@@ -69,7 +69,8 @@ html {
   background-image: url("../img/bird.svg");
   background-size: 52px;
   background-repeat: no-repeat;
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(103%) contrast(103%);
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg)
+    brightness(103%) contrast(103%);
 
   @media (max-width: 768px) {
     height: 25px;
@@ -78,7 +79,7 @@ html {
   }
 }
 
-.header__logo-text{
+.header__logo-text {
   font-size: 3.4rem;
 
   @media (max-width: 768px) {
@@ -103,7 +104,7 @@ html {
   display: flex;
   margin: 0;
   box-shadow: none;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 
   @media (max-width: 768px) {
     position: fixed;
@@ -126,7 +127,7 @@ html {
   list-style: none;
   font-size: 2rem;
   font-family: sniglet, monospace;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 
   @media (max-width: 768px) {
     display: block;
@@ -134,7 +135,7 @@ html {
     padding: 10px;
     font-size: 35px;
     text-align: left;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
   }
 
   &:hover {
@@ -264,7 +265,8 @@ html {
     height: 32px;
     background-image: url("../img/bird.svg");
     background-size: 35px;
-    filter: invert(7%) sepia(21%) saturate(7433%) hue-rotate(105deg) brightness(92%) contrast(78%);
+    filter: invert(7%) sepia(21%) saturate(7433%) hue-rotate(105deg)
+      brightness(92%) contrast(78%);
     transform: scaleX(-1);
 
     @media (max-width: 768px) {
@@ -287,7 +289,7 @@ html {
   background-color: $color-success;
   color: $color-superlight;
   font-size: 4rem;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 
   @media (max-width: 768px) {
     width: 160px;
@@ -313,7 +315,8 @@ html {
     background-image: url("../img/bird.svg");
     background-size: 52px;
     background-repeat: no-repeat;
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(73deg) brightness(100%) contrast(103%);
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(73deg)
+      brightness(100%) contrast(103%);
 
     @media (max-width: 768px) {
       right: 16px;
@@ -357,7 +360,8 @@ html {
   height: 361px;
   background-image: url("../img/bird.svg");
   background-size: 399px;
-  filter: invert(96%) sepia(8%) saturate(546%) hue-rotate(60deg) brightness(96%) contrast(85%);
+  filter: invert(96%) sepia(8%) saturate(546%) hue-rotate(60deg) brightness(96%)
+    contrast(85%);
 
   @media (max-width: 768px) {
     top: 35%;
@@ -375,7 +379,8 @@ html {
   height: 226px;
   background-image: url("../img/bird.svg");
   background-size: 249px;
-  filter: invert(90%) sepia(2%) saturate(1254%) hue-rotate(71deg) brightness(110%) contrast(92%);
+  filter: invert(90%) sepia(2%) saturate(1254%) hue-rotate(71deg)
+    brightness(110%) contrast(92%);
   transform: scaleX(-1);
 
   @media (max-width: 768px) {
@@ -414,7 +419,7 @@ html {
   display: flex;
   padding: 20px;
   border-radius: 5px;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 
   @media (max-width: 768px) {
     width: 70px;
@@ -454,9 +459,10 @@ html {
   display: block;
   height: 33px;
   background-repeat: no-repeat;
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(73deg) brightness(100%) contrast(103%);
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(73deg)
+    brightness(100%) contrast(103%);
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     height: 19px;
   }
 }

@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./assets/img/favicon.ico"
+      type="image/x-icon"
+    />
     <title>Songbird</title>
   </head>
   <body class="body">
@@ -13,19 +17,21 @@
         <div class="header__wrapper">
           <div class="header__logo-wrapper">
             <div class="header__logo">
-              <div class="header__logo-text">
-                Songbird
-              </div>
+              <div class="header__logo-text">Songbird</div>
             </div>
           </div>
           <nav class="header__nav header-nav">
-            <input class="header-nav__menu-toggle" id="menu-toggle" type="checkbox">
+            <input
+              class="header-nav__menu-toggle"
+              id="menu-toggle"
+              type="checkbox"
+            />
             <label class="header-nav__menu-btn" for="menu-toggle">
               <span class="header-nav__hamburger-line"></span>
             </label>
             <ul class="header-nav__ul">
-              <li class="header-nav__li">Home</li>
-              <li class="header-nav__li">Game</li>
+              <li class="header-nav__li">Домой</li>
+              <li class="header-nav__li">Игра</li>
             </ul>
           </nav>
         </div>
@@ -33,13 +39,51 @@
     </header>
     <main class="main">
       <div class="wrapper">
-        <div class="main__wrapper">
-          <h1 class="title">Songbird</h1>
-          <button class="main__start">Start</button>
+        <div class="top-panel">
+          <div class="top-panel__questions">
+            <ul class="top-panel__questions-ul">
+              <li class="top-panel__questions-li"></li>
+              <li class="top-panel__questions-li"></li>
+              <li class="top-panel__questions-li"></li>
+              <li class="top-panel__questions-li"></li>
+              <li class="top-panel__questions-li"></li>
+              <li class="top-panel__questions-li"></li>
+            </ul>
+            <div class="top-panel__score"></div>
+          </div>
         </div>
-        <div class="main__back-circle"></div>
-        <div class="main__back-lbird"></div>
-        <div class="main__back-rbird"></div>
+        <div class="player-right-bird-info">
+          <div class="player"></div>
+          <div class="bird-info">
+            <div class="bird-info__name"></div>
+            <div class="bird-info__img"></div>
+          </div>
+        </div>
+        <div class="answer-variants">
+          <ul class="answer-variants__ol">
+            <li class="answer-variants__li"></li>
+            <li class="answer-variants__li"></li>
+            <li class="answer-variants__li"></li>
+            <li class="answer-variants__li"></li>
+            <li class="answer-variants__li"></li>
+            <li class="answer-variants__li"></li>
+          </ul>
+        </div>
+        <div class="choosed-bird-info">
+          <div class="choosed-bird-info__invitation">
+            <p class="choosed-bird-info__text">
+              Включите воспроизведение и выберите ответ из предложенных
+              вариантов.
+            </p>
+          </div>
+          <div class="choosed-bird-info__info">
+            <div class="choosed-bird-info__info-img"></div>
+            <div class="choosed-bird-info__info-rname"></div>
+            <div class="choosed-bird-info__info-lname"></div>
+            <div class="choosed-bird-info__audio"></div>
+            <div class="choosed-bird-info__short-info"></div>
+          </div>
+        </div>
       </div>
     </main>
     <footer class="footer">
