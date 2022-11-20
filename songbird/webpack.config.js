@@ -17,7 +17,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new StylelintPlugin({
       files: [path.resolve(__dirname, "src/**/*.{scss, css}")],
-    })
+    }),
   ],
   module: {
     rules: [
