@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Крестики-нолики</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+</head>
+<body class="body">
+  <header class="header">
+    <div class="header-wrap">
+      <h1><span class="sign-x">Крестики</span>-<span class="sign-o">нолики</span></h1>
+      <div class="title-header"><span class="sign-x">X</span>-<span class="sign-o">O</span></div>
+      <div class="menu-wrap">
+        <input class="menu-toggle" id="menu-toggle" type="checkbox">
+        <label class="menu-btn" for="menu-toggle">
+          <span></span>
+        </label>
+        <ul class="menu">
+          <li class="menu-item show-rules" title="Правила игры">Правила</li>
+          <li class="menu-item game-settings" title="Выбери противника">Противник</li>
+          <li class="menu-item show-records" title="Таблица рекордов">Рекорды</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="main-wrap">
+      <div class="rules">
+        <h2 class="rules-title">Правила игры.</h2>
+        <p class="rules-text">Игроки по очереди ставят на свободные клетки поля знаки
+        (один всегда <span class="sign-x">крестики</span>, другой всегда <span class="sign-o">нолики</span>).
+        Первый, выстроивший в ряд три своих фигуры по вертикали,
+        горизонтали или диагонали, выигрывает.
+        Первый ход делает игрок, ставящий крестики.</p>
+        <button class="rules-button">Закрыть</button>
+      </div>
+      <div class="enemy">
+        <h2 class="enemy-title">Выбор противника</h2>
+        <div class="enemy-images">
+          <div class="robot"></div>
+          <div class="human"></div>
+        </div>
+      </div>
+      <div class="records">
+        <h2 class="records-title">Таблица рекордов.</h2>
+        <table class="records-table">
+        </table>
+        <button class="records-button">Закрыть</button>
+      </div>
+      <div class="game-area">
+        <div class="cell" id="0"></div>
+        <div class="cell" id="1"></div>
+        <div class="cell" id="2"></div>
+        <div class="cell" id="3"></div>
+        <div class="cell" id="4"></div>
+        <div class="cell" id="5"></div>
+        <div class="cell" id="6"></div>
+        <div class="cell" id="7"></div>
+        <div class="cell" id="8"></div>
+      </div>
+    </div>
+    <div class="winner-container hide">
+      <div class="winner">
+        <div class="winner-txt">
+        </div>        
+        <button class="btn-winner">Закрыть</button>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-container">
+      <a class="github" href="https://github.com/a-v-gor"></a>
+      <span class="year">2022</span>
+      <a class="rss" href="https://rs.school/js-stage0/"></a>
+    </div>
+  </footer>
+  <script src="./index.js"></script>
+</body>
+</html>
