@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our pets</title>
+  <link rel="stylesheet" href="../../assets/css/normalize.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <div class="substrate"></div>
+  <header class="header">
+    <div class="header-wrap">
+      <a href="../main/index.html">
+        <div class="logo">
+          <h1 class="logo-title">Cozy House</h1>
+          <div class="logo-subtitle">Shelter for pets in Boston</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <input class="menu-toggle" id="menu-toggle" type="checkbox" />
+        <label class="menu-btn" for="menu-toggle">
+          <span></span>
+        </label>
+        <ul class="nav-list">
+          <li class="nav-logo"><span class="logo-title">Cozy House</span>
+            <div class="logo-subtitle">Shelter for pets in Boston</div></li>
+          <li class="nav-item"><a href="../main/index.html">About the shelter</a></li>
+          <li class="nav-item"><a class="active" href="#">Our pets</a></li>
+          <li class="nav-item"><a href="../main/index.html#Help">Help the shelter</a></li>
+          <li class="nav-item"><a href="#Footer">Contacts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="main">
+    <div class="our-friends">
+      <div class="our-friends-wrap">
+        <h3 id="Our-friends">Our friends who<br>are looking for a house</h3>
+        <div class="pets-cards-wrapper">
+          <div class="pets-cards" style="left: 0px;">
+          </div>
+        </div>
+        <div class="pet-cards-arrows">
+          <button class="pets-cards-btns double" type="button" id="first-page" disabled><<</button>
+          <button class="pets-cards-btns single" type="button" id="prev-page" disabled><</button>
+          <div class="page-cards-num">1</div>
+          <button class="pets-cards-btns single" type="button" id="next-page">></button>
+          <button class="pets-cards-btns double" type="button" id="last-page">>></button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer" id="Footer">
+    <div class="footer-wrap">
+      <div class="contacts">
+        <h3>For questions and suggestions</h3>
+        <a class="email" href="mailto:email@shelter.com">email@shelter.com</a>
+        <a class="phone" href="tel:+136745677554">+13 674 567 75 54</a>
+      </div>
+      <div class="addresses">
+        <h3>We are waiting for your visit</h3>
+        <a class="map" href="https://goo.gl/maps/iLHHFW286bYtNzFV9"
+        target="_blank">1 Central Street, Boston (entrance from the
+        store)</a>
+        <a class="map" href="https://goo.gl/maps/wZU73shaes9WnDFG9"
+        target="_blank">18 South Park, London</a>
+      </div>
+      <div class="footer-picture"></div>
+    </div>
+  </footer>
+</body>
+<script src="./script.js"></script>
+</html>
