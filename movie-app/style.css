@@ -406,6 +406,16 @@ h6 {
   padding: 80px 120px 0;
 }
 
+.tmdb-logo-wrap {
+  color: #a8aebf;
+}
+
+.tmdb-logo-img {
+  width: 418px;
+  height: 35px;
+  background: url(./assets/svg/tmdb-logo.svg);
+}
+
 @media (max-width: 1307px) {
   .movies-section {
     padding: 60px 90px 0;

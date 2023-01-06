@@ -7,6 +7,7 @@ const i18Obj = {
     'search-section-text-1': 'Input the movie name in the field before.',
     'search-section-text-2': 'Push "Search" with empty field for show most popular movies.',
     'movies-title': 'Movies',
+    'tmdb-text': 'The source of information is TMDB.',
     'mis-title': 'Sorry, No results found.',
     'mis-text': "There are no movies matching your search terms.",
     'mis-button': 'Go Home'
@@ -16,9 +17,10 @@ const i18Obj = {
     'ru': 'рус',
     'search': 'Поиск фильмов',
     'search-button': 'Найти',
-    'search-section-text-1': 'Введите название фильма в поле, расположенное выше.',
+    'search-section-text-1': 'Для корректной работы может понадобиться VPN.<br>Введите название фильма в поле, расположенное выше.',
     'search-section-text-2': 'Нажмите «Найти» с пустым полем ввода, чтобы найти самые популярные фильмы.',
     'movies-title': 'Фильмы',
+    'tmdb-text': 'Источник информации – TMDB.',
     'mis-title': 'Извините, результатов не найдено.',
     'mis-text': "Нет фильмов, соответствующих вашему поисковому запросу",
     'mis-button': 'Вернуться'
