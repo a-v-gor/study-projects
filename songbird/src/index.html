@@ -11,7 +11,7 @@
     />
     <title>Songbird</title>
   </head>
-  <body class="body">
+  <body class="body-game">
     <header class="header">
       <div class="wrapper">
         <div class="header__wrapper">
@@ -58,21 +58,20 @@
         </div>
         <div class="player-right-bird-info">
           <div class="player">
-            <button class="player__button"></button>
-            <audio class = "player__audio" src="" preload="metadata"></video>
-              <div class="player__controls">
-                <button class="player__controls-button"></button>
-                <input class="player__progress" type="range" name="progressBar" id="" value="0" min="0" max = "1" step="0.01">
-                <div class="player__volume-group">
-                  <button class="player__volume-btn"></button>
-                  <input class="player__input-volume" type="range" name="volume" id="" min="0" max = "1" step="0.01">
-                </div>
-                <div class="time">
-                  <time class="player__time-elapsed">00:00</time>
-                  <span> / </span>
-                  <time class="player__duration">00:00</time>
-                </div>
-            </div>
+            <audio class = "player__audio" src="" preload="metadata"></audio>
+            <div class="player__controls">
+              <button class="player__play-button_paused"></button>
+              <input class="player__progress" type="range" name="progressBar" id="" value="0" min="0" max = "1" step="0.01">
+              <div class="player__volume-group">
+                <button class="player__volume-btn"></button>
+                <input class="player__input-volume" type="range" name="volume" id="" min="0" max = "1" step="0.01">
+              </div>
+              <div class="player__time">
+                <time class="player__time-elapsed">00:00</time>
+                <span class="player__time-slash"> / </span>
+                <time class="player__duration">00:00</time>
+              </div>
+          </div>
           </div>
           <div class="bird-info">
             <div class="bird-info__img"><img src="./assets/img/bird.svg" alt="птица" class="bird-info__pict"></div>

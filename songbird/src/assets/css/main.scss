@@ -12,6 +12,7 @@ $color-dark: #1c361c;
 $color-mid: #cde4cd;
 $color-success: #3ca33c;
 $color-success-pressed: #266626;
+$color-light: #c4c4c4;
 $color-superlight: #ffffff;
 
 // Common styles
@@ -21,7 +22,8 @@ html {
   font-size: 10px;
 }
 
-.body {
+.body,
+.body-game {
   background-color: $color-mid;
   font-family: pacifico, cursive;
 }
@@ -483,6 +485,9 @@ html {
 }
 
 // Game
+.body-game {
+  background-color: $color-superlight;
+}
 
 .top-panel {
   display: flex;
@@ -515,14 +520,93 @@ html {
   gap: 2rem;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  border: solid 0.2rem $color-success;
+  padding: 1rem;
   border-radius: 1rem;
+  background-color: $color-light;
 }
 
+// Player
+
 .player {
-  width: 26rem;
+  display: flex;
+  justify-content: space-evenly;
+  width: 70rem;
+  height: 30px;
 }
+
+.player__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.player__play-button_paused {
+  width: 6rem;
+  height: 6rem;
+  border: solid 2px $color-superlight;
+  border-radius: 50%;
+  background: transparent;
+  background-image: url('../img/player__btn_play.svg');
+  background-position: right 1.2rem center;
+  background-size: 2.5rem;
+  background-repeat: no-repeat;
+}
+
+.player__progress,
+.player__input-volume {
+  height: 1rem;
+  border-radius: 1rem;
+  appearance: none;
+}
+
+.player__progress {
+  width: 25rem;
+  background: linear-gradient(to right, $color-success 0%, $color-success 1%, $color-mid 1%, $color-mid 100%);
+}
+
+.player__progress::-webkit-slider-thumb,
+.player__input-volume::-webkit-slider-thumb {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: $color-success-pressed;
+  appearance: none;
+}
+
+.player__volume-group {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.player__volume-btn {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: none;
+  background: transparent;
+  background-image: url('../img/player__volume-btn.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.player__input-volume {
+  width: 8rem;
+  background: linear-gradient(to right, $color-success 0%, $color-success 50%, $color-mid 50%, $color-mid 100%);
+}
+
+.player__time {
+  color: $color-dark;
+  font-size: 3rem;
+}
+
+.player__time-slash {
+  position: relative;
+  top: 0.5rem;
+}
+
+// Bird info block
 
 .bird-info {
   display: flex;
@@ -560,3 +644,4 @@ html {
   font-family: sniglet, monospace;
   line-height: 1.5;
 }
+
