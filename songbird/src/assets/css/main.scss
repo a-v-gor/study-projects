@@ -486,7 +486,7 @@ html {
 
 // Game
 .body-game {
-  background-color: $color-superlight;
+  background-color: $color-mid;
 }
 
 .top-panel {
@@ -502,6 +502,7 @@ html {
 
 .game-title {
   color: $color-success-pressed;
+  font-weight: 100;
   font-size: 3.4rem;
 }
 
@@ -525,16 +526,28 @@ html {
   background-color: $color-light;
 }
 
-// Player
+// Players
 
-.player {
+.player,
+.choosed-bird-player {
   display: flex;
   justify-content: space-evenly;
+}
+
+.player {
   width: 70rem;
   height: 30px;
 }
 
-.player__controls {
+.choosed-bird-player {
+  width: 100%;
+  height: 6rem;
+  border-radius: 1rem;
+  background-color: $color-light;
+}
+
+.player__controls,
+.choosed-bird-player__controls, {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -542,32 +555,66 @@ html {
   padding: 0 2rem;
 }
 
-.player__play-button_paused {
-  width: 6rem;
-  height: 6rem;
+.player__play-button_paused,
+.choosed-bird-player__play-button_paused {
   border: solid 2px $color-superlight;
   border-radius: 50%;
   background: transparent;
   background-image: url('../img/player__btn_play.svg');
-  background-position: right 1.2rem center;
-  background-size: 2.5rem;
   background-repeat: no-repeat;
+}
+
+.player__play-button_paused {
+  width: 6rem;
+  height: 6rem;
+  background-position: right 1.3rem center;
+  background-size: 2.5rem;
+}
+
+.choosed-bird-player__play-button_paused {
+  width: 4rem;
+  height: 4rem;
+  background-position: right 0.8rem center;
+  background-size: 1.5rem;
+}
+
+.player__progress,
+.player__input-volume,
+.choosed-bird-player__progress,
+.choosed-bird-player__input-volume {
+  appearance: none;
 }
 
 .player__progress,
 .player__input-volume {
   height: 1rem;
   border-radius: 1rem;
-  appearance: none;
 }
 
-.player__progress {
+.choosed-bird-player__progress,
+.choosed-bird-player__input-volume {
+  height: 0.7rem;
+  border-radius: 0.7rem;
+}
+
+.player__progress,
+.choosed-bird-player__progress {
   width: 25rem;
   background: linear-gradient(to right, $color-success 0%, $color-success 1%, $color-mid 1%, $color-mid 100%);
 }
 
+.player__progress {
+  width: 25rem;
+}
+
+.choosed-bird-player__progress {
+  width: 26rem;
+}
+
 .player__progress::-webkit-slider-thumb,
-.player__input-volume::-webkit-slider-thumb {
+.player__input-volume::-webkit-slider-thumb,
+.choosed-bird-player__progress::-webkit-slider-thumb,
+.choosed-bird-player__input-volume::-webkit-slider-thumb {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -575,15 +622,35 @@ html {
   appearance: none;
 }
 
-.player__volume-group {
+.player__progress::-webkit-slider-thumb,
+.player__input-volume::-webkit-slider-thumb {
+  width: 2rem;
+  height: 2rem;
+}
+
+.choosed-bird-player__progress::-webkit-slider-thumb,
+.choosed-bird-player__input-volume::-webkit-slider-thumb {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.player__volume-group,
+.choosed-bird-player__volume-group {
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
 }
 
-.player__volume-btn {
-  width: 3.5rem;
-  height: 3.5rem;
+.player__volume-group {
+  column-gap: 0.5rem;
+}
+
+.choosed-bird-player__volume-group {
+  column-gap: 0.5rem;
+}
+
+.player__volume-btn,
+.choosed-bird-player__volume-btn {
   border: none;
   background: transparent;
   background-image: url('../img/player__volume-btn.svg');
@@ -591,17 +658,44 @@ html {
   background-repeat: no-repeat;
 }
 
-.player__input-volume {
-  width: 8rem;
+.player__volume-btn {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.choosed-bird-player__volume-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.player__input-volume,
+.choosed-bird-player__input-volume {
   background: linear-gradient(to right, $color-success 0%, $color-success 50%, $color-mid 50%, $color-mid 100%);
 }
 
-.player__time {
+.player__input-volume {
+  width: 8rem;
+}
+
+.choosed-bird-player__input-volume {
+  width: 6rem;
+}
+
+.player__time,
+.choosed-bird-player__time {
   color: $color-dark;
+}
+
+.player__time {
   font-size: 3rem;
 }
 
-.player__time-slash {
+.choosed-bird-player__time {
+  font-size: 1.6rem;
+}
+
+.player__time-slash,
+.choosed-bird-player__time-slash {
   position: relative;
   top: 0.5rem;
 }
@@ -632,11 +726,18 @@ html {
   font-size: 3.6rem;
 }
 
+// Bottom panel
+
+.bottom-panel {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2rem;
+}
+
 .answer-variants {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  align-self: center;
 }
 
 .answer-variants__li {
@@ -645,3 +746,57 @@ html {
   line-height: 1.5;
 }
 
+.choosed-bird-info {
+  width: 600px;
+  font-size: 2rem;
+}
+
+.choosed-bird-info__text {
+  display: none;
+  color: $color-success;
+  font-style: italic;
+  font-size: 3rem;
+  font-family: sniglet, monospace;
+}
+
+.choosed-bird-info__info {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px solid $color-light;
+  border-radius: 1rem;
+}
+
+.choosed-bird-info__info-rname {
+  padding: 1rem;
+  font-size: 3rem;
+}
+
+.choosed-bird-info__info-lname {
+  padding: 1rem;
+  font-size: 1.8rem;
+}
+
+.choosed-bird-info__info-img {
+  grid-row: 1 /3;
+}
+
+.choosed-bird-info__pict {
+  width: 100px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: $color-light;
+}
+
+.choosed-bird-info__player {
+  grid-column: 1 / 3;
+}
+
+.choosed-bird-info__audio {
+  grid-column: 1 / 3;
+}
+
+.choosed-bird-info__short-info {
+  grid-column: 1 / 3;
+}
