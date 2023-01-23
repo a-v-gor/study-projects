@@ -20,6 +20,10 @@ $color-superlight: #ffffff;
 html {
   box-sizing: content-box;
   font-size: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
 }
 
 .body,
@@ -111,7 +115,7 @@ html {
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: -102%;
     z-index: 1;
     display: block;
     overflow-y: auto;
@@ -240,6 +244,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
   min-height: calc(100vh - 160px);
 
   @media (max-width: 768px) {
@@ -524,20 +529,13 @@ html {
   padding: 1rem;
   border-radius: 1rem;
   background-color: $color-light;
+
+  @media (max-width:1350px) {
+    flex-wrap: wrap;
+  }
 }
 
 // Players
-
-.player,
-.choosed-bird-player {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.player {
-  width: 70rem;
-  height: 30px;
-}
 
 .choosed-bird-player {
   width: 100%;
@@ -549,10 +547,10 @@ html {
 .player__controls,
 .choosed-bird-player__controls, {
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
 }
 
 .player__play-button_paused,
@@ -599,12 +597,11 @@ html {
 
 .player__progress,
 .choosed-bird-player__progress {
-  width: 25rem;
   background: linear-gradient(to right, $color-success 0%, $color-success 1%, $color-mid 1%, $color-mid 100%);
 }
 
 .player__progress {
-  width: 25rem;
+  width: 30rem;
 }
 
 .choosed-bird-player__progress {
@@ -697,7 +694,14 @@ html {
 .player__time-slash,
 .choosed-bird-player__time-slash {
   position: relative;
+}
+
+.player__time-slash {
   top: 0.5rem;
+}
+
+.choosed-bird-player__time-slash {
+  top: 0.3rem;
 }
 
 // Bird info block
@@ -730,6 +734,7 @@ html {
 
 .bottom-panel {
   display: flex;
+  gap: 2rem;
   justify-content: space-evenly;
   align-items: center;
   padding: 2rem;
@@ -738,6 +743,10 @@ html {
 .answer-variants {
   display: flex;
   flex-direction: column;
+
+  @media (max-width:1347px) {
+    min-width: 292px;
+  }
 }
 
 .answer-variants__li {
