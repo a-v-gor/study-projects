@@ -21,7 +21,7 @@ html {
   box-sizing: content-box;
   font-size: 10px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     font-size: 8px;
   }
 }
@@ -96,7 +96,7 @@ html {
 .header-nav__menu-btn {
   @media (max-width: 768px) {
     position: fixed;
-    top: 8px;
+    top: 3px;
     right: calc(2rem + 10%);
     z-index: 2;
     display: flex;
@@ -127,6 +127,7 @@ html {
 }
 
 .header-nav__li {
+  width: min-content;
   padding: 3.2rem;
   border-radius: 5px;
   color: $color-superlight;
@@ -532,6 +533,11 @@ html {
 
   @media (max-width:1350px) {
     flex-wrap: wrap;
+    max-width: 73rem;
+  }
+
+  @media (max-width:615px) {
+    max-width: 80%;
   }
 }
 
@@ -551,6 +557,13 @@ html {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+
+  @media (max-width:615px) {
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: flex-start;
+    max-width: 40rem;
+  }
 }
 
 .player__play-button_paused,
@@ -602,6 +615,10 @@ html {
 
 .player__progress {
   width: 30rem;
+
+  @media (max-width:420px) {
+    width: 69%;
+  }
 }
 
 .choosed-bird-player__progress {
@@ -685,6 +702,10 @@ html {
 
 .player__time {
   font-size: 3rem;
+
+  @media (max-width:420px) {
+    font-size: 2rem;
+  }
 }
 
 .choosed-bird-player__time {
@@ -722,12 +743,20 @@ html {
   width: 10rem;
   filter: invert(7%) sepia(21%) saturate(7433%) hue-rotate(105deg)
       brightness(92%) contrast(78%);
+
+  @media (max-width:615px) {
+    width: 7rem;
+  }
 }
 
 .bird-info__name {
-  width: 30rem;
+  // width: 30rem;
   color: $color-dark;
   font-size: 3.6rem;
+
+  @media (max-width:615px) {
+    font-size: 3rem;
+  }
 }
 
 // Bottom panel
