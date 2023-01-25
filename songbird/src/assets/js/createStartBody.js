@@ -1,4 +1,4 @@
-export function createMainBody() {
+export function createStartBody() {
   document.body.innerHTML = `
   <header class="header">
       <div class="wrapper">
