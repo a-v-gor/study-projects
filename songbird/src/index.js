@@ -1,5 +1,15 @@
 import "./assets/css/normalize.css";
 import "./assets/css/main.scss";
-// import { createMainBody } from "./assets/js/creareMainBody";
+import { createStartBody } from "./assets/js/createStartBody";
 
-// document.addEventListener("DOMContentLoaded", createMainBody);
+async function createPage() {
+  document.addEventListener("DOMContentLoaded", createStartBody);
+}
+
+createPage().then(
+  function () {
+    alert(document.querySelector(".main__start"));
+  },
+  function (e) {
+    alert(e);
+  });
