@@ -1,15 +1,9 @@
 import "./assets/css/normalize.css";
 import "./assets/css/main.scss";
-import { createStartBody } from "./assets/js/createStartBody";
+import  {createStartBody} from "./assets/js/createStartBody";
+import  {createDOMObserver} from "./assets/js/createDOMObserver";
+import  {createStartBtn} from "./assets/js/createStartBtn";
 
-async function createPage() {
-  document.addEventListener("DOMContentLoaded", createStartBody);
-}
+createDOMObserver(createStartBtn);
 
-createPage().then(
-  function () {
-    alert(document.querySelector(".main__start"));
-  },
-  function (e) {
-    alert(e);
-  });
+document.addEventListener("DOMContentLoaded", createStartBody);
