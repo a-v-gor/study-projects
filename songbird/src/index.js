@@ -1,9 +1,12 @@
 import "./assets/css/normalize.css";
 import "./assets/css/main.scss";
-import  {createStartBody} from "./assets/js/createStartBody";
-import  {createDOMObserver} from "./assets/js/createDOMObserver";
-import  {createStartBtn} from "./assets/js/createStartBtn";
+import  { createPage } from "./assets/js/createPage";
+import  { returnStartBody } from "./assets/js/returnStartBody";
+import  { makeStartBtnActive } from "./assets/js/makeStartBtnActive";
 
-createDOMObserver(createStartBtn);
+function func () {
+  createPage(returnStartBody());
+  makeStartBtnActive();
+}
 
-document.addEventListener("DOMContentLoaded", createStartBody);
+document.addEventListener("DOMContentLoaded", func);
