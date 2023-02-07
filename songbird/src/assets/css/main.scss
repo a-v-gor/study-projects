@@ -270,8 +270,8 @@ html {
   &::after {
     content: "";
     position: relative;
-    bottom: 97px;
-    left: 244px;
+    bottom: 96px;
+    left: 228px;
     display: block;
     width: 35px;
     height: 32px;
@@ -281,12 +281,20 @@ html {
       brightness(92%) contrast(78%);
     transform: scaleX(-1);
 
+    @media (max-width: 900px) {
+      bottom: 77px;
+      left: 179px;
+      width: 28px;
+      height: 25px;
+      background-size: 28px;
+    }
+
     @media (max-width: 768px) {
-      bottom: 61px;
-      left: 145px;
-      width: 23px;
-      height: 21px;
-      background-size: 23px;
+      bottom: 51px;
+      left: 110px;
+      width: 20px;
+      height: 18px;
+      background-size: 20px;
     }
   }
 }
