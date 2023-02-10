@@ -1,14 +1,9 @@
-import { returnMainBody } from "./returnMainBody";
-import { createPage } from "./createPage";
-
-function createGamePage () {
-  return createPage(returnMainBody());
-}
+import  { returnGamePage } from "./returnGamePage";
 
 export function makeStartBtnActive () {
   const startBtn = document.querySelector(".main__start");
   if (startBtn) {
-    startBtn.addEventListener("click", createGamePage);
+    startBtn.addEventListener("click", returnGamePage);
   }
   return;
 }

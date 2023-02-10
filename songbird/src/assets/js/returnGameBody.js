@@ -1,4 +1,4 @@
-export function returnMainBody() {
+export function returnGameBody() {
   return `
   <main class="main">
     <div class="wrapper main__wrapper">
