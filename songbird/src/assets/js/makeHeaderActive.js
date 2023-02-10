@@ -1,8 +1,6 @@
 import  { returnStartPage } from "./returnStartPage";
 import  { returnGamePage } from "./returnGamePage";
 
-
-
 function createGamePage() {
   returnGamePage();
 }
@@ -16,4 +14,3 @@ export function makeHeaderActive() {
   homeLink.addEventListener("click", returnStartPage);
   gameLink.addEventListener("click", createGamePage);
 }
-

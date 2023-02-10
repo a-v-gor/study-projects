@@ -1,8 +1,8 @@
-import  { createPage } from "./createPage";
+import  { createPageHTML } from "./createPageHTML";
 import  { returnGameBody } from "./returnGameBody";
 import  { makeHeaderActive } from "./makeHeaderActive";
 
 export function returnGamePage() {
-  createPage(returnGameBody());
+  createPageHTML(returnGameBody());
   makeHeaderActive();
 }
