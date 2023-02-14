@@ -11,10 +11,8 @@ export function returnGamePage() {
     variants[i] = birdsData[i];
   }
   const variant = variants[0];
-  console.log(variant[0]);
 
   const answerVariants = document.querySelectorAll(".answer-variants__li");
-  // console.log(answerVariants);
   for (let i = 0; i < 6; i++) {
     answerVariants[i].innerHTML = variant[i].name;
   }
@@ -23,6 +21,7 @@ export function returnGamePage() {
 
   const audio = document.querySelector(".player__audio");
   const playButton = document.querySelector(".player__play-button_paused");
+  const progressBar = document.querySelector(".player__progress");
 
   audio.src = variant[0].audio;
   
@@ -45,7 +44,19 @@ export function returnGamePage() {
     }
   }
 
+  function backgroundProgress() {
+    const value = this.value;
+    this.style.background = `linear-gradient(to right, #3ca33c 0%, #3ca33c ${value*100}%, #cde4cd ${value*100}%, #cde4cd 100%)`;
+  }
+
+  function handleProgress() {
+    progressBar.value = audio.currentTime / audio.duration;
+    progressBar.backProgress = backgroundProgress;
+    progressBar.backProgress();
+  }
+
   playButton.addEventListener("click", togglePlay);
   audio.addEventListener("play", updateButton);
   audio.addEventListener("pause", updateButton);
+  audio.addEventListener("timeupdate", handleProgress);
 }
