@@ -24,10 +24,10 @@ export function returnGameBody() {
           <audio class = "player__audio" src="" preload="metadata"></audio>
           <div class="player__controls">
             <button class="player__play-button_paused"></button>
-            <input class="player__progress" type="range" name="progressBar" id="" value="0" min="0" max = "1" step="0.01">
+            <input class="player__progress" type="range" name="progressBar" value="0" min="0" max = "1" step="0.01">
             <div class="player__volume-group">
               <button class="player__volume-btn"></button>
-              <input class="player__input-volume" type="range" name="volume" id="" min="0" max = "1" step="0.01">
+              <input class="player__input-volume" type="range" name="volume" min="0" max = "1" step="0.01">
             </div>
             <div class="player__time">
               <time class="player__time-elapsed">00:00</time>
