@@ -588,17 +588,8 @@ html {
   }
 }
 
-
 .player__play-button_paused,
-.choosed-bird-player__play-button_paused {
-  border: solid 2px $color-superlight;
-  border-radius: 50%;
-  background: transparent;
-  background-image: url('../img/player__btn_play.svg');
-  background-repeat: no-repeat;
-}
-
-.player__play-button_paused {
+.player__play-button_playing {
   width: 6rem;
   height: 6rem;
   background-position: right 1.3rem center;
@@ -611,6 +602,30 @@ html {
   background-position: right 0.8rem center;
   background-size: 1.5rem;
 }
+
+.player__play-button_playing {
+  background-image: url('../img/player__btn_pause.svg');
+  background-position: right 1.5rem center;
+}
+
+.player__play-button_paused,
+.choosed-bird-player__play-button_paused {
+  background-image: url('../img/player__btn_play.svg');
+}
+
+.player__play-button_paused,
+.player__play-button_playing,
+.choosed-bird-player__play-button_paused {
+  border: solid 2px $color-superlight;
+  border-radius: 50%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 
 .player__progress,
 .player__input-volume,
@@ -802,7 +817,7 @@ html {
 .answer-variants {
   display: flex;
   flex-direction: column;
-  width: max-content;
+  min-width: 30rem;
 }
 
 .answer-variants__title {
@@ -817,10 +832,6 @@ html {
 
 .choosed-bird-info {
   font-size: 2rem;
-}
-
-.choosed-bird-info__invitation {
-  display: none;
 }
 
 .choosed-bird-info__text {
@@ -878,6 +889,10 @@ html {
 
 .choosed-bird-info__short-info {
   grid-column: 1 / 3;
+}
+
+.inactive {
+  display: none;
 }
 
 // Results

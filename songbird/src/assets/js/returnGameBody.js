@@ -59,7 +59,7 @@ export function returnGameBody() {
               Включите воспроизведение и выберите ответ из предложенных вариантов.
             </p>
           </div>
-          <div class="choosed-bird-info__info">
+          <div class="choosed-bird-info__info inactive">
               <div class="choosed-bird-info__info-img"><img src="./assets/img/bird.svg" alt="птица" class="choosed-bird-info__pict"></div>
               <div class="choosed-bird-info__info-rname">Название птицы</div>
               <div class="choosed-bird-info__info-lname">Название птицы на латыни</div>
