@@ -55,8 +55,13 @@ export function returnGamePage() {
     progressBar.backProgress();
   }
 
+  function scrub() {
+    audio.currentTime = progressBar.value * audio.duration;
+  }
+
   playButton.addEventListener("click", togglePlay);
   audio.addEventListener("play", updateButton);
   audio.addEventListener("pause", updateButton);
   audio.addEventListener("timeupdate", handleProgress);
+  progressBar.addEventListener("input", scrub);
 }
