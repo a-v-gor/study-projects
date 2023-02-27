@@ -706,7 +706,9 @@ html {
 }
 
 .player__volume-btn,
-.choosed-bird-player__volume-btn {
+.choosed-bird-player__volume-btn,
+.player__volume-btn_mute,
+.choosed-bird-player__volume-btn_mute {
   border: none;
   background: transparent;
   background-image: url('../img/player__volume-btn.svg');
@@ -714,12 +716,19 @@ html {
   background-repeat: no-repeat;
 }
 
-.player__volume-btn {
+.player__volume-btn_mute,
+.choosed-bird-player__volume-btn_mute {
+  background-image: url('../img/player__volume-btn_mute.svg');
+}
+
+.player__volume-btn,
+.player__volume-btn_mute {
   width: 3.5rem;
   height: 3.5rem;
 }
 
-.choosed-bird-player__volume-btn {
+.choosed-bird-player__volume-btn,
+.choosed-bird-player__volume-btn_mute {
   width: 2.5rem;
   height: 2.5rem;
 }
