@@ -752,11 +752,18 @@ html {
 }
 
 .player__time {
+  display: flex;
   font-size: 3rem;
 
   @media (max-width:420px) {
     font-size: 2rem;
   }
+}
+
+.player__time-elapsed,
+.player__duration {
+  display: block;
+  width: 7.5rem;
 }
 
 .choosed-bird-player__time {

@@ -45,12 +45,6 @@ export function returnGameBody() {
         <div class="answer-variants">
           <h2 class="answer-variants__title game-title">Варианты ответов</h2>
           <ol class="answer-variants__ol">
-            <li class="answer-variants__li">Название птицы</li>
-            <li class="answer-variants__li">Название птицы</li>
-            <li class="answer-variants__li">Название птицы</li>
-            <li class="answer-variants__li">Название птицы</li>
-            <li class="answer-variants__li">Название птицы</li>
-            <li class="answer-variants__li">Название птицы</li>
           </ol>
         </div>
         <div class="choosed-bird-info">
