@@ -83,8 +83,8 @@ export function returnPlayer(audioSrc) {
   }
   
   function initializeAudio() {
-    const videoDuration = Math.round(audio.duration);
-    const time = formatTime(videoDuration);
+    const audioDuration = Math.round(audio.duration);
+    const time = formatTime(audioDuration);
     duration.innerText = `${time.minutes}:${time.seconds}`;
     duration.setAttribute("datetime", `${time.minutes}m ${time.seconds}s`);
   }

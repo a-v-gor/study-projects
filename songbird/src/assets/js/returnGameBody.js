@@ -6,12 +6,6 @@ export function returnGameBody() {
         <div class="top-panel__questions">
           <h2 class="top-panel game-title">Вопросы</h2>
           <ul class="top-panel__questions-ul">
-            <li class="top-panel__questions-li">Вопрос 1</li>
-            <li class="top-panel__questions-li">Вопрос 2</li>
-            <li class="top-panel__questions-li">Вопрос 3</li>
-            <li class="top-panel__questions-li">Вопрос 4</li>
-            <li class="top-panel__questions-li">Вопрос 5</li>
-            <li class="top-panel__questions-li">Вопрос 6</li>
           </ul>
         </div>
         <div class="top-panel__score">
@@ -24,7 +18,7 @@ export function returnGameBody() {
           <audio class = "player__audio" src="" preload="metadata"></audio>
           <div class="player__controls">
             <button class="player__play-button_paused"></button>
-            <input class="player__progress" type="range" name="progressBar" value="0" min="0" max = "1" step="0.01">
+            <input class="player__progress" type="range" name="progressBar" min="0" max = "1" value="-10" step="0.01">
             <div class="player__volume-group">
               <button class="player__volume-btn"></button>
               <input class="player__input-volume" type="range" name="volume" min="0" max = "1" step="0.01">
@@ -61,10 +55,10 @@ export function returnGameBody() {
                 <audio class = "choosed-bird-player__audio" src="" preload="metadata"></audio>
                 <div class="choosed-bird-player__controls">
                   <button class="choosed-bird-player__play-button_paused"></button>
-                  <input class="choosed-bird-player__progress" type="range" name="progressBar" id="" value="0" min="0" max = "1" step="0.01">
+                  <input class="choosed-bird-player__progress" type="range" name="progressBar" value="0" min="0" max = "1" step="0.01">
                   <div class="choosed-bird-player__volume-group">
                     <button class="choosed-bird-player__volume-btn"></button>
-                    <input class="choosed-bird-player__input-volume" type="range" name="volume" id="" min="0" max = "1" step="0.01">
+                    <input class="choosed-bird-player__input-volume" type="range" name="volume" min="0" max = "1" step="0.01">
                   </div>
                   <div class="choosed-bird-player__time">
                     <time class="choosed-bird-player__time-elapsed">00:00</time>
