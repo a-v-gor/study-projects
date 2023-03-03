@@ -2,13 +2,14 @@ import { createPageHTML } from "./createPageHTML";
 import { returnGameBody } from "./returnGameBody";
 import { makeHeaderActive } from "./makeHeaderActive";
 import { returnPlayer } from "./returnPlayer";
+import { returnAnswerVariants } from "./returnAnswerVariants";
 import birdsData from "./birds";
 
 export function returnGamePage() {
   createPageHTML(returnGameBody());
   makeHeaderActive();
 
-  const answerVariants = document.querySelector(".answer-variants__ol");
+  
 
   const variants = {};
   for (let i = 0; i < birdsData.length; i++) {
@@ -26,15 +27,11 @@ export function returnGamePage() {
     document.querySelector(".top-panel__questions-ul").append(questionText);
   }
 
-  // Вывод вариантов ответов
-  for (let i = 0; i < 6; i++) {
-    const answerVariant = document.createElement("li");
-    answerVariant.classList.add("answer-variants__li");
-    answerVariant.innerHTML = variant[i].name;
-    answerVariants.append(answerVariant);
-  }
-
   returnPlayer(variant[0].audio);
+  
+  // Вывод вариантов ответов
+  returnAnswerVariants(variant);  
+
 
   function showVariant() {
     console.log(this.innerHTML);
