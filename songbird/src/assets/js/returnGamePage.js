@@ -6,18 +6,37 @@ import { returnAnswerVariants } from "./returnAnswerVariants";
 import birdsData from "./birds";
 
 export function returnGamePage() {
+  console.clear();
   createPageHTML(returnGameBody());
   makeHeaderActive();
 
-  
+  const playBtn = document.querySelector(".player__play-button_paused");
+  let newGame = true;
+  let correctAnswer;
+  let countVariants = 0;
+  let variant = {};
 
-  const variants = {};
-  for (let i = 0; i < birdsData.length; i++) {
-    variants[i] = birdsData[i];
+  function startNewGame() {
+    if (newGame) {
+      newGame = false;
+      makeAnswersActive();
+    }
+    return;
   }
 
-  console.log(variants[0]);
-  const variant = variants[0];
+  function returnNewVariant() {
+    console.log(countVariants);
+    if (countVariants < 6) {
+      alert("Вариант!");
+      variant = birdsData[countVariants];
+      console.log(variant);
+
+      correctAnswer = birdsData[countVariants].innerHTML;
+      countVariants++;
+    } else {
+      alert("Варианты закончились!");
+    }
+  }
 
   // Вывод списка вопросов
   for (let i = 0; i < 6;) {
@@ -27,17 +46,21 @@ export function returnGamePage() {
     document.querySelector(".top-panel__questions-ul").append(questionText);
   }
 
-  returnPlayer(variant[0].audio);
-  
-  // Вывод вариантов ответов
-  returnAnswerVariants(variant);  
-
-
   function showVariant() {
     console.log(this.innerHTML);
+    console.log(this.innerHTML === correctAnswer);
   }
+
+  function makeAnswersActive() {
+    for(let answerVariant of document.querySelectorAll(".answer-variants__li")) {
+      answerVariant.addEventListener("click", showVariant);
+    }
+  }
+
+  returnNewVariant();
+  returnPlayer(variant[0].audio);
+  returnAnswerVariants(variant);
   
-  for(let answerVariant of document.querySelectorAll(".answer-variants__li")) {
-    answerVariant.addEventListener("click", showVariant);
-  }
+  playBtn.addEventListener("click", startNewGame);
+  
 }
