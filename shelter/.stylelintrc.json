@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-order-htmlacademy"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ]
+}
