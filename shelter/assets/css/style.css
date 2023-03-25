@@ -29,6 +29,21 @@ html {
   margin: 0 auto;
 }
 
+/* Buttons */
+.link-btn {
+  display: block;
+  width: 20.7rem;
+  padding: 1.5rem 4.5rem;
+  font-size: 1.7rem;
+  line-height: 1.3;
+  font-family: "Georgia", serif;
+  color: #292929;
+  text-decoration: none;
+  letter-spacing: 0.1rem;
+  background-color: #f1cdb3;
+  border-radius: 100px;
+}
+
 /* Header */
 .header {
   position: absolute;
@@ -58,7 +73,7 @@ html {
   font-weight: 400;
   font-size: 3.2rem;
   line-height: 3.52rem;
-  font-family: "Georgia", "Times New Roman", "Times", serif;
+  font-family: "Georgia", serif;
   color: #f1cdb3;
   letter-spacing: 0.06em;
   margin-block-start: 0;
@@ -104,8 +119,52 @@ html {
 }
 
 /* Main */
+/* Main__Not-only */
 .not-only {
   background: url("../img/noise_transparent@2x.png"), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+}
+
+.not-only__wrapper {
+  padding-top: 18rem;
+}
+
+.not-only__article {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 27.7rem min-content 1fr;
+  gap: 4.2rem;
+}
+
+.article__title {
+  display: block;
+  align-self: end;
+  grid-area: 1/1/2/2;
+  max-width: 32rem;
+  font-weight: 400;
+  font-size: 4.4rem;
+  line-height: 1.3;
+  font-family: "Georgia", serif;
+  color: #ffffff;
+}
+
+.article__text {
+  display: block;
+  grid-area: 2/1/3/2;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-family: "Arial", sans-serif;
+  text-align: justify;
+  color: #cdcdcd;
+}
+
+.not-only__img {
+  display: block;
+  grid-area: 1/2/4/3;
+}
+
+.not-only__btn {
+  align-self: start;
+  grid-area: 3/1/4/2;
 }
 
 /*# sourceMappingURL=style.css.map */
