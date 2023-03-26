@@ -34,7 +34,7 @@ html {
 /* Buttons */
 .link-btn {
   display: block;
-  width: 20.7rem;
+  width: 20.8rem;
   padding: 1.5rem 4.5rem;
   font-size: 1.7rem;
   line-height: 1.3;
@@ -49,9 +49,11 @@ html {
 /* Article */
 .article__title {
   font-weight: 400;
-  font-size: 4.4rem;
+  font-size: 3.5rem;
   line-height: 1.3;
   font-family: "Georgia", serif;
+  color: #545454;
+  letter-spacing: 0.06em;
 }
 
 .article__text {
@@ -156,7 +158,9 @@ html {
   align-self: end;
   grid-area: 1/1/2/2;
   max-width: 32rem;
+  font-size: 4.4rem;
   color: #ffffff;
+  letter-spacing: normal;
 }
 
 .not-only__article-text {
@@ -196,10 +200,6 @@ html {
 
 .about__article-title {
   max-width: 37rem;
-  font-size: 3.5rem;
-  line-height: 1.3;
-  color: #545454;
-  letter-spacing: 0.06em;
 }
 
 /* our-friends */
@@ -215,14 +215,7 @@ html {
 
 .our-friends__title {
   max-width: 40rem;
-  margin: 0 auto;
-  font-weight: 400;
-  font-size: 3.5rem;
-  line-height: 1.3;
-  font-family: "Georgia", serif;
   text-align: center;
-  color: #545454;
-  letter-spacing: 0.06em;
 }
 
 .our-friends__slider {
