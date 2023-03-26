@@ -13,6 +13,7 @@
 }
 html {
   font-size: 62.5%;
+  font-family: "Georgia", serif;
   scroll-behavior: smooth;
 }
 
@@ -38,7 +39,6 @@ html {
   padding: 1.5rem 4.5rem;
   font-size: 1.7rem;
   line-height: 1.3;
-  font-family: "Georgia", serif;
   color: #292929;
   text-decoration: none;
   letter-spacing: 0.06em;
@@ -51,7 +51,6 @@ html {
   font-weight: 400;
   font-size: 3.5rem;
   line-height: 1.3;
-  font-family: "Georgia", serif;
   color: #545454;
   letter-spacing: 0.06em;
 }
@@ -91,7 +90,6 @@ html {
   font-weight: 400;
   font-size: 3.2rem;
   line-height: 3.52rem;
-  font-family: "Georgia", serif;
   color: #f1cdb3;
   letter-spacing: 0.06em;
   margin-block-start: 0;
@@ -271,7 +269,6 @@ html {
 
 .our-friends__pet-text {
   font-size: 2rem;
-  font-family: "Georgia", serif;
   color: #545454;
   letter-spacing: 0.06em;
 }
@@ -285,6 +282,64 @@ html {
 
 .our-friends-btn {
   width: max-content;
+}
+
+/* Help */
+.help__wrapper {
+  flex-direction: column;
+  align-items: center;
+  row-gap: 60px;
+}
+
+.help__title {
+  max-width: 31rem;
+  text-align: center;
+}
+
+.help__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 12rem;
+  row-gap: 5.4rem;
+}
+
+.help__card {
+  min-width: 60px;
+  padding-top: 90px;
+  font-size: 2rem;
+  text-align: center;
+  color: #545454;
+  letter-spacing: 0.06em;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+.help__card:nth-child(1) {
+  background-image: url("../svg/icon-pet-food.svg");
+}
+.help__card:nth-child(2) {
+  background-image: url("../svg/icon-transportation.svg");
+}
+.help__card:nth-child(3) {
+  background-image: url("../svg/icon-toys.svg");
+}
+.help__card:nth-child(4) {
+  background-image: url("../svg/icon-bowls-and-cups.svg");
+}
+.help__card:nth-child(5) {
+  background-image: url("../svg/icon-shampoos.svg");
+}
+.help__card:nth-child(6) {
+  background-image: url("../svg/icon-vitamins.svg");
+}
+.help__card:nth-child(7) {
+  background-image: url("../svg/icon-medicines.svg");
+}
+.help__card:nth-child(8) {
+  background-image: url("../svg/icon-collars-leashes.svg");
+}
+.help__card:nth-child(9) {
+  background-image: url("../svg/icon-sleeping-area.svg");
 }
 
 /*# sourceMappingURL=style.css.map */
