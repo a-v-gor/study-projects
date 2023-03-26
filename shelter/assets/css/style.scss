@@ -3,23 +3,28 @@ $color-light-s: #fafafa;
 $color-light-l: #f6f6f6;
 $color-dark-s: #cdcdcd;
 $color-dark-l: #545454;
+$color-dark-m: #b2b2b2;
 $color-dark-3xl: #292929;
 $color-primary: #f1cdb3;
 
 /* Common */
 
 @font-face {
-  font-weight: 400;
-  font-family: "Georgia", serif;
-  font-style: normal;
-  src: url("../fonts/georgia-regular.ttf");
-}
-
-@font-face {
-  font-weight: 400;
   font-family: "Arial", sans-serif;
   font-style: normal;
   src: url("../fonts/arial-regular.ttf");
+}
+
+@font-face {
+  font-family: "Arial", sans-serif;
+  font-style: italic;
+  src: url("../fonts/arial-italic.ttf");
+}
+
+@font-face {
+  font-family: "Georgia", serif;
+  font-style: normal;
+  src: url("../fonts/georgia-regular.ttf");
 }
 
 html {
@@ -60,6 +65,11 @@ html {
 
 /* Article */
 
+.article {
+  display: flex;
+  flex-direction: column;
+}
+
 .article__title {
   font-weight: 400;
   font-size: 3.5rem;
@@ -72,6 +82,7 @@ html {
   font-size: 1.5rem;
   line-height: 1.6;
   font-family: "Arial", sans-serif;
+  font-style: normal;
 }
 
 /* Header */
@@ -209,8 +220,6 @@ html {
 }
 
 .about__article {
-  display: flex;
-  flex-direction: column;
   row-gap: 2.5rem;
   max-width: 43rem;
 }
@@ -370,4 +379,51 @@ html {
   &:nth-child(9) {
     background-image: url("../svg/icon-sleeping-area.svg");
   }
+}
+
+/* In-addition */
+
+.in-addition__wrapper {
+  justify-content: center;
+  align-items: center;
+  column-gap: 3rem;
+}
+
+.in-addition__article {
+  max-width: 38rem;
+  row-gap: 2rem;
+}
+
+.in-addition__title {
+  max-width: 30rem;
+}
+
+.in-addition__bank-name {
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+}
+
+.in-addition__link {
+  text-decoration: none;
+}
+
+.in-addition__card-number {
+  width: fit-content;
+  padding: 1rem 1.5rem 1rem 6rem;
+  font-size: 2rem;
+  color: $color-dark-l;
+  letter-spacing: 0.06em;
+  background-color: $color-primary;
+  background-image: url("../svg/credit-card.svg");
+  background-repeat: no-repeat;
+  background-position: 1.5rem center;
+  border-radius: 0.9rem;
+}
+
+.in-addition__description {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: $color-dark-m;
+  font-style: italic;
 }
