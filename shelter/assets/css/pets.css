@@ -1,6 +1,6 @@
 .header {
   position: static;
-  padding: 3rem 4rem;
+  padding: 3rem 4rem 3.4rem;
   background-color: #ffffff;
 }
 
@@ -16,6 +16,37 @@
 }
 .nav__link_active {
   color: #292929;
+}
+
+.our-friends__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 4rem;
+  row-gap: 3.1rem;
+}
+.our-friends__cards-arrows {
+  display: flex;
+  margin-bottom: 0.2rem;
+  column-gap: 2rem;
+}
+.our-friends__nav-elem:disabled {
+  border-color: #cdcdcd;
+}
+
+.double-arr,
+.single-arr,
+.num-page {
+  padding-bottom: 0.3em;
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+}
+
+.num-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1cdb3;
 }
 
 /*# sourceMappingURL=pets.css.map */
