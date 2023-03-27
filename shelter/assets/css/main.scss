@@ -61,7 +61,7 @@ html {
   text-decoration: none;
   letter-spacing: 0.06em;
   background-color: $color-primary;
-  border-radius: 100px;
+  border-radius: 10rem;
 
   &:hover {
     background-color: $color-primary-light;
@@ -117,7 +117,7 @@ html {
 .logo {
   display: flex;
   flex-direction: column;
-  row-gap: 11px;
+  row-gap: 1.2rem;
   align-items: center;
 
   &__title {
@@ -131,7 +131,7 @@ html {
   }
 
   &__subtitle {
-    padding-left: 3px;
+    padding-left: 0.3rem;
     font-size: 1.3rem;
     line-height: 0.7;
     font-family: "Arial", sans-serif;
@@ -172,9 +172,9 @@ html {
   }
 
   &__link_active {
-    padding-bottom: 0.3rem;
+    padding-bottom: 0.2rem;
     color: $color-light-s;
-    border-bottom: 3px solid $color-primary;
+    border-bottom: 0.3rem solid $color-primary;
 
     &:hover {
       cursor: default;
@@ -273,14 +273,14 @@ html {
     column-gap: 5.3rem;
   }
 
-  &__arr {
+  &__nav-elem {
     display: block;
-    width: 52px;
-    height: 52px;
+    width: 5.2rem;
+    height: 5.2rem;
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
-    border: 2px solid $color-primary;
+    border: 0.2rem solid $color-primary;
     border-radius: 50%;
 
     &:hover {
@@ -307,6 +307,7 @@ html {
     align-items: center;
     min-width: 27rem;
     min-height: 43.5rem;
+    overflow: hidden;
     background-color: $color-light-s;
     row-gap: 3rem;
     border-radius: 0.9rem;
@@ -321,10 +322,6 @@ html {
       background-color: $color-primary-light;
       border-color: $color-primary-light;
     }
-  }
-
-  &__pet-img {
-    border-radius: 0.9rem;
   }
 
   &__card-link {
@@ -355,7 +352,7 @@ html {
   &__wrapper {
     flex-direction: column;
     align-items: center;
-    row-gap: 60px;
+    row-gap: 6rem;
   }
 
   &__title {
@@ -372,8 +369,8 @@ html {
   }
 
   &__card {
-    min-width: 60px;
-    padding-top: 90px;
+    min-width: 6rem;
+    padding-top: 9rem;
     font-size: 2rem;
     text-align: center;
     color: $color-dark-l;
@@ -489,7 +486,7 @@ html {
   }
 
   &__article {
-    padding-top: 16px;
+    padding-top: 1.6rem;
     row-gap: 4rem;
 
     &:nth-child(2) {
@@ -528,7 +525,7 @@ html {
   }
 
   &__map {
-    padding-left: 42px;
+    padding-left: 4.2rem;
     background-image: url("../svg/icon-marker.svg");
   }
 
