@@ -7,8 +7,14 @@
 .logo__title {
   color: #545454;
 }
+.header__link:hover .logo__title {
+  color: #b2b2b2;
+}
 .logo__subtitle {
   color: #292929;
+}
+.header__link:hover .logo__subtitle {
+  color: #b2b2b2;
 }
 
 .nav__link {
