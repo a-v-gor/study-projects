@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ss": "npx sass --watch assets/css/style.scss assets/css/style.css"
+    "ms": "npx sass --watch assets/css/main.scss assets/css/main.css",
+    "ps": "npx sass --watch assets/css/pets.scss assets/css/pets.css"
   },
   "author": "",
   "license": "ISC",

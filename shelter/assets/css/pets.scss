@@ -1,0 +1,19 @@
+@import "variables";
+
+.logo {
+  &__title {
+    color: $color-dark-l;
+  }
+
+  &__subtitle {
+    color: $color-dark-3xl;
+  }
+}
+
+.nav__link {
+  color: $color-dark-l;
+
+  &_active {
+    color: $color-dark-3xl;
+  }
+}
