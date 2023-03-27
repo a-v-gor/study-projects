@@ -13,7 +13,7 @@
 <body>
   <header class="header">
     <div class="wrapper header__wrapper">
-      <a class="header__link">
+      <a class="header__link" href="./main.html">
         <div class="logo">
           <h1 class="logo__title">Cozy House</h1>
           <div class="logo__subtitle">Shelter for pets in Boston</div>
@@ -26,7 +26,7 @@
         </label>
         <ul class="nav__list">
           <li class="nav__item"><a class="nav__link" href="./main.html">About the shelter</a></li>
-          <li class="nav__item"><a class="nav__link_active" href="./pets.html">Our pets</a></li>
+          <li class="nav__item"><a class="nav__link_active">Our pets</a></li>
           <li class="nav__item"><a class="nav__link" href="./main.html#Help">Help the shelter</a></li>
           <li class="nav__item"><a class="nav__link" href="#Contacts">Contacts</a></li>
         </ul>
@@ -80,14 +80,30 @@
             </div>
           </div>
           <div class="our-friends__cards-arrows">
-            <button class="our-friends__nav-elem double-arr" type="button" disabled><<</button>
-            <button class="our-friends__nav-elem single-arr" type="button" disabled><</button>
+            <button class="our-friends__nav-elem double-arr" type="button" disabled>&lt;&lt;</button>
+            <button class="our-friends__nav-elem single-arr" type="button" disabled>&lt;</button>
             <div class="our-friends__nav-elem num-page">1</div>
-            <button class="our-friends__nav-elem single-arr" type="button">></button>
-            <button class="our-friends__nav-elem double-arr" type="button">>></button>
+            <button class="our-friends__nav-elem single-arr" type="button">&gt;</button>
+            <button class="our-friends__nav-elem double-arr" type="button">&gt;&gt;</button>
           </div>
       </section>
     </div>
   </main>
+  <footer class="footer">
+    <section class="wrapper footer__wrapper">
+      <h2 class="footer__title" id="Contacts">Contacts</h2>
+      <article class="article footer__article">
+        <h3 class="article__title footer__article-title">For questions and suggestions</h3>
+        <a class="footer__link footer__email" href="mailto:email@shelter.com">email@shelter.com</a>
+        <a class="footer__link footer__phone" href="tel:+136745677554">+13 674 567 75 54</a>
+      </article>
+      <article class="article footer__article">
+        <h3 class="article__title footer__article-title">We are waiting for your visit</h3>
+        <a class="footer__link footer__map" href="https://goo.gl/maps/iLHHFW286bYtNzFV9" target="_blank">1 Central Street, Boston (entrance from the store)</a>
+        <a class="footer__link footer__map" href="https://goo.gl/maps/wZU73shaes9WnDFG9" target="_blank">18 South Park, London</a>
+      </article>
+      <div class="footer__picture"></div>
+    </section>
+  </footer>
 </body>
 </html>

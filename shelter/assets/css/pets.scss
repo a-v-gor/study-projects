@@ -19,12 +19,20 @@
 .nav__link {
   color: $color-dark-l;
 
-  &_active {
+  &:hover {
     color: $color-dark-3xl;
+  }
+
+  &_active {
+    color: $color-dark-l;
   }
 }
 
 .our-friends {
+  &__wrapper {
+    padding-bottom: 9.6rem;
+  }
+
   &__cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -41,6 +49,11 @@
 
   &__nav-elem:disabled {
     border-color: $color-dark-s;
+
+    &:hover {
+      background-color: transparent;
+      cursor: default;
+    }
   }
 }
 
@@ -57,4 +70,10 @@
   justify-content: center;
   align-items: center;
   background-color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    cursor: default;
+  }
 }

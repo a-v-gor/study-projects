@@ -14,10 +14,16 @@
 .nav__link {
   color: #545454;
 }
-.nav__link_active {
+.nav__link:hover {
   color: #292929;
 }
+.nav__link_active {
+  color: #545454;
+}
 
+.our-friends__wrapper {
+  padding-bottom: 9.6rem;
+}
 .our-friends__cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -33,6 +39,10 @@
 .our-friends__nav-elem:disabled {
   border-color: #cdcdcd;
 }
+.our-friends__nav-elem:disabled:hover {
+  background-color: transparent;
+  cursor: default;
+}
 
 .double-arr,
 .single-arr,
@@ -47,6 +57,11 @@
   justify-content: center;
   align-items: center;
   background-color: #f1cdb3;
+}
+.num-page:hover {
+  background-color: #f1cdb3;
+  border-color: #f1cdb3;
+  cursor: default;
 }
 
 /*# sourceMappingURL=pets.css.map */
