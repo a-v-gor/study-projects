@@ -130,7 +130,7 @@ html {
   display: flex;
   column-gap: 3.6rem;
 }
-.nav__item, .nav__item_active {
+.nav__item {
   list-style-type: none;
 }
 .nav__link, .nav__link_active {
