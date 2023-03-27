@@ -1,3 +1,9 @@
+.header {
+  position: static;
+  padding: 3rem 4rem;
+  background-color: #ffffff;
+}
+
 .logo__title {
   color: #545454;
 }

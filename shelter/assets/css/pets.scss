@@ -1,5 +1,11 @@
 @import "variables";
 
+.header {
+  position: static;
+  padding: 3rem 4rem;
+  background-color: $color-light-xl;
+}
+
 .logo {
   &__title {
     color: $color-dark-l;
