@@ -385,6 +385,10 @@ html {
   background-position: 1.5rem center;
   border-radius: 0.9rem;
 }
+.in-addition__card-number:hover {
+  color: #292929;
+  background-color: #fddcc4;
+}
 .in-addition__description {
   font-size: 1.2rem;
   line-height: 1.5;

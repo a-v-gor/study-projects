@@ -467,6 +467,11 @@ html {
     background-repeat: no-repeat;
     background-position: 1.5rem center;
     border-radius: 0.9rem;
+
+    &:hover {
+      color: $color-dark-3xl;
+      background-color: $color-primary-light;
+    }
   }
 
   &__description {
