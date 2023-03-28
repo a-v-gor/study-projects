@@ -434,6 +434,9 @@ html {
   background-repeat: no-repeat;
   background-position: 0 center;
 }
+.footer__link:hover {
+  color: #fddcc4;
+}
 .footer__email {
   background-image: url("../svg/icon-email.svg");
 }
