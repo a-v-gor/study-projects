@@ -36,9 +36,9 @@ html {
 
 .wrapper {
   display: flex;
-  max-width: 120rem;
+  max-width: 126rem;
   margin: 0 auto;
-  padding: 8rem 0 10rem;
+  padding: 8rem 3rem 10rem;
 }
 
 .left-arr {
@@ -100,7 +100,7 @@ html {
   &__wrapper {
     justify-content: space-between;
     align-items: center;
-    padding: 0;
+    padding: 0 3rem;
   }
 
   &__link {
@@ -198,7 +198,13 @@ html {
   background: url("../img/noise_transparent@2x.png"), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 
   &__wrapper {
-    padding: 18rem 0 0;
+    padding-top: 18rem;
+    padding-bottom: 0;
+
+    @media (max-width: 999px) {
+      max-width: 52rem;
+      padding-top: 15rem;
+    }
   }
 
   &__article {
@@ -206,6 +212,12 @@ html {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 27.7rem min-content 1fr;
     gap: 4.2rem;
+
+    @media (max-width: 999px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__article-title {
@@ -216,6 +228,10 @@ html {
     font-size: 4.4rem;
     color: $color-light-xl;
     letter-spacing: normal;
+
+    @media (max-width: 999px) {
+      align-self: flex-start;
+    }
   }
 
   &__article-text {
@@ -228,11 +244,23 @@ html {
   &__img {
     display: block;
     grid-area: 1 / 2 / 4 / 3;
+    max-width: 55vw;
+
+    @media (max-width: 999px) {
+      position: relative;
+      right: -2rem;
+      align-self: flex-end;
+      max-width: 70vw;
+    }
   }
 
   &__btn {
     align-self: start;
     grid-area: 3 / 1 / 4 / 2;
+
+    @media (max-width: 999px) {
+      align-self: center;
+    }
   }
 }
 
