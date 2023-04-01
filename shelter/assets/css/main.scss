@@ -39,6 +39,10 @@ html {
   max-width: 126rem;
   margin: 0 auto;
   padding: 8rem 3rem 10rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 4.2rem 1rem;
+  }
 }
 
 .left-arr {
@@ -80,6 +84,11 @@ html {
     line-height: 1.3;
     color: $color-dark-l;
     letter-spacing: 0.06em;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 2.5rem;
+      text-align: center;
+    }
   }
 
   &__text {
@@ -101,6 +110,10 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 0 3rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 0 2rem;
+    }
   }
 
   &__link {
@@ -153,11 +166,89 @@ html {
 .nav {
   &__menu-toggle {
     display: none;
+
+    &:checked ~ .nav__menu-btn {
+      position: fixed;
+      top: 4.5rem;
+      right: 2.1rem;
+    }
+
+    &:checked ~ .nav__menu-btn > .nav__menu-sign {
+      transform: rotate(90deg);
+    }
+
+    &:checked ~ .nav__menu-btn > .nav__menu-sign::before {
+      top: -10px;
+      transform: rotate(0);
+    }
+
+    &:checked ~ .nav__menu-btn > .nav__menu-sign::after {
+      top: 10px;
+      transform: rotate(0);
+    }
+  }
+
+  &__menu-btn {
+    @media (max-width: $breakpoint-tablet) {
+      position: absolute;
+      top: 1.4rem;
+      right: 2rem;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      transition: all 0s;
+
+      & > .nav__menu-sign,
+      & > .nav__menu-sign::before,
+      & > .nav__menu-sign::after {
+        position: absolute;
+        width: 3rem;
+        height: 0.2rem;
+        background-color: $color-primary;
+      }
+
+      & > .nav__menu-sign::before {
+        content: "";
+        top: -1rem;
+      }
+
+      & > .nav__menu-sign::after {
+        content: "";
+        top: 1rem;
+      }
+    }
   }
 
   &__list {
     display: flex;
     column-gap: 3.6rem;
+
+    @media (max-width: $breakpoint-tablet) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 32rem;
+      height: 100%;
+      padding: 0;
+      row-gap: 5.5rem;
+      overflow-y: auto;
+      background-color: $color-dark-3xl;
+      box-shadow: 0 0 0 9999px rgba(41, 41, 41, 0.6);
+      visibility: hidden;
+
+      .nav__menu-toggle:checked ~ & {
+        right: 0;
+        visibility: visible;
+      }
+    }
   }
 
   &__item {
@@ -169,6 +260,10 @@ html {
     font-size: 1.5rem;
     font-family: "Arial", sans-serif;
     text-decoration: none;
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 3.2rem;
+    }
   }
 
   &__link {
@@ -183,6 +278,14 @@ html {
     padding-bottom: 0.2rem;
     color: $color-light-s;
     border-bottom: 0.3rem solid $color-primary;
+
+    @media (max-width: $breakpoint-tablet) {
+      padding-bottom: 0.4rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-bottom: 0.8rem;
+    }
 
     &:hover {
       cursor: default;
@@ -201,7 +304,7 @@ html {
     padding-top: 18rem;
     padding-bottom: 0;
 
-    @media (max-width: 999px) {
+    @media (max-width: $breakpoint-desktop) {
       justify-content: center;
       padding-top: 15rem;
     }
@@ -213,11 +316,15 @@ html {
     gap: 4.2rem;
     width: 100%;
 
-    @media (max-width: 999px) {
+    @media (max-width: $breakpoint-desktop) {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 10.5rem;
     }
   }
 
@@ -228,19 +335,22 @@ html {
     max-width: 46rem;
     padding-top: 16.3rem;
 
-    @media (max-width: 999px) {
+    @media (max-width: $breakpoint-desktop) {
       padding-top: 0;
     }
   }
 
   &__article-title {
     display: block;
-    max-width: 32rem;
-    font-size: 4.4rem;
     color: $color-light-xl;
-    letter-spacing: normal;
 
-    @media (max-width: 999px) {
+    @media (min-width: $breakpoint-mobile) {
+      max-width: 32rem;
+      font-size: 4.4rem;
+      letter-spacing: normal;
+    }
+
+    @media (max-width: $breakpoint-desktop) {
       align-self: auto;
     }
   }
@@ -250,13 +360,17 @@ html {
     grid-area: 2 / 1 / 3 / 2;
     text-align: justify;
     color: $color-dark-s;
+
+    @media (max-width: $breakpoint-mobile) {
+      text-align: center;
+    }
   }
 
   &__btn {
     align-self: start;
     grid-area: 3 / 1 / 4 / 2;
 
-    @media (max-width: 999px) {
+    @media (max-width: $breakpoint-desktop) {
       align-self: center;
     }
   }
@@ -265,9 +379,12 @@ html {
     display: block;
     max-width: 55vw;
 
-    @media (max-width: 999px) {
+    @media (max-width: $breakpoint-desktop) {
+      @media (min-width: $breakpoint-mobile) {
+        max-width: 74vw;
+      }
       align-self: flex-end;
-      max-width: 74vw;
+      max-width: 81.3vw;
     }
   }
 }
