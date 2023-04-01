@@ -202,35 +202,46 @@ html {
     padding-bottom: 0;
 
     @media (max-width: 999px) {
-      max-width: 52rem;
+      justify-content: center;
       padding-top: 15rem;
     }
   }
 
   &__article {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 27.7rem min-content 1fr;
+    display: flex;
+    flex-direction: row;
     gap: 4.2rem;
+    width: 100%;
 
     @media (max-width: 999px) {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 10rem;
+    }
+  }
+
+  &__article-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4.2rem;
+    max-width: 46rem;
+    padding-top: 16.3rem;
+
+    @media (max-width: 999px) {
+      padding-top: 0;
     }
   }
 
   &__article-title {
     display: block;
-    align-self: end;
-    grid-area: 1 / 1 / 2 / 2;
     max-width: 32rem;
     font-size: 4.4rem;
     color: $color-light-xl;
     letter-spacing: normal;
 
     @media (max-width: 999px) {
-      align-self: flex-start;
+      align-self: auto;
     }
   }
 
@@ -241,25 +252,22 @@ html {
     color: $color-dark-s;
   }
 
-  &__img {
-    display: block;
-    grid-area: 1 / 2 / 4 / 3;
-    max-width: 55vw;
-
-    @media (max-width: 999px) {
-      position: relative;
-      right: -2rem;
-      align-self: flex-end;
-      max-width: 70vw;
-    }
-  }
-
   &__btn {
     align-self: start;
     grid-area: 3 / 1 / 4 / 2;
 
     @media (max-width: 999px) {
       align-self: center;
+    }
+  }
+
+  &__img {
+    display: block;
+    max-width: 55vw;
+
+    @media (max-width: 999px) {
+      align-self: flex-end;
+      max-width: 74vw;
     }
   }
 }
