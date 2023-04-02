@@ -68,6 +68,9 @@ html {
 /* Article */
 .article {
   display: flex;
+}
+.article__text-wrap {
+  display: flex;
   flex-direction: column;
 }
 .article__title {
@@ -359,15 +362,17 @@ html {
 /* about */
 .about__wrapper {
   justify-content: center;
-  align-items: center;
-  column-gap: 12rem;
 }
 .about__img {
   display: block;
 }
 .about__article {
-  row-gap: 2.5rem;
+  align-items: center;
+  column-gap: 12rem;
+}
+.about__article-text-wrap {
   max-width: 43rem;
+  gap: 2.5rem;
 }
 .about__article-title {
   max-width: 37rem;

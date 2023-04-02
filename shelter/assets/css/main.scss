@@ -76,7 +76,11 @@ html {
 
 .article {
   display: flex;
-  flex-direction: column;
+
+  &__text-wrap {
+    display: flex;
+    flex-direction: column;
+  }
 
   &__title {
     font-weight: 400;
@@ -394,8 +398,6 @@ html {
 .about {
   &__wrapper {
     justify-content: center;
-    align-items: center;
-    column-gap: 12rem;
   }
 
   &__img {
@@ -403,8 +405,13 @@ html {
   }
 
   &__article {
-    row-gap: 2.5rem;
-    max-width: 43rem;
+    align-items: center;
+    column-gap: 12rem;
+
+    &-text-wrap {
+      max-width: 43rem;
+      gap: 2.5rem;
+    }
   }
 
   &__article-title {
