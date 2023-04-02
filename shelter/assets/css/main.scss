@@ -101,6 +101,12 @@ html {
     font-family: "Arial", sans-serif;
     font-style: normal;
   }
+
+  &__img {
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 81.3vw;
+    }
+  }
 }
 
 /* Header */
@@ -381,14 +387,19 @@ html {
 
   &__img {
     display: block;
-    max-width: 55vw;
 
     @media (max-width: $breakpoint-desktop) {
-      @media (min-width: $breakpoint-mobile) {
+      align-self: flex-end;
+
+      @media (min-width: $breakpoint-tablet) {
         max-width: 74vw;
       }
-      align-self: flex-end;
-      max-width: 81.3vw;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      @media (min-width: $breakpoint-mobile) {
+        max-width: 55vw;
+      }
     }
   }
 }
@@ -406,16 +417,40 @@ html {
 
   &__article {
     align-items: center;
-    column-gap: 12rem;
+    gap: 12rem;
 
-    &-text-wrap {
-      max-width: 43rem;
-      gap: 2.5rem;
+    @media (max-width: $breakpoint-desktop) {
+      flex-direction: column-reverse;
+      gap: 8rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 4rem;
+    }
+  }
+
+  &__article-text-wrap {
+    max-width: 43rem;
+    gap: 2.5rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 2.2rem;
     }
   }
 
   &__article-title {
     max-width: 37rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      margin-bottom: 0.3rem;
+    }
+  }
+
+  &__article-text {
+    @media (max-width: $breakpoint-mobile) {
+      padding: 0 1.5rem;
+      text-align: justify;
+    }
   }
 }
 
