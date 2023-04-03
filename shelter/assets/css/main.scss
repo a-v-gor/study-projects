@@ -611,11 +611,19 @@ html {
     flex-direction: column;
     align-items: center;
     row-gap: 6rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      row-gap: 4.2rem;
+    }
   }
 
   &__title {
     max-width: 31rem;
     text-align: center;
+
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 27rem;
+    }
   }
 
   &__cards {
@@ -624,6 +632,18 @@ html {
     justify-content: center;
     column-gap: 12rem;
     row-gap: 5.4rem;
+
+    @media (max-width: $breakpoint-desktop) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8.4vw;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 2.9rem;
+      column-gap: 11.4vw;
+    }
   }
 
   &__card {
@@ -670,6 +690,12 @@ html {
 
     &:nth-child(9) {
       background-image: url("../svg/icon-sleeping-area.svg");
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-top: 7rem;
+      font-size: 1.5rem;
+      background-size: 5rem;
     }
   }
 }

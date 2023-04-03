@@ -557,9 +557,19 @@ html {
   align-items: center;
   row-gap: 6rem;
 }
+@media (max-width: 429px) {
+  .help__wrapper {
+    row-gap: 4.2rem;
+  }
+}
 .help__title {
   max-width: 31rem;
   text-align: center;
+}
+@media (max-width: 429px) {
+  .help__title {
+    max-width: 27rem;
+  }
 }
 .help__cards {
   display: flex;
@@ -567,6 +577,20 @@ html {
   justify-content: center;
   column-gap: 12rem;
   row-gap: 5.4rem;
+}
+@media (max-width: 999px) {
+  .help__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8.4vw;
+  }
+}
+@media (max-width: 429px) {
+  .help__cards {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2.9rem;
+    column-gap: 11.4vw;
+  }
 }
 .help__card {
   min-width: 6rem;
@@ -604,6 +628,13 @@ html {
 }
 .help__card:nth-child(9) {
   background-image: url("../svg/icon-sleeping-area.svg");
+}
+@media (max-width: 429px) {
+  .help__card {
+    padding-top: 7rem;
+    font-size: 1.5rem;
+    background-size: 5rem;
+  }
 }
 
 /* In-addition */
