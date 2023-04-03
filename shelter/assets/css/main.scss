@@ -399,19 +399,19 @@ html {
 
   &__img {
     display: block;
-    max-width: 55vw;
+    max-width: 81.3vw;
 
-    @media (max-width: $breakpoint-desktop) {
+    @media (max-width: 1200px) {
       align-self: flex-end;
 
-      @media (min-width: $breakpoint-tablet) {
-        max-width: 74vw;
+      @media (min-width: $breakpoint-desktop) {
+        max-width: 55vw;
       }
     }
 
-    @media (max-width: $breakpoint-tablet) {
-      @media (min-width: $breakpoint-mobile) {
-        max-width: 55vw;
+    @media (max-width: $breakpoint-desktop) {
+      @media (min-width: 700px) {
+        max-width: 56.8rem;
       }
     }
   }
@@ -547,10 +547,6 @@ html {
   &__cards {
     display: flex;
     justify-content: space-between;
-
-    @media (max-width: 1099px) {
-      justify-content: space-evenly;
-    }
 
     @media (max-width: 739px) {
       justify-content: center;
@@ -825,16 +821,17 @@ html {
   &__wrapper {
     justify-content: space-between;
     padding: 4rem 3rem 0;
+    column-gap: 6rem;
 
-    @media (max-width: $breakpoint-desktop) {
+    @media (max-width: 1064px) {
       flex-wrap: wrap;
-      justify-content: space-evenly;
-      padding: 1.5rem 0 0;
+      justify-content: center;
+      padding-top: 1.5rem;
       row-gap: 6.3rem;
     }
 
     @media (max-width: $breakpoint-mobile) {
-      padding-top: 3rem;
+      padding: 3rem 0 0;
       row-gap: 4.1rem;
     }
   }
