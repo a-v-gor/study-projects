@@ -785,7 +785,7 @@ html {
 }
 @media (max-width: 429px) {
   .footer__article:nth-child(3) {
-    row-gap: 3.8rem;
+    row-gap: 4rem;
   }
 }
 @media (max-width: 429px) {
@@ -800,6 +800,7 @@ html {
   .footer__article-title {
     align-self: center;
     max-width: 27rem;
+    line-height: 1.26;
   }
 }
 .footer__link {

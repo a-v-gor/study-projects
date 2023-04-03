@@ -854,7 +854,7 @@ html {
       row-gap: 3.3rem;
 
       @media (max-width: $breakpoint-mobile) {
-        row-gap: 3.8rem;
+        row-gap: 4rem;
       }
     }
 
@@ -869,6 +869,7 @@ html {
     @media (max-width: $breakpoint-mobile) {
       align-self: center;
       max-width: 27rem;
+      line-height: 1.26;
     }
   }
 
