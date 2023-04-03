@@ -175,6 +175,9 @@ html {
   top: 10px;
   transform: rotate(0);
 }
+.nav__menu-toggle:checked ~ .nav__list {
+  box-shadow: 0 0 0 9999px rgba(41, 41, 41, 0.6);
+}
 @media (max-width: 729px) {
   .nav__menu-btn {
     position: absolute;
@@ -229,7 +232,7 @@ html {
     row-gap: 5.5rem;
     overflow-y: auto;
     background-color: #292929;
-    box-shadow: 0 0 0 9999px rgba(41, 41, 41, 0.6);
+    box-shadow: none;
     visibility: hidden;
   }
   .nav__menu-toggle:checked ~ .nav__list {
