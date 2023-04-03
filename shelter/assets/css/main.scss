@@ -36,9 +36,13 @@ html {
 
 .wrapper {
   display: flex;
-  max-width: 120rem;
+  max-width: 126rem;
   margin: 0 auto;
-  padding: 8rem 0 10rem;
+  padding: 8rem 3rem 10rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 4.2rem 1rem;
+  }
 }
 
 .left-arr {
@@ -72,7 +76,11 @@ html {
 
 .article {
   display: flex;
-  flex-direction: column;
+
+  &__text-wrap {
+    display: flex;
+    flex-direction: column;
+  }
 
   &__title {
     font-weight: 400;
@@ -80,6 +88,11 @@ html {
     line-height: 1.3;
     color: $color-dark-l;
     letter-spacing: 0.06em;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 2.5rem;
+      text-align: center;
+    }
   }
 
   &__text {
@@ -87,6 +100,14 @@ html {
     line-height: 1.6;
     font-family: "Arial", sans-serif;
     font-style: normal;
+  }
+
+  &__img {
+    max-width: 90vw;
+
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 81.3vw;
+    }
   }
 }
 
@@ -100,7 +121,11 @@ html {
   &__wrapper {
     justify-content: space-between;
     align-items: center;
-    padding: 0;
+    padding: 0 3rem;
+
+    @media (max-width: 767px) {
+      padding: 0 2rem;
+    }
   }
 
   &__link {
@@ -153,11 +178,99 @@ html {
 .nav {
   &__menu-toggle {
     display: none;
+
+    &:checked ~ .nav__menu-btn {
+      position: fixed;
+      top: 4.5rem;
+      right: 2.1rem;
+    }
+
+    &:checked ~ .nav__menu-btn > .nav__menu-sign {
+      transform: rotate(90deg);
+    }
+
+    &:checked ~ .nav__menu-btn > .nav__menu-sign::before {
+      top: -10px;
+      transform: rotate(0);
+    }
+
+    &:checked ~ .nav__menu-btn > .nav__menu-sign::after {
+      top: 10px;
+      transform: rotate(0);
+    }
+
+    &:checked ~ .nav__list {
+      box-shadow: 0 0 0 9999px rgba(41, 41, 41, 0.6);
+    }
+  }
+
+  &__menu-btn {
+    @media (max-width: 767px) {
+      position: absolute;
+      top: 1.4rem;
+      right: 2rem;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      transition: all 0s;
+    }
+  }
+
+  &__menu-sign,
+  &__menu-sign::before,
+  &__menu-sign::after {
+    @media (max-width: 767px) {
+      position: absolute;
+      width: 3rem;
+      height: 0.2rem;
+      background-color: $color-primary;
+    }
+  }
+
+  &__menu-sign::before {
+    @media (max-width: 767px) {
+      content: "";
+      top: -1rem;
+    }
+  }
+
+  &__menu-sign::after {
+    @media (max-width: 767px) {
+      content: "";
+      top: 1rem;
+    }
   }
 
   &__list {
     display: flex;
     column-gap: 3.6rem;
+
+    @media (max-width: 767px) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 32rem;
+      height: 100%;
+      padding: 0;
+      row-gap: 5.5rem;
+      overflow-y: auto;
+      background-color: $color-dark-3xl;
+      box-shadow: none;
+      visibility: hidden;
+
+      .nav__menu-toggle:checked ~ & {
+        right: 0;
+        visibility: visible;
+      }
+    }
   }
 
   &__item {
@@ -169,6 +282,10 @@ html {
     font-size: 1.5rem;
     font-family: "Arial", sans-serif;
     text-decoration: none;
+
+    @media (max-width: 767px) {
+      font-size: 3.2rem;
+    }
   }
 
   &__link {
@@ -184,6 +301,14 @@ html {
     color: $color-light-s;
     border-bottom: 0.3rem solid $color-primary;
 
+    @media (max-width: 767px) {
+      padding-bottom: 0.4rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-bottom: 0.8rem;
+    }
+
     &:hover {
       cursor: default;
     }
@@ -198,24 +323,58 @@ html {
   background: url("../img/noise_transparent@2x.png"), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 
   &__wrapper {
-    padding: 18rem 0 0;
+    padding-top: 18rem;
+    padding-bottom: 0;
+
+    @media (max-width: $breakpoint-desktop) {
+      justify-content: center;
+      padding-top: 15rem;
+    }
   }
 
   &__article {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 27.7rem min-content 1fr;
+    display: flex;
+    flex-direction: row;
     gap: 4.2rem;
+    width: 100%;
+
+    @media (max-width: $breakpoint-desktop) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 10.5rem;
+    }
+  }
+
+  &__article-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4.2rem;
+    max-width: 46rem;
+    padding-top: 16.3rem;
+
+    @media (max-width: $breakpoint-desktop) {
+      padding-top: 0;
+    }
   }
 
   &__article-title {
     display: block;
-    align-self: end;
-    grid-area: 1 / 1 / 2 / 2;
-    max-width: 32rem;
-    font-size: 4.4rem;
     color: $color-light-xl;
-    letter-spacing: normal;
+
+    @media (min-width: $breakpoint-mobile) {
+      max-width: 32rem;
+      font-size: 4.4rem;
+      letter-spacing: normal;
+    }
+
+    @media (max-width: $breakpoint-desktop) {
+      align-self: auto;
+    }
   }
 
   &__article-text {
@@ -223,16 +382,38 @@ html {
     grid-area: 2 / 1 / 3 / 2;
     text-align: justify;
     color: $color-dark-s;
-  }
 
-  &__img {
-    display: block;
-    grid-area: 1 / 2 / 4 / 3;
+    @media (max-width: $breakpoint-mobile) {
+      text-align: center;
+    }
   }
 
   &__btn {
     align-self: start;
     grid-area: 3 / 1 / 4 / 2;
+
+    @media (max-width: $breakpoint-desktop) {
+      align-self: center;
+    }
+  }
+
+  &__img {
+    display: block;
+    max-width: 81.3vw;
+
+    @media (max-width: 1200px) {
+      align-self: flex-end;
+
+      @media (min-width: $breakpoint-desktop) {
+        max-width: 55vw;
+      }
+    }
+
+    @media (max-width: $breakpoint-desktop) {
+      @media (min-width: 700px) {
+        max-width: 56.8rem;
+      }
+    }
   }
 }
 
@@ -241,8 +422,6 @@ html {
 .about {
   &__wrapper {
     justify-content: center;
-    align-items: center;
-    column-gap: 12rem;
   }
 
   &__img {
@@ -250,12 +429,41 @@ html {
   }
 
   &__article {
-    row-gap: 2.5rem;
+    align-items: center;
+    gap: 12rem;
+
+    @media (max-width: $breakpoint-desktop) {
+      flex-direction: column-reverse;
+      gap: 8rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 4rem;
+    }
+  }
+
+  &__article-text-wrap {
     max-width: 43rem;
+    gap: 2.5rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 2.2rem;
+    }
   }
 
   &__article-title {
     max-width: 37rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      margin-bottom: 0.3rem;
+    }
+  }
+
+  &__article-text {
+    @media (max-width: $breakpoint-mobile) {
+      padding: 0 1.5rem;
+      text-align: justify;
+    }
   }
 }
 
@@ -268,6 +476,10 @@ html {
     flex-direction: column;
     row-gap: 6rem;
     align-items: center;
+
+    @media (max-width: $breakpoint-mobile) {
+      row-gap: 4.2rem;
+    }
   }
 
   &__title {
@@ -278,12 +490,26 @@ html {
   &__slider {
     display: flex;
     align-items: center;
+    justify-items: center;
+    width: 100%;
     column-gap: 5.3rem;
+
+    @media (max-width: 1099px) {
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 459px) {
+      display: grid;
+      grid-template: repeat(2, minmax(5.2rem, auto)) / repeat(2, 13.5rem);
+      width: auto;
+      row-gap: 2rem;
+      column-gap: 0;
+    }
   }
 
   &__nav-elem {
     display: block;
-    width: 5.2rem;
+    min-width: 5.2rem;
     height: 5.2rem;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -298,14 +524,33 @@ html {
     }
   }
 
+  &__left-arr {
+    @media (max-width: 459px) {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+  }
+
+  &__right-arr {
+    @media (max-width: 459px) {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+  }
+
   &__cards-wrapper {
-    max-width: 99rem;
+    width: 100%;
+
+    @media (max-width: 459px) {
+      grid-area: 1 / 1 / 2 / 3;
+    }
   }
 
   &__cards {
     display: flex;
-    justify-content: center;
-    column-gap: 9rem;
+    justify-content: space-between;
+
+    @media (max-width: 739px) {
+      justify-content: center;
+    }
   }
 
   &__card {
@@ -329,6 +574,24 @@ html {
     &:hover .our-friends__card-link {
       background-color: $color-primary-light;
       border-color: $color-primary-light;
+    }
+
+    @media (max-width: 1099px) {
+      &:nth-child(3) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 739px) {
+      justify-content: center;
+
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 459px) {
+      justify-content: flex-start;
     }
   }
 
@@ -361,11 +624,19 @@ html {
     flex-direction: column;
     align-items: center;
     row-gap: 6rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      row-gap: 4.2rem;
+    }
   }
 
   &__title {
     max-width: 31rem;
     text-align: center;
+
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 27rem;
+    }
   }
 
   &__cards {
@@ -374,6 +645,18 @@ html {
     justify-content: center;
     column-gap: 12rem;
     row-gap: 5.4rem;
+
+    @media (max-width: $breakpoint-desktop) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8.4vw;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 2.9rem;
+      column-gap: 11.4vw;
+    }
   }
 
   &__card {
@@ -421,12 +704,20 @@ html {
     &:nth-child(9) {
       background-image: url("../svg/icon-sleeping-area.svg");
     }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-top: 7rem;
+      font-size: 1.5rem;
+      background-size: 5rem;
+    }
   }
 }
 
 /* In-addition */
 
 .in-addition {
+  background: $color-light-l;
+
   &__wrapper {
     justify-content: center;
     align-items: center;
@@ -434,8 +725,28 @@ html {
   }
 
   &__article {
+    gap: 3rem;
+    align-items: center;
+
+    @media (max-width: $breakpoint-desktop) {
+      flex-direction: column-reverse;
+      gap: 6rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 4.2rem;
+    }
+  }
+
+  &__article-text-wrap {
     max-width: 38rem;
     row-gap: 2rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      align-items: center;
+      padding: 0 1rem;
+      row-gap: 2.3rem;
+    }
   }
 
   &__title {
@@ -446,6 +757,10 @@ html {
     font-size: 1.5rem;
     line-height: 1;
     letter-spacing: 0.06em;
+
+    @media (max-width: $breakpoint-mobile) {
+      letter-spacing: normal;
+    }
   }
 
   &__link {
@@ -472,6 +787,12 @@ html {
       color: $color-dark-3xl;
       background-color: $color-primary-light;
     }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 1.3rem 1.5rem 1.3rem 5.9rem;
+      font-size: 1.5rem;
+      background-position: 1.4rem center;
+    }
   }
 
   &__description {
@@ -479,6 +800,10 @@ html {
     line-height: 1.5;
     color: $color-dark-m;
     font-style: italic;
+
+    @media (max-width: $breakpoint-mobile) {
+      text-align: justify;
+    }
   }
 }
 
@@ -495,25 +820,56 @@ html {
 
   &__wrapper {
     justify-content: space-between;
-    padding: 4rem 0 0;
+    padding: 4rem 3rem 0;
+    column-gap: 6rem;
+
+    @media (max-width: 1064px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 1.5rem;
+      row-gap: 6.3rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 3rem 0 0;
+      row-gap: 4.1rem;
+    }
   }
 
   &__article {
+    flex-direction: column;
     padding-top: 1.6rem;
     row-gap: 4rem;
 
     &:nth-child(2) {
       max-width: 27.9rem;
+
+      @media (max-width: $breakpoint-mobile) {
+        align-items: center;
+      }
     }
 
     &:nth-child(3) {
       max-width: 30.2rem;
       row-gap: 3.3rem;
+
+      @media (max-width: $breakpoint-mobile) {
+        row-gap: 3.8rem;
+      }
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-top: 0;
     }
   }
 
   &__article-title {
     color: $color-light-xl;
+
+    @media (max-width: $breakpoint-mobile) {
+      align-self: center;
+      max-width: 27rem;
+    }
   }
 
   &__link {
@@ -550,5 +906,11 @@ html {
     width: 30rem;
     height: 31rem;
     background-image: url("../img/footer-puppy.png");
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 81vw;
+      height: 84vw;
+      background-size: cover;
+    }
   }
 }

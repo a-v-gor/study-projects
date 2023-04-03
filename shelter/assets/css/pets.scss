@@ -2,7 +2,7 @@
 
 .header {
   position: static;
-  padding: 3rem 4rem 3.4rem;
+  padding: 3rem 0 3.4rem;
   background-color: $color-light-xl;
 }
 
@@ -24,21 +24,51 @@
   }
 }
 
-.nav__link {
-  color: $color-dark-l;
-
-  &:hover {
-    color: $color-dark-3xl;
+.nav {
+  &__menu-btn {
+    @media (max-width: 767px) {
+      top: 4.5rem;
+    }
   }
 
-  &_active {
+  &__menu-sign,
+  &__menu-sign::before,
+  &__menu-sign::after {
+    background-color: #000000;
+  }
+
+  &__list {
+    @media (max-width: 767px) {
+      background-color: $color-light-xl;
+    }
+  }
+
+  &__link {
     color: $color-dark-l;
+
+    &:hover {
+      color: $color-dark-3xl;
+    }
+
+    &_active {
+      color: $color-dark-l;
+    }
   }
 }
 
 .our-friends {
   &__wrapper {
-    padding-bottom: 9.6rem;
+    padding-bottom: 9.8rem;
+
+    @media (max-width: $breakpoint-desktop) {
+      row-gap: 3rem;
+      padding-bottom: 7.3rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      row-gap: 4.2rem;
+      padding-bottom: 3.9rem;
+    }
   }
 
   &__cards {
@@ -46,13 +76,59 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     column-gap: 4rem;
-    row-gap: 3.1rem;
+    row-gap: 3rem;
+
+    @media (max-width: 1220px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-bottom: 1rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-bottom: 0;
+    }
+  }
+
+  &__card {
+    @media (max-width: 1220px) {
+      &:nth-child(7),
+      &:nth-child(8) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1099px) {
+      &:nth-child(3) {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 739px) {
+      &:nth-child(2) {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 639px) {
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6) {
+        display: none;
+      }
+    }
   }
 
   &__cards-arrows {
     display: flex;
     margin-bottom: 0.2rem;
     column-gap: 2rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      justify-content: space-between;
+      width: 100%;
+      column-gap: 0;
+    }
   }
 
   &__nav-elem:disabled {
