@@ -736,21 +736,57 @@ html {
 }
 .footer__wrapper {
   justify-content: space-between;
-  padding: 4rem 0 0;
+  padding: 4rem 3rem 0;
+}
+@media (max-width: 999px) {
+  .footer__wrapper {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 1.5rem 0 0;
+    row-gap: 6.3rem;
+  }
+}
+@media (max-width: 429px) {
+  .footer__wrapper {
+    padding-top: 3rem;
+    row-gap: 4.1rem;
+  }
 }
 .footer__article {
+  flex-direction: column;
   padding-top: 1.6rem;
   row-gap: 4rem;
 }
 .footer__article:nth-child(2) {
   max-width: 27.9rem;
 }
+@media (max-width: 429px) {
+  .footer__article:nth-child(2) {
+    align-items: center;
+  }
+}
 .footer__article:nth-child(3) {
   max-width: 30.2rem;
   row-gap: 3.3rem;
 }
+@media (max-width: 429px) {
+  .footer__article:nth-child(3) {
+    row-gap: 3.8rem;
+  }
+}
+@media (max-width: 429px) {
+  .footer__article {
+    padding-top: 0;
+  }
+}
 .footer__article-title {
   color: #ffffff;
+}
+@media (max-width: 429px) {
+  .footer__article-title {
+    align-self: center;
+    max-width: 27rem;
+  }
 }
 .footer__link {
   display: flex;
@@ -781,6 +817,13 @@ html {
   width: 30rem;
   height: 31rem;
   background-image: url("../img/footer-puppy.png");
+}
+@media (max-width: 429px) {
+  .footer__picture {
+    width: 81vw;
+    height: 84vw;
+    background-size: cover;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
