@@ -650,6 +650,9 @@ html {
 }
 
 /* In-addition */
+.in-addition {
+  background: #f6f6f6;
+}
 .in-addition__wrapper {
   justify-content: center;
   align-items: center;
