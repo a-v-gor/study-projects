@@ -17,6 +17,19 @@
   color: #b2b2b2;
 }
 
+@media (max-width: 729px) {
+  .nav__menu-btn {
+    top: 4.5rem;
+  }
+}
+.nav__menu-sign, .nav__menu-sign::before, .nav__menu-sign::after {
+  background-color: #000000;
+}
+@media (max-width: 729px) {
+  .nav__list {
+    background-color: #ffffff;
+  }
+}
 .nav__link {
   color: #545454;
 }
@@ -26,29 +39,73 @@
 .nav__link_active {
   color: #545454;
 }
-@media (max-width: 729px) {
-  .nav__menu-btn {
-    top: 4.4rem;
-  }
-}
-.nav__menu-sign, .nav__menu-sign::before, .nav__menu-sign::after {
-  background-color: #000000;
-}
 
 .our-friends__wrapper {
-  padding-bottom: 9.6rem;
+  padding-bottom: 9.7rem;
+}
+@media (max-width: 999px) {
+  .our-friends__wrapper {
+    row-gap: 3rem;
+    padding-bottom: 7.3rem;
+  }
+}
+@media (max-width: 429px) {
+  .our-friends__wrapper {
+    row-gap: 4.2rem;
+    padding-bottom: 3.9rem;
+  }
 }
 .our-friends__cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   column-gap: 4rem;
-  row-gap: 3.1rem;
+  row-gap: 3rem;
+}
+@media (max-width: 1220px) {
+  .our-friends__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 1rem;
+  }
+}
+@media (max-width: 429px) {
+  .our-friends__cards {
+    padding-bottom: 0;
+  }
+}
+@media (max-width: 1220px) {
+  .our-friends__card:nth-child(7), .our-friends__card:nth-child(8) {
+    display: none;
+  }
+}
+@media (max-width: 1099px) {
+  .our-friends__card:nth-child(3) {
+    display: flex;
+  }
+}
+@media (max-width: 739px) {
+  .our-friends__card:nth-child(2) {
+    display: flex;
+  }
+}
+@media (max-width: 639px) {
+  .our-friends__card:nth-child(4), .our-friends__card:nth-child(5), .our-friends__card:nth-child(6) {
+    display: none;
+  }
 }
 .our-friends__cards-arrows {
   display: flex;
   margin-bottom: 0.2rem;
   column-gap: 2rem;
+}
+@media (max-width: 429px) {
+  .our-friends__cards-arrows {
+    justify-content: space-between;
+    width: 100%;
+    column-gap: 0;
+  }
 }
 .our-friends__nav-elem:disabled {
   border-color: #cdcdcd;
