@@ -1,6 +1,6 @@
 .header {
   position: static;
-  padding: 3rem 4rem 3.4rem;
+  padding: 3rem 0 3.4rem;
   background-color: #ffffff;
 }
 
@@ -25,6 +25,14 @@
 }
 .nav__link_active {
   color: #545454;
+}
+@media (max-width: 729px) {
+  .nav__menu-btn {
+    top: 4.4rem;
+  }
+}
+.nav__menu-sign, .nav__menu-sign::before, .nav__menu-sign::after {
+  background-color: #000000;
 }
 
 .our-friends__wrapper {

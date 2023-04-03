@@ -2,7 +2,7 @@
 
 .header {
   position: static;
-  padding: 3rem 4rem 3.4rem;
+  padding: 3rem 0 3.4rem;
   background-color: $color-light-xl;
 }
 
@@ -24,15 +24,29 @@
   }
 }
 
-.nav__link {
-  color: $color-dark-l;
+.nav {
+  &__link {
+    color: $color-dark-l;
 
-  &:hover {
-    color: $color-dark-3xl;
+    &:hover {
+      color: $color-dark-3xl;
+    }
+
+    &_active {
+      color: $color-dark-l;
+    }
   }
 
-  &_active {
-    color: $color-dark-l;
+  &__menu-btn {
+    @media (max-width: $breakpoint-tablet) {
+      top: 4.4rem;
+    }
+  }
+
+  &__menu-sign,
+  &__menu-sign::before,
+  &__menu-sign::after {
+    background-color: #000000;
   }
 }
 
