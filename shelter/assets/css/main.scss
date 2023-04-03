@@ -211,25 +211,31 @@ html {
       width: 3rem;
       height: 3rem;
       transition: all 0s;
+    }
+  }
 
-      & > .nav__menu-sign,
-      & > .nav__menu-sign::before,
-      & > .nav__menu-sign::after {
-        position: absolute;
-        width: 3rem;
-        height: 0.2rem;
-        background-color: $color-primary;
-      }
+  &__menu-sign,
+  &__menu-sign::before,
+  &__menu-sign::after {
+    @media (max-width: $breakpoint-tablet) {
+      position: absolute;
+      width: 3rem;
+      height: 0.2rem;
+      background-color: $color-primary;
+    }
+  }
 
-      & > .nav__menu-sign::before {
-        content: "";
-        top: -1rem;
-      }
+  &__menu-sign::before {
+    @media (max-width: $breakpoint-tablet) {
+      content: "";
+      top: -1rem;
+    }
+  }
 
-      & > .nav__menu-sign::after {
-        content: "";
-        top: 1rem;
-      }
+  &__menu-sign::after {
+    @media (max-width: $breakpoint-tablet) {
+      content: "";
+      top: 1rem;
     }
   }
 
