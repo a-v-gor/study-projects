@@ -92,6 +92,9 @@ html {
   font-family: "Arial", sans-serif;
   font-style: normal;
 }
+.article__img {
+  max-width: 90vw;
+}
 @media (max-width: 429px) {
   .article__img {
     max-width: 81.3vw;
@@ -644,8 +647,30 @@ html {
   column-gap: 3rem;
 }
 .in-addition__article {
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 999px) {
+  .in-addition__article {
+    flex-direction: column-reverse;
+    gap: 6rem;
+  }
+}
+@media (max-width: 429px) {
+  .in-addition__article {
+    gap: 4.2rem;
+  }
+}
+.in-addition__article-text-wrap {
   max-width: 38rem;
   row-gap: 2rem;
+}
+@media (max-width: 429px) {
+  .in-addition__article-text-wrap {
+    align-items: center;
+    padding: 0 1rem;
+    row-gap: 2.3rem;
+  }
 }
 .in-addition__title {
   max-width: 30rem;
@@ -654,6 +679,11 @@ html {
   font-size: 1.5rem;
   line-height: 1;
   letter-spacing: 0.06em;
+}
+@media (max-width: 429px) {
+  .in-addition__bank-name {
+    letter-spacing: normal;
+  }
 }
 .in-addition__link {
   text-decoration: none;
@@ -677,11 +707,23 @@ html {
   color: #292929;
   background-color: #fddcc4;
 }
+@media (max-width: 429px) {
+  .in-addition__card-number {
+    padding: 1.3rem 1.5rem 1.3rem 5.9rem;
+    font-size: 1.5rem;
+    background-position: 1.4rem center;
+  }
+}
 .in-addition__description {
   font-size: 1.2rem;
   line-height: 1.5;
   color: #b2b2b2;
   font-style: italic;
+}
+@media (max-width: 429px) {
+  .in-addition__description {
+    text-align: justify;
+  }
 }
 
 /* Footer */
