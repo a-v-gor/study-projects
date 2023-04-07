@@ -48,6 +48,21 @@ html {
   background-image: url("../svg/Arrow-right.svg");
 }
 
+.substrate-burger-menu {
+  top: -100%;
+}
+.substrate-burger-menu:hover {
+  cursor: pointer;
+}
+.substrate-burger-menu_active {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+
 /* Buttons */
 .link-btn {
   display: block;
