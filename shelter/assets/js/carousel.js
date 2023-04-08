@@ -1,8 +1,14 @@
-const petsCards = document.querySelector('.our-friends__cards');
+const petsCards = document.querySelector(".our-friends__cards");
+const buttonLeft = document.querySelector(".our-friends__left-arr");
+const buttonRight = document.querySelector(".our-friends__right-arr");
 
 export function carousel() {
   let winWidth;
   let petsData;
+  let leftCards = [];
+  let centerCards = [];
+  let rightCards = [];
+
 
   function getPetsData() {
     fetch("../assets/json/pets.json")
@@ -15,7 +21,7 @@ export function carousel() {
         
         response.json().then(function(data) {
           petsData = data;
-          console.log(petsData);
+          changeWinWidth();
         })
       }
     )
@@ -24,20 +30,15 @@ export function carousel() {
     });
   }
 
-
-
-  function getUniqueNums() {
+  function getUniqueNums(arr = []) {
+    const num = (winWidth == "desktop") ? 3 : (winWidth == "tablet") ? 2 : 1;
     let rezult = [];
-    const num = (winWidth == "desktop") ? 6 : (winWidth == "tablet") ? 4 : 2
-
     for (; rezult.length < num;) {
       let rand = Math.floor(Math.random()* 8);
-      if (!(rezult.includes(rand))){
+      if (!(arr.includes(rand) || rezult.includes(rand))){
         rezult.push(rand);
       }
     }
-
-    rezult = rezult.concat(rezult.slice(0, rezult.length / 2));
     return rezult;
   }
 
@@ -53,27 +54,77 @@ export function carousel() {
     return petCard;
   }
 
-  function generatePetsCards() {
-    const cardsIDs = getUniqueNums();
-    for (let i = 0; i <= cardsIDs.length; i++) {
+  function generatePetsCards(arrLeft = [], arrCenter = [], arrRight = []) {
+    if (!arrCenter.length) {
+      arrCenter = getUniqueNums();
+      centerCards = arrCenter;
+    }
+    if (!arrLeft.length) {
+      arrLeft = getUniqueNums(arrCenter);
+      leftCards = arrLeft;
+    }
+    if (!arrRight.length) {
+      arrRight = getUniqueNums(arrCenter);
+      rightCards = arrRight;
+    }
+
+    const cardsIDs = arrLeft.concat(arrCenter, arrRight);
+
+    for (let i = 0; i < cardsIDs.length; i++) {
       petsCards.insertAdjacentHTML("beforeend", generatePetsCard(cardsIDs[i]));
     }
   }
 
   function changeWinWidth() {
-    if (!(getWinWidth() == winWidth)) {
-      winWidth = getWinWidth();
-      console.log(winWidth);
-      // generatePetsCards();
+    if (petsData) {
+      if (!(getWinWidth() == winWidth)) {
+        winWidth = getWinWidth();
+        console.log(winWidth);
+        petsCards.replaceChildren();
+        generatePetsCards();
+      }
     }
   }
 
   function getWinWidth() {
-    const newWinWidth = (window.innerWidth > 1099) ? "desktop" : (window.innerWidth > 739) ? "tablet" : "mobile";
+    const newWinWidth = (window.innerWidth > 1279) ? "desktop" : (window.innerWidth > 767) ? "tablet" : "mobile";
     return newWinWidth;
+  }
+
+  function moveCardsToLeft() {
+    [leftCards, centerCards, rightCards] = [getUniqueNums(leftCards), leftCards, centerCards];
+    petsCards.classList.add("transition-left");
+    removeBtnListeners();
+  }
+
+  function moveCardsToRight() {
+    [leftCards, centerCards, rightCards] = [centerCards, rightCards, getUniqueNums(rightCards)];
+    petsCards.classList.add("transition-right");
+    removeBtnListeners();
+  }
+  
+  function removeBtnListeners() {
+    buttonLeft.removeEventListener("click", moveCardsToLeft);
+    buttonRight.removeEventListener("click", moveCardsToRight);
+  }
+
+  function removeTransitionClass () {
+    petsCards.classList.remove("transition-left");
+    petsCards.classList.remove("transition-right");
+    buttonLeft.addEventListener("click", moveCardsToLeft);
+    buttonRight.addEventListener("click", moveCardsToRight);
+  }
+
+  function applyCurrentCards() {
+    petsCards.replaceChildren();
+    generatePetsCards(leftCards, centerCards, rightCards);
   }
 
   document.addEventListener("DOMContentLoaded", getPetsData);
   document.addEventListener("DOMContentLoaded", changeWinWidth);
   window.addEventListener("resize", changeWinWidth);
+  buttonLeft.addEventListener("click", moveCardsToLeft);
+  buttonRight.addEventListener("click", moveCardsToRight);
+  petsCards.addEventListener("animationend", removeTransitionClass);
+  petsCards.addEventListener("animationend", applyCurrentCards);
 }
