@@ -75,26 +75,6 @@
     padding-bottom: 0;
   }
 }
-@media (max-width: 1220px) {
-  .our-friends__card:nth-child(7), .our-friends__card:nth-child(8) {
-    display: none;
-  }
-}
-@media (max-width: 1099px) {
-  .our-friends__card:nth-child(3) {
-    display: flex;
-  }
-}
-@media (max-width: 739px) {
-  .our-friends__card:nth-child(2) {
-    display: flex;
-  }
-}
-@media (max-width: 639px) {
-  .our-friends__card:nth-child(4), .our-friends__card:nth-child(5), .our-friends__card:nth-child(6) {
-    display: none;
-  }
-}
 .our-friends__cards-arrows {
   display: flex;
   margin-bottom: 0.2rem;

@@ -90,35 +90,6 @@
     }
   }
 
-  &__card {
-    @media (max-width: 1220px) {
-      &:nth-child(7),
-      &:nth-child(8) {
-        display: none;
-      }
-    }
-
-    @media (max-width: 1099px) {
-      &:nth-child(3) {
-        display: flex;
-      }
-    }
-
-    @media (max-width: 739px) {
-      &:nth-child(2) {
-        display: flex;
-      }
-    }
-
-    @media (max-width: 639px) {
-      &:nth-child(4),
-      &:nth-child(5),
-      &:nth-child(6) {
-        display: none;
-      }
-    }
-  }
-
   &__cards-arrows {
     display: flex;
     margin-bottom: 0.2rem;

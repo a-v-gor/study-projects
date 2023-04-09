@@ -1,3 +1,6 @@
+import { generatePetsCard } from "./generate-pets-card.js";
+import { getWinWidth } from "./get-win-width.js";
+
 const petsCards = document.querySelector(".our-friends__cards");
 const buttonLeft = document.querySelector(".our-friends__left-arr");
 const buttonRight = document.querySelector(".our-friends__right-arr");
@@ -9,8 +12,7 @@ export function carousel() {
   let centerCards = [];
   let rightCards = [];
 
-
-  function getPetsData() {
+  function startCarousel() {
     fetch("../assets/json/pets.json")
     .then(
       function(response) {
@@ -42,18 +44,6 @@ export function carousel() {
     return rezult;
   }
 
-  function generatePetsCard(id) {
-    const petImg = petsData[id]["img"];
-    const petName = petsData[id]["name"];
-    const petCard = `
-    <div class="our-friends__card" data-id="${id}">
-      <img class="our-friends__pet-img" src="${petImg}" alt="pet">
-      <p class="our-friends__pet-text">${petName}</p>
-      <button class="link-btn our-friends__card-link">Learn more</button>
-    </div>`
-    return petCard;
-  }
-
   function generatePetsCards(arrLeft = [], arrCenter = [], arrRight = []) {
     if (!arrCenter.length) {
       arrCenter = getUniqueNums();
@@ -71,24 +61,19 @@ export function carousel() {
     const cardsIDs = arrLeft.concat(arrCenter, arrRight);
 
     for (let i = 0; i < cardsIDs.length; i++) {
-      petsCards.insertAdjacentHTML("beforeend", generatePetsCard(cardsIDs[i]));
+      petsCards.insertAdjacentHTML("beforeend", generatePetsCard(cardsIDs[i], petsData));
     }
   }
 
   function changeWinWidth() {
-    if (petsData) {
-      if (!(getWinWidth() == winWidth)) {
-        winWidth = getWinWidth();
-        console.log(winWidth);
-        petsCards.replaceChildren();
-        generatePetsCards();
-      }
+    if (!(getWinWidth() == winWidth)) {
+      winWidth = getWinWidth();
+      console.log(winWidth);
+      leftCards = [];
+      centerCards = [];
+      rightCards = [];
+      applyCurrentCards();
     }
-  }
-
-  function getWinWidth() {
-    const newWinWidth = (window.innerWidth > 1279) ? "desktop" : (window.innerWidth > 767) ? "tablet" : "mobile";
-    return newWinWidth;
   }
 
   function moveCardsToLeft() {
@@ -120,8 +105,7 @@ export function carousel() {
     generatePetsCards(leftCards, centerCards, rightCards);
   }
 
-  document.addEventListener("DOMContentLoaded", getPetsData);
-  document.addEventListener("DOMContentLoaded", changeWinWidth);
+  document.addEventListener("DOMContentLoaded", startCarousel);
   window.addEventListener("resize", changeWinWidth);
   buttonLeft.addEventListener("click", moveCardsToLeft);
   buttonRight.addEventListener("click", moveCardsToRight);
