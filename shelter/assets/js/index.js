@@ -5,4 +5,4 @@ import { popup } from "./popup.js";
 
 burgerMenu();
 carousel();
-popup();
+popup(".our-friends__cards");

@@ -67,6 +67,9 @@ html {
   left: 0;
   z-index: 2;
 }
+.substrate-burger-menu_active:hover {
+  cursor: pointer;
+}
 
 /* Buttons */
 .link-btn {

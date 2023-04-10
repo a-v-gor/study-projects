@@ -1,5 +1,5 @@
-export function popup() {
-  const petsCards = document.querySelector(".our-friends__cards");
+export function popup(petscardsClass) {
+  const petsCards = document.querySelector(petscardsClass);
   const substrateLayer = document.querySelector(".substrate-burger-menu");
 
   let petsData;
