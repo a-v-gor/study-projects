@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="../assets/css/main.css">
   <link rel="stylesheet" href="../assets/css/pets.css">
 </head>
-<body>
+<body class="body">
+  <div class="substrate-burger-menu"></div>
   <header class="header">
     <div class="wrapper header__wrapper">
       <a class="header__link" href="./main.html">
@@ -26,7 +27,7 @@
         </label>
         <ul class="nav__list">
           <li class="nav__item"><a class="nav__link" href="./main.html">About the shelter</a></li>
-          <li class="nav__item"><a class="nav__link_active">Our pets</a></li>
+          <li class="nav__item"><a class="nav__link_active" href="#">Our pets</a></li>
           <li class="nav__item"><a class="nav__link" href="./main.html#Help">Help the shelter</a></li>
           <li class="nav__item"><a class="nav__link" href="#Contacts">Contacts</a></li>
         </ul>
@@ -37,54 +38,14 @@
     <div class="our-friends">
       <section class="wrapper our-friends__wrapper">
         <h2 class="article__title our-friends__title">Our friends who<br>are looking for a house</h2>
-          <div class="our-friends__cards">
-            <div class="our-friends__card">
-              <img class="our-friends__pet-img" src="../assets/img/katrine.png" alt="pet">
-              <p class="our-friends__pet-text">Katrine</p>
-              <button class="link-btn our-friends__card-link">Learn more</button>
-            </div>
-            <div class="our-friends__card">
-              <img class="our-friends__pet-img" src="../assets/img/jennifer.png" alt="pet">
-              <p class="our-friends__pet-text">Jennifer</p>
-              <button class="link-btn our-friends__card-link">Learn more</button>
-            </div>
-            <div class="our-friends__card">
-              <img class="our-friends__pet-img" src="../assets/img/woody.png" alt="pet">
-              <p class="our-friends__pet-text">Woody</p>
-              <button class="link-btn our-friends__card-link">Learn more</button>
-            </div>
-            <div class="our-friends__card">
-              <img class="our-friends__pet-img" src="../assets/img/sophia.png" alt="pet">
-              <p class="our-friends__pet-text">Sophia</p>
-              <button class="link-btn our-friends__card-link">Learn more</button>
-            </div>
-            <div class="our-friends__card">
-              <img class="our-friends__pet-img" src="../assets/img/timmy.png" alt="pet">
-              <p class="our-friends__pet-text">Timmy</p>
-              <button class="link-btn our-friends__card-link">Learn more</button>
-            </div>
-            <div class="our-friends__card">
-              <img class="our-friends__pet-img" src="../assets/img/charly.png" alt="pet">
-              <p class="our-friends__pet-text">Charly</p>
-              <button class="link-btn our-friends__card-link">Learn more</button>
-            </div>
-            <div class="our-friends__card">
-              <img class="our-friends__pet-img" src="../assets/img/scarlett.png" alt="pet">
-              <p class="our-friends__pet-text">Scarlett</p>
-              <button class="link-btn our-friends__card-link">Learn more</button>
-            </div>
-            <div class="our-friends__card">
-              <img class="our-friends__pet-img" src="../assets/img/freddie.png" alt="pet">
-              <p class="our-friends__pet-text">Freddie</p>
-              <button class="link-btn our-friends__card-link">Learn more</button>
-            </div>
+          <div class="our-friends__cards-pages-wrap" style="left: 0px;">
           </div>
           <div class="our-friends__cards-arrows">
-            <button class="our-friends__nav-elem double-arr" type="button" disabled>&lt;&lt;</button>
-            <button class="our-friends__nav-elem single-arr" type="button" disabled>&lt;</button>
+            <button class="our-friends__nav-elem double-arr" type="button" id="first-page" disabled>&lt;&lt;</button>
+            <button class="our-friends__nav-elem single-arr" type="button" id="prev-page" disabled>&lt;</button>
             <div class="our-friends__nav-elem num-page">1</div>
-            <button class="our-friends__nav-elem single-arr" type="button">&gt;</button>
-            <button class="our-friends__nav-elem double-arr" type="button">&gt;&gt;</button>
+            <button class="our-friends__nav-elem single-arr" id="next-page" type="button">&gt;</button>
+            <button class="our-friends__nav-elem double-arr" id="last-page" type="button">&gt;&gt;</button>
           </div>
       </section>
     </div>
@@ -105,6 +66,6 @@
       <div class="footer__picture"></div>
     </section>
   </footer>
-  <script src="../assets/js/index.js"></script>
+  <script type="module" src="../assets/js/pets.js"></script>
 </body>
 </html>

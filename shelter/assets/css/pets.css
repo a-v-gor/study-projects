@@ -42,11 +42,22 @@
 
 .our-friends__wrapper {
   padding-bottom: 9.7rem;
+  overflow: hidden;
+}
+@media (max-width: 1279px) {
+  .our-friends__wrapper {
+    max-width: 64rem;
+  }
 }
 @media (max-width: 999px) {
   .our-friends__wrapper {
     row-gap: 3rem;
     padding-bottom: 7.3rem;
+  }
+}
+@media (max-width: 767px) {
+  .our-friends__wrapper {
+    max-width: 33rem;
   }
 }
 @media (max-width: 429px) {
@@ -55,44 +66,41 @@
     padding-bottom: 3.9rem;
   }
 }
-.our-friends__cards {
+.our-friends__cards-pages-wrap {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  column-gap: 3rem;
+  transition: 1s;
+}
+@media (max-width: 1279px) {
+  .our-friends__cards-pages-wrap {
+    max-width: 58rem;
+  }
+}
+@media (max-width: 767px) {
+  .our-friends__cards-pages-wrap {
+    max-width: 27rem;
+  }
+}
+.our-friends__cards-page {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   column-gap: 4rem;
   row-gap: 3rem;
 }
-@media (max-width: 1220px) {
-  .our-friends__cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 1rem;
+@media (max-width: 1279px) {
+  .our-friends__cards-page {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
   }
 }
-@media (max-width: 429px) {
-  .our-friends__cards {
+@media (max-width: 767px) {
+  .our-friends__cards-page {
+    grid-template-columns: 1fr;
     padding-bottom: 0;
-  }
-}
-@media (max-width: 1220px) {
-  .our-friends__card:nth-child(7), .our-friends__card:nth-child(8) {
-    display: none;
-  }
-}
-@media (max-width: 1099px) {
-  .our-friends__card:nth-child(3) {
-    display: flex;
-  }
-}
-@media (max-width: 739px) {
-  .our-friends__card:nth-child(2) {
-    display: flex;
-  }
-}
-@media (max-width: 639px) {
-  .our-friends__card:nth-child(4), .our-friends__card:nth-child(5), .our-friends__card:nth-child(6) {
-    display: none;
   }
 }
 .our-friends__cards-arrows {
@@ -100,7 +108,12 @@
   margin-bottom: 0.2rem;
   column-gap: 2rem;
 }
-@media (max-width: 429px) {
+@media (max-width: 767px) {
+  .our-friends__cards-arrows {
+    column-gap: 1.7rem;
+  }
+}
+@media (max-width: 360px) {
   .our-friends__cards-arrows {
     justify-content: space-between;
     width: 100%;

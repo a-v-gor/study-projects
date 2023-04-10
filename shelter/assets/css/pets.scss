@@ -59,10 +59,19 @@
 .our-friends {
   &__wrapper {
     padding-bottom: 9.7rem;
+    overflow: hidden;
+
+    @media (max-width: 1279px) {
+      max-width: 64rem;
+    }
 
     @media (max-width: $breakpoint-desktop) {
       row-gap: 3rem;
       padding-bottom: 7.3rem;
+    }
+
+    @media (max-width: 767px) {
+      max-width: 33rem;
     }
 
     @media (max-width: $breakpoint-mobile) {
@@ -71,51 +80,38 @@
     }
   }
 
-  &__cards {
+  &__cards-pages-wrap {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    column-gap: 3rem;
+    transition: 1s;
+
+    @media (max-width: 1279px) {
+      max-width: 58rem;
+    }
+
+    @media (max-width: 767px) {
+      max-width: 27rem;
+    }
+  }
+
+  &__cards-page {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     column-gap: 4rem;
     row-gap: 3rem;
 
-    @media (max-width: 1220px) {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding-bottom: 1rem;
+    @media (max-width: 1279px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
     }
 
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
       padding-bottom: 0;
-    }
-  }
-
-  &__card {
-    @media (max-width: 1220px) {
-      &:nth-child(7),
-      &:nth-child(8) {
-        display: none;
-      }
-    }
-
-    @media (max-width: 1099px) {
-      &:nth-child(3) {
-        display: flex;
-      }
-    }
-
-    @media (max-width: 739px) {
-      &:nth-child(2) {
-        display: flex;
-      }
-    }
-
-    @media (max-width: 639px) {
-      &:nth-child(4),
-      &:nth-child(5),
-      &:nth-child(6) {
-        display: none;
-      }
     }
   }
 
@@ -124,7 +120,11 @@
     margin-bottom: 0.2rem;
     column-gap: 2rem;
 
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: 767px) {
+      column-gap: 1.7rem;
+    }
+
+    @media (max-width: 360px) {
       justify-content: space-between;
       width: 100%;
       column-gap: 0;
