@@ -1,4 +1,4 @@
-export function getWinWidth() {
-  const newWinWidth = (window.innerWidth > 1279) ? "desktop" : (window.innerWidth > 767) ? "tablet" : "mobile";
+export function getWinWidth(numwidthMax = 1279, widthMin = 767) {
+  const newWinWidth = (window.innerWidth > numwidthMax) ? "desktop" : (window.innerWidth > widthMin) ? "tablet" : "mobile";
   return newWinWidth;
 }

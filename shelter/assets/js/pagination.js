@@ -4,7 +4,8 @@ import { generatePetsCard } from "./generate-pets-card.js";
 export function pagination() {
   let winWidth;
   let petsData;
-  let numOfPages = 0;
+  let numOfPages;
+  const petsCardsPages = document.querySelector(".our-friends__cards-pages-wrap");
 
   function createCardIDs() {
     const cardsIDs = [];
@@ -28,8 +29,6 @@ export function pagination() {
         response.json().then(function(data) {
           petsData = data;
           changeWinWidth();
-          setNumOfPages();
-          generateCardsPages(returnFormedPages());
         })
       }
     )
@@ -38,16 +37,21 @@ export function pagination() {
     });
   }
 
+  function renewCards() {
+    petsCardsPages.replaceChildren();
+    setNumOfPages();
+    generateCardsPages(returnFormedPages());
+  }
+
   function changeWinWidth() {
     if (!(getWinWidth() == winWidth)) {
       winWidth = getWinWidth();
-      console.log(winWidth);
+      renewCards();
     }
   }
 
   function setNumOfPages() {
-    numOfPages = (winWidth = "desktop") ? 6 : (winWidth = "tablet") ? 8 : 16;
-    console.log('numOfPages = ' + numOfPages);
+    numOfPages = (winWidth == "desktop") ? 6 : (winWidth == "tablet") ? 8 : 16;
   }
 
   function shuffleArray(arr) {

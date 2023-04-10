@@ -59,7 +59,6 @@
 .our-friends {
   &__wrapper {
     padding-bottom: 9.7rem;
-    overflow: hidden;
 
     @media (max-width: $breakpoint-desktop) {
       row-gap: 3rem;
@@ -77,7 +76,16 @@
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    overflow: hidden;
     column-gap: 3rem;
+
+    @media (max-width: 1279px) {
+      max-width: 58rem;
+    }
+
+    @media (max-width: 767px) {
+      max-width: 27rem;
+    }
   }
 
   &__cards-page {
@@ -88,13 +96,12 @@
     row-gap: 3rem;
 
     @media (max-width: 1279px) {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding-bottom: 1rem;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
     }
 
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
       padding-bottom: 0;
     }
   }
@@ -104,7 +111,7 @@
     margin-bottom: 0.2rem;
     column-gap: 2rem;
 
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: 767px) {
       justify-content: space-between;
       width: 100%;
       column-gap: 0;
