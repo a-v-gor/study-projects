@@ -59,6 +59,7 @@
 .our-friends {
   &__wrapper {
     padding-bottom: 9.7rem;
+    overflow: hidden;
 
     @media (max-width: $breakpoint-desktop) {
       row-gap: 3rem;
@@ -71,14 +72,22 @@
     }
   }
 
-  &__cards {
+  &__cards-pages-wrap {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    column-gap: 3rem;
+  }
+
+  &__cards-page {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     column-gap: 4rem;
     row-gap: 3rem;
 
-    @media (max-width: 1220px) {
+    @media (max-width: 1279px) {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
