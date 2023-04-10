@@ -5,7 +5,6 @@ export function popup(petscardsClass) {
   let petsData;
 
   function makePopup(event) {
-    console.log(event.target);
     const id = event.target.dataset.id;
     const petInfo = petsData[id];
     const popup = `
@@ -62,8 +61,7 @@ export function popup(petscardsClass) {
   function enableScroll() {
     const bodyClassStopScroll = document.body.classList;
     const strClassEnable = document.body.classList.value.slice(0, -12);
-    document.body.classList.remove(bodyClassStopScroll);
-    document.body.classList.add(strClassEnable);
+    document.body.classList.replace(bodyClassStopScroll, strClassEnable);
   }
   
   function showPopup() {
