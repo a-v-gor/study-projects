@@ -42,11 +42,22 @@
 
 .our-friends__wrapper {
   padding-bottom: 9.7rem;
+  overflow: hidden;
+}
+@media (max-width: 1279px) {
+  .our-friends__wrapper {
+    max-width: 64rem;
+  }
 }
 @media (max-width: 999px) {
   .our-friends__wrapper {
     row-gap: 3rem;
     padding-bottom: 7.3rem;
+  }
+}
+@media (max-width: 767px) {
+  .our-friends__wrapper {
+    max-width: 33rem;
   }
 }
 @media (max-width: 429px) {
@@ -60,8 +71,8 @@
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  overflow: hidden;
   column-gap: 3rem;
+  transition: 1s;
 }
 @media (max-width: 1279px) {
   .our-friends__cards-pages-wrap {
@@ -98,6 +109,11 @@
   column-gap: 2rem;
 }
 @media (max-width: 767px) {
+  .our-friends__cards-arrows {
+    column-gap: 1.7rem;
+  }
+}
+@media (max-width: 360px) {
   .our-friends__cards-arrows {
     justify-content: space-between;
     width: 100%;

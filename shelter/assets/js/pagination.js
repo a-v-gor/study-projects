@@ -2,19 +2,38 @@ import { getWinWidth } from "./get-win-width.js";
 import { generatePetsCard } from "./generate-pets-card.js";
 
 export function pagination() {
+  const petsCardsPages = document.querySelector(".our-friends__cards-pages-wrap");
+  const pageNumElem = document.querySelector(".num-page");
+  const btnFirstPage = document.querySelector('#first-page');
+  const btnPrevPage = document.querySelector('#prev-page');
+  const btnNextPage = document.querySelector('#next-page');
+  const btnLastPage = document.querySelector('#last-page');
+  
+  let shuffledCardIDs = [];
   let winWidth;
+  let changeCoordinate;
   let petsData;
   let numOfPages;
-  const petsCardsPages = document.querySelector(".our-friends__cards-pages-wrap");
-
+  let coordinatePetsCards = 0;
+  
   function createCardIDs() {
     const cardsIDs = [];
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
       for (let j = 0; j < 8; j++) {
         cardsIDs.push(j);
       }
     }
-    return cardsIDs;
+    shuffledCardIDs = shuffleCardIDs(cardsIDs);
+  }
+
+  function shuffleCardIDs(cardsIDs) {
+    const orderedArr = [].concat(cardsIDs);
+    const shuffledArr = [];
+    for (let i = 0; i < 12; i++) {
+      let arr = orderedArr.splice(0, 4);
+      shuffledArr.push(shuffleArray(arr));
+    }
+    return shuffledArr.flat(1);
   }
 
   function startPagination() {
@@ -28,6 +47,7 @@ export function pagination() {
         
         response.json().then(function(data) {
           petsData = data;
+          createCardIDs();
           changeWinWidth();
         })
       }
@@ -47,6 +67,8 @@ export function pagination() {
     if (!(getWinWidth() == winWidth)) {
       winWidth = getWinWidth();
       renewCards();
+      showFirstPage();
+      actualizeChangeCoordinate();
     }
   }
 
@@ -65,12 +87,11 @@ export function pagination() {
 
   function returnFormedPages() {
     const pages = [];
-    const cardIDs = createCardIDs();
+    const cardIDs = [].concat(shuffledCardIDs);
     for (let i = 0; i < numOfPages; i++) {
       const page = cardIDs.splice(0, 48 / numOfPages);
-      pages.push(shuffleArray(page));
+      pages.push(page);
     };
-    console.log(pages);
     return pages;
   }
 
@@ -87,6 +108,70 @@ export function pagination() {
     }
   }
 
+  function actualizeChangeCoordinate() {
+    changeCoordinate = (winWidth == "desktop") ? 1230 : (winWidth == "tablet") ? 610 : 300;
+  }
+
+  function showNextPage() {
+    pageNumElem.innerHTML = +pageNumElem.innerHTML + 1;
+    if (btnPrevPage.hasAttribute("disabled")) {
+      enableBtn(btnPrevPage);
+      enableBtn(btnFirstPage);
+    }
+    coordinatePetsCards -= changeCoordinate;
+    petsCardsPages.style.left = `${coordinatePetsCards}px`;
+    if (pageNumElem.innerHTML > numOfPages-1) {
+      disableBtn(btnNextPage);
+      disableBtn(btnLastPage);
+    }
+  }
+
+  function showPrevPage() {
+    pageNumElem.innerHTML -= 1;
+    if (btnNextPage.hasAttribute("disabled")) {
+      enableBtn(btnNextPage);
+      enableBtn(btnLastPage);
+    }
+    coordinatePetsCards += changeCoordinate;
+    petsCardsPages.style.left = `${coordinatePetsCards}px`;
+    if (pageNumElem.innerHTML < 2) {
+      disableBtn(btnPrevPage);
+      disableBtn(btnFirstPage);
+    }
+  }
+
+  function showFirstPage() {
+    pageNumElem.innerHTML = 1;
+    coordinatePetsCards = 0;
+    petsCardsPages.style.left = `${coordinatePetsCards}px`;
+    disableBtn(btnPrevPage);
+    disableBtn(btnFirstPage);
+    enableBtn(btnNextPage);
+    enableBtn(btnLastPage);
+  }
+
+  function showLastPage() {
+    pageNumElem.innerHTML = numOfPages;
+    coordinatePetsCards = -1*(numOfPages-1)*changeCoordinate;
+    petsCardsPages.style.left = `${coordinatePetsCards}px`;
+    disableBtn(btnNextPage);
+    disableBtn(btnLastPage);
+    enableBtn(btnPrevPage);
+    enableBtn(btnFirstPage);
+  }
+
+  function disableBtn(elem) {
+    elem.setAttribute("disabled", "");
+  }
+
+  function enableBtn(elem) {
+    elem.removeAttribute("disabled");
+  }
+
   document.addEventListener("DOMContentLoaded", startPagination);
   window.addEventListener("resize", changeWinWidth);
+  btnNextPage.addEventListener('click', showNextPage);
+  btnPrevPage.addEventListener('click', showPrevPage);
+  btnFirstPage.addEventListener('click', showFirstPage);
+  btnLastPage.addEventListener('click', showLastPage);
 }
