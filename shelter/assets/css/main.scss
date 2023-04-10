@@ -194,6 +194,152 @@ html {
   }
 }
 
+/* Popup */
+
+.popup-pet-card {
+  position: fixed;
+  top: -150%;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  width: 90rem;
+  height: 50rem;
+  background-color: $color-light-s;
+  border-radius: 0.9rem;
+  transition: 2s;
+
+  &.active {
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 0 0 9999px rgb(41 41 41 / 60%);
+    transform: translate(-50%, -50%);
+  }
+
+  @media (max-width: 1000px) {
+    width: 63rem;
+    height: auto;
+  }
+
+  @media (max-width: 720px) {
+    width: 24rem;
+    height: auto;
+  }
+}
+
+.popup-img {
+  width: 50rem;
+  height: 50rem;
+  border-radius: 0.9rem;
+
+  @media (max-width: 1000px) {
+    width: 35rem;
+    height: 35rem;
+  }
+
+  @media (max-width: 72rem) {
+    display: none;
+  }
+}
+
+.popup-article {
+  display: flex;
+  flex-direction: column;
+  padding: 5.1rem 2rem 0 2.9rem;
+  gap: 4rem;
+
+  @media (max-width: 1000px) {
+    padding: 1.1rem 0.9rem 0 1rem;
+    gap: 2.1rem;
+  }
+}
+
+.popup-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.popup-title {
+  font-size: 3.5rem;
+  color: #000000;
+
+  @media (max-width: 720px) {
+    text-align: center;
+  }
+}
+
+.popup-subtitle {
+  font-size: 2rem;
+  line-height: 1.15;
+  letter-spacing: 0.06em;
+
+  @media (max-width: 720px) {
+    text-align: center;
+  }
+}
+
+.popup-article-text {
+  line-height: 1.15;
+  letter-spacing: 0.06em;
+
+  @media (max-width: 1000px) {
+    font-size: 1.3rem;
+    line-height: 1.1;
+  }
+}
+
+.popup-description-pet {
+  position: relative;
+  bottom: 0.5rem;
+  list-style: none;
+  font-size: 1.5rem;
+  line-height: 1.85;
+  letter-spacing: 0.06rem;
+
+  & > li::before {
+    content: "•";
+    display: inline-block;
+    width: 1em;
+    color: $color-primary;
+  }
+
+  @media (max-width: 1000px) {
+    bottom: 0.7rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 720px) {
+    bottom: 0.4rem;
+  }
+}
+
+.popup-caract {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.22rem;
+}
+
+.close-popup {
+  position: absolute;
+  top: -5.2rem;
+  right: -4.2rem;
+  background-image: url("../../assets/svg/close-btn.svg");
+
+  &.active {
+    background-color: $color-primary-light;
+    border-color: $color-primary-light;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 720px) {
+    right: -3rem;
+  }
+}
+
 /* nav */
 
 .nav {

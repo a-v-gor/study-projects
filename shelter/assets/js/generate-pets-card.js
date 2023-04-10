@@ -3,7 +3,7 @@ export function generatePetsCard(id, petsData) {
   const petName = petsData[id]["name"];
   const petCard = `
   <div class="our-friends__card" data-id="${id}">
-    <img class="our-friends__pet-img" src="${petImg}" alt="pet">
+    <img class="our-friends__pet-img" src="${petImg}" alt="pet" data-id="${id}">
     <p class="our-friends__pet-text">${petName}</p>
     <button class="link-btn our-friends__card-link">Learn more</button>
   </div>`
