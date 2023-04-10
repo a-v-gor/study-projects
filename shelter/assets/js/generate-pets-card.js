@@ -5,7 +5,7 @@ export function generatePetsCard(id, petsData) {
   <div class="our-friends__card" data-id="${id}">
     <img class="our-friends__pet-img" src="${petImg}" alt="pet" data-id="${id}">
     <p class="our-friends__pet-text">${petName}</p>
-    <button class="link-btn our-friends__card-link">Learn more</button>
+    <button class="link-btn our-friends__card-link" data-id="${id}">Learn more</button>
   </div>`
   return petCard;
 }
