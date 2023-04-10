@@ -6,3 +6,4 @@ import { popup } from "./popup.js";
 burgerMenu();
 carousel();
 popup(".our-friends__cards");
+selfesteem();

@@ -6,3 +6,4 @@ import { popup } from "./popup.js";
 burgerMenu();
 pagination();
 popup(".our-friends__cards-pages-wrap");
+selfesteem();
