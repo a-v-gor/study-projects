@@ -13,10 +13,10 @@ export function popup() {
       <img src="${petInfo['img']}" alt="pet" class="popup-img">
       <article class="popup-article">
         <div class="popup-header">
-          <h3 class="popup-title">${petInfo['name']}</h3>
+          <h2 class="article__title popup-title">${petInfo['name']}</h2>
           <p class="popup-subtitle">${petInfo['type']} - ${petInfo['breed']}</p>
         </div>
-        <p class="popup-article-text">${petInfo['description']}</p>
+        <p class="article__text popup-article-text">${petInfo['description']}</p>
         <ul class="popup-description-pet">
           <li><span class="popup-caract">Age: </span>${petInfo['age']}</li>
           <li><span class="popup-caract">Inoculations: </span>${petInfo['inoculations'].join(', ')}</li>

@@ -260,7 +260,6 @@ html {
 }
 
 .popup-title {
-  font-size: 3.5rem;
   color: #000000;
 
   @media (max-width: 720px) {
@@ -280,6 +279,7 @@ html {
 
 .popup-article-text {
   line-height: 1.15;
+  font-family: "Georgia", serif;
   letter-spacing: 0.06em;
 
   @media (max-width: 1000px) {
@@ -291,6 +291,7 @@ html {
 .popup-description-pet {
   position: relative;
   bottom: 0.5rem;
+  padding: 0;
   list-style: none;
   font-size: 1.5rem;
   line-height: 1.85;
@@ -317,7 +318,7 @@ html {
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 1.1;
-  letter-spacing: 0.22rem;
+  letter-spacing: 0.1rem;
 }
 
 .close-popup {
