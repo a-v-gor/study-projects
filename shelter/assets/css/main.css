@@ -183,6 +183,7 @@ html {
   z-index: 3;
   display: flex;
   width: 90rem;
+  max-width: 86vw;
   height: 50rem;
   background-color: #fafafa;
   border-radius: 0.9rem;
@@ -218,7 +219,7 @@ html {
     height: 35rem;
   }
 }
-@media (max-width: 72rem) {
+@media (max-width: 767px) {
   .popup-img {
     display: none;
   }
@@ -236,14 +237,21 @@ html {
     gap: 2.1rem;
   }
 }
+@media (max-width: 320px) {
+  .popup-article {
+    padding: 1rem;
+    gap: 2rem;
+  }
+}
 
 .popup-header {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 .popup-title {
+  font-size: 3.5rem;
   color: #000000;
 }
 @media (max-width: 720px) {
@@ -274,6 +282,11 @@ html {
     line-height: 1.1;
   }
 }
+@media (max-width: 320px) {
+  .popup-article-text {
+    text-align: justify;
+  }
+}
 
 .popup-description-pet {
   position: relative;
@@ -296,9 +309,10 @@ html {
     line-height: 1.55;
   }
 }
-@media (max-width: 720px) {
+@media (max-width: 320px) {
   .popup-description-pet {
-    bottom: 0.4rem;
+    bottom: 0;
+    line-height: 1.5;
   }
 }
 

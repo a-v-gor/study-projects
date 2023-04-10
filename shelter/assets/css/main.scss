@@ -203,6 +203,7 @@ html {
   z-index: 3;
   display: flex;
   width: 90rem;
+  max-width: 86vw;
   height: 50rem;
   background-color: $color-light-s;
   border-radius: 0.9rem;
@@ -236,7 +237,7 @@ html {
     height: 35rem;
   }
 
-  @media (max-width: 72rem) {
+  @media (max-width: 767px) {
     display: none;
   }
 }
@@ -251,15 +252,21 @@ html {
     padding: 1.1rem 0.9rem 0 1rem;
     gap: 2.1rem;
   }
+
+  @media (max-width: 320px) {
+    padding: 1rem;
+    gap: 2rem;
+  }
 }
 
 .popup-header {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 .popup-title {
+  font-size: 3.5rem;
   color: #000000;
 
   @media (max-width: 720px) {
@@ -286,6 +293,10 @@ html {
     font-size: 1.3rem;
     line-height: 1.1;
   }
+
+  @media (max-width: 320px) {
+    text-align: justify;
+  }
 }
 
 .popup-description-pet {
@@ -309,8 +320,9 @@ html {
     line-height: 1.55;
   }
 
-  @media (max-width: 720px) {
-    bottom: 0.4rem;
+  @media (max-width: 320px) {
+    bottom: 0;
+    line-height: 1.5;
   }
 }
 
