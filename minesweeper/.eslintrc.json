@@ -5,7 +5,6 @@
     "browser": true
   },
   "rules": {
-    "linebreak-style": "off",
     "import/extensions": [
       "error",
       "always",
