@@ -1,3 +1,240 @@
 html {
+  box-sizing: content-box;
   font-size: 62.5%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  background-color: #f0f8ff;
+}
+
+.wrapper {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 10rem;
+}
+
+// Header
+
+.header {
+  background-color: #d3d3d3;
+}
+
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin: 0;
+  font-size: 4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header-nav__menu-btn {
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 3px;
+    right: calc(2rem + 10%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.header-nav__ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  transition-duration: 0.5s;
+  padding-inline-start: 0;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 1;
+    display: block;
+    overflow-y: auto;
+    height: 100%;
+    margin: 0;
+    padding: 100px 80px 0;
+  }
+}
+
+.header-nav__li {
+  width: min-content;
+  padding: 3.2rem;
+  border-radius: 5px;
+  list-style: none;
+  font-size: 2rem;
+  transition-duration: 0.5s;
+
+  @media (max-width: 768px) {
+    display: block;
+    margin: 0 0 39px;
+    padding: 10px;
+    font-size: 35px;
+    text-align: left;
+    transition-duration: 0.5s;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.header-nav__menu-toggle {
+  display: none;
+
+  @media (max-width: 768px) {
+    &:checked ~ .header-nav__menu-btn > .header-nav__hamburger-line {
+      transform: rotate(45deg);
+    }
+
+    &:checked ~ .header-nav__menu-btn > .header-nav__hamburger-line::before {
+      top: 0;
+      transform: rotate(0);
+    }
+
+    &:checked ~ .header-nav__menu-btn > .header-nav__hamburger-line::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+
+    &:checked ~ .header-nav__ul {
+      right: 0;
+      box-shadow: 0 0 0 9999px rgba(0 0 0 / 50%);
+    }
+
+    &:checked ~ .header-nav__ul::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+}
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  right: 64px;
+  z-index: 3;
+  display: none;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.header-nav__hamburger-line,
+.header-nav__hamburger-line::before,
+.header-nav__hamburger-line::after {
+  @media (max-width: 768px) {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    transition-duration: 0.5s;
+  }
+}
+
+.header-nav__hamburger-line::before {
+  @media (max-width: 768px) {
+    content: "";
+    top: -12.5px;
+  }
+}
+
+.header-nav__hamburger-line::after {
+  @media (max-width: 768px) {
+    content: "";
+    top: 12.5px;
+  }
+}
+
+// Main
+
+.stat {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: 700;
+  font-size: 2.6rem;
+  font-family: 'Courier New', Courier, monospace;
+
+  &__img {
+    width: 5rem;
+  }
+}
+
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  width: 44rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.field__cell {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-top: 0.6rem solid #d3d3d3;
+  border-right: 0.6rem solid #818181;
+  border-bottom: 0.6rem solid #818181;
+  border-left: 0.6rem solid #d3d3d3;
+  background-color: #bfbfbf;
+}
+
+// Footer
+
+.footer {
+  background-color: #a9a9a9;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 10rem;
+}
+
+.footer__github {
+  display: block;
+  width: 9.6rem;
+  height: 2.6rem;
+  background-image: url('../img/GitHub_Logo.svg');
+}
+
+.footer__year {
+  font-weight: 700;
+  font-size: 2.4rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  &:hover {
+    cursor:default;
+  }
+}
+
+.footer__rss-logo {
+  display: block;
+  width: 8.1rem;
+  height: 3rem;
+  background-image: url('../img/rs_school_js.svg');
 }
