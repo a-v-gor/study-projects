@@ -35,7 +35,6 @@ export default function createBody() {
     addNode('div', 'field__cell', document.querySelector('.field'));
     document.querySelectorAll('.field__cell')[i].setAttribute('id', i);
   }
-  document.querySelector('.field__cell').classList.add('field__cell_push');
   addNode('footer', 'footer', document.body);
   addNode('div', 'wrapper footer-wrapper', document.querySelector('.footer'));
   addNode('a', 'footer__github', document.querySelector('.wrapper.footer-wrapper'));

@@ -18,6 +18,7 @@ html {
   justify-content: space-between;
   min-height: 100vh;
   background-color: #f0f8ff;
+  user-select: none;
 }
 
 .wrapper {
@@ -217,6 +218,13 @@ html {
     border-right: none;
     border-bottom: none;
     border-left: 0.4rem solid #818181;
+  }
+
+  &_unpush {
+    border-top: none;
+    border-right: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+    border-left: none;
   }
 }
 
