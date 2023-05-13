@@ -1,5 +1,10 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
-  box-sizing: content-box;
   font-size: 62.5%;
 
   @media (max-width:768px) {
@@ -193,7 +198,7 @@ html {
 .field {
   display: flex;
   flex-wrap: wrap;
-  width: 44rem;
+  width: 32rem;
   margin: 0 auto;
   padding: 2rem 0;
 }
@@ -208,7 +213,10 @@ html {
   background-color: #bfbfbf;
 
   &_push {
-    
+    border-top: 0.4rem solid #818181;
+    border-right: none;
+    border-bottom: none;
+    border-left: 0.4rem solid #818181;
   }
 }
 
