@@ -1,5 +1,5 @@
 import './assets/css/normalize.css';
 import './assets/css/main.scss';
-import returnStartPage from './assets/js/returnStartPage.js';
+import createBody from './assets/js/createBody.js';
 
-document.addEventListener('DOMContentLoaded', returnStartPage());
+document.addEventListener('DOMContentLoaded', createBody());
