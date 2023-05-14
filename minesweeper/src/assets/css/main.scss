@@ -196,6 +196,18 @@ html {
   }
 }
 
+.stat__player {
+  width: 5rem;
+  height: 5rem;
+  background-image: url('../img/smile-0.svg');
+  background-position: center;
+  background-size: contain;
+
+  &_push {
+    background-image: url('../img/smile-grim.svg');
+  }
+}
+
 .field {
   display: flex;
   flex-wrap: wrap;

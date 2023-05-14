@@ -26,9 +26,6 @@ export default function createBody() {
   addNode('div', 'stat', document.querySelector('.wrapper.main-wrapper'));
   addNode('div', 'stat__timer', document.querySelector('.stat'), 'Time: 00');
   addNode('div', 'stat__player', document.querySelector('.stat'));
-  addNode('img', 'stat__img', document.querySelector('.stat__player'));
-  document.querySelector('.stat__img').setAttribute('src', './assets/img/smile-0.svg');
-  document.querySelector('.stat__img').setAttribute('alt', 'emoji');
   addNode('div', 'stat__moves', document.querySelector('.stat'), 'Moves: 00');
   addNode('div', 'field', document.querySelector('.wrapper.main-wrapper'));
   for (let i = 0; i < 100; i += 1) {
