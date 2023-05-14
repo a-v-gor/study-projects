@@ -1,6 +1,7 @@
 const data = {
   mines: [],
   openedCells: [],
+  flagCells: [],
   nums: {},
   stopGame: false,
 };

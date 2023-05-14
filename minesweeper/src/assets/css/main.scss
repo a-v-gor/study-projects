@@ -252,6 +252,13 @@ html {
   &_boom {
     background-color: #ff0000;
   }
+
+  &_flag {
+    background-image: url('../img/flag.svg');
+    background-position: center;
+    background-size: 1.6rem;
+    background-repeat: no-repeat;
+  }
 }
 
 .field__img {
