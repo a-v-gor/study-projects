@@ -24,12 +24,15 @@ export default function checkClick() {
 
   function unpushCell() {
     changeSmile('unpush');
-    console.log('unpushed');
     const pushedCell = document.querySelector('.field__cell_push');
     if (pushedCell) {
       openCell(pushedCell.id);
       checkIfZero(pushedCell.id);
       checkIfMine(pushedCell.id);
+    }
+    if (data.stopGame) {
+      field.removeEventListener('mousedown', pushCell);
+      document.body.removeEventListener('mouseup', unpushCell);
     }
   }
 
