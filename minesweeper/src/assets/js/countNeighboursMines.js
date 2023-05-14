@@ -1,4 +1,5 @@
 import data from './data.js';
+import returnNeighbours from './returnNeighbours.js';
 
 export default function countNeighboursMines() {
   function createStartDataForCells() {
@@ -19,20 +20,12 @@ export default function countNeighboursMines() {
   }
   for (let i = 0; i < data.mines.length; i += 1) {
     const mineId = data.mines[i];
-    const neighboursFull = [-11, -10, -9, -1, 1, 9, 10, 11];
-    const neighboursStartLine = [-10, -9, 1, 10, 11];
-    const neighboursEndLine = [-11, -10, -1, 9, 10];
-    let neighbours;
-    if (String(mineId).at(-1) === '0') {
-      neighbours = neighboursStartLine;
-    } else if (String(mineId).at(-1) === '9') {
-      neighbours = neighboursEndLine;
-    } else {
-      neighbours = neighboursFull;
-    }
-
+    const neighbours = returnNeighbours(mineId);
     for (let j = 0; j < neighbours.length; j += 1) {
-      increaseNeighbours(mineId + neighbours[j]);
+      const num = mineId + neighbours[j];
+      if (num > 0 && num < 100) {
+        increaseNeighbours(num);
+      }
     }
   }
 }
