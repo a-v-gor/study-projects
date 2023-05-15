@@ -7,7 +7,7 @@ export default function createBody() {
     }
     parentNode.append(node);
   }
-
+  document.body.textContent = '';
   addNode('header', 'header', document.body);
   addNode('div', 'wrapper header-wrapper', document.querySelector('.header'));
   addNode('h1', 'logo', document.querySelector('.wrapper.header-wrapper'), 'Minesweeper');
@@ -24,14 +24,19 @@ export default function createBody() {
   addNode('main', 'main', document.body);
   addNode('div', 'wrapper main-wrapper', document.querySelector('.main'));
   addNode('div', 'stat', document.querySelector('.wrapper.main-wrapper'));
-  addNode('div', 'stat__timer', document.querySelector('.stat'), 'Time: 00');
+  addNode('div', 'stat__timer', document.querySelector('.stat'), 'Time: ');
+  addNode('span', 'stat__seconds', document.querySelector('.stat__timer'), '00');
   addNode('div', 'stat__player', document.querySelector('.stat'));
-  addNode('div', 'stat__moves', document.querySelector('.stat'), 'Moves: 00');
+  addNode('div', 'stat__moves', document.querySelector('.stat'), 'Moves: ');
+  addNode('span', 'stat__num-moves', document.querySelector('.stat__moves'), '00');
   addNode('div', 'field', document.querySelector('.wrapper.main-wrapper'));
   for (let i = 0; i < 100; i += 1) {
     addNode('div', 'field__cell', document.querySelector('.field'));
     document.querySelectorAll('.field__cell')[i].setAttribute('id', i);
   }
+  addNode('div', 'rezult-msg rezult-msg_unactive', document.querySelector('.main'));
+  addNode('p', 'rezult-msg__text', document.querySelector('.rezult-msg'));
+  addNode('div', 'rezult-msg__btn', document.querySelector('.rezult-msg'), 'Close');
   addNode('footer', 'footer', document.body);
   addNode('div', 'wrapper footer-wrapper', document.querySelector('.footer'));
   addNode('a', 'footer__github', document.querySelector('.wrapper.footer-wrapper'));

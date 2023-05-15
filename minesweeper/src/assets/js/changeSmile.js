@@ -10,4 +10,7 @@ export default function changeSmile(str) {
   if (str === 'mine') {
     smile.classList.add('stat__player_mine');
   }
+  if (str === 'win') {
+    smile.classList.add('stat__player_win');
+  }
 }

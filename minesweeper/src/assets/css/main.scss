@@ -1,3 +1,8 @@
+$color-light-back: #f0f8ff;
+$color-light-lgray: #d3d3d3;
+$color-light-dgray: #818181;
+$color-light-gray: #bfbfbf;
+
 *,
 *::before,
 *::after {
@@ -17,7 +22,7 @@ html {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  background-color: #f0f8ff;
+  background-color: $color-light-back;
   user-select: none;
 }
 
@@ -30,7 +35,7 @@ html {
 // Header
 
 .header {
-  background-color: #d3d3d3;
+  background-color: $color-light-lgray;
 }
 
 .header-wrapper {
@@ -78,7 +83,7 @@ html {
     height: 100%;
     margin: 0;
     padding: 10rem 8rem 0;
-    background-color: #d3d3d3;
+    background-color: $color-light-lgray;
   }
 }
 
@@ -210,6 +215,10 @@ html {
   &_mine {
     background-image: url('../img/smile-loose.svg');
   }
+
+  &_win {
+    background-image: url('../img/smile-win.svg');
+  }
 }
 
 .field {
@@ -223,29 +232,28 @@ html {
 .field__cell {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 3.2rem;
   height: 3.2rem;
-  border-top: 0.6rem solid #d3d3d3;
-  border-right: 0.6rem solid #818181;
-  border-bottom: 0.6rem solid #818181;
-  border-left: 0.6rem solid #d3d3d3;
-  background-color: #bfbfbf;
+  border-top: 0.6rem solid $color-light-lgray;
+  border-right: 0.6rem solid $color-light-dgray;
+  border-bottom: 0.6rem solid $color-light-dgray;
+  border-left: 0.6rem solid $color-light-lgray;
+  background-color: $color-light-gray;
   font-size: 2.8rem;
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
 
   &_push {
-    border-top: 0.4rem solid #818181;
+    border-top: 0.4rem solid $color-light-dgray;
     border-right: none;
     border-bottom: none;
-    border-left: 0.4rem solid #818181;
+    border-left: 0.4rem solid $color-light-dgray;
   }
 
   &_unpush {
     border-top: none;
-    border-right: 1px solid #d3d3d3;
-    border-bottom: 1px solid #d3d3d3;
+    border-right: 1px solid $color-light-lgray;
+    border-bottom: 1px solid $color-light-lgray;
     border-left: none;
   }
 
@@ -266,10 +274,46 @@ html {
   width: 2rem;
 }
 
+.rezult-msg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fffffff0;
+  transition: 1s;
+
+  &_unactive {
+    top: -100%;
+    opacity: 0;
+  }
+}
+
+.rezult-msg__text {
+  display: block;
+  font-size: 3rem;
+}
+
+.rezult-msg__btn {
+  padding: 2rem;
+  background-color: $color-light-lgray;
+  font-size: 3rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 // Footer
 
 .footer {
-  background-color: #a9a9a9;
+  background-color: $color-light-dgray;
 }
 
 .footer-wrapper {
