@@ -42,11 +42,12 @@ export default function checkClick() {
       if (!data.openedCells.includes(id) && !data.flagCells.includes(id)) {
         data.flagCells.push(id);
         event.target.closest('.field__cell').classList.add('field__cell_flag');
+        playAudio('flag');
       } else if (data.flagCells.includes(id)) {
         event.target.closest('.field__cell').classList.remove('field__cell_flag');
         data.flagCells = data.flagCells.filter((el) => el !== id);
+        playAudio('flag');
       }
-      playAudio('flag');
     }
   }
 
@@ -56,6 +57,10 @@ export default function checkClick() {
     if (pushedCell) {
       openCell(pushedCell.id);
       checkIfZero(pushedCell.id);
+      for (let i = 0; i < data.toOpen.length; i += 1) {
+        openCell(data.toOpen[i]);
+      }
+      data.toOpen = [];
       checkIfMine(pushedCell.id);
       checkIfWin(pushedCell.id);
     }

@@ -35,7 +35,7 @@ html {
 }
 
 .wrapper {
-  max-width: 80rem;
+  max-width: 100rem;
   margin: 0 auto;
   padding: 0 10rem;
 }
@@ -199,6 +199,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2rem 0;
 }
 
 .stat {
@@ -238,9 +239,20 @@ html {
 .field {
   display: flex;
   flex-wrap: wrap;
-  width: 32rem;
   margin: 0 auto;
   padding: 2rem 0;
+}
+
+.field-easy {
+  width: 32rem;
+}
+
+.field-medium {
+  width: 48rem;
+}
+
+.field-hard {
+  width: 80rem;
 }
 
 .field__cell {

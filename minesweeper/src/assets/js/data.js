@@ -1,4 +1,7 @@
 const data = {
+  difficulty: 'easy',
+  numOfCells: 0,
+  numOfMines: 10,
   mines: [],
   openedCells: [],
   flagCells: [],
@@ -8,6 +11,7 @@ const data = {
   seconds: 0,
   moves: 0,
   sound: true,
+  toOpen: [],
 };
 
 export default data;

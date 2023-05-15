@@ -3,7 +3,7 @@ import returnNeighbours from './returnNeighbours.js';
 
 export default function countNeighboursMines() {
   function createStartDataForCells() {
-    for (let i = 0; i < 100; i += 1) {
+    for (let i = 0; i < data.numOfCells; i += 1) {
       if (data.mines.includes(i)) {
         data.nums[i] = 'mine';
       } else {

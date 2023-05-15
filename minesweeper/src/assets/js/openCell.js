@@ -28,6 +28,8 @@ export default function openCell(id) {
     }
     cell.classList.add(newClasslist);
   }
-
+  if (!data.openedCells.includes(+id)) {
+    data.openedCells.push(+id);
+  }
   showCellValue(id);
 }
