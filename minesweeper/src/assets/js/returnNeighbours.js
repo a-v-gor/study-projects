@@ -13,6 +13,10 @@ export default function returnNeighbours(id) {
     neighboursFull = [-16, -15, -14, -1, 1, 14, 15, 16];
     neighboursStartLine = [-15, -14, 1, 15, 16];
     neighboursEndLine = [-16, -15, -1, 14, 15];
+  } else if (data.difficulty === 'hard') {
+    neighboursFull = [-26, -25, -24, -1, 1, 24, 25, 26];
+    neighboursStartLine = [-25, -24, 1, 25, 26];
+    neighboursEndLine = [-26, -25, -1, 24, 25];
   }
 
   function createResult(arr) {
@@ -39,6 +43,14 @@ export default function returnNeighbours(id) {
     if (id === 0 || id % 15 === 0) {
       neighbours = neighboursStartLine;
     } else if ((id + 1) % 15 === 0) {
+      neighbours = neighboursEndLine;
+    } else {
+      neighbours = neighboursFull;
+    }
+  } else if (data.difficulty === 'hard') {
+    if (id === 0 || id % 25 === 0) {
+      neighbours = neighboursStartLine;
+    } else if ((id + 1) % 25 === 0) {
       neighbours = neighboursEndLine;
     } else {
       neighbours = neighboursFull;

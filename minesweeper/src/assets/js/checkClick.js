@@ -12,7 +12,7 @@ import timer from './timer.js';
 
 export default function checkClick() {
   const field = document.querySelector('.field');
-  const soundBtn = document.querySelector('.sound');
+  const soundBtn = document.querySelector('.settings__sound');
 
   function pushCell(event) {
     if (event.button === 0 && event.target.classList.value === 'field__cell') {
@@ -71,7 +71,7 @@ export default function checkClick() {
   }
 
   function toggleSound() {
-    soundBtn.classList.toggle('sound_mute');
+    soundBtn.classList.toggle('settings__sound_mute');
     if (data.sound) {
       data.sound = false;
     } else {

@@ -19,6 +19,7 @@ $color-font-eight: #878787;
 
 html {
   font-size: 62.5%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
   @media (max-width:768px) {
     font-size: 50%;
@@ -368,17 +369,61 @@ html {
   }
 }
 
-.sound {
-  padding-right: 5rem;
-  background-image: url('../img/volume.svg');
-  background-position: right;
-  background-size: 4rem;
-  background-repeat: no-repeat;
+.settings {
+  display: flex;
   font-size: 3rem;
+  column-gap: 5rem;
+
+  > * {
+    padding-right: 5rem;
+    background-position: right;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+
+    &:hover {
+      color: $color-light-dgray;
+      cursor: pointer;
+    }
+  }
+}
+
+.settings__sound {
+  background-image: url('../img/volume.svg');
+  background-size: 4rem;
 
   &_mute {
     background-image: url('../img/mute.svg');
   }
+}
+
+.settings__difficulty {
+  background-image: url('../img/settings.svg');
+  background-size: 3rem;
+}
+
+.settings__window {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fffffff0;
+  transition: 1s;
+
+  &_unactive {
+    top: -100%;
+    opacity: 0;
+  }
+}
+
+.settings__header {
+  font-size: 3rem;
 }
 
 // Footer

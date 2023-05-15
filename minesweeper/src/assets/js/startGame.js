@@ -13,7 +13,6 @@ export default function startGame() {
     data.nums = {};
     data.seconds = 0;
     data.moves = 0;
-    console.log(data);
     startGame();
   }
 
