@@ -19,8 +19,8 @@ export default function createBody() {
   document.querySelector('.header-nav__menu-btn').setAttribute('for', 'menu-toggle');
   addNode('span', 'header-nav__hamburger-line', document.querySelector('.header-nav__menu-btn'));
   addNode('ul', 'header-nav__ul', document.querySelector('.header__nav.header-nav'));
-  addNode('li', 'header-nav__li', document.querySelector('.header-nav__ul'), 'Игра');
-  addNode('li', 'header-nav__li', document.querySelector('.header-nav__ul'), 'Рекорды');
+  addNode('li', 'header-nav__li', document.querySelector('.header-nav__ul'), 'New Game');
+  addNode('li', 'header-nav__li', document.querySelector('.header-nav__ul'), 'Records');
   addNode('main', 'main', document.body);
   addNode('div', 'wrapper main-wrapper', document.querySelector('.main'));
   addNode('div', 'stat', document.querySelector('.wrapper.main-wrapper'));
