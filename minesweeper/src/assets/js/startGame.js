@@ -4,6 +4,7 @@ import data from './data.js';
 
 export default function startGame() {
   function startNewGame() {
+    clearTimeout(data.timerId);
     data.stopGame = false;
     data.mines = [];
     data.openedCells = [];
@@ -17,4 +18,5 @@ export default function startGame() {
   createBody();
   checkClick();
   document.querySelector('.rezult-msg__btn').addEventListener('click', startNewGame);
+  document.querySelector('.header-nav__li').addEventListener('click', startNewGame);
 }
