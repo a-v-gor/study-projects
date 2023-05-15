@@ -84,6 +84,12 @@ export default function checkClick() {
     }
   }
 
+  if (data.sound) {
+    soundBtn.classList.remove('settings__sound_mute');
+  } else {
+    soundBtn.classList.add('settings__sound_mute');
+  }
+
   recordsBtn.addEventListener('click', showRecords);
   settingsBtn.addEventListener('click', setSettings);
   soundBtn.addEventListener('click', toggleSound);

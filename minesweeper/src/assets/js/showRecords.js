@@ -1,5 +1,8 @@
 export default function showRecords() {
-  const arr = JSON.parse(localStorage.getItem('minesweeper-records'));
+  let arr;
+  if (localStorage.getItem('minesweeper-records')) {
+    arr = JSON.parse(localStorage.getItem('minesweeper-records'));
+  }
 
   function firstZero(str) {
     return (str.length === 1) ? 0 + str : str;
@@ -29,13 +32,16 @@ export default function showRecords() {
   <div class="records__cell">Moves</div><div class="records__cell">Seconds</div>
   <div class="records__cell">Diff</div><div class="records__cell">Mines</div>`;
 
-  if (arr.length > 9) {
-    arr.shift();
+  if (localStorage.getItem('minesweeper-records')) {
+    if (arr.length > 9) {
+      arr.shift();
+    }
+
+    for (let i = 0; i < arr.length; i += 1) {
+      createLine(arr[i]);
+    }
   }
 
-  for (let i = 0; i < arr.length; i += 1) {
-    createLine(arr[i]);
-  }
   document.querySelector('.records').classList.remove('records_unactive');
 
   document.querySelector('.records__btn').addEventListener('click', hideRecords);
