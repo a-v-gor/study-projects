@@ -13,7 +13,7 @@ export default function checkClick() {
   const field = document.querySelector('.field');
 
   function pushCell(event) {
-    if (event.button === 0) {
+    if (event.button === 0 && event.target.classList.value === 'field__cell') {
       const id = Number(event.target.id);
       if (!data.openedCells.includes(id) && !data.flagCells.includes(id)) {
         if (event.isTrusted) {

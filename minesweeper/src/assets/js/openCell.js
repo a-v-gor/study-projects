@@ -7,11 +7,9 @@ export default function openCell(id) {
   cell.classList.remove('field__cell_push');
   cell.classList.add('field__cell_unpush');
 
-  if (val !== 'mine') {
+  if (val !== 'mine' && val !== 0) {
     let newClasslist = '';
-    if (val === 0) {
-      newClasslist = 'field__cell-zero';
-    } else if (val === 1) {
+    if (val === 1) {
       newClasslist = 'field__cell-one';
     } else if (val === 2) {
       newClasslist = 'field__cell-two';

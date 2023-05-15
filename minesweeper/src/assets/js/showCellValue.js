@@ -8,7 +8,7 @@ export default function showCellValue(id) {
       img.className = 'field__img';
       img.setAttribute('src', './assets/img/bomb.svg');
       cell.append(img);
-    } else {
+    } else if (data.nums[id] !== 0) {
       cell.textContent = data.nums[id];
     }
   }

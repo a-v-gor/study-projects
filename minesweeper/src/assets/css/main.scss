@@ -2,7 +2,6 @@ $color-light-back: #f0f8ff;
 $color-light-lgray: #d3d3d3;
 $color-light-dgray: #818181;
 $color-light-gray: #bfbfbf;
-$color-font-zero: #878787;
 $color-font-one: #0b24fb;
 $color-font-two: #0e7a11;
 $color-font-three: #fc0d1b;
@@ -274,10 +273,6 @@ html {
     background-position: center;
     background-size: 1.6rem;
     background-repeat: no-repeat;
-  }
-
-  &-zero {
-    color: $color-font-zero;
   }
 
   &-one {
