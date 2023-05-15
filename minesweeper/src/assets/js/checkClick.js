@@ -7,6 +7,7 @@ import checkIfMine from './checkIfMine.js';
 import changeSmile from './changeSmile.js';
 import checkIfWin from './checkIfWin.js';
 import increaseNum from './increaseNum.js';
+import playAudio from './playAudio.js';
 import timer from './timer.js';
 
 export default function checkClick() {
@@ -19,6 +20,7 @@ export default function checkClick() {
         if (event.isTrusted) {
           increaseNum('.stat__num-moves');
           data.moves += 1;
+          playAudio('click');
         }
         changeSmile('push');
         data.openedCells.push(id);
@@ -43,6 +45,7 @@ export default function checkClick() {
         event.target.closest('.field__cell').classList.remove('field__cell_flag');
         data.flagCells = data.flagCells.filter((el) => el !== id);
       }
+      playAudio('flag');
     }
   }
 
