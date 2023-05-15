@@ -12,6 +12,7 @@ import timer from './timer.js';
 
 export default function checkClick() {
   const field = document.querySelector('.field');
+  const soundBtn = document.querySelector('.sound');
 
   function pushCell(event) {
     if (event.button === 0 && event.target.classList.value === 'field__cell') {
@@ -64,6 +65,17 @@ export default function checkClick() {
     }
   }
 
+  function toggleSound() {
+    soundBtn.classList.toggle('sound_mute');
+    if (data.sound) {
+      data.sound = false;
+    } else {
+      data.sound = true;
+      playAudio('click');
+    }
+  }
+
+  soundBtn.addEventListener('click', toggleSound);
   field.addEventListener('mousedown', pushCell);
   document.body.addEventListener('mouseup', unpushCell);
   field.addEventListener('contextmenu', pushFlag);

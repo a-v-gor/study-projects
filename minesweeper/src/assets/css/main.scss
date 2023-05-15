@@ -195,10 +195,17 @@ html {
 
 // Main
 
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .stat {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  width: 100%;
   font-weight: 700;
   font-size: 2.6rem;
   font-family: 'Courier New', Courier, monospace;
@@ -346,6 +353,19 @@ html {
 
   &:hover {
     cursor: pointer;
+  }
+}
+
+.sound {
+  padding-right: 5rem;
+  background-image: url('../img/volume.svg');
+  background-position: right;
+  background-size: 4rem;
+  background-repeat: no-repeat;
+  font-size: 3rem;
+
+  &_mute {
+    background-image: url('../img/mute.svg');
   }
 }
 

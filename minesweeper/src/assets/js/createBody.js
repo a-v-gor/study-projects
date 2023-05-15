@@ -34,6 +34,7 @@ export default function createBody() {
     addNode('div', 'field__cell', document.querySelector('.field'));
     document.querySelectorAll('.field__cell')[i].setAttribute('id', i);
   }
+  addNode('div', 'sound', document.querySelector('.wrapper.main-wrapper'), 'Sound');
   addNode('div', 'rezult-msg rezult-msg_unactive', document.querySelector('.main'));
   addNode('p', 'rezult-msg__text', document.querySelector('.rezult-msg'));
   addNode('div', 'rezult-msg__btn', document.querySelector('.rezult-msg'), 'Close');
