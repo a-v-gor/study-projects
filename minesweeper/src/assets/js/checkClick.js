@@ -13,6 +13,7 @@ import timer from './timer.js';
 export default function checkClick() {
   const field = document.querySelector('.field');
   const soundBtn = document.querySelector('.settings__sound');
+  const settingsBtn = document.querySelector('.settings__difficulty');
 
   function pushCell(event) {
     if (event.button === 0 && event.target.classList.value === 'field__cell') {
@@ -80,6 +81,11 @@ export default function checkClick() {
     }
   }
 
+  function setSettings() {
+    document.querySelector('.settings__window').classList.remove('settings__window_unactive');
+  }
+
+  settingsBtn.addEventListener('click', setSettings);
   soundBtn.addEventListener('click', toggleSound);
   field.addEventListener('mousedown', pushCell);
   document.body.addEventListener('mouseup', unpushCell);

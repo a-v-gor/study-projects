@@ -16,9 +16,17 @@ export default function startGame() {
     startGame();
   }
 
+  function getSettings(event) {
+    event.preventDefault();
+    data.difficulty = document.querySelector('.settings__field-size-radio:checked').id;
+    data.numOfMines = document.querySelector('.settings__num-mines-option:checked').value;
+    startNewGame();
+  }
+
   calcSettings();
   createBody();
   checkClick();
   document.querySelector('.rezult-msg__btn').addEventListener('click', startNewGame);
   document.querySelector('.header-nav__li').addEventListener('click', startNewGame);
+  document.querySelector('.settings__field-size-form').addEventListener('submit', getSettings);
 }
