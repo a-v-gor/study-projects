@@ -92,4 +92,8 @@ export default function createBody() {
   document.querySelector('.settings__num-mines-option').setAttribute('selected', '');
   addNode('input', 'settings__submit', document.querySelector('.settings__field-size-form'), 'Submit');
   document.querySelector('.settings__submit').setAttribute('type', 'submit');
+  addNode('div', 'records records_unactive', document.querySelector('.main'));
+  addNode('h2', 'records__title', document.querySelector('.records'), 'Records');
+  addNode('div', 'records__table', document.querySelector('.records'));
+  addNode('h2', 'records__btn', document.querySelector('.records'), 'Close');
 }

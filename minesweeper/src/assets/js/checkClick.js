@@ -8,12 +8,15 @@ import changeSmile from './changeSmile.js';
 import checkIfWin from './checkIfWin.js';
 import increaseNum from './increaseNum.js';
 import playAudio from './playAudio.js';
+import setSettings from './setSettings.js';
+import showRecords from './showRecords.js';
 import timer from './timer.js';
 
 export default function checkClick() {
   const field = document.querySelector('.field');
   const soundBtn = document.querySelector('.settings__sound');
   const settingsBtn = document.querySelector('.settings__difficulty');
+  const recordsBtn = document.querySelectorAll('.header-nav__li')[1];
 
   function pushCell(event) {
     if (event.button === 0 && event.target.classList.value === 'field__cell') {
@@ -81,10 +84,7 @@ export default function checkClick() {
     }
   }
 
-  function setSettings() {
-    document.querySelector('.settings__window').classList.remove('settings__window_unactive');
-  }
-
+  recordsBtn.addEventListener('click', showRecords);
   settingsBtn.addEventListener('click', setSettings);
   soundBtn.addEventListener('click', toggleSound);
   field.addEventListener('mousedown', pushCell);
