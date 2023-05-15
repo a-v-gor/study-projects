@@ -2,6 +2,15 @@ $color-light-back: #f0f8ff;
 $color-light-lgray: #d3d3d3;
 $color-light-dgray: #818181;
 $color-light-gray: #bfbfbf;
+$color-font-zero: #878787;
+$color-font-one: #0b24fb;
+$color-font-two: #0e7a11;
+$color-font-three: #fc0d1b;
+$color-font-four: #020b79;
+$color-font-five: #852123;
+$color-font-six: #278786;
+$color-font-seven: #000000;
+$color-font-eight: #878787;
 
 *,
 *::before,
@@ -266,6 +275,42 @@ html {
     background-position: center;
     background-size: 1.6rem;
     background-repeat: no-repeat;
+  }
+
+  &-zero {
+    color: $color-font-zero;
+  }
+
+  &-one {
+    color: $color-font-one;
+  }
+
+  &-two {
+    color: $color-font-two;
+  }
+
+  &-three {
+    color: $color-font-three;
+  }
+
+  &-four {
+    color: $color-font-four;
+  }
+
+  &-five {
+    color: $color-font-five;
+  }
+
+  &-six {
+    color: $color-font-six;
+  }
+
+  &-seven {
+    color: $color-font-seven;
+  }
+
+  &-eight {
+    color: $color-font-eight;
   }
 }
 
