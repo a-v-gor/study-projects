@@ -489,14 +489,19 @@ html {
 .records__table {
   display: grid;
   grid-template-columns: 1fr repeat(4, 0.3fr);
-  column-gap: 0.5rem;
+  border: 0.1rem solid $color-light-dgray;
 }
 
+.records__cell-th,
 .records__cell {
   padding: 0 0.5rem;
-  border-right: 0.3rem solid $color-light-dgray;
-  border-left: 0.3rem solid $color-light-dgray;
+  border-right: 0.1rem solid $color-light-dgray;
+  border-left: 0.1rem solid $color-light-dgray;
   font-size: 2rem;
+}
+
+.records__cell-th {
+  border: 0.1rem solid $color-light-dgray;
 }
 
 .records__btn {

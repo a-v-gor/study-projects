@@ -1,4 +1,5 @@
 export default function showRecords() {
+  const table = document.querySelector('.records__table');
   document.querySelector('.header-nav__menu-toggle').checked = false;
   let arr;
   if (localStorage.getItem('minesweeper-records')) {
@@ -23,17 +24,13 @@ export default function showRecords() {
       } else {
         node.innerHTML = valuesArr[i];
       }
-      document.querySelector('.records__table').append(node);
+      table.append(node);
     }
   }
 
   function hideRecords() {
     document.querySelector('.records').classList.add('records_unactive');
   }
-
-  document.querySelector('.records__table').innerHTML = `<div class="records__cell">Date</div>
-  <div class="records__cell">Moves</div><div class="records__cell">Seconds</div>
-  <div class="records__cell">Diff</div><div class="records__cell">Mines</div>`;
 
   if (localStorage.getItem('minesweeper-records')) {
     for (let i = 0; i < arr.length; i += 1) {

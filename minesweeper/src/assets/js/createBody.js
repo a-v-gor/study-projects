@@ -95,5 +95,10 @@ export default function createBody() {
   addNode('div', 'records records_unactive', document.querySelector('.main'));
   addNode('h2', 'records__title', document.querySelector('.records'), 'Records');
   addNode('div', 'records__table', document.querySelector('.records'));
+  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Date');
+  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Moves');
+  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Seconds');
+  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Diff');
+  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Mines');
   addNode('h2', 'records__btn', document.querySelector('.records'), 'Close');
 }
