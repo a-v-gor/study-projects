@@ -10,6 +10,7 @@ import increaseNum from './increaseNum.js';
 import playAudio from './playAudio.js';
 import setSettings from './setSettings.js';
 import showRecords from './showRecords.js';
+import toggleSound from './toggleSound.js';
 import timer from './timer.js';
 
 export default function checkClick() {
@@ -20,11 +21,14 @@ export default function checkClick() {
 
   function pushCell(event) {
     if (event.button === 0 && event.target.classList.value === 'field__cell') {
+      if (!data.timerId) {
+        timer();
+      }
       const id = Number(event.target.id);
       if (!data.openedCells.includes(id) && !data.flagCells.includes(id)) {
         if (event.isTrusted) {
           increaseNum('.stat__num-moves');
-          data.moves += 1;
+          data.moves = document.querySelector('.stat__num-moves').textContent;
           playAudio('click');
         }
         changeSmile('push');
@@ -32,7 +36,6 @@ export default function checkClick() {
         if (!data.mines.length) {
           scatterMines();
           countNeighboursMines();
-          timer();
         }
         event.target.closest('.field__cell').classList.add('field__cell_push');
       }
@@ -42,6 +45,9 @@ export default function checkClick() {
   function pushFlag(event) {
     event.preventDefault();
     if (!data.stopGame) {
+      if (!data.timerId) {
+        timer();
+      }
       const id = Number(event.target.id);
       if (!data.openedCells.includes(id) && !data.flagCells.includes(id)) {
         data.flagCells.push(id);
@@ -66,28 +72,12 @@ export default function checkClick() {
       }
       data.toOpen = [];
       checkIfMine(pushedCell.id);
-      checkIfWin(pushedCell.id);
+      checkIfWin();
     }
     if (data.stopGame) {
       field.removeEventListener('mousedown', pushCell);
       document.body.removeEventListener('mouseup', unpushCell);
     }
-  }
-
-  function toggleSound() {
-    soundBtn.classList.toggle('settings__sound_mute');
-    if (data.sound) {
-      data.sound = false;
-    } else {
-      data.sound = true;
-      playAudio('click');
-    }
-  }
-
-  if (data.sound) {
-    soundBtn.classList.remove('settings__sound_mute');
-  } else {
-    soundBtn.classList.add('settings__sound_mute');
   }
 
   recordsBtn.addEventListener('click', showRecords);

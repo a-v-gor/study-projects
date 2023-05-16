@@ -13,5 +13,6 @@ export default function checkIfMine(id) {
     showOtherMines(id);
     showResult('mine');
     playAudio('mine');
+    clearTimeout(data.timerId);
   }
 }

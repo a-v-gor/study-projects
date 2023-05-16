@@ -12,6 +12,7 @@ const data = {
   moves: 0,
   sound: true,
   toOpen: [],
+  newSettings: false,
 };
 
 export default data;
