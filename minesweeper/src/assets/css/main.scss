@@ -10,6 +10,7 @@ $color-font-five: #852123;
 $color-font-six: #278786;
 $color-font-seven: #000000;
 $color-font-eight: #878787;
+$color-dark-back: #191970;
 
 *,
 *::before,
@@ -33,6 +34,10 @@ html {
   min-height: 100vh;
   background-color: $color-light-back;
   user-select: none;
+
+  &_dark-theme {
+    background-color: $color-dark-back;
+  }
 }
 
 .wrapper {
