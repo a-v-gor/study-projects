@@ -11,5 +11,6 @@ export default function checkIfWin() {
     changeSmile('win');
     showResult('win');
     playAudio('win');
+    clearInterval(data.timerId);
   }
 }

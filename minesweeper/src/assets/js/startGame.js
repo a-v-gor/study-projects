@@ -8,7 +8,7 @@ import openCell from './openCell.js';
 
 export default function startGame() {
   function startNewGame() {
-    clearTimeout(data.timerId);
+    clearInterval(data.timerId);
     data.timerId = null;
 
     if (data.stopGame || data.newSettings) {

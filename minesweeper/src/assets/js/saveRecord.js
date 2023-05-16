@@ -10,6 +10,10 @@ export default function saveRecord() {
     mines: data.numOfMines,
   };
 
+  if (arr.length > 9) {
+    arr.shift();
+  }
+
   arr.push(newRec);
   localStorage.setItem('minesweeper-records', JSON.stringify(arr));
 }

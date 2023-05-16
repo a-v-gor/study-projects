@@ -1,4 +1,5 @@
 export default function showRecords() {
+  document.querySelector('.header-nav__menu-toggle').checked = false;
   let arr;
   if (localStorage.getItem('minesweeper-records')) {
     arr = JSON.parse(localStorage.getItem('minesweeper-records'));
@@ -15,7 +16,9 @@ export default function showRecords() {
       node.className = 'records__cell';
       if (i === 0) {
         const date = new Date(valuesArr[i]);
-        const str = `${date.getDate()}.${firstZero(String(Number(date.getMonth()) + 1))}.${String(date.getFullYear()).slice(2)} ${firstZero(String(date.getHours()))}:${firstZero(String(date.getMinutes()))}`;
+        const str = `${date.getDate()}.${firstZero(String(Number(date.getMonth()) + 1))}
+        .${String(date.getFullYear()).slice(2)} ${firstZero(String(date.getHours()))}
+        :${firstZero(String(date.getMinutes()))}`;
         node.innerHTML = str;
       } else {
         node.innerHTML = valuesArr[i];
@@ -33,10 +36,6 @@ export default function showRecords() {
   <div class="records__cell">Diff</div><div class="records__cell">Mines</div>`;
 
   if (localStorage.getItem('minesweeper-records')) {
-    if (arr.length > 9) {
-      arr.shift();
-    }
-
     for (let i = 0; i < arr.length; i += 1) {
       createLine(arr[i]);
     }
