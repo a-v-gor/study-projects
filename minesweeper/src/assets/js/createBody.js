@@ -1,15 +1,7 @@
-import data from './data.js';
+import addNode from './addNode.js';
+import addField from './addField.js';
 
 export default function createBody() {
-  function addNode(strNode, strClass, parentNode, strIn = '') {
-    const node = document.createElement(`${strNode}`);
-    node.className = `${strClass}`;
-    if (strIn.length) {
-      node.innerHTML = strIn;
-    }
-    parentNode.append(node);
-  }
-
   document.body.textContent = '';
   addNode('header', 'header', document.body);
   addNode('div', 'wrapper header-wrapper', document.querySelector('.header'));
@@ -32,13 +24,8 @@ export default function createBody() {
   addNode('div', 'stat__player', document.querySelector('.stat'));
   addNode('div', 'stat__moves', document.querySelector('.stat'), 'Moves: ');
   addNode('span', 'stat__num-moves', document.querySelector('.stat__moves'), '00');
-  let fieldClass = 'field field-';
-  fieldClass += data.difficulty;
-  addNode('div', fieldClass, document.querySelector('.wrapper.main-wrapper'));
-  for (let i = 0; i < data.numOfCells; i += 1) {
-    addNode('div', 'field__cell', document.querySelector('.field'));
-    document.querySelectorAll('.field__cell')[i].setAttribute('id', i);
-  }
+  addNode('div', 'field-wrapper', document.querySelector('.wrapper.main-wrapper'));
+  addField();
   addNode('div', 'settings', document.querySelector('.wrapper.main-wrapper'));
   addNode('div', 'settings__sound', document.querySelector('.settings'), 'Sound');
   addNode('div', 'settings__difficulty', document.querySelector('.settings'), 'Difficulty');

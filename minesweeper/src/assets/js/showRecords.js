@@ -39,6 +39,5 @@ export default function showRecords() {
   }
 
   document.querySelector('.records').classList.remove('records_unactive');
-
   document.querySelector('.records__btn').addEventListener('click', hideRecords);
 }

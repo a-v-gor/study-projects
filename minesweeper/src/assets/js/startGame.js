@@ -5,10 +5,12 @@ import calcSettings from './calcSettings.js';
 import updSoundIcon from './updSoundIcon.js';
 import saveGame from './saveGame.js';
 import openCell from './openCell.js';
+import addField from './addField.js';
 
 export default function startGame() {
   function startNewGame() {
     clearInterval(data.timerId);
+    document.querySelector('.stat__player').classList = 'stat__player';
     data.timerId = null;
 
     if (data.stopGame || data.newSettings) {
@@ -30,8 +32,12 @@ export default function startGame() {
       startNewGame();
     }
 
+    if (!document.querySelector('.settings__window_unactive')) {
+      document.querySelector('.settings__window').classList.add('settings__window_unactive');
+    }
+
     calcSettings();
-    createBody();
+    addField();
     document.querySelector('.stat__num-moves').textContent = data.moves;
     document.querySelector('.stat__seconds').textContent = data.seconds;
     updSoundIcon();
@@ -40,10 +46,14 @@ export default function startGame() {
     checkClick();
 
     window.addEventListener('unload', saveGame);
-    document.querySelector('.rezult-msg__btn').addEventListener('click', startNewGame);
-    document.querySelector('.header-nav__li').addEventListener('click', () => { data.newSettings = true; startNewGame(); });
+    document.querySelector('.header-nav__li').addEventListener('click', () => {
+      data.newSettings = true;
+      startNewGame();
+    });
     document.querySelector('.settings__field-size-form').addEventListener('submit', getSettings);
   }
+
+  createBody();
 
   const savedData = JSON.parse(localStorage.getItem('minesweeper-save'));
   localStorage.removeItem('minesweeper-save');

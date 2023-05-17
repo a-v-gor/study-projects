@@ -1,7 +1,7 @@
 import data from './data.js';
 
 export default function saveGame() {
-  if (data.newSettings) {
+  if (data.newSettings || data.stopGame) {
     return;
   }
   const dataToSave = {
