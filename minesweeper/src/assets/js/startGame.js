@@ -13,9 +13,9 @@ export default function startGame() {
   function startNewGame() {
     hideRecords();
     document.querySelector('.header-nav__menu-toggle').checked = false;
-    document.querySelector('.header-nav__menu-toggle').checked = false;
     clearInterval(data.timerId);
     document.querySelector('.stat__player').classList = 'stat__player';
+    document.querySelector('.stat__seconds').textContent = '0';
     data.timerId = null;
 
     if (data.stopGame || data.newSettings) {

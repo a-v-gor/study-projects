@@ -43,9 +43,9 @@ export default function createBody() {
   addNode('div', 'footer__year', document.querySelector('.footer-wrapper'), '2023');
   addNode('a', 'footer__rss-logo', document.querySelector('.footer-wrapper'));
   document.querySelector('.footer__rss-logo').setAttribute('href', 'https://rs.school/js/');
-  addNode('div', 'rezult-msg rezult-msg_unactive', document.querySelector('.main'));
-  addNode('p', 'rezult-msg__text', document.querySelector('.rezult-msg'));
-  addNode('div', 'rezult-msg__btn', document.querySelector('.rezult-msg'), 'Close');
+  addNode('div', 'result-msg result-msg_unactive', document.querySelector('.main'));
+  addNode('p', 'result-msg__text', document.querySelector('.result-msg'));
+  addNode('div', 'result-msg__btn', document.querySelector('.result-msg'), 'Close');
   addNode('div', 'settings__window settings__window_unactive', document.querySelector('.main'));
   addNode('h2', 'settings__header', document.querySelector('.settings__window'), 'Set Your Game');
   addNode('form', 'settings__field-size-form', document.querySelector('.settings__window'));

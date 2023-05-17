@@ -20,14 +20,14 @@ export default function returnNeighbours(id) {
   }
 
   function createResult(arr) {
-    const rezult = [];
+    const result = [];
     for (let i = 0; i < arr.length; i += 1) {
       const num = id + arr[i];
       if (num >= 0 && num < data.numOfCells) {
-        rezult.push(num);
+        result.push(num);
       }
     }
-    return rezult;
+    return result;
   }
 
   let neighbours;

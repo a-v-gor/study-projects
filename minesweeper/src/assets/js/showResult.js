@@ -1,10 +1,10 @@
 import data from './data.js';
 
 export default function showResult(rez) {
-  const closeBtn = document.querySelector('.rezult-msg__btn');
+  const closeBtn = document.querySelector('.result-msg__btn');
 
-  function hideRezult() {
-    document.querySelector('.rezult-msg').classList.add('rezult-msg_unactive');
+  function hideResult() {
+    document.querySelector('.result-msg').classList.add('result-msg_unactive');
   }
 
   let str = '';
@@ -14,8 +14,8 @@ export default function showResult(rez) {
     str = 'Game over. Try again';
   }
 
-  document.querySelector('.rezult-msg__text').textContent = str;
-  document.querySelector('.rezult-msg').classList.remove('rezult-msg_unactive');
+  document.querySelector('.result-msg__text').textContent = str;
+  document.querySelector('.result-msg').classList.remove('result-msg_unactive');
 
-  closeBtn.addEventListener('click', hideRezult);
+  closeBtn.addEventListener('click', hideResult);
 }

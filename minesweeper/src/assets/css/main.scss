@@ -376,7 +376,7 @@ html {
   width: 2rem;
 }
 
-.rezult-msg {
+.result-msg {
   position: absolute;
   top: 0;
   right: 0;
@@ -386,7 +386,6 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
   height: 100%;
   background-color: #fffffff0;
   transition: 1s;
@@ -397,14 +396,14 @@ html {
   }
 }
 
-.rezult-msg__text {
+.result-msg__text {
   display: block;
   max-width: 90vw;
   font-size: 3rem;
   text-align: center;
 }
 
-.rezult-msg__btn {
+.result-msg__btn {
   padding: 2rem;
   background-color: $color-light-lgray;
   font-size: 2rem;

@@ -81,7 +81,6 @@ export default function checkClick() {
       document.body.removeEventListener('mouseup', unpushCell);
     }
   }
-
   recordsBtn.addEventListener('click', showRecords);
   settingsBtn.addEventListener('click', setSettings);
   soundBtn.addEventListener('click', toggleSound);
