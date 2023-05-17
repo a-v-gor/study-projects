@@ -6,6 +6,7 @@ import updSoundIcon from './updSoundIcon.js';
 import saveGame from './saveGame.js';
 import openCell from './openCell.js';
 import addField from './addField.js';
+import updStat from './updStat.js';
 
 export default function startGame() {
   function startNewGame() {
@@ -38,8 +39,7 @@ export default function startGame() {
 
     calcSettings();
     addField();
-    document.querySelector('.stat__num-moves').textContent = data.moves;
-    document.querySelector('.stat__seconds').textContent = data.seconds;
+    updStat();
     updSoundIcon();
     data.openedCells.forEach((el) => openCell(el));
     data.flagCells.forEach((el) => document.getElementById(el).classList.add('field__cell_flag'));

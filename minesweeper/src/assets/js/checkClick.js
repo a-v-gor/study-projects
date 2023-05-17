@@ -12,6 +12,7 @@ import setSettings from './setSettings.js';
 import showRecords from './showRecords.js';
 import toggleSound from './toggleSound.js';
 import timer from './timer.js';
+import updStat from './updStat.js';
 
 export default function checkClick() {
   const field = document.querySelector('.field');
@@ -58,6 +59,7 @@ export default function checkClick() {
         data.flagCells = data.flagCells.filter((el) => el !== id);
         playAudio('flag');
       }
+      updStat();
     }
   }
 

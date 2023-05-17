@@ -242,6 +242,12 @@ html {
   }
 }
 
+.stat__seconds,
+.stat__num-moves {
+  display: inline-block;
+  width: 5rem;
+}
+
 .field {
   display: flex;
   flex-wrap: wrap;

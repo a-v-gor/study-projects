@@ -20,10 +20,14 @@ export default function createBody() {
   addNode('div', 'wrapper main-wrapper', document.querySelector('.main'));
   addNode('div', 'stat', document.querySelector('.wrapper.main-wrapper'));
   addNode('div', 'stat__timer', document.querySelector('.stat'), 'Time: ');
-  addNode('span', 'stat__seconds', document.querySelector('.stat__timer'), '00');
-  addNode('div', 'stat__player', document.querySelector('.stat'));
+  addNode('span', 'stat__seconds', document.querySelector('.stat__timer'));
   addNode('div', 'stat__moves', document.querySelector('.stat'), 'Moves: ');
-  addNode('span', 'stat__num-moves', document.querySelector('.stat__moves'), '00');
+  addNode('span', 'stat__num-moves', document.querySelector('.stat__moves'));
+  addNode('div', 'stat__player', document.querySelector('.stat'));
+  addNode('div', 'stat__flags', document.querySelector('.stat'), 'Flags: ');
+  addNode('span', 'stat__num-flags', document.querySelector('.stat__flags'));
+  addNode('div', 'stat__mines', document.querySelector('.stat'), 'Mines: ');
+  addNode('span', 'stat__num-mines', document.querySelector('.stat__mines'));
   addNode('div', 'field-wrapper', document.querySelector('.wrapper.main-wrapper'));
   addField();
   addNode('div', 'settings', document.querySelector('.wrapper.main-wrapper'));
