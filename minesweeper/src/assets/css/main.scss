@@ -22,8 +22,12 @@ html {
   font-size: 62.5%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
+  @media (max-width:850px) {
+    font-size: 56%;
+  }
+
   @media (max-width:768px) {
-    font-size: 50%;
+    font-size: 45%;
   }
 }
 
@@ -252,7 +256,9 @@ html {
 }
 
 .stat__seconds,
-.stat__num-moves {
+.stat__num-moves,
+.stat__num-flags,
+.stat__num-mines {
   display: inline-block;
   width: 5rem;
 }
@@ -266,14 +272,26 @@ html {
 
 .field-easy {
   width: 32rem;
+
+  @media (max-width:768px) {
+    width: calc(96vw * 0.4);
+  }
 }
 
 .field-medium {
   width: 48rem;
+
+  @media (max-width:768px) {
+    width: calc(96vw * 0.6);
+  }
 }
 
 .field-hard {
   width: 80rem;
+
+  @media (max-width:768px) {
+    width: 96vw;
+  }
 }
 
 .field__cell {
@@ -289,6 +307,11 @@ html {
   font-size: 2.8rem;
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
+
+  @media (max-width:768px) {
+    width: calc(96vw / 25);
+    height: calc(96vw / 25);
+  }
 
   &_push {
     border-top: 0.4rem solid $color-light-dgray;
@@ -376,7 +399,9 @@ html {
 
 .rezult-msg__text {
   display: block;
+  max-width: 90vw;
   font-size: 3rem;
+  text-align: center;
 }
 
 .rezult-msg__btn {
