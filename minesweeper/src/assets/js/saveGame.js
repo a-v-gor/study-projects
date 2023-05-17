@@ -15,6 +15,7 @@ export default function saveGame() {
     moves: data.moves,
     sound: data.sound,
     newSettings: data.newSettings,
+    theme: data.theme,
   };
 
   localStorage.setItem('minesweeper-save', JSON.stringify(dataToSave));

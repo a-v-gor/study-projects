@@ -13,6 +13,7 @@ const data = {
   sound: true,
   toOpen: [],
   newSettings: false,
+  theme: 'light',
 };
 
 export default data;

@@ -8,6 +8,7 @@ import openCell from './openCell.js';
 import addField from './addField.js';
 import updStat from './updStat.js';
 import hideRecords from './hideRecords.js';
+import applyTheme from './applyTheme.js';
 
 export default function startGame() {
   function startNewGame() {
@@ -41,12 +42,14 @@ export default function startGame() {
       document.querySelector('.settings__window').classList.add('settings__window_unactive');
     }
 
+    applyTheme();
     calcSettings();
     addField();
     updStat();
     updSoundIcon();
     data.openedCells.forEach((el) => openCell(el));
     data.flagCells.forEach((el) => document.getElementById(el).classList.add('field__cell_flag'));
+    document.querySelector('.stat__seconds').textContent = data.seconds;
     checkClick();
 
     window.addEventListener('unload', saveGame);

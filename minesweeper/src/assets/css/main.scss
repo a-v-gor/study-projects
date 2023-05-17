@@ -77,6 +77,10 @@ html {
   background-image: url('../img/sun.svg');
   background-position: center;
   background-repeat: no-repeat;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .header-nav__menu-btn {
