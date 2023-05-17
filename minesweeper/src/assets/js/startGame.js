@@ -7,9 +7,13 @@ import saveGame from './saveGame.js';
 import openCell from './openCell.js';
 import addField from './addField.js';
 import updStat from './updStat.js';
+import hideRecords from './hideRecords.js';
 
 export default function startGame() {
   function startNewGame() {
+    hideRecords();
+    document.querySelector('.header-nav__menu-toggle').checked = false;
+    document.querySelector('.header-nav__menu-toggle').checked = false;
     clearInterval(data.timerId);
     document.querySelector('.stat__player').classList = 'stat__player';
     data.timerId = null;

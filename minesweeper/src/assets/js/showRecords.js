@@ -1,3 +1,5 @@
+import hideRecords from './hideRecords.js';
+
 export default function showRecords() {
   const table = document.querySelector('.records__table');
   document.querySelector('.header-nav__menu-toggle').checked = false;
@@ -28,8 +30,9 @@ export default function showRecords() {
     }
   }
 
-  function hideRecords() {
-    document.querySelector('.records').classList.add('records_unactive');
+  const cells = document.querySelectorAll('.records__cell');
+  for (let i = 0; i < cells.length; i += 1) {
+    cells[i].remove();
   }
 
   if (localStorage.getItem('minesweeper-records')) {

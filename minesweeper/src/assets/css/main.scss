@@ -43,7 +43,7 @@ html {
 .wrapper {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 0 10rem;
+  padding: 0 2rem;
 }
 
 // Header
@@ -64,6 +64,15 @@ html {
   padding: 2rem 0;
   font-size: 4rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.theme {
+  width: 5rem;
+  height: 5rem;
+  margin-left: auto;
+  background-image: url('../img/sun.svg');
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .header-nav__menu-btn {
