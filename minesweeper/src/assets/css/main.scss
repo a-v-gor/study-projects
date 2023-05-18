@@ -1,7 +1,7 @@
-$color-light-back: #f0f8ff;
-$color-light-lgray: #d3d3d3;
-$color-light-dgray: #818181;
-$color-light-gray: #bfbfbf;
+$color-light-body-bckgrnd: #f0f8ff;
+$color-light-header-bckgrnd: #d3d3d3;
+$color-light-footer-bckgrnd: #818181;
+$color-light-cell-bckgrnd: #bfbfbf;
 $color-font-one: #0b24fb;
 $color-font-two: #0e7a11;
 $color-font-three: #fc0d1b;
@@ -10,7 +10,11 @@ $color-font-five: #852123;
 $color-font-six: #278786;
 $color-font-seven: #000000;
 $color-font-eight: #878787;
-$color-dark-back: #191970;
+$color-dark-body-bckgrnd: #483d8b;
+$color-dark-header-bckgrnd: #191970;
+$color-dark-footer-bckgrnd: #000000;
+$color-dark-cell-bckgrnd: #979797;
+$color-dark-message-bckgrnd: #525252f3;
 
 *,
 *::before,
@@ -36,12 +40,8 @@ html {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  background-color: $color-light-back;
+  background-color: $color-light-body-bckgrnd;
   user-select: none;
-
-  &_dark-theme {
-    background-color: $color-dark-back;
-  }
 }
 
 .wrapper {
@@ -53,7 +53,7 @@ html {
 // Header
 
 .header {
-  background-color: $color-light-lgray;
+  background-color: $color-light-header-bckgrnd;
 }
 
 .header-wrapper {
@@ -76,7 +76,9 @@ html {
   margin-left: auto;
   background-image: url('../img/sun.svg');
   background-position: center;
+  background-size: 5rem;
   background-repeat: no-repeat;
+  transition: 1s;
 
   &:hover {
     cursor: pointer;
@@ -114,7 +116,7 @@ html {
     height: 100%;
     margin: 0;
     padding: 10rem 8rem 0;
-    background-color: $color-light-lgray;
+    background-color: $color-light-header-bckgrnd;
   }
 }
 
@@ -303,11 +305,11 @@ html {
   justify-content: center;
   width: 3.2rem;
   height: 3.2rem;
-  border-top: 0.6rem solid $color-light-lgray;
-  border-right: 0.6rem solid $color-light-dgray;
-  border-bottom: 0.6rem solid $color-light-dgray;
-  border-left: 0.6rem solid $color-light-lgray;
-  background-color: $color-light-gray;
+  border-top: 0.4rem solid $color-light-header-bckgrnd;
+  border-right: 0.4rem solid $color-light-footer-bckgrnd;
+  border-bottom: 0.4rem solid $color-light-footer-bckgrnd;
+  border-left: 0.4rem solid $color-light-header-bckgrnd;
+  background-color: $color-light-cell-bckgrnd;
   font-size: 2.8rem;
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
@@ -318,16 +320,16 @@ html {
   }
 
   &_push {
-    border-top: 0.4rem solid $color-light-dgray;
+    border-top: 0.4rem solid $color-light-footer-bckgrnd;
     border-right: none;
     border-bottom: none;
-    border-left: 0.4rem solid $color-light-dgray;
+    border-left: 0.4rem solid $color-light-footer-bckgrnd;
   }
 
   &_unpush {
     border-top: none;
-    border-right: 1px solid $color-light-lgray;
-    border-bottom: 1px solid $color-light-lgray;
+    border-right: 0.1rem solid $color-light-header-bckgrnd;
+    border-bottom: 0.1rem solid $color-light-header-bckgrnd;
     border-left: none;
   }
 
@@ -409,7 +411,7 @@ html {
 
 .result-msg__btn {
   padding: 2rem;
-  background-color: $color-light-lgray;
+  background-color: $color-light-header-bckgrnd;
   font-size: 2rem;
 
   &:hover {
@@ -429,7 +431,7 @@ html {
     transition: 0.3s;
 
     &:hover {
-      color: $color-light-dgray;
+      color: $color-light-footer-bckgrnd;
       cursor: pointer;
     }
   }
@@ -537,24 +539,24 @@ html {
 .records__table {
   display: grid;
   grid-template-columns: 1fr repeat(4, 0.3fr);
-  border: 0.1rem solid $color-light-dgray;
+  border: 0.1rem solid $color-light-footer-bckgrnd;
 }
 
 .records__cell-th,
 .records__cell {
   padding: 0 0.5rem;
-  border-right: 0.1rem solid $color-light-dgray;
-  border-left: 0.1rem solid $color-light-dgray;
+  border-right: 0.1rem solid $color-light-footer-bckgrnd;
+  border-left: 0.1rem solid $color-light-footer-bckgrnd;
   font-size: 2rem;
 }
 
 .records__cell-th {
-  border: 0.1rem solid $color-light-dgray;
+  border: 0.1rem solid $color-light-footer-bckgrnd;
 }
 
 .records__btn {
   padding: 2rem;
-  background-color: $color-light-lgray;
+  background-color: $color-light-header-bckgrnd;
   font-size: 2rem;
 
   &:hover {
@@ -565,7 +567,7 @@ html {
 // Footer
 
 .footer {
-  background-color: $color-light-dgray;
+  background-color: $color-light-footer-bckgrnd;
 }
 
 .footer-wrapper {
@@ -597,4 +599,81 @@ html {
   width: 8.1rem;
   height: 3rem;
   background-image: url('../img/rs_school_js.svg');
+}
+
+// Dark theme
+
+.body_dark-theme {
+  background-color: $color-dark-body-bckgrnd;
+  color: $color-light-header-bckgrnd;
+
+  .header {
+    background-color: $color-dark-header-bckgrnd;
+  }
+
+  .header-nav__ul {
+    @media (max-width: 768px) {
+      background-color: $color-dark-header-bckgrnd;
+    }
+  }
+
+  .header-nav__hamburger-line,
+  .header-nav__hamburger-line::before,
+  .header-nav__hamburger-line::after {
+    @media (max-width: 768px) {
+      background-color: $color-light-header-bckgrnd;
+    }
+  }
+
+  .theme {
+    background-image: url('../img/moon.svg');
+  }
+
+  .field__cell {
+    border-top: 0.4rem solid $color-light-cell-bckgrnd;
+    border-right: 0.4rem solid $color-dark-footer-bckgrnd;
+    border-bottom: 0.4rem solid $color-dark-footer-bckgrnd;
+    border-left: 0.4rem solid $color-light-cell-bckgrnd;
+    background-color: $color-dark-cell-bckgrnd;
+
+    &_push {
+      border-top: 0.4rem solid $color-dark-footer-bckgrnd;
+      border-right: none;
+      border-bottom: none;
+      border-left: 0.4rem solid $color-dark-footer-bckgrnd;
+    }
+
+    &_unpush {
+      border: 0.1rem solid $color-dark-header-bckgrnd;
+    }
+
+    &_boom {
+      background-color: #b40000;
+    }
+  }
+
+  .result-msg {
+    background-color: $color-dark-message-bckgrnd;
+  }
+
+  .result-msg__btn {
+    background-color: $color-dark-header-bckgrnd;
+  }
+
+  .records {
+    background-color: $color-dark-message-bckgrnd;
+  }
+
+  .records__btn {
+    background-color: $color-dark-header-bckgrnd;
+  }
+
+  .footer {
+    background-color: $color-dark-footer-bckgrnd;
+  }
+
+  .footer__github,
+  .footer__rss-logo {
+    filter: invert(45%) sepia(99%) saturate(0%) hue-rotate(241deg) brightness(94%) contrast(79%);
+  }
 }
