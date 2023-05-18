@@ -10,6 +10,7 @@ $color-font-five: #852123;
 $color-font-six: #278786;
 $color-font-seven: #000000;
 $color-font-eight: #878787;
+$color-light-message-bckgrnd: #fffffff0;
 $color-dark-body-bckgrnd: #483d8b;
 $color-dark-header-bckgrnd: #191970;
 $color-dark-footer-bckgrnd: #000000;
@@ -393,7 +394,7 @@ html {
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: #fffffff0;
+  background-color: $color-light-message-bckgrnd;
   transition: 1s;
 
   &_unactive {
@@ -463,7 +464,7 @@ html {
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #fffffff0;
+  background-color: $color-light-message-bckgrnd;
   transition: 1s;
 
   &_unactive {
@@ -523,7 +524,7 @@ html {
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #fffffff0;
+  background-color: $color-light-message-bckgrnd;
   transition: 1s;
 
   &_unactive {
@@ -666,6 +667,15 @@ html {
 
   .records__btn {
     background-color: $color-dark-header-bckgrnd;
+  }
+
+  .settings__window {
+    background-color: $color-dark-message-bckgrnd;
+  }
+
+  .settings__submit {
+    background-color: $color-dark-header-bckgrnd;
+    color: $color-light-header-bckgrnd;
   }
 
   .footer {
