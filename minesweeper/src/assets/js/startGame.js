@@ -45,11 +45,11 @@ export default function startGame() {
     applyTheme();
     calcSettings();
     addField();
-    updStat();
     updSoundIcon();
     data.openedCells.forEach((el) => openCell(el));
     data.flagCells.forEach((el) => document.getElementById(el).classList.add('field__cell_flag'));
     document.querySelector('.stat__seconds').textContent = data.seconds;
+    updStat();
     checkClick();
 
     window.addEventListener('unload', saveGame);
