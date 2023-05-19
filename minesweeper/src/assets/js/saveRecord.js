@@ -1,7 +1,7 @@
 import data from './data.js';
 
 export default function saveRecord() {
-  const arr = JSON.parse(localStorage.getItem('minesweeper-records')) || [];
+  const arr = JSON.parse(localStorage.getItem('a-v-gor-minesweeper-records')) || [];
   const newRec = {
     date: new Date(),
     moves: data.moves,
@@ -15,5 +15,5 @@ export default function saveRecord() {
   }
 
   arr.push(newRec);
-  localStorage.setItem('minesweeper-records', JSON.stringify(arr));
+  localStorage.setItem('a-v-gor-minesweeper-records', JSON.stringify(arr));
 }

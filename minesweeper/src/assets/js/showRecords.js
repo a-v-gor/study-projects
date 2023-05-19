@@ -3,10 +3,6 @@ import hideRecords from './hideRecords.js';
 export default function showRecords() {
   const table = document.querySelector('.records__table');
   document.querySelector('.header-nav__menu-toggle').checked = false;
-  let arr;
-  if (localStorage.getItem('minesweeper-records')) {
-    arr = JSON.parse(localStorage.getItem('minesweeper-records'));
-  }
 
   function firstZero(str) {
     return (str.length === 1) ? 0 + str : str;
@@ -33,15 +29,15 @@ export default function showRecords() {
     }
   }
 
-  const cells = document.querySelectorAll('.records__cell');
-  for (let i = 0; i < cells.length; i += 1) {
-    cells[i].remove();
+  let arr = [];
+  if (localStorage.getItem('a-v-gor-minesweeper-records')) {
+    arr = arr.concat(JSON.parse(localStorage.getItem('a-v-gor-minesweeper-records')));
   }
 
-  if (localStorage.getItem('minesweeper-records')) {
-    for (let i = 0; i < arr.length; i += 1) {
-      createLine(arr[i]);
-    }
+  const cells = document.querySelectorAll('.records__cell');
+  cells.forEach((cell) => cell.remove());
+  if (arr) {
+    arr.forEach((el) => createLine(el));
   }
 
   document.querySelector('.records').classList.remove('records_unactive');

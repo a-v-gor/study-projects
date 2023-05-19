@@ -18,5 +18,5 @@ export default function saveGame() {
     theme: data.theme,
   };
 
-  localStorage.setItem('minesweeper-save', JSON.stringify(dataToSave));
+  localStorage.setItem('a-v-gor-minesweeper-save', JSON.stringify(dataToSave));
 }
