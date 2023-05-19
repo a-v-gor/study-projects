@@ -1,17 +1,21 @@
 import data from './data.js';
+import audioClick from '../audio/click.mp3';
+import audioFlag from '../audio/flag.mp3';
+import audioMine from '../audio/mine.mp3';
+import audioWin from '../audio/win.mp3';
 
 export default function playAudio(str) {
   if (data.sound) {
     let sourceStr = '';
 
     if (str === 'click') {
-      sourceStr = './assets/audio/click.mp3';
+      sourceStr = audioClick;
     } else if (str === 'flag') {
-      sourceStr = './assets/audio/flag.mp3';
+      sourceStr = audioFlag;
     } else if (str === 'mine') {
-      sourceStr = './assets/audio/mine.mp3';
+      sourceStr = audioMine;
     } else if (str === 'win') {
-      sourceStr = './assets/audio/win.mp3';
+      sourceStr = audioWin;
     }
 
     const audio = new Audio(sourceStr);
