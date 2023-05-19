@@ -33,7 +33,7 @@ export default function startGame() {
     function getSettings(event) {
       event.preventDefault();
       data.difficulty = document.querySelector('.settings__field-size-radio:checked').id;
-      data.numOfMines = document.querySelector('.settings__num-mines-option:checked').value;
+      data.numOfMines = document.querySelector('.settings__num-mines').value;
       data.newSettings = true;
       startNewGame();
     }
@@ -54,6 +54,10 @@ export default function startGame() {
 
     window.addEventListener('unload', saveGame);
     document.querySelector('.header-nav__li').addEventListener('click', () => {
+      data.newSettings = true;
+      startNewGame();
+    });
+    document.querySelector('.stat__player').addEventListener('click', () => {
       data.newSettings = true;
       startNewGame();
     });

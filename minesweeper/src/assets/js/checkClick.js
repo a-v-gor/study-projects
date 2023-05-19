@@ -1,10 +1,11 @@
-import setSettings from './setSettings.js';
+import showSettingsWindow from './showSettingsWindow.js';
 import showRecords from './showRecords.js';
 import toggleSound from './toggleSound.js';
 import pushFlag from './pushFlag.js';
 import unpushCell from './unpushCell.js';
 import pushCell from './pushCell.js';
 import changeTheme from './changeTheme.js';
+import hideSettingsWindow from './hideSettingsWindow.js';
 
 export default function checkClick() {
   const field = document.querySelector('.field');
@@ -15,9 +16,10 @@ export default function checkClick() {
 
   themeBtn.addEventListener('click', changeTheme);
   recordsBtn.addEventListener('click', showRecords);
-  settingsBtn.addEventListener('click', setSettings);
+  settingsBtn.addEventListener('click', showSettingsWindow);
   soundBtn.addEventListener('click', toggleSound);
   field.addEventListener('mousedown', pushCell);
   document.body.addEventListener('mouseup', unpushCell);
   field.addEventListener('contextmenu', pushFlag);
+  document.querySelector('.settings__reject').addEventListener('click', hideSettingsWindow);
 }

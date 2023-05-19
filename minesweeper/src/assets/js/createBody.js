@@ -45,7 +45,9 @@ export default function createBody() {
   document.querySelector('.footer__rss-logo').setAttribute('href', 'https://rs.school/js/');
   addNode('div', 'result-msg result-msg_unactive', document.querySelector('.main'));
   addNode('p', 'result-msg__text', document.querySelector('.result-msg'));
-  addNode('div', 'result-msg__btn', document.querySelector('.result-msg'), 'Close');
+  addNode('div', 'button result-msg__btn', document.querySelector('.result-msg'), 'Close');
+
+  // Add settings window
   addNode('div', 'settings__window settings__window_unactive', document.querySelector('.main'));
   addNode('h2', 'settings__header', document.querySelector('.settings__window'), 'Set Your Game');
   addNode('form', 'settings__field-size-form', document.querySelector('.settings__window'));
@@ -75,17 +77,23 @@ export default function createBody() {
   addNode('label', 'settings__field-size-label', document.querySelectorAll('.settings__field-size-wrap')[2], 'hard (25 * 25)');
   document.querySelectorAll('.settings__field-size-label')[2].setAttribute('for', 'hard');
   addNode('fieldset', 'settings__field-size-fieldset', document.querySelector('.settings__field-size-form'));
-  addNode('legend', 'settings__field-size-legend', document.querySelectorAll('.settings__field-size-fieldset')[1], 'Choose number of mines');
-  addNode('select', 'settings__num-mines-select', document.querySelectorAll('.settings__field-size-fieldset')[1]);
-  document.querySelector('.settings__num-mines-select').setAttribute('name', 'num-mines');
-  document.querySelector('.settings__num-mines-select').setAttribute('multiple', '');
-  for (let i = 10; i < 100; i += 1) {
-    addNode('option', 'settings__num-mines-option', document.querySelector('.settings__num-mines-select'), `${i}`);
-    document.querySelectorAll('.settings__num-mines-option')[i - 10].setAttribute('value', i);
-  }
-  document.querySelector('.settings__num-mines-option').setAttribute('selected', '');
-  addNode('input', 'settings__submit', document.querySelector('.settings__field-size-form'), 'Submit');
+  addNode('legend', 'settings__field-size-legend', document.querySelectorAll('.settings__field-size-fieldset')[1], 'Enter number of mines');
+
+  addNode('p', 'settings__num-mines-text', document.querySelectorAll('.settings__field-size-fieldset')[1], '(from 10 to 99)');
+  addNode('input', 'settings__num-mines', document.querySelectorAll('.settings__field-size-fieldset')[1]);
+  document.querySelector('.settings__num-mines').setAttribute('name', 'num-mines');
+  document.querySelector('.settings__num-mines').setAttribute('type', 'number');
+  document.querySelector('.settings__num-mines').setAttribute('step', '1');
+  document.querySelector('.settings__num-mines').setAttribute('min', '10');
+  document.querySelector('.settings__num-mines').setAttribute('max', '99');
+  document.querySelector('.settings__num-mines').setAttribute('value', '10');
+  document.querySelector('.settings__num-mines').setAttribute('title', 'From 10 to 99');
+
+  addNode('input', 'button settings__submit', document.querySelector('.settings__field-size-form'), 'Submit');
   document.querySelector('.settings__submit').setAttribute('type', 'submit');
+  addNode('div', 'button settings__reject', document.querySelector('.settings__window'), 'Cancel');
+
+  // Add records window
   addNode('div', 'records records_unactive', document.querySelector('.main'));
   addNode('h2', 'records__title', document.querySelector('.records'), 'Records');
   addNode('div', 'records__table', document.querySelector('.records'));
@@ -94,5 +102,5 @@ export default function createBody() {
   addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Seconds');
   addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Diff');
   addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Mines');
-  addNode('h2', 'records__btn', document.querySelector('.records'), 'Close');
+  addNode('h2', 'button records__btn', document.querySelector('.records'), 'Close');
 }

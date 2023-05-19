@@ -2,6 +2,8 @@ $color-light-body-bckgrnd: #f0f8ff;
 $color-light-header-bckgrnd: #d3d3d3;
 $color-light-footer-bckgrnd: #818181;
 $color-light-cell-bckgrnd: #bfbfbf;
+$color-btn-accept: #54ff54;
+$color-btn-reject: #ff5b5b;
 $color-font-one: #0b24fb;
 $color-font-two: #0e7a11;
 $color-font-three: #fc0d1b;
@@ -14,8 +16,10 @@ $color-light-message-bckgrnd: #fffffff0;
 $color-dark-body-bckgrnd: #483d8b;
 $color-dark-header-bckgrnd: #191970;
 $color-dark-footer-bckgrnd: #000000;
-$color-dark-cell-bckgrnd: #979797;
+$color-dark-cell-bckgrnd: #a1a1a1;
 $color-dark-message-bckgrnd: #525252f3;
+$color-btn-dark-accept: #007a00;
+$color-btn-dark-reject: #810000;
 
 *,
 *::before,
@@ -49,6 +53,17 @@ html {
   max-width: 100rem;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+.button {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: $color-light-header-bckgrnd;
+  font-size: 2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 // Header
@@ -260,6 +275,10 @@ html {
   &_win {
     background-image: url('../img/smile-win.svg');
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .stat__seconds,
@@ -383,6 +402,8 @@ html {
   width: 2rem;
 }
 
+// Results
+
 .result-msg {
   position: absolute;
   top: 0;
@@ -408,16 +429,6 @@ html {
   max-width: 90vw;
   font-size: 3rem;
   text-align: center;
-}
-
-.result-msg__btn {
-  padding: 2rem;
-  background-color: $color-light-header-bckgrnd;
-  font-size: 2rem;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .settings {
@@ -452,6 +463,8 @@ html {
   background-size: 3rem;
 }
 
+// Settings
+
 .settings__window {
   position: absolute;
   top: 0;
@@ -460,6 +473,7 @@ html {
   left: 0;
   display: flex;
   flex-direction: column;
+  row-gap: 2rem;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -491,6 +505,11 @@ html {
   padding: 1.6rem;
 }
 
+.settings__field-size-wrap {
+  display: flex;
+  align-items: center;
+}
+
 .settings__field-size-legend {
   font-size: 2.4rem;
 }
@@ -498,18 +517,49 @@ html {
 .settings__field-size-label {
   padding-left: 1rem;
   font-size: 2rem;
+
+  &::before {
+    content: '';
+    position: relative;
+    top: 0.3rem;
+    right: 1rem;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    padding-left: 0.2rem;
+    border: 0.1rem solid $color-light-footer-bckgrnd;
+    border-radius: 0.5rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &::before {
+      content: '✓';
+    }
+  }
 }
 
-.settings__num-mines-select {
-  font-size: 2rem;
+.settings__field-size-radio {
+  display: none;
+
+  &:checked + .settings__field-size-label::before {
+    content: '✓';
+  }
 }
 
-.settings__num-mines-option {
+.settings__num-mines,
+.settings__num-mines-text {
   font-size: 2rem;
 }
 
 .settings__submit {
-  font-size: 2rem;
+  border: none;
+  background-color: $color-btn-accept;
+}
+
+.settings__reject {
+  background-color: $color-btn-reject;
 }
 
 .records {
@@ -553,16 +603,6 @@ html {
 
 .records__cell-th {
   border: 0.1rem solid $color-light-footer-bckgrnd;
-}
-
-.records__btn {
-  padding: 2rem;
-  background-color: $color-light-header-bckgrnd;
-  font-size: 2rem;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 // Footer
@@ -657,16 +697,13 @@ html {
     background-color: $color-dark-message-bckgrnd;
   }
 
-  .result-msg__btn {
+  .button {
     background-color: $color-dark-header-bckgrnd;
+    color: $color-light-header-bckgrnd;
   }
 
   .records {
     background-color: $color-dark-message-bckgrnd;
-  }
-
-  .records__btn {
-    background-color: $color-dark-header-bckgrnd;
   }
 
   .settings__window {
@@ -674,8 +711,11 @@ html {
   }
 
   .settings__submit {
-    background-color: $color-dark-header-bckgrnd;
-    color: $color-light-header-bckgrnd;
+    background-color: $color-btn-dark-accept;
+  }
+
+  .settings__reject {
+    background-color: $color-btn-dark-reject;
   }
 
   .footer {
