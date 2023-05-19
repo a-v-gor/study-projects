@@ -615,7 +615,7 @@ html {
   border-bottom: 0.4rem solid #818181;
   border-left: 0.4rem solid #d3d3d3;
   background-color: #bfbfbf;
-  font-size: 2.8rem;
+  font-size: 3em;
   font-family: "Courier New", Courier, monospace;
   text-align: center;
 }
@@ -623,6 +623,7 @@ html {
   .field__cell {
     width: 3.84vw;
     height: 3.84vw;
+    font-size: 3.84vw;
   }
 }
 .field__cell_push {
