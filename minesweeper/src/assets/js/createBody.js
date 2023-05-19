@@ -89,8 +89,9 @@ export default function createBody() {
   document.querySelector('.settings__num-mines').setAttribute('value', '10');
   document.querySelector('.settings__num-mines').setAttribute('title', 'From 10 to 99');
 
-  addNode('input', 'button settings__submit', document.querySelector('.settings__field-size-form'), 'Submit');
+  addNode('input', 'button settings__submit', document.querySelector('.settings__field-size-form'));
   document.querySelector('.settings__submit').setAttribute('type', 'submit');
+  document.querySelector('.settings__submit').setAttribute('value', 'Submit');
   addNode('div', 'button settings__reject', document.querySelector('.settings__window'), 'Cancel');
 
   // Add records window

@@ -19,9 +19,12 @@ export default function showRecords() {
       node.className = 'records__cell';
       if (i === 0) {
         const date = new Date(valuesArr[i]);
-        const str = `${date.getDate()}.${firstZero(String(Number(date.getMonth()) + 1))}
-        .${String(date.getFullYear()).slice(2)} ${firstZero(String(date.getHours()))}
-        :${firstZero(String(date.getMinutes()))}`;
+        const day = firstZero(String(date.getDate()));
+        const month = firstZero(String(Number(date.getMonth()) + 1));
+        const year = String(date.getFullYear()).slice(2);
+        const hours = firstZero(String(date.getHours()));
+        const minutes = firstZero(String(date.getMinutes()));
+        const str = `${day}.${month}.${year} ${hours}:${minutes}`;
         node.innerHTML = str;
       } else {
         node.innerHTML = valuesArr[i];
