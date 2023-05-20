@@ -6,6 +6,7 @@ import unpushCell from './unpushCell.js';
 import pushCell from './pushCell.js';
 import changeTheme from './changeTheme.js';
 import hideSettingsWindow from './hideSettingsWindow.js';
+import changeMinesNum from './changeMinesNum.js';
 
 export default function checkClick() {
   const field = document.querySelector('.field');
@@ -13,7 +14,11 @@ export default function checkClick() {
   const settingsBtn = document.querySelector('.settings__difficulty');
   const recordsBtn = document.querySelectorAll('.header-nav__li')[1];
   const themeBtn = document.querySelector('.theme');
+  const decreaseMinesBtn = document.querySelector('.settings__num-mines-decrease');
+  const increaseMinesBtn = document.querySelector('.settings__num-mines-increase');
 
+  increaseMinesBtn.addEventListener('click', changeMinesNum);
+  decreaseMinesBtn.addEventListener('click', changeMinesNum);
   themeBtn.addEventListener('click', changeTheme);
   recordsBtn.addEventListener('click', showRecords);
   settingsBtn.addEventListener('click', showSettingsWindow);

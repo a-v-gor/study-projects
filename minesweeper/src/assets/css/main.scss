@@ -497,6 +497,7 @@ html {
   flex-direction: column;
   row-gap: 2rem;
   align-items: center;
+  font-size: 2em;
 }
 
 .settings__field-size-sizes {
@@ -517,7 +518,6 @@ html {
 
 .settings__field-size-label {
   padding-left: 1rem;
-  font-size: 2rem;
 
   &::before {
     content: '';
@@ -549,9 +549,40 @@ html {
   }
 }
 
-.settings__num-mines,
-.settings__num-mines-text {
-  font-size: 2rem;
+.settings__field-size-fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settings__num-mines-wrap {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.settings__num-mines {
+  width: 2em;
+}
+
+.settings__num-mines::-webkit-outer-spin-button,
+.settings__num-mines::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+.settings__num-mines-decrease,
+.settings__num-mines-increase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  border: 0.1em solid $color-light-footer-bckgrnd;
+  border-radius: 0.3em;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .settings__submit {
@@ -562,6 +593,8 @@ html {
 .settings__reject {
   background-color: $color-btn-reject;
 }
+
+// Records
 
 .records {
   position: absolute;

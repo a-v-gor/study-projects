@@ -80,7 +80,9 @@ export default function createBody() {
   addNode('legend', 'settings__field-size-legend', document.querySelectorAll('.settings__field-size-fieldset')[1], 'Enter number of mines');
 
   addNode('p', 'settings__num-mines-text', document.querySelectorAll('.settings__field-size-fieldset')[1], '(from 10 to 99)');
-  addNode('input', 'settings__num-mines', document.querySelectorAll('.settings__field-size-fieldset')[1]);
+  addNode('div', 'settings__num-mines-wrap', document.querySelectorAll('.settings__field-size-fieldset')[1]);
+  addNode('div', 'settings__num-mines-decrease', document.querySelector('.settings__num-mines-wrap'), '⇩');
+  addNode('input', 'settings__num-mines', document.querySelector('.settings__num-mines-wrap'));
   document.querySelector('.settings__num-mines').setAttribute('name', 'num-mines');
   document.querySelector('.settings__num-mines').setAttribute('type', 'number');
   document.querySelector('.settings__num-mines').setAttribute('step', '1');
@@ -88,6 +90,7 @@ export default function createBody() {
   document.querySelector('.settings__num-mines').setAttribute('max', '99');
   document.querySelector('.settings__num-mines').setAttribute('value', '10');
   document.querySelector('.settings__num-mines').setAttribute('title', 'From 10 to 99');
+  addNode('div', 'settings__num-mines-increase', document.querySelector('.settings__num-mines-wrap'), '⇧');
 
   addNode('input', 'button settings__submit', document.querySelector('.settings__field-size-form'));
   document.querySelector('.settings__submit').setAttribute('type', 'submit');
