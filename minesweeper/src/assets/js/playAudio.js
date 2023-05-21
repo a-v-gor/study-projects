@@ -19,6 +19,7 @@ export default function playAudio(str) {
     }
 
     const audio = new Audio(sourceStr);
+    audio.volume = 0.5;
     audio.play();
   }
 }
