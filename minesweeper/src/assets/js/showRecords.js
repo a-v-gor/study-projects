@@ -37,6 +37,7 @@ export default function showRecords() {
   const cells = document.querySelectorAll('.records__cell');
   cells.forEach((cell) => cell.remove());
   if (arr) {
+    arr.sort((a, b) => a.seconds - b.seconds);
     arr.forEach((el) => createLine(el));
   }
 

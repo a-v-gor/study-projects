@@ -14,7 +14,6 @@ const data = {
   toOpen: [],
   newSettings: false,
   theme: 'light',
-  idTimeOutMines: null,
 };
 
 export default data;
