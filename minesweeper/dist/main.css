@@ -683,6 +683,7 @@ html {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -762,6 +763,7 @@ html {
   flex-direction: column;
   row-gap: 2rem;
   align-items: center;
+  font-size: 2em;
 }
 
 .settings__field-size-sizes {
@@ -782,7 +784,6 @@ html {
 
 .settings__field-size-label {
   padding-left: 1rem;
-  font-size: 2rem;
 }
 .settings__field-size-label::before {
   content: "";
@@ -810,9 +811,40 @@ html {
   content: "✓";
 }
 
-.settings__num-mines,
-.settings__num-mines-text {
-  font-size: 2rem;
+.settings__field-size-fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settings__num-mines-wrap {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.settings__num-mines {
+  width: 2em;
+}
+
+.settings__num-mines::-webkit-outer-spin-button,
+.settings__num-mines::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+.settings__num-mines-decrease,
+.settings__num-mines-increase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  border: 0.1em solid #818181;
+  border-radius: 0.3em;
+}
+.settings__num-mines-decrease:hover,
+.settings__num-mines-increase:hover {
+  cursor: pointer;
 }
 
 .settings__submit {
@@ -830,8 +862,10 @@ html {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
+  row-gap: 2em;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -848,10 +882,15 @@ html {
   font-size: 3rem;
 }
 
+.records__message {
+  font-size: 2rem;
+}
+
 .records__table {
   display: grid;
   grid-template-columns: 1fr repeat(4, 0.3fr);
   border: 0.1rem solid #818181;
+  font-size: 2rem;
 }
 
 .records__cell-th,
@@ -859,7 +898,6 @@ html {
   padding: 0 0.5rem;
   border-right: 0.1rem solid #818181;
   border-left: 0.1rem solid #818181;
-  font-size: 2rem;
 }
 
 .records__cell-th {
