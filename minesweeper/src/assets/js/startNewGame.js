@@ -5,11 +5,9 @@ import updSoundIcon from './updSoundIcon.js';
 import openCell from './openCell.js';
 import addField from './addField.js';
 import updStat from './updStat.js';
-import hideRecords from './hideRecords.js';
 import applyTheme from './applyTheme.js';
 
 export default function startNewGame() {
-  hideRecords();
   document.querySelector('.header-nav__menu-toggle').checked = false;
   clearInterval(data.timerId);
   document.querySelector('.stat__player').classList = 'stat__player';
