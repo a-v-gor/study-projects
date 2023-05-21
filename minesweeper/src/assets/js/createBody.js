@@ -43,9 +43,6 @@ export default function createBody() {
   addNode('div', 'footer__year', document.querySelector('.footer-wrapper'), '2023');
   addNode('a', 'footer__rss-logo', document.querySelector('.footer-wrapper'));
   document.querySelector('.footer__rss-logo').setAttribute('href', 'https://rs.school/js/');
-  addNode('div', 'result-msg result-msg_unactive', document.querySelector('.main'));
-  addNode('p', 'result-msg__text', document.querySelector('.result-msg'));
-  addNode('div', 'button result-msg__btn', document.querySelector('.result-msg'), 'Close');
 
   // Add settings window
   addNode('div', 'settings__window settings__window_unactive', document.querySelector('.main'));
