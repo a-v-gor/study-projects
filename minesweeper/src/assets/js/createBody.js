@@ -96,15 +96,4 @@ export default function createBody() {
   document.querySelector('.settings__submit').setAttribute('type', 'submit');
   document.querySelector('.settings__submit').setAttribute('value', 'Submit');
   addNode('div', 'button settings__reject', document.querySelector('.settings__window'), 'Cancel');
-
-  // Add records window
-  addNode('div', 'records records_unactive', document.querySelector('.main'));
-  addNode('h2', 'records__title', document.querySelector('.records'), 'Records');
-  addNode('div', 'records__table', document.querySelector('.records'));
-  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Date');
-  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Moves');
-  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Seconds');
-  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Diff');
-  addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Mines');
-  addNode('h2', 'button records__btn', document.querySelector('.records'), 'Close');
 }

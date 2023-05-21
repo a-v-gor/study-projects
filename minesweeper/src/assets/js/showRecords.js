@@ -1,8 +1,29 @@
+import addNode from './addNode.js';
 import hideRecords from './hideRecords.js';
 
 export default function showRecords() {
-  const table = document.querySelector('.records__table');
-  document.querySelector('.header-nav__menu-toggle').checked = false;
+  function createRecordsTable() {
+    addNode('div', 'records records_unactive', document.querySelector('.main'));
+    addNode('h2', 'records__title', document.querySelector('.records'), 'Records');
+    addNode('div', 'records__table', document.querySelector('.records'));
+    addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Date');
+    addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Moves');
+    addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Seconds');
+    addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Diff');
+    addNode('div', 'records__cell-th', document.querySelector('.records__table'), 'Mines');
+    addNode('div', 'button records__btn', document.querySelector('.records'), 'Close');
+  }
+
+  function createRecordsMessage() {
+    addNode('div', 'records records_unactive', document.querySelector('.main'));
+    addNode('h2', 'records__title', document.querySelector('.records'), 'Records');
+    addNode('p', 'records__message', document.querySelector('.records'), 'It\'s no records yet.');
+    addNode('div', 'button records__btn', document.querySelector('.records'), 'Close');
+  }
+
+  function showRecordsTable() {
+    document.querySelector('.records').classList.remove('records_unactive');
+  }
 
   function firstZero(str) {
     return (str.length === 1) ? 0 + str : str;
@@ -25,22 +46,25 @@ export default function showRecords() {
       } else {
         node.innerHTML = valuesArr[i];
       }
-      table.append(node);
+      document.querySelector('.records__table').append(node);
     }
   }
+
+  document.querySelector('.header-nav__menu-toggle').checked = false;
 
   let arr = [];
   if (localStorage.getItem('a-v-gor-minesweeper-records')) {
     arr = arr.concat(JSON.parse(localStorage.getItem('a-v-gor-minesweeper-records')));
+    createRecordsTable();
+    const cells = document.querySelectorAll('.records__cell');
+    cells.forEach((cell) => cell.remove());
+    if (arr) {
+      arr.sort((a, b) => a.seconds - b.seconds);
+      arr.forEach((el) => createLine(el));
+    }
+  } else {
+    createRecordsMessage();
   }
-
-  const cells = document.querySelectorAll('.records__cell');
-  cells.forEach((cell) => cell.remove());
-  if (arr) {
-    arr.sort((a, b) => a.seconds - b.seconds);
-    arr.forEach((el) => createLine(el));
-  }
-
-  document.querySelector('.records').classList.remove('records_unactive');
+  setTimeout(showRecordsTable);
   document.querySelector('.records__btn').addEventListener('click', hideRecords);
 }
