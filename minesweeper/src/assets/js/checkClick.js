@@ -7,6 +7,7 @@ import pushCell from './pushCell.js';
 import changeTheme from './changeTheme.js';
 import hideSettingsWindow from './hideSettingsWindow.js';
 import changeMinesNum from './changeMinesNum.js';
+import clearChangeMinesNum from './clearChangeMinesNum.js';
 
 export default function checkClick() {
   const field = document.querySelector('.field');
@@ -17,8 +18,10 @@ export default function checkClick() {
   const decreaseMinesBtn = document.querySelector('.settings__num-mines-decrease');
   const increaseMinesBtn = document.querySelector('.settings__num-mines-increase');
 
-  increaseMinesBtn.addEventListener('click', changeMinesNum);
-  decreaseMinesBtn.addEventListener('click', changeMinesNum);
+  increaseMinesBtn.addEventListener('mousedown', changeMinesNum);
+  decreaseMinesBtn.addEventListener('mousedown', changeMinesNum);
+  increaseMinesBtn.addEventListener('mouseup', clearChangeMinesNum);
+  decreaseMinesBtn.addEventListener('mouseup', clearChangeMinesNum);
   themeBtn.addEventListener('click', changeTheme);
   recordsBtn.addEventListener('click', showRecords);
   settingsBtn.addEventListener('click', showSettingsWindow);
