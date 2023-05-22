@@ -353,12 +353,17 @@ html {
 
 .button {
   padding: 2rem;
+  border: 0.1em solid transparent;
   border-radius: 0.5rem;
   background-color: #d3d3d3;
   font-size: 2rem;
+  transition: 0.3s;
 }
 .button:hover {
   cursor: pointer;
+}
+.button:active {
+  border: 0.1em solid #000000;
 }
 
 .header {
@@ -704,23 +709,8 @@ html {
   text-align: center;
 }
 
-.settings {
-  display: flex;
-  font-size: 3rem;
-  column-gap: 5rem;
-}
-.settings > * {
-  padding-right: 5rem;
-  background-position: right;
-  background-repeat: no-repeat;
-  transition: 0.3s;
-}
-.settings > *:hover {
-  color: #818181;
-  cursor: pointer;
-}
-
 .settings__sound {
+  width: 14rem;
   background-image: url(d22e2fcd648409c0cca0.svg);
   background-size: 4rem;
 }
@@ -731,6 +721,27 @@ html {
 .settings__difficulty {
   background-image: url(6b3bf08aaa84c13c291d.svg);
   background-size: 3rem;
+}
+
+.settings {
+  position: relative;
+  left: 2.2rem;
+  display: flex;
+  font-size: 3rem;
+  column-gap: 5rem;
+}
+.settings > .settings__sound,
+.settings .settings__difficulty {
+  margin: auto;
+  padding-right: 5rem;
+  background-position: right;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+}
+.settings > .settings__sound:hover,
+.settings .settings__difficulty:hover {
+  color: #818181;
+  cursor: pointer;
 }
 
 .settings__window {
