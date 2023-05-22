@@ -3,6 +3,7 @@ import changeSmile from './changeSmile.js';
 import showOtherMines from './showOtherMines.js';
 import showResult from './showResult.js';
 import playAudio from './playAudio.js';
+import clearSavedGame from './clearSavedGame.js';
 
 export default function checkIfMine(id) {
   if (data.nums[id] === 'mine') {
@@ -14,5 +15,6 @@ export default function checkIfMine(id) {
     showResult('mine');
     playAudio('mine');
     clearInterval(data.timerId);
+    clearSavedGame();
   }
 }

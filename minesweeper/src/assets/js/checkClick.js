@@ -8,6 +8,7 @@ import changeTheme from './changeTheme.js';
 import hideSettingsWindow from './hideSettingsWindow.js';
 import changeMinesNum from './changeMinesNum.js';
 import clearChangeMinesNum from './clearChangeMinesNum.js';
+import saveGame from './saveGame.js';
 
 export default function checkClick() {
   const field = document.querySelector('.field');
@@ -17,7 +18,9 @@ export default function checkClick() {
   const themeBtn = document.querySelector('.theme');
   const decreaseMinesBtn = document.querySelector('.settings__num-mines-decrease');
   const increaseMinesBtn = document.querySelector('.settings__num-mines-increase');
+  const saveGameBtn = document.querySelector('.settings__save');
 
+  saveGameBtn.addEventListener('click', saveGame);
   increaseMinesBtn.addEventListener('mousedown', changeMinesNum);
   decreaseMinesBtn.addEventListener('mousedown', changeMinesNum);
   increaseMinesBtn.addEventListener('mouseup', clearChangeMinesNum);

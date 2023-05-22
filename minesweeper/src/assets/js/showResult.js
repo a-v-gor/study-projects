@@ -28,6 +28,8 @@ export default function showResult(rez) {
     str = `Hooray! You found all mines in ${data.seconds} seconds and ${data.moves} moves!`;
   } else if (rez === 'mine') {
     str = 'Game over. Try again';
+  } else if (rez === 'no-saved') {
+    str = 'It\'s no saved game found. It could happen if You didn\'t save the game or if You finished last game (lose/win). Try again.';
   }
 
   addResultWindow();

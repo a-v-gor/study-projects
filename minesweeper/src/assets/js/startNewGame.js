@@ -6,6 +6,7 @@ import openCell from './openCell.js';
 import addField from './addField.js';
 import updStat from './updStat.js';
 import applyTheme from './applyTheme.js';
+import hideSettingsWindow from './hideSettingsWindow.js';
 
 export default function startNewGame() {
   document.querySelector('.header-nav__menu-toggle').checked = false;
@@ -25,10 +26,7 @@ export default function startNewGame() {
     data.newSettings = false;
   }
 
-  if (!document.querySelector('.settings__window_unactive')) {
-    document.querySelector('.settings__window').classList.add('settings__window_unactive');
-  }
-
+  hideSettingsWindow();
   applyTheme();
   calcSettings();
   addField();

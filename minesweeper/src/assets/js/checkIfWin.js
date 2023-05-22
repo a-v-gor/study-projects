@@ -3,6 +3,7 @@ import changeSmile from './changeSmile.js';
 import showResult from './showResult.js';
 import playAudio from './playAudio.js';
 import saveRecord from './saveRecord.js';
+import clearSavedGame from './clearSavedGame.js';
 
 export default function checkIfWin() {
   if (!data.stopGame && data.openedCells.length === (data.numOfCells - data.numOfMines)) {
@@ -12,5 +13,6 @@ export default function checkIfWin() {
     showResult('win');
     playAudio('win');
     clearInterval(data.timerId);
+    clearSavedGame();
   }
 }

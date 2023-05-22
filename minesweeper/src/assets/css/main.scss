@@ -57,12 +57,18 @@ html {
 
 .button {
   padding: 2rem;
+  border: 0.1em solid transparent;
   border-radius: 0.5rem;
   background-color: $color-light-header-bckgrnd;
   font-size: 2rem;
+  transition: 0.3s;
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:active {
+    border: 0.1em solid $color-dark-footer-bckgrnd;
   }
 }
 
@@ -433,25 +439,8 @@ html {
   text-align: center;
 }
 
-.settings {
-  display: flex;
-  font-size: 3rem;
-  column-gap: 5rem;
-
-  > * {
-    padding-right: 5rem;
-    background-position: right;
-    background-repeat: no-repeat;
-    transition: 0.3s;
-
-    &:hover {
-      color: $color-light-footer-bckgrnd;
-      cursor: pointer;
-    }
-  }
-}
-
 .settings__sound {
+  width: 14rem;
   background-image: url('../img/volume.svg');
   background-size: 4rem;
 
@@ -463,6 +452,28 @@ html {
 .settings__difficulty {
   background-image: url('../img/settings.svg');
   background-size: 3rem;
+}
+
+.settings {
+  position: relative;
+  left: 2.2rem;
+  display: flex;
+  font-size: 3rem;
+  column-gap: 5rem;
+
+  > .settings__sound,
+  .settings__difficulty {
+    margin: auto;
+    padding-right: 5rem;
+    background-position: right;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+
+    &:hover {
+      color: $color-light-footer-bckgrnd;
+      cursor: pointer;
+    }
+  }
 }
 
 // Settings

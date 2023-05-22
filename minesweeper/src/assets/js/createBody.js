@@ -35,6 +35,8 @@ export default function createBody() {
   addField();
   addNode('div', 'settings', document.querySelector('.main-wrapper'));
   addNode('div', 'settings__sound', document.querySelector('.settings'), 'Sound');
+  addNode('div', 'button settings__save', document.querySelector('.settings'), 'Save');
+  addNode('div', 'button settings__load', document.querySelector('.settings'), 'Load');
   addNode('div', 'settings__difficulty', document.querySelector('.settings'), 'Difficulty');
   addNode('footer', 'footer', document.body);
   addNode('div', 'wrapper footer-wrapper', document.querySelector('.footer'));
@@ -75,7 +77,6 @@ export default function createBody() {
   document.querySelectorAll('.settings__field-size-label')[2].setAttribute('for', 'hard');
   addNode('fieldset', 'settings__field-size-fieldset', document.querySelector('.settings__field-size-form'));
   addNode('legend', 'settings__field-size-legend', document.querySelectorAll('.settings__field-size-fieldset')[1], 'Enter number of mines');
-
   addNode('p', 'settings__num-mines-text', document.querySelectorAll('.settings__field-size-fieldset')[1], '(from 10 to 99)');
   addNode('div', 'settings__num-mines-wrap', document.querySelectorAll('.settings__field-size-fieldset')[1]);
   addNode('div', 'settings__num-mines-decrease', document.querySelector('.settings__num-mines-wrap'), '⇩');
@@ -88,7 +89,6 @@ export default function createBody() {
   document.querySelector('.settings__num-mines').setAttribute('value', '10');
   document.querySelector('.settings__num-mines').setAttribute('title', 'From 10 to 99');
   addNode('div', 'settings__num-mines-increase', document.querySelector('.settings__num-mines-wrap'), '⇧');
-
   addNode('input', 'button settings__submit', document.querySelector('.settings__field-size-form'));
   document.querySelector('.settings__submit').setAttribute('type', 'submit');
   document.querySelector('.settings__submit').setAttribute('value', 'Submit');
