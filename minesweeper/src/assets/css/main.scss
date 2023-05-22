@@ -748,6 +748,7 @@ html {
 
   .result-msg {
     background-color: $color-dark-message-bckgrnd;
+    box-shadow: 0 0 0 1000px $color-dark-message-bckgrnd;
   }
 
   .button {

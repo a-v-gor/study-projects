@@ -993,6 +993,7 @@ html {
 }
 .body_dark-theme .result-msg {
   background-color: rgba(82, 82, 82, 0.9529411765);
+  box-shadow: 0 0 0 1000px rgba(82, 82, 82, 0.9529411765);
 }
 .body_dark-theme .button {
   background-color: #191970;
