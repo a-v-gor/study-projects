@@ -440,7 +440,7 @@ html {
 }
 
 .settings__sound {
-  width: 14rem;
+  width: 13.4rem;
   background-image: url('../img/volume.svg');
   background-size: 4rem;
 
@@ -459,7 +459,7 @@ html {
   left: 2.2rem;
   display: flex;
   font-size: 3rem;
-  column-gap: 5rem;
+  column-gap: 2rem;
 
   > .settings__sound,
   .settings__difficulty {

@@ -710,7 +710,7 @@ html {
 }
 
 .settings__sound {
-  width: 14rem;
+  width: 13.4rem;
   background-image: url(d22e2fcd648409c0cca0.svg);
   background-size: 4rem;
 }
@@ -728,7 +728,7 @@ html {
   left: 2.2rem;
   display: flex;
   font-size: 3rem;
-  column-gap: 5rem;
+  column-gap: 2rem;
 }
 .settings > .settings__sound,
 .settings .settings__difficulty {
