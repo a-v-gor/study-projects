@@ -27,9 +27,13 @@ export default function showResult(rez) {
   if (rez === 'win') {
     str = `Hooray! You found all mines in ${data.seconds} seconds and ${data.moves} moves!`;
   } else if (rez === 'mine') {
-    str = 'Game over. Try again';
+    str = 'Game over. Try again.';
   } else if (rez === 'no-saved') {
-    str = 'It\'s no saved game found. It could happen if You didn\'t save the game or if You finished last game (lose/win). Try again.';
+    str = 'It\'s no saved game found. It could happen if You didn\'t save the game or if You finished last game (lose/win).';
+  } else if (rez === 'save-game') {
+    str = 'Game saved.';
+  } else if (rez === 'load-game') {
+    str = 'Game loaded.';
   }
 
   addResultWindow();

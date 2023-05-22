@@ -1,9 +1,7 @@
 import data from './data.js';
+import showResult from './showResult.js';
 
 export default function saveGame() {
-  if (data.newSettings || data.stopGame) {
-    return;
-  }
   const dataToSave = {
     difficulty: data.difficulty,
     numOfMines: data.numOfMines,
@@ -19,4 +17,5 @@ export default function saveGame() {
   };
 
   localStorage.setItem('a-v-gor-minesweeper-save', JSON.stringify(dataToSave));
+  showResult('save-game');
 }
