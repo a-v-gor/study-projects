@@ -1,0 +1,29 @@
+{
+  "extends": ["stylelint-config-htmlacademy", "stylelint-order-htmlacademy"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "order/order": [
+      "declarations",
+      {
+        "type": "at-rule",
+        "name": "media"
+      },
+      {
+        "type": "rule",
+        "selector": "^&::(before|after)"
+      },
+      {
+        "type": "rule",
+        "selector": "^&:\\w"
+      },
+      {
+        "type": "rule",
+        "selector": "^&_"
+      },
+      {
+        "type": "rule",
+        "selector": "^."
+      }
+    ]
+  }
+}
