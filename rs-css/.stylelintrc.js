@@ -5,7 +5,7 @@ module.exports = {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['tailwind', 'apply', 'screen', 'variants', 'responsive'],
+        ignoreAtRules: ['tailwind', 'apply', 'screen', 'variants', 'responsive', 'extend'],
       },
     ],
     'no-duplicate-selectors': null,
@@ -16,6 +16,8 @@ module.exports = {
     'declaration-block-trailing-semicolon': null,
     'no-descending-specificity': null,
     'string-no-newline': null,
+    'color-hex-length': 'long',
+    'color-named': 'never',
     // Limit the number of universal selectors in a selector,
     // to avoid very slow selectors
     'selector-max-universal': 1,

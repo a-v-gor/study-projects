@@ -1,6 +1,38 @@
+@import "./reset";
+
 $color-body: #2e2a23;
 $color-text: #6c6965;
-$color-table: linear-gradient(#dd992d, #cd8c26);
+$color-table: #cd8c26;
+$color-plate: #ffffff;
+$color-plate-line: #cccccc;
+$color-plate-highlight: #ffffff66;
+$color-editor-border: #00000059;
+$color-editor-header: #ffffff99;
+$color-editor-header-background: #00000026;
+$color-editor-header-border: #ffffff0d;
+$color-editor-css-page-color: #aaaaaa;
+$color-editor-css-page-backround: #efefef;
+$color-editor-css-num-lines: #dddddd;
+$color-editor-css-num-item: #999999;
+$color-editor-html-page-background: #0000004d;
+$color-editor-html-num-lines-border: #333333;
+
+%num-list {
+  list-style-type: none;
+  counter-reset: item;
+
+  > * {
+    font-size: 1.4em;
+    line-height: 1.5;
+    color: $color-editor-css-num-item;
+    text-align: end;
+
+    &::before {
+      content: counter(item) "  "; 
+      counter-increment: item;
+    }
+  }
+}
 
 html {
   font-size: 62.5%;
@@ -17,15 +49,119 @@ html {
   margin: 0 auto;
 }
 
-.header__title {
+.header__logo {
+  display: block;
+  height: 2rem;
+  padding: 0.3rem 0 0 2.5rem;
   font-size: 1.6em;
+  background-image: url("../img/logo.png");
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: 2rem;
 }
 
-.game-field__task-text {
-  font-size: 4.5em;
+.game-field {
+  &__task-text {
+    width: fit-content;
+    padding: 2rem;
+    margin: 0 auto;
+    font-size: 4.5em;
+  }
+
+  &__table-wrapper {
+    padding: 1rem;
+  }
+
+  &__table {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 14.2rem;
+    background: $color-table;
+  }
 }
 
-.game-field__table {
-  min-height: 14.2rem;
-  background: $color-table;
+.plate {
+  width: 10rem;
+  height: 10rem;
+  background-color: $color-plate;
+  border-radius: 50%;
+
+  &::before {
+    position: relative;
+    top: 1.5rem;
+    left: 1.5rem;
+    display: block;
+    width: 7rem;
+    height: 7rem;
+    content: '';
+    border: 0.2rem solid $color-plate-line;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 0.6rem $color-plate-highlight;
+  }
+}
+
+.editor {
+  display: flex;
+  border: solid 1rem $color-editor-border;
+
+  > * {
+    width: 100%;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+    color: $color-editor-header;
+    background: $color-editor-header-background;
+    border-top: solid 0.1rem $color-editor-header-border;
+    border-bottom: solid 0.1rem $color-editor-header-border;
+    border-radius: 0.2rem 0.2rem 0 0;
+  }
+
+  &__file-name {
+    opacity: 0.5;
+  }
+
+  &__css-page {
+    color: #aaaaaa;
+    background: $color-editor-css-page-backround;
+  }
+
+  &__html-page {
+    background: $color-editor-html-page-background;
+    border-right: solid 0.1rem $color-editor-html-num-lines-border;
+    border-bottom: solid 0.1rem $color-editor-html-num-lines-border;
+  }
+
+  &__num-lines {
+    display: block;
+    width: fit-content;
+    padding: 1rem;
+  }
+
+  &__num-lines-list {
+    @extend %num-list;
+  }
+}
+
+.css-editor__num-lines {
+  background-color: $color-editor-css-num-lines;
+}
+
+.html-editor {
+  &__num-lines,
+  &__header {
+    border-right: solid 0.1rem $color-editor-html-num-lines-border;
+  }
+}
+
+.levels__list {
+  @extend %num-list;
 }
