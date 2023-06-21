@@ -135,7 +135,8 @@ html {
   display: flex;
   border: solid 1rem $color-editor-border;
 
-  > * {
+  &__css,
+  &__html {
     width: 100%;
   }
 
@@ -146,10 +147,15 @@ html {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.4em;
     color: $color-editor-header;
+    user-select: none;
     background: $color-editor-header-background;
     border-top: solid 0.1rem $color-editor-header-border;
     border-bottom: solid 0.1rem $color-editor-header-border;
     border-radius: 0.2rem 0.2rem 0 0;
+
+    &:hover {
+      cursor: default;
+    }
   }
 
   &__file-name {
@@ -222,6 +228,10 @@ html {
     border: solid 0.3rem $color-input-btn-border;
     border-width: 0.1rem 0.1rem 0.6rem;
     border-radius: 0.2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
