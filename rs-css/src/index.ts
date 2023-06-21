@@ -1,3 +1,5 @@
 import './assets/styles/style.scss';
+import App from './assets/ts/app';
 
-console.log(`Hi!, I say Yes`);
+const app: App = new App;
+app.start();
