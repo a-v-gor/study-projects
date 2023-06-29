@@ -9,9 +9,9 @@ export default class Game {
     this.table.innerHTML = '';
   }
 
-  addPlate(): void {
-    const plate = document.createElement('div');
-    plate.classList.add('plate');
-    this.table.appendChild(plate);
+  addObject(strClasslist: string): void {
+    const newObject = document.createElement('div');
+    newObject.classList.add(strClasslist);
+    this.table.appendChild(newObject);
   }
 }
