@@ -8,8 +8,6 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 const isProduction = process.env.NODE_ENV == 'production';
 
-const stylesHandler = 'style-loader';
-
 const config = {
   entry: './src/index.ts',
   output: {
