@@ -28,7 +28,7 @@ $color-html-code-hover: #ffffffb3;
 
 
 %num-li-font {
-  font-size: 1.4em;
+  font-size: 1.4rem;
   line-height: 1.5;
   color: $color-editor-css-num-item;
 }
@@ -41,12 +41,12 @@ $color-html-code-hover: #ffffffb3;
 %code-field {
   width: 26rem;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   line-height: 1.5;
 }
 
 @keyframes input {
-  50% { background:none ; }
+  50% { background: none; }
 }
 
 html {
@@ -117,25 +117,31 @@ html {
   }
 }
 
-.plate {
-  width: 10rem;
-  height: 10rem;
-  background-color: $color-plate;
-  border-radius: 50%;
-
-  &::before {
-    position: relative;
-    top: 1.5rem;
-    left: 1.5rem;
-    display: block;
-    width: 7rem;
-    height: 7rem;
-    content: '';
-    border: 0.2rem solid $color-plate-line;
+.table{
+  &__plate {
+    width: 10rem;
+    height: 10rem;
+    background-color: $color-plate;
     border-radius: 50%;
-  }
 
-  &:hover {
+    &::before {
+      position: relative;
+      top: 1.5rem;
+      left: 1.5rem;
+      display: block;
+      width: 7rem;
+      height: 7rem;
+      content: '';
+      border: 0.2rem solid $color-plate-line;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 0.6rem $color-plate-highlight;
+    }
+  }
+  
+  &__code_light {
     box-shadow: 0 0 0 0.6rem $color-plate-highlight;
   }
 }
@@ -154,7 +160,7 @@ html {
     justify-content: space-between;
     padding: 1rem 1.5rem;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.4em;
+    font-size: 1.4rem;
     color: $color-editor-header;
     user-select: none;
     background: $color-editor-header-background;
@@ -265,7 +271,8 @@ html {
     padding: 0;
     font-size: 1em;
 
-    &:hover {
+    &:hover,
+    &_light {
       color: $color-html-code-hover;
     }
   }

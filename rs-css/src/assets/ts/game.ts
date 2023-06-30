@@ -1,5 +1,6 @@
 import returnGameData from './returnGameData';
 import ILevel from './ILevel';
+import IGameObj from './IGameObj';
 
 const gameData: ILevel[] = returnGameData();
 
@@ -14,46 +15,66 @@ export default class Game {
     this.table.innerHTML = '';
   }
 
-  addObjectToTable(strClasslist: string): void {
+  addObjectOnTable(obj: IGameObj): void {
     const newObject = document.createElement('div');
-    newObject.classList.add(strClasslist);
+    newObject.classList.add(`table__${obj.tag}`);
+    if (obj.onTable) {
+      newObject.classList.add(`table__on-table`);
+    }
     this.table.appendChild(newObject);
   }
 
-  addLevelDescription(num: number): void {
-    const descriptionBlock: HTMLElement = <HTMLElement> document.querySelector('.game-field__task-text');
-    descriptionBlock.innerText = gameData[num].description;
-  }
-
-  addCodeToEditor(num: number): void {
-    function returnHTML(num: number): string {
-      let result = '';
-  
-      function addString(strTag: string): string {
-        return `<pre class="html-editor__code">  &lt;${strTag}&gt;<br></pre>`
-      }
-  
-      gameData[num].tags.forEach((item) => {
-        result += addString(item.tag);
-      });
-      console.log(result);
-      
-      return result;
+  drawLevel(numOfLevel: number) {
+    function addLevelDescription(): void {
+      const descriptionBlock: HTMLElement = <HTMLElement> document.querySelector('.game-field__task-text');
+      descriptionBlock.innerText = gameData[numOfLevel].description;
     }
 
-    const firstString = '&lt;div class = "table"&gt;<br>';
-    const lastString = '&lt;/div&gt;';
-    const middleString = returnHTML(num);
-    const HTMLEditor: HTMLElement = <HTMLElement> document.querySelector('.html-editor__code-page');
-    HTMLEditor.innerHTML = '';
-    HTMLEditor.innerHTML = `${firstString}${middleString}${lastString}`;
+    function addCodeToEditor(): void {
+      const editorField: HTMLElement = <HTMLElement> document.querySelector('.html-editor__code-page');
+      editorField.innerHTML = '';
+
+      function createNode(obj: IGameObj): Node {
+        const result: HTMLElement = document.createElement(`pre`);
+        result.classList.add('html-editor__code');
+        if (obj.onTable) {
+          result.classList.add('html-editor__on-table');
+        }
+        result.innerText = `  <${obj.tag} />`;
+        return result;
+      }
+
+      function addFirstLastTableStr(strText: string) {
+        const str = document.createElement('pre');
+        str.classList.add('html-editor__code-table');
+        str.innerText = strText;
+        editorField.appendChild(str);
+      }
+      
+      addFirstLastTableStr('<div class="table">');
+      gameData[numOfLevel].tags.forEach((item) => {
+        editorField.appendChild(createNode(item));
+      });
+      addFirstLastTableStr('</div>');
+    }
+
+    addLevelDescription();
+    gameData[numOfLevel].tags.forEach((i): void => {
+      this.addObjectOnTable(i);
+    });
+    addCodeToEditor();
   }
 
-  drawLevel(numOfLevel: number) {
-    this.addLevelDescription(numOfLevel);
-    gameData[numOfLevel].tags.forEach((i) => {
-      this.addObjectToTable(i.tag);
-    });
-    this.addCodeToEditor(numOfLevel);
+  lightCodeInEditor() {
+    const objsOnTable = document.querySelectorAll('.table__on-table');
+    const stringsInEditor = document.querySelectorAll('.html-editor__on-table');
+    objsOnTable.forEach((i,idx) => {
+      i.addEventListener('mouseover', () => stringsInEditor[idx].classList.add('html-editor__code_light'));
+      i.addEventListener('mouseout', () => stringsInEditor[idx].classList.remove('html-editor__code_light'));
+    })
+    stringsInEditor.forEach((i,idx) => {
+      i.addEventListener('mouseover', () => objsOnTable[idx].classList.add('table__code_light'));
+      i.addEventListener('mouseout', () => objsOnTable[idx].classList.remove('table__code_light'));
+    })
   }
 }

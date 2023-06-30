@@ -7,10 +7,12 @@ export default function returnGameData(): ILevel[] {
       tags: [
         {
           tag: 'plate',
+          onTable: true,
           toSelect: true,
         },
         {
           tag: 'plate',
+          onTable: true,
           toSelect: true,
         },
       ],
