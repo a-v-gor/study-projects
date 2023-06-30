@@ -24,6 +24,8 @@ $color-input-btn: #666666;
 $color-input-btn-background: #dedede;
 $color-input-btn-border: #999999;
 $color-reset-btn-border: #ffffff33;
+$color-html-code-hover: #ffffffb3;
+
 
 %num-li-font {
   font-size: 1.4em;
@@ -254,6 +256,7 @@ html {
     @extend %code-field;
 
     padding: 1rem;
+    cursor: default;
   }
 
   &__code {
@@ -261,6 +264,10 @@ html {
 
     padding: 0;
     font-size: 1em;
+
+    &:hover {
+      color: $color-html-code-hover;
+    }
   }
 }
 

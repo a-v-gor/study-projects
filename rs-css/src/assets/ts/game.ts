@@ -20,23 +20,33 @@ export default class Game {
     this.table.appendChild(newObject);
   }
 
-  addLevelDescription(num: number) {
+  addLevelDescription(num: number): void {
     const descriptionBlock: HTMLElement = <HTMLElement> document.querySelector('.game-field__task-text');
     descriptionBlock.innerText = gameData[num].description;
   }
 
-  returnHTML(num: number) {
-    const tagsArr = [];
-    gameData[num].tags.forEach((item) => {
-      tagsArr.push(item.tag);
-    });
-    
-  }
+  addCodeToEditor(num: number): void {
+    function returnHTML(num: number): string {
+      let result = '';
+  
+      function addString(strTag: string): string {
+        return `<pre class="html-editor__code">  &lt;${strTag}&gt;<br></pre>`
+      }
+  
+      gameData[num].tags.forEach((item) => {
+        result += addString(item.tag);
+      });
+      console.log(result);
+      
+      return result;
+    }
 
-  addCodeToEditor(num: number) {
     const firstString = '&lt;div class = "table"&gt;<br>';
     const lastString = '&lt;/div&gt;';
-    const middleString = this.returnHTML(num);
+    const middleString = returnHTML(num);
+    const HTMLEditor: HTMLElement = <HTMLElement> document.querySelector('.html-editor__code-page');
+    HTMLEditor.innerHTML = '';
+    HTMLEditor.innerHTML = `${firstString}${middleString}${lastString}`;
   }
 
   drawLevel(numOfLevel: number) {
