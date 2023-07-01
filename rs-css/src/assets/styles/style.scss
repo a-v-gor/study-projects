@@ -45,6 +45,8 @@ $color-html-code-hover: #ffffffb3;
   line-height: 1.5;
 }
 
+// Оригинал анимации https://flukeout.github.io/
+
 @keyframes input {
   50% { background: none; }
 }
@@ -148,9 +150,11 @@ html {
 
 .object-tag__strobe {
   transform-origin: bottom;
-  animation: strobe-start .5s ease-out, strobe 1s infinite;
-  animation-delay: 0s, .5s;
+  animation: strobe-start 0.7s ease-out, strobe 1.4s infinite;
+  animation-delay: 0.7s;
 }
+
+// Оригинал анимации - https://flukeout.github.io/
 
 @keyframes strobe-start {
   0% {
@@ -259,7 +263,7 @@ html {
   &__input-field {
     flex-grow: 1;
     background: $color-input-background;
-    animation: input .5s infinite
+    animation: input .7s infinite
   }
 
   &__input-btn {
