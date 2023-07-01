@@ -3,7 +3,7 @@ export default interface IGameObj {
   onTable: boolean;
   id?: string;
   for?: string;
-  child?: IGameObj;
+  children?: IGameObj[];
   isChild?: boolean;
   toSelect?: boolean;
 }

@@ -6,6 +6,8 @@ $color-table: #cd8c26;
 $color-plate: #ffffff;
 $color-plate-line: #cccccc;
 $color-plate-highlight: #ffffff66;
+$color-bento-background: #a52a2a;
+$color-bento-border: #711c12;
 $color-editor-border: #00000059;
 $color-editor-header: #ffffff99;
 $color-editor-header-background: #00000026;
@@ -25,6 +27,8 @@ $color-input-btn-background: #dedede;
 $color-input-btn-border: #999999;
 $color-reset-btn-border: #ffffff33;
 $color-html-code-hover: #ffffffb3;
+$color-apple-background: #e41919;
+$color-apple-border: #ab1212;
 
 
 %num-li-font {
@@ -115,13 +119,14 @@ html {
     align-items: center;
     justify-content: space-evenly;
     min-height: 14.2rem;
-    padding: 4.5rem 2rem 2rem;
+    padding: 5.5rem 2rem 2rem;
     background: $color-table;
   }
 }
 
 .table{
-  &__plate {
+  &__plate,
+  &__plate_fancy {
     width: 10rem;
     height: 10rem;
     background-color: $color-plate;
@@ -138,10 +143,33 @@ html {
       border: 0.2rem solid $color-plate-line;
       border-radius: 50%;
     }
+  }
 
-    &:hover {
-      box-shadow: 0 0 0 0.6rem $color-plate-highlight;
+  &__plate_fancy {
+    border:  1.1rem solid $color-input-background;
+
+    &::before {
+      top: 0.4rem;
+      left: 0.4rem;
     }
+  }
+
+  &__bento {
+    width: 10rem;
+    height: 10rem;
+    background: $color-bento-background;
+    border: solid 0.3rem $color-bento-border;
+    border-width: 2rem 0.2rem;
+  }
+
+  &__apple {
+    width: 6rem;
+    height: 6rem;
+    background: $color-apple-background;
+    border: $color-apple-border;
+    border-style: solid;
+    border-width: 2px 4px 15px;
+    border-radius: 50%;
   }
   
   &__code_light {
@@ -150,6 +178,10 @@ html {
 }
 
 .object-tag {
+  &:hover {
+    box-shadow: 0 0 0 0.6rem $color-plate-highlight;
+  }
+
   &__strobe {
     transform-origin: bottom;
     animation: translate 0.7s infinite;

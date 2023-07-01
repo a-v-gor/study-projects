@@ -40,9 +40,16 @@ export default class Game {
 
   drawLevel(obj: ILevel) {
     const table = this.table;
+
     function addLevelDescription(): void {
       const descriptionBlock: HTMLElement = <HTMLElement> document.querySelector('.game-field__task-text');
       descriptionBlock.innerText = obj.description;
+    }
+
+    function addID (str: string, obj: IGameObj) {
+      let copyStr = str;
+      copyStr += ` id="${obj.id}"`
+      return copyStr;
     }
 
     function addCodeToEditor(): void {
@@ -55,7 +62,11 @@ export default class Game {
         if (obj.onTable) {
           result.classList.add('html-editor__on-table');
         }
-        result.innerText = `  <${obj.tag} />`;
+        let strResult = obj.tag;
+        if (obj.id) {
+          strResult = addID(strResult, obj);
+        }
+        result.innerText = `  <${strResult} />`;
         return result;
       }
 
@@ -65,7 +76,7 @@ export default class Game {
         str.innerText = strText;
         editorField.appendChild(str);
       }
-      
+
       addFirstLastTableStr('<div class="table">');
       obj.tags.forEach((item) => {
         editorField.appendChild(createNode(item));
@@ -75,11 +86,18 @@ export default class Game {
 
     function addObjectOnTable(obj: IGameObj): void {
       const newObject = document.createElement('div');
-      newObject.classList.add(`table__${obj.tag}`);
+      let className = `table__${obj.tag}`;
+      let openTag = obj.tag;
+      if (obj.id === 'fancy') {
+        openTag = addID(openTag, obj);
+        className += '_fancy';
+      }
+
+      newObject.classList.add(className);
       newObject.classList.add(`object-tag`);
       const descrBlock = document.createElement('div');
       descrBlock.classList.add(`object-tag__descr`);
-      descrBlock.innerText = `<${obj.tag}></${obj.tag}>`;
+      descrBlock.innerText = `<${openTag}></${obj.tag}>`;
       if (obj.onTable) {
         newObject.classList.add(`object-tag__on-table`);
       }

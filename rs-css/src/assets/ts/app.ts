@@ -20,7 +20,6 @@ export default class App {
     this.controller.selectLevel(0);
     this.levelsList.addEventListener('click', (e: MouseEvent) => {
       const liElem: HTMLLIElement = <HTMLLIElement> e.target;
-      console.log(+liElem.innerText - 1);
       this.controller.selectLevel(+liElem.innerText - 1);
     })
   }

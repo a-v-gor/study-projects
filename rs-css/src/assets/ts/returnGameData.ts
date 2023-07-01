@@ -41,7 +41,7 @@ export default function returnGameData(): ILevel[] {
       description: 'Select the fancy plate',
       tags: [
         {
-          tag: 'bento',
+          tag: 'plate',
           id: 'fancy',
           onTable: true,
           toSelect: true,
@@ -49,12 +49,34 @@ export default function returnGameData(): ILevel[] {
         {
           tag: 'plate',
           onTable: true,
-          toSelect: false,
         },
         {
           tag: 'bento',
           onTable: true,
-          toSelect: true,
+        },
+      ],
+    },
+    {
+      description: 'Select the apple on the plate',
+      tags: [
+        {
+          tag: 'bento',
+          onTable: true,
+        },
+        {
+          tag: 'plate',
+          onTable: true,
+          children: [
+            {
+              tag: 'apple',
+              onTable: false,
+              isChild: true,
+            }
+          ]
+        },
+        {
+          tag: 'apple',
+          onTable: true,
         },
       ],
     },
