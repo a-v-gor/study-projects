@@ -9,6 +9,6 @@ export default class App {
   public start(): void {
     this.game.clearTable();
     this.game.drawLevel(0);
-    this.game.lightCodeInEditor();
+    this.game.highlightObj();
   }
 }

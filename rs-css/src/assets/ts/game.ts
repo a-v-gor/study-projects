@@ -19,6 +19,7 @@ export default class Game {
     const newObject = document.createElement('div');
     newObject.classList.add(`table__${obj.tag}`);
     newObject.classList.add(`object-tag`);
+    newObject.setAttribute(`title`, `<${obj.tag}></${obj.tag}>`);
     if (obj.onTable) {
       newObject.classList.add(`object-tag__on-table`);
     }
@@ -69,16 +70,33 @@ export default class Game {
     addCodeToEditor();
   }
 
-  lightCodeInEditor() {
+  highlightObj() {
     const objsOnTable = document.querySelectorAll('.object-tag__on-table');
     const stringsInEditor = document.querySelectorAll('.html-editor__on-table');
     objsOnTable.forEach((i,idx) => {
-      i.addEventListener('mouseover', () => stringsInEditor[idx].classList.add('html-editor__code_light'));
+      i.addEventListener('mouseover', (e) => {
+        console.log(e.target);
+        
+        stringsInEditor[idx].classList.add('html-editor__code_light');
+      });
       i.addEventListener('mouseout', () => stringsInEditor[idx].classList.remove('html-editor__code_light'));
     })
     stringsInEditor.forEach((i,idx) => {
-      i.addEventListener('mouseover', () => objsOnTable[idx].classList.add('table__code_light'));
-      i.addEventListener('mouseout', () => objsOnTable[idx].classList.remove('table__code_light'));
+      i.addEventListener('mouseover', () => {
+        // objsOnTable[idx].classList.add('table__code_light');
+        console.log(objsOnTable[idx]);
+        
+        const mouseoverEvent = new Event('mouseover', { bubbles: true });
+        objsOnTable[idx].dispatchEvent(mouseoverEvent);
+      });
+      i.addEventListener('mouseout', () => {
+        // objsOnTable[idx].classList.remove('table__code_light');
+        console.log('out');
+        
+        const mouseoutEvent = new Event('mouseout', { bubbles: true });
+        objsOnTable[idx].dispatchEvent(mouseoutEvent);
+      });
+      // i.addEventListener('mouseout', () => objsOnTable[idx].classList.remove('table__code_light'));
     })
   }
 }
