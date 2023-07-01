@@ -109,12 +109,13 @@ html {
   }
 
   &__table {
+    position: relative;
     display: flex;
     column-gap: 2rem;
     align-items: center;
     justify-content: space-evenly;
     min-height: 14.2rem;
-    padding: 0 2rem;
+    padding: 4rem 2rem 2rem;
     background: $color-table;
   }
 }
@@ -148,10 +149,27 @@ html {
   }
 }
 
-.object-tag__strobe {
-  transform-origin: bottom;
-  animation: strobe-start 0.7s ease-out, strobe 1.4s infinite;
-  animation-delay: 0.7s;
+.object-tag {
+  &__strobe {
+    transform-origin: bottom;
+    animation: strobe-start 0.7s ease-out, strobe 1.4s infinite;
+    animation-delay: 0.7s;
+  }
+
+  &__descr {
+    position: absolute;
+    top: 1rem;
+    display: block;
+    padding: 1rem;
+    font-size: 1.8rem;
+    background-color: $color-editor-css-page-backround;
+    opacity: 0;
+    transition: 0.3s;
+
+    &_active {
+      opacity: 1;
+    }
+  }
 }
 
 // Оригинал анимации - https://flukeout.github.io/

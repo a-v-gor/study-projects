@@ -19,7 +19,9 @@ export default class Game {
     const newObject = document.createElement('div');
     newObject.classList.add(`table__${obj.tag}`);
     newObject.classList.add(`object-tag`);
-    newObject.setAttribute(`title`, `<${obj.tag}></${obj.tag}>`);
+    const descrBlock = document.createElement('div');
+    descrBlock.classList.add(`object-tag__descr`);
+    descrBlock.innerText = `<${obj.tag}></${obj.tag}>`;
     if (obj.onTable) {
       newObject.classList.add(`object-tag__on-table`);
     }
@@ -27,6 +29,7 @@ export default class Game {
       newObject.classList.add(`object-tag__strobe`);
     }
     this.table.appendChild(newObject);
+    this.table.appendChild(descrBlock);
   }
 
   drawLevel(numOfLevel: number) {
@@ -71,32 +74,39 @@ export default class Game {
   }
 
   highlightObj() {
-    const objsOnTable = document.querySelectorAll('.object-tag__on-table');
-    const stringsInEditor = document.querySelectorAll('.html-editor__on-table');
-    objsOnTable.forEach((i,idx) => {
-      i.addEventListener('mouseover', (e) => {
-        console.log(e.target);
-        
+    const table = this.table;
+    const objs = table.querySelectorAll('.object-tag');
+    const stringsInEditor = document.querySelectorAll('.html-editor__code');
+    function showDescription(num: number): void {
+      const descriptions = table.querySelectorAll('.object-tag__descr');
+      descriptions[num].classList.add('object-tag__descr_active');
+    }
+    function hideDescription() {
+      const description = table.querySelector('.object-tag__descr_active')
+      if (description) {
+        description.classList.remove('object-tag__descr_active');
+      }
+    }
+
+    objs.forEach((i,idx) => {
+      i.addEventListener('mouseover', () => {
         stringsInEditor[idx].classList.add('html-editor__code_light');
+        showDescription(idx);
       });
-      i.addEventListener('mouseout', () => stringsInEditor[idx].classList.remove('html-editor__code_light'));
+      i.addEventListener('mouseout', () => {
+        stringsInEditor[idx].classList.remove('html-editor__code_light');
+        hideDescription();
+      });
     })
     stringsInEditor.forEach((i,idx) => {
       i.addEventListener('mouseover', () => {
-        // objsOnTable[idx].classList.add('table__code_light');
-        console.log(objsOnTable[idx]);
-        
-        const mouseoverEvent = new Event('mouseover', { bubbles: true });
-        objsOnTable[idx].dispatchEvent(mouseoverEvent);
+        objs[idx].classList.add('table__code_light');
+        showDescription(idx);
       });
       i.addEventListener('mouseout', () => {
-        // objsOnTable[idx].classList.remove('table__code_light');
-        console.log('out');
-        
-        const mouseoutEvent = new Event('mouseout', { bubbles: true });
-        objsOnTable[idx].dispatchEvent(mouseoutEvent);
+        objs[idx].classList.remove('table__code_light');
+        hideDescription();
       });
-      // i.addEventListener('mouseout', () => objsOnTable[idx].classList.remove('table__code_light'));
     })
   }
 }
