@@ -359,6 +359,10 @@ html {
     &::before {
       content: ' 🗸 ';
     }
+
+    &_active {
+      background-color: $color-reset-btn-border;
+    }
   }
 }
 

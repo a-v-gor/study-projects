@@ -37,6 +37,27 @@ export default function returnGameData(): ILevel[] {
         },
       ],
     },
+    {
+      description: 'Select the fancy plate',
+      tags: [
+        {
+          tag: 'bento',
+          id: 'fancy',
+          onTable: true,
+          toSelect: true,
+        },
+        {
+          tag: 'plate',
+          onTable: true,
+          toSelect: false,
+        },
+        {
+          tag: 'bento',
+          onTable: true,
+          toSelect: true,
+        },
+      ],
+    },
 ];
   return gameData;
 }
