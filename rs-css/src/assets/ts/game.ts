@@ -2,37 +2,22 @@ import returnGameData from './returnGameData';
 import ILevel from './ILevel';
 import IGameObj from './IGameObj';
 
-const gameData: ILevel[] = returnGameData();
-
 export default class Game {
   table: HTMLElement;
+  gameData: ILevel[]
 
   constructor() {
     this.table = <HTMLElement>document.querySelector('.game-field__table');
+    this.gameData = returnGameData();
   }
 
   clearTable(): void {
     this.table.innerHTML = '';
   }
 
-  addObjectOnTable(obj: IGameObj): void {
-    const newObject = document.createElement('div');
-    newObject.classList.add(`table__${obj.tag}`);
-    newObject.classList.add(`object-tag`);
-    const descrBlock = document.createElement('div');
-    descrBlock.classList.add(`object-tag__descr`);
-    descrBlock.innerText = `<${obj.tag}></${obj.tag}>`;
-    if (obj.onTable) {
-      newObject.classList.add(`object-tag__on-table`);
-    }
-    if (obj.toSelect) {
-      newObject.classList.add(`object-tag__strobe`);
-    }
-    this.table.appendChild(newObject);
-    this.table.appendChild(descrBlock);
-  }
-
   drawLevel(numOfLevel: number) {
+    const gameData = this.gameData;
+    const table = this.table;
     function addLevelDescription(): void {
       const descriptionBlock: HTMLElement = <HTMLElement> document.querySelector('.game-field__task-text');
       descriptionBlock.innerText = gameData[numOfLevel].description;
@@ -66,9 +51,26 @@ export default class Game {
       addFirstLastTableStr('</div>');
     }
 
+    function addObjectOnTable(obj: IGameObj): void {
+      const newObject = document.createElement('div');
+      newObject.classList.add(`table__${obj.tag}`);
+      newObject.classList.add(`object-tag`);
+      const descrBlock = document.createElement('div');
+      descrBlock.classList.add(`object-tag__descr`);
+      descrBlock.innerText = `<${obj.tag}></${obj.tag}>`;
+      if (obj.onTable) {
+        newObject.classList.add(`object-tag__on-table`);
+      }
+      if (obj.toSelect) {
+        newObject.classList.add(`object-tag__strobe`);
+      }
+      table.appendChild(newObject);
+      table.appendChild(descrBlock);
+    }
+
     addLevelDescription();
     gameData[numOfLevel].tags.forEach((i): void => {
-      this.addObjectOnTable(i);
+      addObjectOnTable(i);
     });
     addCodeToEditor();
   }
