@@ -18,8 +18,12 @@ export default class Game {
   addObjectOnTable(obj: IGameObj): void {
     const newObject = document.createElement('div');
     newObject.classList.add(`table__${obj.tag}`);
+    newObject.classList.add(`object-tag`);
     if (obj.onTable) {
-      newObject.classList.add(`table__on-table`);
+      newObject.classList.add(`object-tag__on-table`);
+    }
+    if (obj.toSelect) {
+      newObject.classList.add(`object-tag__strobe`);
     }
     this.table.appendChild(newObject);
   }
@@ -66,7 +70,7 @@ export default class Game {
   }
 
   lightCodeInEditor() {
-    const objsOnTable = document.querySelectorAll('.table__on-table');
+    const objsOnTable = document.querySelectorAll('.object-tag__on-table');
     const stringsInEditor = document.querySelectorAll('.html-editor__on-table');
     objsOnTable.forEach((i,idx) => {
       i.addEventListener('mouseover', () => stringsInEditor[idx].classList.add('html-editor__code_light'));
