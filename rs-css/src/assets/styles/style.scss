@@ -340,15 +340,19 @@ html {
   }
 
   &__code {
-    @extend %code-field;
-
     padding: 0;
     font-size: 1em;
+  }
 
-    &:hover,
-    &_light {
+  &__code-block {
+    &:hover {
       color: $color-html-code-hover;
     }
+
+    // &:not(:first-child):hover,
+    // &:not(:last-child):hover {
+    //   color: $color-html-code-hover;
+    // }
   }
 }
 

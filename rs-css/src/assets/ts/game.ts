@@ -183,7 +183,7 @@ export default class Game {
   highlightObj() {
     const table = this.table;
     const objs = table.querySelectorAll('.object-tag');
-    const stringsInEditor = document.querySelectorAll('.html-editor__code');
+    const stringsInEditor = document.querySelectorAll('.html-editor__code-block');
 
     objs.forEach((i,idx) => {
       i.addEventListener('mouseover', () => {
