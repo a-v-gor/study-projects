@@ -7,12 +7,12 @@ export default function returnGameData(): ILevel[] {
       tags: [
         {
           tag: 'plate',
-          onTable: true,
+          position: 'onTable',
           toSelect: true,
         },
         {
           tag: 'plate',
-          onTable: true,
+          position: 'onTable',
           toSelect: true,
         },
       ],
@@ -22,17 +22,17 @@ export default function returnGameData(): ILevel[] {
       tags: [
         {
           tag: 'bento',
-          onTable: true,
+          position: 'onTable',
           toSelect: true,
         },
         {
           tag: 'plate',
-          onTable: true,
+          position: 'onTable',
           toSelect: false,
         },
         {
           tag: 'bento',
-          onTable: true,
+          position: 'onTable',
           toSelect: true,
         },
       ],
@@ -43,16 +43,16 @@ export default function returnGameData(): ILevel[] {
         {
           tag: 'plate',
           id: 'fancy',
-          onTable: true,
+          position: 'onTable',
           toSelect: true,
         },
         {
           tag: 'plate',
-          onTable: true,
+          position: 'onTable',
         },
         {
           tag: 'bento',
-          onTable: true,
+          position: 'onTable',
         },
       ],
     },
@@ -61,22 +61,21 @@ export default function returnGameData(): ILevel[] {
       tags: [
         {
           tag: 'bento',
-          onTable: true,
+          position: 'onTable',
         },
         {
           tag: 'plate',
-          onTable: true,
+          position: 'onTable',
           children: [
             {
               tag: 'apple',
-              onTable: false,
-              isChild: true,
+              position: 'child',
             }
           ]
         },
         {
           tag: 'apple',
-          onTable: true,
+          position: 'onTable',
         },
       ],
     },

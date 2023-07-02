@@ -59,7 +59,7 @@ export default class Game {
       function createNode(obj: IGameObj): Node {
         const result: HTMLElement = document.createElement(`pre`);
         result.classList.add('html-editor__code');
-        if (obj.onTable) {
+        if (obj.position === 'onTable') {
           result.classList.add('html-editor__on-table');
         }
         let strResult = obj.tag;
@@ -98,7 +98,7 @@ export default class Game {
       const descrBlock = document.createElement('div');
       descrBlock.classList.add(`object-tag__descr`);
       descrBlock.innerText = `<${openTag}></${obj.tag}>`;
-      if (obj.onTable) {
+      if (obj.position === 'onTable') {
         newObject.classList.add(`object-tag__on-table`);
       }
       if (obj.toSelect) {

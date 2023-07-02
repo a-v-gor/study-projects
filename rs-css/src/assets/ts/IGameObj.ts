@@ -1,9 +1,8 @@
 export default interface IGameObj {
   tag: string;
-  onTable: boolean;
+  position: 'onTable' | 'child';
   id?: string;
   for?: string;
   children?: IGameObj[];
-  isChild?: boolean;
   toSelect?: boolean;
 }
