@@ -56,29 +56,50 @@ export default class Game {
       const editorField: HTMLElement = <HTMLElement> document.querySelector('.html-editor__code-page');
       editorField.innerHTML = '';
 
-      function addCodeToEditor(obj: IGameObj): Node {
-        if(Array.isArray(obj.children)) {
-          alert('Child!')
-        }
-        // if(obj.children !== undefined) {
-        //   alert('Child!')
-        // }
-        const result: HTMLElement = document.createElement(`pre`);
-        let tabulation = '  ';
-        result.classList.add('html-editor__code');
-        if (obj.position === 'onTable') {
-          result.classList.add('html-editor__on-table');
-        } else if (obj.position === 'child') {
-          result.classList.add('html-editor__child');
-          tabulation += '  '
-        }
-        let strResult = obj.tag;
-        if (obj.id) {
-          strResult = addID(strResult, obj);
-        }
+      function addBlockCodeToEditor(obj: IGameObj): Node {
+        function returnPreElement(str:string, object: IGameObj): HTMLPreElement {
+          const result: HTMLPreElement = document.createElement(`pre`);
+          let tabulation = '  ';
+          result.classList.add('html-editor__code');
+          if (object.position === 'onTable') {
+            result.classList.add('html-editor__on-table');
+          } else if (object.position === 'child') {
+            result.classList.add('html-editor__child');
+            tabulation += '  '
+          }
+          let strResult = object.tag;
 
-        result.innerText = `${tabulation}<${strResult} />`;
-        return result;
+          if (str === 'last') {
+            result.innerText = `${tabulation}</${strResult}>`;
+          } else {
+            if (object.id) {
+              strResult = addID(strResult, object);
+            }
+            if (str === 'full') {
+              result.innerText = `${tabulation}<${strResult} />`;
+            } else if (str === 'first') {
+              result.innerText = `${tabulation}<${strResult}>`;
+            }
+          }
+          return result;
+        }
+        
+        const blockResult: HTMLDivElement = document.createElement(`div`);
+        blockResult.classList.add('html-editor__code-block');
+
+        if (obj.children === undefined) {
+          blockResult.appendChild(returnPreElement('full', obj));
+        } else if (Array.isArray(obj.children)) {
+          const openTag: HTMLPreElement = returnPreElement('first', obj);
+          const closeTag: HTMLPreElement = returnPreElement('last', obj);
+          blockResult.appendChild(openTag);
+          obj.children.forEach((i) => {
+            const newPreStr: HTMLPreElement = returnPreElement('full', i);
+            blockResult.appendChild(newPreStr);
+          })
+          blockResult.appendChild(closeTag);
+        }        
+        return blockResult;
       }
 
       function addFirstLastTableStr(strText: string) {
@@ -89,7 +110,7 @@ export default class Game {
       }
 
       addFirstLastTableStr('<div class="table">');
-      obj.tags.forEach((item) => editorField.appendChild(addCodeToEditor(item)));
+      obj.tags.forEach((item) => editorField.appendChild(addBlockCodeToEditor(item)));
       addFirstLastTableStr('</div>');
     }
 
