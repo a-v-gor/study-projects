@@ -46,11 +46,43 @@ export default class Game {
       descriptionBlock.innerText = obj.description;
     }
 
-    function addID (str: string, obj: IGameObj) {
+    function addID (str: string, obj: IGameObj): string {
       let copyStr = str;
       copyStr += ` id="${obj.id}"`
       return copyStr;
     }
+
+    // function addCodeToEditor(): void {
+    //   const editorField: HTMLElement = <HTMLElement> document.querySelector('.html-editor__code-page');
+    //   editorField.innerHTML = '';
+
+    //   function createNode(obj: IGameObj): Node {
+    //     const result: HTMLElement = document.createElement(`pre`);
+    //     result.classList.add('html-editor__code');
+    //     if (obj.position === 'onTable') {
+    //       result.classList.add('html-editor__on-table');
+    //     }
+    //     let strResult = obj.tag;
+    //     if (obj.id) {
+    //       strResult = addID(strResult, obj);
+    //     }
+    //     result.innerText = `  <${strResult} />`;
+    //     return result;
+    //   }
+
+    //   function addFirstLastTableStr(strText: string) {
+    //     const str = document.createElement('pre');
+    //     str.classList.add('html-editor__code-table');
+    //     str.innerText = strText;
+    //     editorField.appendChild(str);
+    //   }
+
+    //   addFirstLastTableStr('<div class="table">');
+    //   obj.tags.forEach((item) => {
+    //     editorField.appendChild(createNode(item));
+    //   });
+    //   addFirstLastTableStr('</div>');
+    // }
 
     function addCodeToEditor(): void {
       const editorField: HTMLElement = <HTMLElement> document.querySelector('.html-editor__code-page');
@@ -58,15 +90,26 @@ export default class Game {
 
       function createNode(obj: IGameObj): Node {
         const result: HTMLElement = document.createElement(`pre`);
+        let tabulation = '  ';
         result.classList.add('html-editor__code');
         if (obj.position === 'onTable') {
           result.classList.add('html-editor__on-table');
+        } else if (obj.position === 'child') {
+          result.classList.add('html-editor__child');
+          tabulation += '  '
         }
         let strResult = obj.tag;
         if (obj.id) {
           strResult = addID(strResult, obj);
         }
-        result.innerText = `  <${strResult} />`;
+
+        if (Array.isArray(obj.children)) {
+          obj.children.forEach((i) => {
+            createNode(i);
+          })
+        }
+
+        result.innerText = `${tabulation}<${strResult} />`;
         return result;
       }
 
@@ -84,28 +127,51 @@ export default class Game {
       addFirstLastTableStr('</div>');
     }
 
-    function addObjectOnTable(obj: IGameObj): void {
-      const newObject = document.createElement('div');
-      let className = `table__${obj.tag}`;
-      let openTag = obj.tag;
-      if (obj.id === 'fancy') {
-        openTag = addID(openTag, obj);
-        className += '_fancy';
-      }
-
-      newObject.classList.add(className);
-      newObject.classList.add(`object-tag`);
+    function returnTagDescriptionElement(strOpen: string, strClose: string): HTMLElement {
       const descrBlock = document.createElement('div');
       descrBlock.classList.add(`object-tag__descr`);
-      descrBlock.innerText = `<${openTag}></${obj.tag}>`;
+      descrBlock.innerText = `<${strOpen}></${strClose}>`;
+      return descrBlock;
+    }
+
+    function addObjectOnTable(obj: IGameObj, parentNode: HTMLElement = table): void {
+      console.log(obj);
+      
+      const newObject = document.createElement('div');
+      let objClassName = `table__${obj.tag}`;
+      let openTag = obj.tag;
+
+      if (obj.id === 'fancy') {
+        openTag = addID(openTag, obj);
+        objClassName += '_fancy';
+      }
+      newObject.classList.add(objClassName);
+      newObject.classList.add(`object-tag`);
+
+      
       if (obj.position === 'onTable') {
         newObject.classList.add(`object-tag__on-table`);
+      } else if (obj.position === 'child') {
+        newObject.classList.add(`object-tag__child`);
       }
+
+      // Check if tag to select
       if (obj.toSelect) {
         newObject.classList.add(`object-tag__strobe`);
       }
-      table.appendChild(newObject);
-      table.appendChild(descrBlock);
+
+      const description = returnTagDescriptionElement(openTag, obj.tag);
+
+      // Add element on page
+      parentNode.appendChild(newObject);
+      table.appendChild(description);
+
+      // Add child objects
+      if (Array.isArray(obj.children)) {
+        obj.children.forEach((i) => {
+          addObjectOnTable(i, newObject);
+        })
+      }
     }
 
     addLevelDescription();
@@ -122,7 +188,7 @@ export default class Game {
 
   hideDescription() {
     const description = this.table.querySelector('.object-tag__descr_active')
-    if (description) {
+    if (description !== null) {
       description.classList.remove('object-tag__descr_active');
     }
   }
@@ -139,16 +205,6 @@ export default class Game {
       });
       i.addEventListener('mouseout', () => {
         stringsInEditor[idx].classList.remove('html-editor__code_light');
-        this.hideDescription();
-      });
-    })
-    stringsInEditor.forEach((i,idx) => {
-      i.addEventListener('mouseover', () => {
-        objs[idx].classList.add('table__code_light');
-        this.showDescription(idx);
-      });
-      i.addEventListener('mouseout', () => {
-        objs[idx].classList.remove('table__code_light');
         this.hideDescription();
       });
     })

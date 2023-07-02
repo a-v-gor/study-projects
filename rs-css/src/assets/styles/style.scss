@@ -201,6 +201,11 @@ html {
       opacity: 1;
     }
   }
+  &__child {
+    position: relative;
+    bottom: 5rem;
+    left: 2rem;
+  }
 }
 
 @keyframes translate {

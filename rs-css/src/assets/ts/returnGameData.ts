@@ -70,6 +70,7 @@ export default function returnGameData(): ILevel[] {
             {
               tag: 'apple',
               position: 'child',
+              toSelect: true,
             }
           ]
         },
