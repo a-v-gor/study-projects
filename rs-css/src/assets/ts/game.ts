@@ -52,43 +52,17 @@ export default class Game {
       return copyStr;
     }
 
-    // function addCodeToEditor(): void {
-    //   const editorField: HTMLElement = <HTMLElement> document.querySelector('.html-editor__code-page');
-    //   editorField.innerHTML = '';
-
-    //   function createNode(obj: IGameObj): Node {
-    //     const result: HTMLElement = document.createElement(`pre`);
-    //     result.classList.add('html-editor__code');
-    //     if (obj.position === 'onTable') {
-    //       result.classList.add('html-editor__on-table');
-    //     }
-    //     let strResult = obj.tag;
-    //     if (obj.id) {
-    //       strResult = addID(strResult, obj);
-    //     }
-    //     result.innerText = `  <${strResult} />`;
-    //     return result;
-    //   }
-
-    //   function addFirstLastTableStr(strText: string) {
-    //     const str = document.createElement('pre');
-    //     str.classList.add('html-editor__code-table');
-    //     str.innerText = strText;
-    //     editorField.appendChild(str);
-    //   }
-
-    //   addFirstLastTableStr('<div class="table">');
-    //   obj.tags.forEach((item) => {
-    //     editorField.appendChild(createNode(item));
-    //   });
-    //   addFirstLastTableStr('</div>');
-    // }
-
     function addCodeToEditor(): void {
       const editorField: HTMLElement = <HTMLElement> document.querySelector('.html-editor__code-page');
       editorField.innerHTML = '';
 
-      function createNode(obj: IGameObj): Node {
+      function addCodeToEditor(obj: IGameObj): Node {
+        if(Array.isArray(obj.children)) {
+          alert('Child!')
+        }
+        // if(obj.children !== undefined) {
+        //   alert('Child!')
+        // }
         const result: HTMLElement = document.createElement(`pre`);
         let tabulation = '  ';
         result.classList.add('html-editor__code');
@@ -103,12 +77,6 @@ export default class Game {
           strResult = addID(strResult, obj);
         }
 
-        if (Array.isArray(obj.children)) {
-          obj.children.forEach((i) => {
-            createNode(i);
-          })
-        }
-
         result.innerText = `${tabulation}<${strResult} />`;
         return result;
       }
@@ -121,9 +89,7 @@ export default class Game {
       }
 
       addFirstLastTableStr('<div class="table">');
-      obj.tags.forEach((item) => {
-        editorField.appendChild(createNode(item));
-      });
+      obj.tags.forEach((item) => editorField.appendChild(addCodeToEditor(item)));
       addFirstLastTableStr('</div>');
     }
 
