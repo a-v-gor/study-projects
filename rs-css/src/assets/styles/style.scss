@@ -157,25 +157,31 @@ html {
       opacity: 1;
     }
   }
+
   &__child {
+    position: absolute;
+  }
+
+  &__parent {
     position: relative;
-    bottom: 5rem;
-    left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 .table{
   &__plate,
   &__plate_fancy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 10rem;
     height: 10rem;
     background-color: $color-plate;
     border-radius: 50%;
 
     &::before {
-      position: relative;
-      top: 1.5rem;
-      left: 1.5rem;
       display: block;
       width: 7rem;
       height: 7rem;
@@ -383,10 +389,6 @@ html {
   }
 }
 
-.footer {
-  grid-area: 3/1/4/2;
-}
-
 .levels {
   grid-area: 1/2/4/3;
   width: 100%;
@@ -446,4 +448,44 @@ html {
   &:hover {
     @extend %level-hover;
   }
+}
+
+.footer {
+  grid-area: 3/1/4/2;
+}
+
+.footer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 10rem;
+}
+
+.footer__github {
+  display: block;
+  width: 9.6rem;
+  height: 2.6rem;
+  background-image: url('../img/GitHub_Logo.svg');
+}
+
+.footer__year {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+
+  &:hover {
+    cursor:default;
+  }
+}
+
+.footer__rss-logo {
+  display: block;
+  width: 8.1rem;
+  height: 3rem;
+  background-image: url('../img/rs_school_js.svg');
+}
+
+.footer__github,
+.footer__rss-logo {
+  filter: invert(45%) sepia(99%) saturate(0%) hue-rotate(241deg) brightness(94%) contrast(79%);
 }

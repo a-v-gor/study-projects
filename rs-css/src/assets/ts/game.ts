@@ -204,6 +204,9 @@ export default class Game {
         openTag = addID(openTag, obj);
         objClassName += '_fancy';
       }
+      if (obj.children) {
+        newObject.classList.add(`object-tag__parent`);
+      }
       newObject.classList.add(objClassName);
       newObject.classList.add(`object-tag`);
 
