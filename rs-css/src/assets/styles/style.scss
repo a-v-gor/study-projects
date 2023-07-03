@@ -29,6 +29,10 @@ $color-reset-btn-border: #ffffff33;
 $color-html-code-hover: #ffffffb3;
 $color-apple-background: #e41919;
 $color-apple-border: #ab1212;
+$color-orange-background: #ffa500;
+$color-orange-border: #bd6e07;
+$color-pickle-background: #179837;
+$color-pickle-border: #025a18;
 
 
 %num-li-font {
@@ -124,6 +128,42 @@ html {
   }
 }
 
+.object-tag {
+  &_light {
+    box-shadow: 0 0 0 0.6rem $color-plate-highlight;
+  }
+
+  &__strobe {
+    transform-origin: bottom;
+    animation: translate 0.7s infinite;
+  }
+
+  &__descr {
+    position: absolute;
+    top: 1rem;
+    display: block;
+    padding: 1rem;
+    font-size: 1.8rem;
+    background-color: $color-editor-css-page-backround;
+    opacity: 0;
+    transition: 0.3s;
+
+    &_child {
+      top: 4rem;
+      z-index: 1;
+    }
+
+    &_active {
+      opacity: 1;
+    }
+  }
+  &__child {
+    position: relative;
+    bottom: 5rem;
+    left: 2rem;
+  }
+}
+
 .table{
   &__plate,
   &__plate_fancy {
@@ -160,6 +200,10 @@ html {
     background: $color-bento-background;
     border: solid 0.3rem $color-bento-border;
     border-width: 2rem 0.2rem;
+
+    > * {
+      bottom: 0;
+    }
   }
 
   &__apple,
@@ -167,55 +211,29 @@ html {
     width: 6rem;
     height: 6rem;
     background: $color-apple-background;
-    border: $color-apple-border;
+    border-color: $color-apple-border;
     border-style: solid;
-    border-width: 2px 4px 15px;
+    border-width: 0.2rem 0.4rem 1.5rem;
     border-radius: 50%;
   }
 
   &__orange {
-    background: $color-apple-background;
-    border: $color-apple-border;
+    background: $color-orange-background;
+    border-color: $color-orange-border;
+  }
+
+  &__pickle {
+    width: 2.5rem;
+    height: 5rem;
+    background: $color-pickle-background;
+    border-color: $color-pickle-border;
+    border-style: solid;
+    border-width: 0.2rem 0.2rem 0.9rem;
+    border-radius: 48%;
   }
   
   &__code_light {
     box-shadow: 0 0 0 0.6rem $color-plate-highlight;
-  }
-}
-
-.object-tag {
-  &_light {
-    box-shadow: 0 0 0 0.6rem $color-plate-highlight;
-  }
-
-  &__strobe {
-    transform-origin: bottom;
-    animation: translate 0.7s infinite;
-  }
-
-  &__descr {
-    position: absolute;
-    top: 1rem;
-    display: block;
-    padding: 1rem;
-    font-size: 1.8rem;
-    background-color: $color-editor-css-page-backround;
-    opacity: 0;
-    transition: 0.3s;
-
-    &_child {
-      top: 4rem;
-      z-index: 1;
-    }
-
-    &_active {
-      opacity: 1;
-    }
-  }
-  &__child {
-    position: relative;
-    bottom: 5rem;
-    left: 2rem;
   }
 }
 
@@ -392,7 +410,7 @@ html {
 
   &__list {
     flex-grow: 1;
-    padding-top: 2rem;
+    margin-top: 2rem;
   }
 
   &__list-item {

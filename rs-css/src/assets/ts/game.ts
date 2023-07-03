@@ -223,7 +223,7 @@ export default class Game {
 
       // Add element on page
       parentNode.appendChild(newObject);
-      parentNode.appendChild(description);
+      table.appendChild(description);
 
       // Add child objects
       if (Array.isArray(obj.children)) {
