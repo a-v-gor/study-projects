@@ -162,7 +162,8 @@ html {
     border-width: 2rem 0.2rem;
   }
 
-  &__apple {
+  &__apple,
+  &__orange {
     width: 6rem;
     height: 6rem;
     background: $color-apple-background;
@@ -171,6 +172,11 @@ html {
     border-width: 2px 4px 15px;
     border-radius: 50%;
   }
+
+  &__orange {
+    background: $color-apple-background;
+    border: $color-apple-border;
+  }
   
   &__code_light {
     box-shadow: 0 0 0 0.6rem $color-plate-highlight;
@@ -178,7 +184,7 @@ html {
 }
 
 .object-tag {
-  &:hover {
+  &_light {
     box-shadow: 0 0 0 0.6rem $color-plate-highlight;
   }
 
@@ -342,12 +348,17 @@ html {
 
     padding: 1rem;
     cursor: default;
+
+    &_light {
+      color: $color-html-code-hover;
+    }
   }
 
   &__code {
     padding: 0;
     font-size: 1em;
 
+    &:hover,
     &_light {
       color: $color-html-code-hover;
     }

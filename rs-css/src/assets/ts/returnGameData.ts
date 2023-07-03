@@ -80,6 +80,43 @@ export default function returnGameData(): ILevel[] {
         },
       ],
     },
+    {
+      description: 'Select the pickle on the fancy plate',
+      tags: [
+        {
+          tag: 'bento',
+          position: 'onTable',
+          children: [
+            {
+              tag: 'orange',
+              position: 'child',
+            }
+          ]
+        },
+        {
+          tag: 'plate',
+          position: 'onTable',
+          id: 'fancy',
+          children: [
+            {
+              tag: 'pickle',
+              position: 'child',
+              toSelect: true,
+            }
+          ]
+        },
+        {
+          tag: 'plate',
+          position: 'onTable',
+          children: [
+            {
+              tag: 'pickle',
+              position: 'child',
+            }
+          ]
+        },
+      ],
+    },
 ];
   return gameData;
 }

@@ -1,35 +1,20 @@
 import IGameObj from './IGameObj';
 import ILevel from './ILevel';
 
+interface IDataForHighLight {
+  objsOnTable: NodeListOf<HTMLElement>;
+  objectsChild: NodeListOf<HTMLElement>;
+  stringsOnTableInEditor: NodeListOf<HTMLElement>;
+  stringsChildInEditor: NodeListOf<HTMLElement>;
+  descriptionsOnTable: NodeListOf<HTMLElement>;
+  descriptionsChild: NodeListOf<HTMLElement>;
+}
+
 export default class Game {
   table: HTMLElement;
 
   constructor() {
     this.table = <HTMLElement> document.querySelector('.game-field__table');
-  }
-
-  private getObjectsOnTable(): NodeListOf<HTMLDivElement> {
-    return this.table.querySelectorAll('.object-tag__on-table');
-  }
-
-  private getObjectsChild(): NodeListOf<HTMLDivElement> {
-    return this.table.querySelectorAll('.object-tag__child');
-  }
-
-  private getStringsOnTableInEditor(): NodeListOf<HTMLElement> {
-    return document.querySelectorAll('.html-editor__code-block');
-  }
-
-  private getStringsChildInEditor(): NodeListOf<HTMLElement> {
-    return document.querySelectorAll('.html-editor__child');
-  }
-
-  private getDescriptionsOnTable(): NodeListOf<HTMLElement> {
-    return document.querySelectorAll('.object-tag__descr_onTable');
-  }
-
-  private getDescriptionsChild(): NodeListOf<HTMLElement> {
-    return document.querySelectorAll('.object-tag__descr_child');
   }
 
   private showDescription(arrDescriptions: NodeListOf<HTMLElement>, num: number): void {
@@ -43,41 +28,90 @@ export default class Game {
     }
   }
 
-  public highlightObjects(): void {
-    const objsOnTable = this.getObjectsOnTable();
-    const objectsChild = this.getObjectsChild();
-    const stringsOnTableInEditor = this.getStringsOnTableInEditor();
-    const stringsChildInEditor = this.getStringsChildInEditor();
-    const descriptionsOnTable = this.getDescriptionsOnTable();
-    const descriptionsChild = this.getDescriptionsChild();
-    const showDescription = this.showDescription;
-    const hideDescription = this.hideDescription;
+  private addListeners(arrElements: NodeListOf<HTMLElement>, arrCodeStrings: NodeListOf<HTMLElement>, arrDescriptions: NodeListOf<HTMLElement>, className: string): void {
+    arrElements.forEach((i,idx) => {
+      i.addEventListener('mouseover', (e: Event) => {
+        const element: HTMLElement = <HTMLElement> e.target;
+        if (element.classList.contains('object-tag')) {
+          element.classList.add('object-tag_light');
+        }
+        arrCodeStrings[idx].classList.add(className);
+        this.showDescription(arrDescriptions, idx);
+        const child: HTMLElement = <HTMLElement> i.querySelector('.html-editor__child');
+        if (child) {
+          const strings: NodeListOf<HTMLElement> = <NodeListOf<HTMLElement>> i.querySelectorAll('.html-editor__code');
+          const openTagStr = strings[0];
+          const closeTagStr = strings[strings.length - 1];
+          openTagStr.classList.add('html-editor__code_light');
+          closeTagStr.classList.add('html-editor__code_light');
+        }
+      });
+      i.addEventListener('mouseout', (e: Event) => {
+        const element: HTMLElement = <HTMLElement> e.target;
+        if (element.classList.contains('object-tag_light')) {
+          element.classList.remove('object-tag_light');
+        }
+        arrCodeStrings[idx].classList.remove(className);
+        this.hideDescription();
+        const child: HTMLElement = <HTMLElement> i.querySelector('.html-editor__child');
+        if (child) {
+          const strings: NodeListOf<HTMLElement> = <NodeListOf<HTMLElement>> i.querySelectorAll('.html-editor__code');
+          const openTagStr = strings[0];
+          const closeTagStr = strings[strings.length - 1];
+          openTagStr.classList.remove('html-editor__code_light');
+          closeTagStr.classList.remove('html-editor__code_light');
+        }
+      });
+    })
+  }
 
-    function addListeners(arrElements: NodeListOf<HTMLElement>, arrCodeStrings: NodeListOf<HTMLElement>, arrDescriptions: NodeListOf<HTMLElement>, className: string) {
-      arrElements.forEach((i,idx) => {
-        i.addEventListener('mouseover', () => {
-          arrCodeStrings[idx].classList.add(className);
-          showDescription(arrDescriptions, idx);
-        });
-        i.addEventListener('mouseout', () => {
-          arrCodeStrings[idx].classList.remove(className);
-          hideDescription();
-        });
-      })
-    }
-    addListeners(objsOnTable, stringsOnTableInEditor, descriptionsOnTable, 'object-tag__descr_active');
-    addListeners(objectsChild, stringsChildInEditor, descriptionsChild, 'object-tag__descr_active');
+  private removeListeners(arrElements: NodeListOf<HTMLElement>, arrElemsToLight: NodeListOf<HTMLElement>, arrDescriptions: NodeListOf<HTMLElement>, className: string): void {
+    arrElements.forEach((i,idx) => {
+      i.removeEventListener('mouseover', () => {
+        arrElemsToLight[idx].classList.add(className);
+        this.showDescription(arrDescriptions, idx);
+      });
+      i.removeEventListener('mouseout', () => {
+        arrElemsToLight[idx].classList.remove(className);
+        this.hideDescription();
+      });
+    })
+  }
+
+  private returnDataForHighLight(): IDataForHighLight {
+    const result: IDataForHighLight = {
+      objsOnTable: document.querySelectorAll('.object-tag__on-table'),
+      objectsChild: document.querySelectorAll('.object-tag__child'),
+      stringsOnTableInEditor: document.querySelectorAll('.html-editor__code-block'),
+      stringsChildInEditor: document.querySelectorAll('.html-editor__child'),
+      descriptionsOnTable: document.querySelectorAll('.object-tag__descr_onTable'),
+      descriptionsChild: document.querySelectorAll('.object-tag__descr_child'),
+    };
+    return result;
+  }
+
+  public highlightObjects(): void {
+    const data: IDataForHighLight = this.returnDataForHighLight();
+
+    this.addListeners(data.objsOnTable, data.stringsOnTableInEditor, data.descriptionsOnTable, 'html-editor__code_light');
+    this.addListeners(data.objectsChild, data.stringsChildInEditor, data.descriptionsChild, 'html-editor__code_light');
+    this.addListeners(data.stringsOnTableInEditor, data.objsOnTable, data.descriptionsOnTable, 'object-tag_light');
+    this.addListeners(data.stringsChildInEditor, data.objectsChild, data.descriptionsChild, 'object-tag_light');
   }
 
   public clearLevel() {
+    const data: IDataForHighLight = this.returnDataForHighLight();
+
     this.table.innerHTML = '';
+    this.removeListeners(data.objsOnTable, data.stringsOnTableInEditor, data.descriptionsOnTable, 'html-editor__code_light');
+    this.removeListeners(data.objectsChild, data.stringsChildInEditor, data.descriptionsChild, 'html-editor__code_light');
     if (document.querySelector('.levels__list-item_active')) {
       const activeLevelListElement: HTMLLIElement = <HTMLLIElement> document.querySelector('.levels__list-item_active');
       activeLevelListElement.classList.remove('levels__list-item_active');
     }
   }
 
-  drawLevel(obj: ILevel) {
+  public drawLevel(obj: ILevel): void {
     const table = this.table;
 
     function addLevelDescription(object: ILevel): void {
