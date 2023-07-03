@@ -17,6 +17,6 @@ export default class Controller {
     this.game.clearLevel();
     this.game.drawLevel(this.gameData[num]);
     levelListItem.classList.add('levels__list-item_active');
-    this.game.highlightObj();
+    this.game.highlightObjects();
   }
 }
