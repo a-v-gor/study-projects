@@ -53,14 +53,16 @@ $color-pickle-border: #025a18;
   line-height: 1.5;
 }
 
-// Оригинал анимации https://flukeout.github.io/
-
-@keyframes input {
-  50% { background: none; }
-}
-
 html {
   font-size: 62.5%;
+
+  @media (width <= 900px) {
+    font-size: 50%;
+  }
+
+  @media (width <= 600px) {
+    font-size: 42%;
+  }
 }
 
 .body {
@@ -74,6 +76,10 @@ html {
   grid-template-rows: repeat(3, auto);
   grid-template-columns: 5fr 1fr;
   min-height: 100%;
+
+  @media (width <= 600px) {
+    min-height: auto;
+  }
 }
 
 .header {
@@ -341,8 +347,8 @@ html {
 
   &__input-field {
     flex-grow: 1;
+    font-size: 1.4rem;
     background: $color-input-background;
-    animation: input .7s infinite
   }
 
   &__input-btn {
@@ -399,10 +405,18 @@ html {
     flex-direction: column;
     min-height: 100%;
     padding: 2rem 0 7rem;
+
+    @media (width <= 600px) {
+      padding: 2rem;
+    }
   }
 
   &__line-wrapper {
     padding: 0 3rem;
+
+    @media (width <= 600px) {
+      padding: 0;
+    }
   }
 
   &__header {
@@ -411,8 +425,7 @@ html {
   }
 
   &__list {
-    flex-grow: 1;
-    margin-top: 2rem;
+    margin: 2rem 0 6rem;
   }
 
   &__list-item {
