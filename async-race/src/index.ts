@@ -1,31 +1,13 @@
 import './assets/scss/style.scss';
+import View from './assets/ts/view';
 
 const baseUrl = 'http://127.0.0.1:3000';
 const btnsArea: HTMLDivElement = <HTMLDivElement> document.querySelector('.view-btns');
+const view = new View(baseUrl);
 
-async function setNumOfCars() {
-  fetch(`${baseUrl}/garage?_limit=10`)
-    .then((response) => response.headers.get('X-Total-Count'))
-    .then((result) => {
-      const numOfCarsText: HTMLSpanElement = <HTMLSpanElement> document.getElementById('cars-num-text');
-      numOfCarsText.innerText = String(result);
-    })
-    .catch((error) => error.message);
-}
-
-async function setNumOfWinners() {
-  fetch(`${baseUrl}/winners?_limit=7`)
-    .then((response) => response.headers.get('X-Total-Count'))
-    .then((result) => {
-      const numOfWinnersText: HTMLSpanElement = <HTMLSpanElement> document.getElementById('winners-num-text');
-      numOfWinnersText.innerText = String(result);
-    })
-    .catch((error) => error.message);
-}
-
-function startGame() {
-  setNumOfCars();
-  setNumOfWinners();
+function startGame(): void {
+  view.setNumOfCars();
+  view.setNumOfWinners();
 }
 
 function changeView(evt: Event) {

@@ -1,9 +1,22 @@
 @import 'normalize.css';
 
+.wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .view_unactive {
   display: none;
 }
 
 .view-btns {
   width: fit-content;
+}
+
+.set-car__form {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  padding: 5px 0;
 }
