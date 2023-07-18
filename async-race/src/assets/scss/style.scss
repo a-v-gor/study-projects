@@ -10,9 +10,14 @@
   width: fit-content;
 }
 
-.set-car__form {
+.set-car {
   display: flex;
-  column-gap: 5px;
-  align-items: center;
-  padding: 5px 0;
+  flex-direction: column;
+  row-gap: 5px;
+
+  &__form {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+  }
 }
