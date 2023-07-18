@@ -1,8 +1,8 @@
 export default class Api {
   baseUrl: string;
 
-  constructor(url: string) {
-    this.baseUrl = url;
+  constructor() {
+    this.baseUrl = 'http://127.0.0.1:3000';
   }
 
   async getNum(str: string): Promise<string> {
