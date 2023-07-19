@@ -2,11 +2,12 @@ const viewsHtml = {
   garageViewHtml: `
     <section class="view garage">
       <div class="page-info garage__info">
-        <h2 class="page-info__title">Garage</h2>
+        <h2 class="title page-info__title">Garage</h2>
         <p class="page-info__text">Total number of cars: <span id="cars-num-text"></span></p>
         <p class="page-info__text">Page #<span id="page-cars-num">1</span></p>
       </div>
-      <div class="set-car">
+      <section class="garage__set-car set-car">
+        <h3 class="title set-car__title">Create and update cars</h3>
         <form class="set-car__form" id="create-car">
           <input type="text" class="set-car__name">
           <input type="color" class="set-car__color">
@@ -17,7 +18,18 @@ const viewsHtml = {
           <input type="color" class="set-car__color">
           <input type="submit" class="set-car__button" value="Update">
         </form>
-      </div>
+        <button class="set-car__btn-generate">Generate cars</button>
+      </section>
+      <section class="garage__race-btns race-btns">
+        <h3 class="title race-btns__title">Race</h3>
+        <button class="race-btns__start">Start</button>
+        <button class="race-btns__reset">Reset</button>
+      </section>
+      <section class="garage__cars cars">
+        <h3 class="title cars-list__title">Cars</h3>
+        <div class="cars__list">
+        </div>
+      </section>
     </section>`,
   winnersViewHtml: `
   <section class="view winners">

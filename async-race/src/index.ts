@@ -17,4 +17,4 @@ function startGame(): void {
   btnsArea.addEventListener('click', changeView);
 }
 
-// document.addEventListener('DOMContentLoaded', startGame);
+document.addEventListener('DOMContentLoaded', startGame);

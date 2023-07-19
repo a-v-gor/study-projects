@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Async Race</title>
 </head>
-<body>
+<body class="body">
   <header class="header">
-    <div class="wrapper">
+    <div class="wrapper header__wrapper">
       <h1 class="title header__title">Async Race</h1>
       <div class="view-btns">
         <button class="view-btns__btn">Garage</button>
@@ -17,37 +17,10 @@
   </header>
   <main class="main">
     <div class="wrapper main__wrapper">
-      <section class="view garage">
-        <div class="page-info garage__info">
-          <h2 class="title page-info__title">Garage</h2>
-          <p class="page-info__text">Total number of cars: <span id="cars-num-text"></span></p>
-          <p class="page-info__text">Page #<span id="page-cars-num">1</span></p>
-        </div>
-        <section class="set-car">
-          <h3 class="title set-car__title">Create and update cars</h3>
-          <form class="set-car__form" id="create-car">
-            <input type="text" class="set-car__name">
-            <input type="color" class="set-car__color">
-            <input type="submit" class="set-car__button" value="Create">
-          </form>
-          <form class="set-car__form" id="update-car">
-            <input type="text" class="set-car__name">
-            <input type="color" class="set-car__color">
-            <input type="submit" class="set-car__button" value="Update">
-          </form>
-          <button class="set-car__btn-generate">Generate cars</button>
-        </section>
-        <section class="race-btns">
-          <h3 class="title race-btns__title"></h3>
-          <button class="race-btns__race">Race</button>
-          <button class="race-btns__reset">Reset</button>
-        </section>
-      </section>
     </div>
   </main>
   <footer class="footer">
     <div class="wrapper">
-
     </div>
   </footer>
 </body>

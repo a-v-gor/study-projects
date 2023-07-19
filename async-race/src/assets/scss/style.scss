@@ -1,13 +1,69 @@
 @import 'normalize.css';
 
+.body {
+  background-color: #fffff0;
+}
+
+.title {
+  margin: 10px 0;
+}
+
 .wrapper {
-  width: 90%;
+  width: 96%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+.header {
+  padding: 10px 0;
+  background-color: #f5f5dc;
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__wrapper {
+    width: fit-content;
+  }
+}
+
 .view-btns {
   width: fit-content;
+}
+
+.main {
+  padding: 10px;
+}
+
+.garage {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 20px;
+  align-items: center;
+
+  &__set-car,
+  &__race-btns {
+    display: block;
+    padding: 15px;
+    background-color: #f0e68c;
+    border-radius: 10px;
+  }
+
+  &__race-btns {
+    background-color: #ff4500;
+  }
+
+  &__cars {
+    width: 100%;
+  }
+}
+
+.page-info {
+  min-width: 200px;
+  padding: 15px;
+  background-color: #90ee90;
+  border-radius: 10px;
 }
 
 .set-car {
@@ -15,9 +71,70 @@
   flex-direction: column;
   row-gap: 5px;
 
+  &__title {
+    margin: 0;
+  }
+
   &__form {
     display: flex;
     column-gap: 5px;
     align-items: center;
+  }
+
+  &__btn-generate {
+    width: fit-content;
+  }
+}
+
+.race-btns {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+
+  &__title {
+    grid-area: 1 / 1 / 2 / 3;
+    margin: 0;
+  }
+}
+
+.cars {
+  padding: 15px;
+  background-color: #b0e0e6;
+  border-radius: 10px;
+}
+
+.car-block {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  justify-content: end;
+  padding: 15px 15px 0;
+  margin: 15px 0;
+  background-color: #a9a9a9;
+  border-bottom: 3px dashed #ffffff;
+  border-radius: 10px;
+
+  &::after {
+    position: absolute;
+    align-self: flex-end;
+    margin-right: 100px;
+    font-size: 50px;
+    color: #ff0000;
+    content: '⚑';
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__btns {
+    display: flex;
+    column-gap: 50px;
+  }
+
+  &__set-btns,
+  &__drive-btns {
+    width: fit-content;
   }
 }

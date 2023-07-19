@@ -11,4 +11,11 @@ export default class Api {
       .then((result) => String(result))
       .catch((error) => error.message);
   }
+
+  async getCars() {
+    return fetch(`${this.baseUrl}/garage?_limit=7`)
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
 }
