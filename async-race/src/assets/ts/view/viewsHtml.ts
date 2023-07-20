@@ -10,12 +10,12 @@ const viewsHtml = {
         <h3 class="title set-car__title">Create and update cars</h3>
         <form id="create-car" class="set-car__form">
           <input type="text" name="carName" class="set-car__name">
-          <input type="color" name="carColor" class="set-car__color">
+          <input type="color" name="carColor" class="set-car__color" value="#ff0000">
           <input type="submit" class="set-car__button" value="Create">
         </form>
         <form id="update-car" class="set-car__form">
           <input type="text" class="set-car__name">
-          <input type="color" class="set-car__color">
+          <input type="color" class="set-car__color" value="#ff0000">
           <input type="submit" class="set-car__button" value="Update">
         </form>
         <button class="set-car__btn-generate">Generate cars</button>

@@ -13,7 +13,7 @@ export default class View {
 
   document: Document;
 
-  constructor() {
+  constructor(document: Document) {
     this.api = new Api();
     this.mainWrap = <HTMLDivElement> document.querySelector('.main__wrapper');
     this.state = new State();

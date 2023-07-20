@@ -13,7 +13,7 @@ export default class Api {
   }
 
   async getCars() {
-    return fetch(`${this.baseUrl}/garage?_limit=7`)
+    return fetch(`${this.baseUrl}/garage?_limit=1000`)
       .then((response: Response) => response.json())
       .then((result) => result)
       .catch((error) => error.message);
