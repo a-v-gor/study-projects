@@ -8,12 +8,12 @@ const viewsHtml = {
       </div>
       <section class="garage__set-car set-car">
         <h3 class="title set-car__title">Create and update cars</h3>
-        <form class="set-car__form" id="create-car">
-          <input type="text" class="set-car__name">
-          <input type="color" class="set-car__color">
+        <form id="create-car" class="set-car__form">
+          <input type="text" name="carName" class="set-car__name">
+          <input type="color" name="carColor" class="set-car__color">
           <input type="submit" class="set-car__button" value="Create">
         </form>
-        <form class="set-car__form" id="update-car">
+        <form id="update-car" class="set-car__form">
           <input type="text" class="set-car__name">
           <input type="color" class="set-car__color">
           <input type="submit" class="set-car__button" value="Update">
@@ -34,7 +34,7 @@ const viewsHtml = {
   winnersViewHtml: `
   <section class="view winners">
     <div class="page-info winners__info">
-      <h2 class="page-info__title">Winners</h2>
+      <h2 class="title page-info__title">Winners</h2>
       <p class="page-info__text">Total number of winners: <span id="winners-num-text"></span></p>
       <p class="page-info__text">Page #<span id="page-winners-num">1</span></p>
     </div>

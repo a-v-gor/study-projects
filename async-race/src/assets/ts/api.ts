@@ -18,4 +18,17 @@ export default class Api {
       .then((result) => result)
       .catch((error) => error.message);
   }
+
+  async newCar(name: string, color: string) {
+    return fetch(`${this.baseUrl}/garage`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, color }),
+    })
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
 }
