@@ -142,6 +142,49 @@ function startApp(): void {
     }
   }
 
+  async function generateCars() {
+    const carBrands = ['Audi', 'BMW', 'Chevrolet', 'Ford', 'Geely', 'Haval', 'Honda', 'Hyundai', 'Kia', 'Lada', 'Maserati', 'Mazda', 'Mercedes', 'Nissan', 'Porsche', 'Renault', 'Skoda', 'Toyota', 'Volkswagen', 'УАЗ'];
+    const carModels = ['Atlas Pro', 'Aveo', 'Ceed', 'Coolray', 'Creta', 'Cruze', 'Dargo', 'Duster', 'Elantra', 'Focus', 'GLE', 'Ghibli', 'Granta', 'Jolion', 'Kuga', 'Largus', 'Logan', 'Niva', 'Polo', 'Q6', 'RAV4', 'Rapid', 'Rio', 'Rio', 'S-Класс', 'S40', 'Seltos', 'Solaris', 'Sonata', 'Sportage', 'Vesta', 'X-Trail', 'X7', 'Патриот'];
+
+    function returnRandomElem(arr: string[]): string {
+      const randomNum = Math.floor(Math.random() * (arr.length));
+      return arr[randomNum];
+    }
+
+    function returnRandColor() {
+      function returnRandomNumColor() {
+        const result = Math.floor(Math.random() * 256).toString(16);
+        return (result.length < 2) ? `0${result}` : result;
+      }
+      let resColor = '#';
+      for (let i = 0; i < 3; i += 1) {
+        resColor += returnRandomNumColor();
+      }
+      return resColor;
+    }
+
+    const results = [];
+
+    for (let i = 0; i < 100; i += 1) {
+      const carName = `${returnRandomElem(carBrands)} ${returnRandomElem(carModels)}`;
+      const carColor = returnRandColor();
+      results.push(api.newCar(carName, carColor));
+    }
+    await Promise.all(results);
+    view.drawCars();
+    view.setNumOfCars();
+    checkPagination();
+  }
+
+  function addRemListenGenerateCarsBtn(meth: string): void {
+    const generateCarsBtn: HTMLButtonElement = <HTMLButtonElement> document.querySelector('.set-car__btn-generate');
+    if (meth === 'add') {
+      generateCarsBtn.addEventListener('click', generateCars);
+    } else if (meth === 'remove') {
+      generateCarsBtn.removeEventListener('click', generateCars);
+    }
+  }
+
   async function returnGarageView(): Promise<void> {
     view.drawView('Garage');
     checkPagination();
@@ -149,6 +192,7 @@ function startApp(): void {
     addRemFormListener('add', 'update-car', updateCar);
     addRemListenSelectCar('add');
     addRemListenPaginBtns('add');
+    addRemListenGenerateCarsBtn('add');
   }
 
   function changeView(vName: string): void {
@@ -159,6 +203,7 @@ function startApp(): void {
       addRemFormListener('remove', 'update-car', updateCar);
       addRemListenSelectCar('remove');
       addRemListenPaginBtns('remove');
+      addRemListenGenerateCarsBtn('remove');
       view.drawView(vName);
     }
   }
