@@ -33,18 +33,28 @@ function startApp(): void {
     updForm.carId.value = car.id;
   }
 
-  function checkIfSelect(evt: Event): void {
+  async function removeCar(id: number): Promise<void> {
+    await api.removeCar(id);
+    view.drawCars();
+    view.setNumOfCars();
+  }
+
+  function checkSelectCar(evt: Event): void {
     const target: HTMLButtonElement = <HTMLButtonElement> evt.target;
-    const carSection: HTMLElement = <HTMLElement> target.closest('.car-block');
-    const carId:string = carSection.id;
-    if (target.className === 'car-block__select') {
-      selectCar(+carId);
+    if (target.localName === 'button') {
+      const carSection: HTMLElement = <HTMLElement> target.closest('.car-block');
+      const carId: number = +carSection.id;
+      if (target.className === 'car-block__select') {
+        selectCar(carId);
+      } else if (target.className === 'car-block__remove') {
+        removeCar(carId);
+      }
     }
   }
 
   function addListenSelectCar(): void {
     const carsList = <HTMLDivElement>document.querySelector('.cars__list');
-    carsList.addEventListener('click', checkIfSelect);
+    carsList.addEventListener('click', checkSelectCar);
   }
 
   async function createCar(event: Event): Promise<void> {
@@ -54,6 +64,7 @@ function startApp(): void {
     const color: string = form.carColor.value;
     await api.newCar(name, color);
     view.drawCars();
+    view.setNumOfCars();
     form.carName.value = '';
     form.carColor.value = '#ff0000';
   }
@@ -63,9 +74,10 @@ function startApp(): void {
     const form: HTMLFormElement = <HTMLFormElement> event.target;
     const name: string = form.carName.value;
     const color: string = form.carColor.value;
-    const id: string = form.carId.value;
+    const id: number = form.carId.value;
     await api.updCar(name, color, id);
     view.drawCars();
+    form.carId.value = '';
     form.carName.value = '';
     form.carColor.value = '#ff0000';
   }

@@ -39,13 +39,22 @@ export default class Api {
       .catch((error) => error.message);
   }
 
-  async updCar(name: string, color: string, id: string) {
-    return fetch(`${this.baseUrl}/garage/${+id}`, {
+  async updCar(name: string, color: string, id: number) {
+    return fetch(`${this.baseUrl}/garage/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name, color }),
+    })
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
+
+  async removeCar(id: number) {
+    return fetch(`${this.baseUrl}/garage/${id}`, {
+      method: 'DELETE',
     })
       .then((response: Response) => response.json())
       .then((result) => result)

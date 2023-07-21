@@ -16,7 +16,7 @@ export default class State {
       updateCar: {
         carName: '',
         carColor: '',
-        carId: '',
+        carId: 0,
       },
     };
   }
@@ -45,7 +45,7 @@ export default class State {
       const createCarColor: string = checkIfInputNull(createCarColorInput);
       const updateCarName: string = checkIfInputNull(updateCarNameInput);
       const updateCarColor: string = checkIfInputNull(updateCarColorInput);
-      const updateCarId: string = checkIfInputNull(updateCarIdInput);
+      const updateCarId: number = +checkIfInputNull(updateCarIdInput);
 
       this.dataGarage = {
         saved: true,
@@ -67,7 +67,7 @@ export default class State {
       createCarColorInput.value = this.dataGarage.createCar.carColor;
       updateCarNameInput.value = this.dataGarage.updateCar.carName;
       updateCarColorInput.value = this.dataGarage.updateCar.carColor;
-      updateCarIdInput.value = this.dataGarage.updateCar.carId;
+      updateCarIdInput.value = String(this.dataGarage.updateCar.carId);
     }
   }
 

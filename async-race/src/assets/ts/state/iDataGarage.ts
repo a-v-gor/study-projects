@@ -8,6 +8,6 @@ export interface IDataGarage {
   updateCar: {
     carName: string,
     carColor: string,
-    carId: string,
+    carId: number,
   },
 }
