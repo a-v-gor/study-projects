@@ -28,7 +28,10 @@ const viewsHtml = {
       </section>
       <section class="garage__cars cars">
         <h3 class="title cars-list__title">Cars</h3>
-        <div class="cars__list">
+        <div class="cars__list"></div>
+        <div class="cars__btns">
+          <button class="cars__btn-prev">Prev</button>
+          <button class="cars__btn-next">Next</button>
         </div>
       </section>
     </section>`,

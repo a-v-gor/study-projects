@@ -37,7 +37,9 @@ export default class View {
   }
 
   async drawCars(): Promise<void> {
-    const cars: Array<ICar> = await this.api.getCars();
+    const pageNumElem: HTMLSpanElement = <HTMLSpanElement> this.document.getElementById('page-cars-num');
+    const pageNum = +pageNumElem.innerText;
+    const cars: Array<ICar> = await this.api.getCars(pageNum);
     const carsList: HTMLDivElement = <HTMLDivElement> document.querySelector('.cars__list');
     carsList.innerHTML = '';
     cars.forEach((i) => {

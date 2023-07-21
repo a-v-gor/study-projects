@@ -33,10 +33,41 @@ function startApp(): void {
     updForm.carId.value = car.id;
   }
 
+  function enableDisableBtn(btnElem: HTMLButtonElement, meth: string) {
+    const btn = btnElem;
+    if (meth === 'disable') {
+      btn.setAttribute('disabled', '');
+    } else if (meth === 'enable') {
+      btn.removeAttribute('disabled');
+    }
+  }
+
+  async function checkPagination() {
+    await view.setNumOfCars();
+    const carsNumElem: HTMLSpanElement = <HTMLSpanElement> document.getElementById('cars-num-text');
+    const carsNum: number = +carsNumElem.innerText;
+    const pageNumElem: HTMLSpanElement = <HTMLSpanElement> document.getElementById('page-cars-num');
+    const pageNum: number = +pageNumElem.innerText;
+    const prevBtn: HTMLButtonElement = <HTMLButtonElement>document.querySelector('.cars__btn-prev');
+    const nextBtn: HTMLButtonElement = <HTMLButtonElement>document.querySelector('.cars__btn-next');
+
+    if (pageNum === 1) {
+      enableDisableBtn(prevBtn, 'disable');
+    } else {
+      enableDisableBtn(prevBtn, 'enable');
+    }
+    if (pageNum >= Math.ceil(carsNum / 7)) {
+      enableDisableBtn(nextBtn, 'disable');
+    } else {
+      enableDisableBtn(nextBtn, 'enable');
+    }
+  }
+
   async function removeCar(id: number): Promise<void> {
     await api.removeCar(id);
     view.drawCars();
     view.setNumOfCars();
+    checkPagination();
   }
 
   function checkSelectCar(evt: Event): void {
@@ -52,9 +83,13 @@ function startApp(): void {
     }
   }
 
-  function addListenSelectCar(): void {
+  function addRemListenSelectCar(meth: string): void {
     const carsList = <HTMLDivElement>document.querySelector('.cars__list');
-    carsList.addEventListener('click', checkSelectCar);
+    if (meth === 'add') {
+      carsList.addEventListener('click', checkSelectCar);
+    } else if (meth === 'remove') {
+      carsList.removeEventListener('click', checkSelectCar);
+    }
   }
 
   async function createCar(event: Event): Promise<void> {
@@ -67,6 +102,7 @@ function startApp(): void {
     view.setNumOfCars();
     form.carName.value = '';
     form.carColor.value = '#ff0000';
+    checkPagination();
   }
 
   async function updateCar(event: Event): Promise<void> {
@@ -82,20 +118,48 @@ function startApp(): void {
     form.carColor.value = '#ff0000';
   }
 
-  function returnGarageView(): void {
+  function changePageNum(event: Event): void {
+    const pressedBtn: HTMLButtonElement = <HTMLButtonElement>event.target;
+    if (pressedBtn.localName === 'button') {
+      const pageNumElem: HTMLSpanElement = <HTMLSpanElement> document.getElementById('page-cars-num');
+      const pageNum = +pageNumElem.innerText;
+      if (pressedBtn.className === 'cars__btn-next') {
+        pageNumElem.innerText = String(pageNum + 1);
+      } else if (pressedBtn.className === 'cars__btn-prev') {
+        pageNumElem.innerText = String(pageNum - 1);
+      }
+      view.drawCars();
+      checkPagination();
+    }
+  }
+
+  function addRemListenPaginBtns(meth: string):void {
+    const paginBtns: HTMLDivElement = <HTMLDivElement> document.querySelector('.cars__btns');
+    if (meth === 'add') {
+      paginBtns.addEventListener('click', changePageNum);
+    } else if (meth === 'remove') {
+      paginBtns.removeEventListener('click', changePageNum);
+    }
+  }
+
+  async function returnGarageView(): Promise<void> {
     view.drawView('Garage');
+    checkPagination();
     addRemFormListener('add', 'create-car', createCar);
-    addListenSelectCar();
     addRemFormListener('add', 'update-car', updateCar);
+    addRemListenSelectCar('add');
+    addRemListenPaginBtns('add');
   }
 
   function changeView(vName: string): void {
     if (vName === 'Garage') {
       returnGarageView();
     } else if (vName === 'Winners') {
-      view.drawView(vName);
       addRemFormListener('remove', 'create-car', createCar);
-      addRemFormListener('add', 'update-car', updateCar);
+      addRemFormListener('remove', 'update-car', updateCar);
+      addRemListenSelectCar('remove');
+      addRemListenPaginBtns('remove');
+      view.drawView(vName);
     }
   }
 

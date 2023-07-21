@@ -12,8 +12,8 @@ export default class Api {
       .catch((error) => error.message);
   }
 
-  async getCars() {
-    return fetch(`${this.baseUrl}/garage?_limit=7`)
+  async getCars(pageNum: number) {
+    return fetch(`${this.baseUrl}/garage?_limit=7&_page=${pageNum}`)
       .then((response: Response) => response.json())
       .then((result) => result)
       .catch((error) => error.message);
