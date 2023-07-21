@@ -13,7 +13,7 @@ export default class Api {
   }
 
   async getCars() {
-    return fetch(`${this.baseUrl}/garage?_limit=1000`)
+    return fetch(`${this.baseUrl}/garage?_limit=7`)
       .then((response: Response) => response.json())
       .then((result) => result)
       .catch((error) => error.message);
@@ -22,6 +22,26 @@ export default class Api {
   async newCar(name: string, color: string) {
     return fetch(`${this.baseUrl}/garage`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, color }),
+    })
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
+
+  async getCar(id: number) {
+    return fetch(`${this.baseUrl}/garage/${id}`)
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
+
+  async updCar(name: string, color: string, id: string) {
+    return fetch(`${this.baseUrl}/garage/${+id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },

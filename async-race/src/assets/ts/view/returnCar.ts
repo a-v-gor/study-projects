@@ -4,15 +4,17 @@ export default function returnCar(obj: ICar): string {
   const codeHtml = `
     <section class="cars__car-block car-block" id="${obj.id}">
       <div class="car-block__wrapper">
-        <h4 class="title car-block__title">${obj.name}</h4>
-        <div class="car-block__btns">
-          <div class="car-block__set-btns">
-            <button class="car-block__select">Select</button>
-            <button class="car-block__remove">Remove</button>
-          </div>
-          <div class="car-block__drive-btns">
-            <button class="car-block__drive">Drive</button>
-            <button class="car-block__back">Back</button>
+        <div class="car-block__header">
+          <h4 class="title car-block__title">${obj.name}</h4>
+          <div class="car-block__btns">
+            <div class="car-block__set-btns">
+              <button class="car-block__select">Select</button>
+              <button class="car-block__remove">Remove</button>
+            </div>
+            <div class="car-block__drive-btns">
+              <button class="car-block__drive">Drive</button>
+              <button class="car-block__back">Back</button>
+            </div>
           </div>
         </div>
         <svg

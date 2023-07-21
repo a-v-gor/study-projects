@@ -1,3 +1,4 @@
+import Api from './api';
 import ICar from './iCar';
 
 export default class Car implements ICar {
@@ -12,4 +13,13 @@ export default class Car implements ICar {
     this.color = color;
     this.id = id;
   }
+
+  async create() {
+    const api = new Api();
+    await api.newCar(this.name, this.color);
+  }
+
+  // update() {
+
+  // }
 }

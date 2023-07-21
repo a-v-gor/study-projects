@@ -14,8 +14,9 @@ const viewsHtml = {
           <input type="submit" class="set-car__button" value="Create">
         </form>
         <form id="update-car" class="set-car__form">
-          <input type="text" class="set-car__name">
-          <input type="color" class="set-car__color" value="#ff0000">
+          <input type="text" name="carId" class="set-car__id">
+          <input type="text" name="carName" class="set-car__name">
+          <input type="color" name="carColor" class="set-car__color" value="#ff0000">
           <input type="submit" class="set-car__button" value="Update">
         </form>
         <button class="set-car__btn-generate">Generate cars</button>

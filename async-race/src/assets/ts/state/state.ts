@@ -16,7 +16,7 @@ export default class State {
       updateCar: {
         carName: '',
         carColor: '',
-        carId: 0,
+        carId: '',
       },
     };
   }
@@ -29,6 +29,7 @@ export default class State {
     const updateForm: HTMLFormElement = <HTMLFormElement> document.getElementById('update-car');
     const updateCarNameInput: HTMLInputElement = <HTMLInputElement> updateForm.querySelector('.set-car__name');
     const updateCarColorInput: HTMLInputElement = <HTMLInputElement> updateForm.querySelector('.set-car__color');
+    const updateCarIdInput: HTMLInputElement = <HTMLInputElement> updateForm.querySelector('.set-car__id');
 
     function checkIfInputNull(elem: HTMLInputElement) {
       let result = '';
@@ -44,6 +45,7 @@ export default class State {
       const createCarColor: string = checkIfInputNull(createCarColorInput);
       const updateCarName: string = checkIfInputNull(updateCarNameInput);
       const updateCarColor: string = checkIfInputNull(updateCarColorInput);
+      const updateCarId: string = checkIfInputNull(updateCarIdInput);
 
       this.dataGarage = {
         saved: true,
@@ -55,7 +57,7 @@ export default class State {
         updateCar: {
           carName: updateCarName,
           carColor: updateCarColor,
-          carId: 0,
+          carId: updateCarId,
         },
       };
     } else if (operation === 'load' && this.dataGarage.saved) {
@@ -65,6 +67,7 @@ export default class State {
       createCarColorInput.value = this.dataGarage.createCar.carColor;
       updateCarNameInput.value = this.dataGarage.updateCar.carName;
       updateCarColorInput.value = this.dataGarage.updateCar.carColor;
+      updateCarIdInput.value = this.dataGarage.updateCar.carId;
     }
   }
 

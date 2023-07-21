@@ -88,6 +88,10 @@
   &__btn-generate {
     width: fit-content;
   }
+
+  &__id {
+    display: none;
+  }
 }
 
 .race-btns {
@@ -113,6 +117,7 @@
 }
 
 .car-block {
+  position: relative;
   padding: 10px 10px 0;
   margin: 15px 0;
   background-color: #a9a9a9;
@@ -127,6 +132,7 @@
 
     &::after {
       position: absolute;
+      bottom: -8px;
       align-self: flex-end;
       margin-right: 100px;
       font-size: 50px;
@@ -135,7 +141,14 @@
     }
   }
 
+  &__header {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+  }
+
   &__title {
+    width: 100px;
     margin: 0;
   }
 
