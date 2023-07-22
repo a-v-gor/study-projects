@@ -6,6 +6,11 @@ import View from './assets/ts/view/view';
 
 type CallbackType = (() => Promise<void>) | ((event: Event) => void);
 
+interface IVelocityObj {
+  velocity: number,
+  distance: number,
+}
+
 function startApp(): void {
   const btnsArea: HTMLDivElement = <HTMLDivElement> document.querySelector('.view-btns');
   const view = new View(document);
@@ -74,6 +79,32 @@ function startApp(): void {
     checkPagination();
   }
 
+  async function driveCar(id: number) {
+    const carBlock: HTMLDivElement = <HTMLDivElement> document.querySelector('.car-block__car-wrapper');
+    const path: number = carBlock.offsetWidth - 145;
+    const velocObj: IVelocityObj = await api.startEngine(id);
+    const driveTime: number = velocObj.distance / velocObj.velocity;
+    const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
+    const carImg: SVGElement = <SVGElement>carsection.querySelector('svg');
+    carImg.style.marginLeft = '0';
+    const pathToMove: number = Math.ceil(path / driveTime);
+    let notBroken = true;
+
+    setTimeout(function drive() {
+      const thisMargin = parseInt(carImg.style.marginLeft, 10);
+      carImg.style.marginLeft = String(thisMargin + pathToMove).concat('px');
+      if (notBroken && parseInt(carImg.style.marginLeft, 10) < path) {
+        setTimeout(drive, 1);
+      }
+    }, 0);
+    const driveMode = await api.drive(id);
+    if (driveMode.ok) {
+      console.log(driveMode.json());
+    } else {
+      notBroken = false;
+    }
+  }
+
   function checkSelectCar(evt: Event): void {
     const target: HTMLButtonElement = <HTMLButtonElement> evt.target;
     if (target.localName === 'button') {
@@ -83,6 +114,8 @@ function startApp(): void {
         selectCar(carId);
       } else if (target.className === 'car-block__remove') {
         removeCar(carId);
+      } else if (target.className === 'car-block__start') {
+        driveCar(carId);
       }
     }
   }
