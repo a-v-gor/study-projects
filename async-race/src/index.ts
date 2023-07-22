@@ -1,27 +1,39 @@
 import './assets/scss/style.scss';
 import Api from './assets/ts/api';
 import ICar from './assets/ts/iCar';
-
 import createStartPage from './assets/ts/view/createStartPage';
 import View from './assets/ts/view/view';
+
+type CallbackType = (() => Promise<void>) | ((event: Event) => void);
 
 function startApp(): void {
   const btnsArea: HTMLDivElement = <HTMLDivElement> document.querySelector('.view-btns');
   const view = new View(document);
   const api: Api = new Api();
 
-  function addRemFormListener(
-    meth: string,
-    formId: string,
-    callback: (event: Event) => Promise<void>,
-  ) {
-    const form = document.getElementById(formId);
-    if (form !== null) {
-      if (meth === 'add') {
-        form.addEventListener('submit', callback);
-      } else if (meth === 'remove') {
-        form.removeEventListener('submit', callback);
-      }
+  function enableDisableBtn(elem: HTMLElement, meth: string) {
+    const el = elem;
+    if (meth === 'disable') {
+      el.setAttribute('disabled', '');
+    } else if (meth === 'enable') {
+      el.removeAttribute('disabled');
+    }
+  }
+
+  function checkUpdCar() {
+    const updForm: HTMLFormElement = <HTMLFormElement> document.getElementById('update-car');
+    const inputId: HTMLInputElement = updForm.carId;
+    const inputName: HTMLInputElement = updForm.carName;
+    const inputColor: HTMLInputElement = updForm.carColor;
+    const inputSubmit: HTMLInputElement = <HTMLInputElement>updForm.querySelector('.set-car__button');
+    if (!inputId.value.length) {
+      enableDisableBtn(inputName, 'disable');
+      enableDisableBtn(inputColor, 'disable');
+      enableDisableBtn(inputSubmit, 'disable');
+    } else {
+      enableDisableBtn(inputName, 'enable');
+      enableDisableBtn(inputColor, 'enable');
+      enableDisableBtn(inputSubmit, 'enable');
     }
   }
 
@@ -31,15 +43,7 @@ function startApp(): void {
     updForm.carName.value = car.name;
     updForm.carColor.value = car.color;
     updForm.carId.value = car.id;
-  }
-
-  function enableDisableBtn(btnElem: HTMLButtonElement, meth: string) {
-    const btn = btnElem;
-    if (meth === 'disable') {
-      btn.setAttribute('disabled', '');
-    } else if (meth === 'enable') {
-      btn.removeAttribute('disabled');
-    }
+    checkUpdCar();
   }
 
   async function checkPagination() {
@@ -83,15 +87,6 @@ function startApp(): void {
     }
   }
 
-  function addRemListenSelectCar(meth: string): void {
-    const carsList = <HTMLDivElement>document.querySelector('.cars__list');
-    if (meth === 'add') {
-      carsList.addEventListener('click', checkSelectCar);
-    } else if (meth === 'remove') {
-      carsList.removeEventListener('click', checkSelectCar);
-    }
-  }
-
   async function createCar(event: Event): Promise<void> {
     event.preventDefault();
     const form: HTMLFormElement = <HTMLFormElement> event.target;
@@ -116,6 +111,7 @@ function startApp(): void {
     form.carId.value = '';
     form.carName.value = '';
     form.carColor.value = '#ff0000';
+    checkUpdCar();
   }
 
   function changePageNum(event: Event): void {
@@ -130,15 +126,6 @@ function startApp(): void {
       }
       view.drawCars();
       checkPagination();
-    }
-  }
-
-  function addRemListenPaginBtns(meth: string):void {
-    const paginBtns: HTMLDivElement = <HTMLDivElement> document.querySelector('.cars__btns');
-    if (meth === 'add') {
-      paginBtns.addEventListener('click', changePageNum);
-    } else if (meth === 'remove') {
-      paginBtns.removeEventListener('click', changePageNum);
     }
   }
 
@@ -176,34 +163,40 @@ function startApp(): void {
     checkPagination();
   }
 
-  function addRemListenGenerateCarsBtn(meth: string): void {
-    const generateCarsBtn: HTMLButtonElement = <HTMLButtonElement> document.querySelector('.set-car__btn-generate');
+  function addRemElemListen(
+    meth: string,
+    elemSelector: string,
+    event: string,
+    callback: CallbackType,
+  ): void {
+    const elemToListen: HTMLElement = <HTMLElement>document.querySelector(`${elemSelector}`);
     if (meth === 'add') {
-      generateCarsBtn.addEventListener('click', generateCars);
+      elemToListen.addEventListener(event, callback);
     } else if (meth === 'remove') {
-      generateCarsBtn.removeEventListener('click', generateCars);
+      elemToListen.removeEventListener(event, callback);
     }
   }
 
   async function returnGarageView(): Promise<void> {
     view.drawView('Garage');
     checkPagination();
-    addRemFormListener('add', 'create-car', createCar);
-    addRemFormListener('add', 'update-car', updateCar);
-    addRemListenSelectCar('add');
-    addRemListenPaginBtns('add');
-    addRemListenGenerateCarsBtn('add');
+    checkUpdCar();
+    addRemElemListen('add', '#create-car', 'submit', createCar);
+    addRemElemListen('add', '#update-car', 'submit', updateCar);
+    addRemElemListen('add', '.cars__list', 'click', checkSelectCar);
+    addRemElemListen('add', '.cars__btns', 'click', changePageNum);
+    addRemElemListen('add', '.set-car__btn-generate', 'click', generateCars);
   }
 
   function changeView(vName: string): void {
     if (vName === 'Garage') {
       returnGarageView();
     } else if (vName === 'Winners') {
-      addRemFormListener('remove', 'create-car', createCar);
-      addRemFormListener('remove', 'update-car', updateCar);
-      addRemListenSelectCar('remove');
-      addRemListenPaginBtns('remove');
-      addRemListenGenerateCarsBtn('remove');
+      addRemElemListen('remove', '#create-car', 'submit', createCar);
+      addRemElemListen('remove', '#update-car', 'submit', updateCar);
+      addRemElemListen('remove', '.cars__list', 'click', checkSelectCar);
+      addRemElemListen('remove', '.cars__btns', 'click', changePageNum);
+      addRemElemListen('remove', '.set-car__btn-generate', 'click', generateCars);
       view.drawView(vName);
     }
   }

@@ -148,17 +148,22 @@
   }
 
   &__title {
-    width: 150px;
     margin: 0;
-  }
-
-  &__btns {
-    display: flex;
-    column-gap: 26px;
   }
 
   &__set-btns,
   &__drive-btns {
     width: fit-content;
+  }
+
+  &__car-wrapper {
+    display: flex;
+    column-gap: 5px;
+    align-items: end;
+  }
+
+  &__engine-btns {
+    display: flex;
+    flex-direction: column;
   }
 }
