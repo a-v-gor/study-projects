@@ -70,6 +70,12 @@ export default class Api {
       .catch((error) => error.message);
   }
 
+  stopEngine(id: number) {
+    return fetch(`${this.baseUrl}/engine?id=${id}&status=stopped`, {
+      method: 'PATCH',
+    });
+  }
+
   drive(id: number) {
     return fetch(`${this.baseUrl}/engine?id=${id}&status=drive`, {
       method: 'PATCH',

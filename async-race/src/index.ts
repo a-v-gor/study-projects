@@ -80,28 +80,42 @@ function startApp(): void {
   }
 
   async function driveCar(id: number) {
-    const carBlock: HTMLDivElement = <HTMLDivElement> document.querySelector('.car-block__car-wrapper');
+    const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
+    const carBlock: HTMLDivElement = <HTMLDivElement> carsection.querySelector('.car-block__car-wrapper');
     const path: number = carBlock.offsetWidth - 145;
     const velocObj: IVelocityObj = await api.startEngine(id);
     const driveTime: number = velocObj.distance / velocObj.velocity;
-    const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
     const carImg: SVGElement = <SVGElement>carsection.querySelector('svg');
-    carImg.style.marginLeft = '0';
+    carImg.style.marginLeft = '0px';
     const pathToMove: number = Math.ceil(path / driveTime);
-    let notBroken = true;
+    const startBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__start');
+    const stopBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__stop');
+    let isMoving = true;
+
+    async function stopEngine() {
+      enableDisableBtn(stopBtn, 'disable');
+      isMoving = false;
+      const res = await api.stopEngine(id);
+      if (res.ok) {
+        carImg.style.marginLeft = '0px';
+        enableDisableBtn(startBtn, 'enable');
+      }
+    }
+
+    enableDisableBtn(startBtn, 'disable');
+    enableDisableBtn(stopBtn, 'enable');
 
     setTimeout(function drive() {
       const thisMargin = parseInt(carImg.style.marginLeft, 10);
       carImg.style.marginLeft = String(thisMargin + pathToMove).concat('px');
-      if (notBroken && parseInt(carImg.style.marginLeft, 10) < path) {
+      if (isMoving && parseInt(carImg.style.marginLeft, 10) < path) {
         setTimeout(drive, 1);
       }
     }, 0);
+    stopBtn.addEventListener('click', stopEngine);
     const driveMode = await api.drive(id);
-    if (driveMode.ok) {
-      console.log(driveMode.json());
-    } else {
-      notBroken = false;
+    if (!driveMode.ok) {
+      isMoving = false;
     }
   }
 

@@ -14,7 +14,7 @@ export default function returnCar(obj: ICar): string {
         <div class="car-block__car-wrapper">
           <div class="car-block__engine-btns">
             <button class="car-block__start">Start</button>
-            <button class="car-block__stop">Stop</button>
+            <button class="car-block__stop" disabled>Stop</button>
           </div>
           <svg
             style="fill:${obj.color}"
