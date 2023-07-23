@@ -82,17 +82,16 @@ function startApp(): void {
   async function driveCar(id: number) {
     const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
     const carBlock: HTMLDivElement = <HTMLDivElement> carsection.querySelector('.car-block__car-wrapper');
-    const path: number = carBlock.offsetWidth - 145;
+    const path: number = carBlock.offsetWidth - 210;
     const velocObj: IVelocityObj = await api.startEngine(id);
     const driveTime: number = velocObj.distance / velocObj.velocity;
     const carImg: SVGElement = <SVGElement>carsection.querySelector('svg');
     carImg.style.marginLeft = '0px';
-    const pathToMove: number = (path / driveTime) * 100;
+    const pathToMove: number = (path / driveTime) * 10;
     const startBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__start');
     const stopBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__stop');
     let isMoving = true;
     let margin = 0;
-    console.log(driveTime, path, pathToMove);
 
     async function stopEngine() {
       enableDisableBtn(stopBtn, 'disable');
@@ -109,10 +108,12 @@ function startApp(): void {
 
     setTimeout(function drive() {
       margin += pathToMove;
+      if (!isMoving) {
+        margin = 0;
+      }
       carImg.style.marginLeft = String(margin).concat('px');
-      console.log(carImg.style.marginLeft);
-      if (isMoving && parseInt(carImg.style.marginLeft, 10) < path) {
-        setTimeout(drive, 100);
+      if (isMoving && parseInt(carImg.style.marginLeft, 10) < path + 40) {
+        setTimeout(drive, 10);
       }
     }, 0);
     stopBtn.addEventListener('click', stopEngine);
