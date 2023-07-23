@@ -79,35 +79,75 @@ function startApp(): void {
     checkPagination();
   }
 
-  async function startRace(): Promise<void> {
-    const cars = document.querySelectorAll('.cars__car-block');
-    const carIds: number[] = [];
-    cars.forEach((el) => carIds.push(+el.id));
-    console.log(carIds);
+  function getMoveTime(velocObj: IVelocityObj): number {
+    return velocObj.distance / velocObj.velocity;
+  }
+
+  function returnPathToMove(driveTime: number, path:number): number {
+    const pathToMove: number = (path / driveTime) * 10;
+    return pathToMove;
+  }
+
+  function moveCar(id: number, pathToMove: number, path:number): NodeJS.Timer {
+    const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
+    const carImg: SVGElement = <SVGElement>carsection.querySelector('svg');
+    carImg.style.marginLeft = '0px';
+    let margin = 0;
+
+    const timerID = setInterval(() => {
+      if (parseInt(carImg.style.marginLeft, 10) < path) {
+        margin += pathToMove;
+        carImg.style.marginLeft = String(margin).concat('px');
+      }
+    }, 10);
+
+    return timerID;
   }
 
   async function driveCar(id: number) {
     const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
     const carBlock: HTMLDivElement = <HTMLDivElement> carsection.querySelector('.car-block__car-wrapper');
-    const path: number = carBlock.offsetWidth - 210;
     const velocObj: IVelocityObj = await api.startEngine(id);
-    const driveTime: number = velocObj.distance / velocObj.velocity;
+    const driveTime: number = getMoveTime(velocObj);
     const carImg: SVGElement = <SVGElement>carsection.querySelector('svg');
-    carImg.style.marginLeft = '0px';
-    const pathToMove: number = (path / driveTime) * 10;
+    let coeff: number;
+    if (carBlock.offsetWidth > 1100) {
+      coeff = 0.14;
+    } else if (carBlock.offsetWidth > 1000) {
+      coeff = 0.16;
+    } else if (carBlock.offsetWidth > 900) {
+      coeff = 0.17;
+    } else if (carBlock.offsetWidth > 800) {
+      coeff = 0.2;
+    } else if (carBlock.offsetWidth > 700) {
+      coeff = 0.23;
+    } else if (carBlock.offsetWidth > 600) {
+      coeff = 0.28;
+    } else if (carBlock.offsetWidth > 500) {
+      coeff = 0.32;
+    } else {
+      coeff = 0.001;
+    }
+    const path: number = carBlock.offsetWidth - carBlock.offsetWidth * coeff;
+    const pathToMove = returnPathToMove(driveTime, path);
     const startBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__start');
     const stopBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__stop');
     const selectBtn: HTMLButtonElement = <HTMLButtonElement>carsection.querySelector('.car-block__select');
     const removeBtn: HTMLButtonElement = <HTMLButtonElement>carsection.querySelector('.car-block__remove');
-    let notBroken = true;
-    let isStopped = false;
-    let margin = 0;
+
+    enableDisableBtn(startBtn, 'disable');
+    enableDisableBtn(selectBtn, 'disable');
+    enableDisableBtn(removeBtn, 'disable');
+    enableDisableBtn(stopBtn, 'enable');
+    view.disableCreateUpdCars();
+
+    const timer = moveCar(id, pathToMove, path);
 
     async function stopEngine() {
       enableDisableBtn(stopBtn, 'disable');
       const res = await api.stopEngine(id);
       if (res.ok) {
-        isStopped = true;
+        clearInterval(timer);
         carImg.style.marginLeft = '0px';
         enableDisableBtn(startBtn, 'enable');
         enableDisableBtn(selectBtn, 'enable');
@@ -116,31 +156,39 @@ function startApp(): void {
       }
     }
 
-    enableDisableBtn(startBtn, 'disable');
-    enableDisableBtn(selectBtn, 'disable');
-    enableDisableBtn(removeBtn, 'disable');
-    enableDisableBtn(stopBtn, 'enable');
-    view.disableCreateUpdCars();
-
-    setTimeout(function drive() {
-      margin += pathToMove;
-      if (isStopped) {
-        margin = 0;
-      } else {
-        carImg.style.marginLeft = String(margin).concat('px');
-        if (notBroken && parseInt(carImg.style.marginLeft, 10) < path + 40) {
-          setTimeout(drive, 10);
-        }
-      }
-    }, 0);
     stopBtn.addEventListener('click', stopEngine);
-    const driveMode = await api.drive(id);
-    if (driveMode.ok) {
-      console.log(driveMode);
-    } else {
-      notBroken = false;
-    }
+    const res = await api.drive(id);
+    console.log(res);
+    clearInterval(timer);
   }
+
+  // async function Race(): Promise<void> {
+  // const startBtn: HTMLButtonElement =
+  // <HTMLButtonElement>document.querySelector('.race-btns__start');
+  // const resetBtn: HTMLButtonElement =
+  // <HTMLButtonElement>document.querySelector('.race-btns__reset');
+  // const cars = document.querySelectorAll('.cars__car-block');
+  // const carsIds: number[] = [];
+  // cars.forEach((i) => carsIds.push(+i.id));
+  // const arrPromStartCars = carsIds.map((i) => api.startEngine(i));
+  // const arrVeloc = await Promise.all(arrPromStartCars);
+  // const arrTime = arrVeloc.map((i) => getMoveTime(i));
+  // const arrPathsToMove = arrTime.map((i) => returnPathToMove(i));
+  // const arrTimers: NodeJS.Timeout[] = [];
+  // carsIds.forEach((i, idx) => {
+  //   const timer: NodeJS.Timer = moveCar(i, arrPathsToMove[idx]);
+  //   arrTimers.push(timer);
+  // });
+
+  // enableDisableBtn(startBtn, 'disable');
+  // enableDisableBtn(resetBtn, 'enable');
+
+  // function stopRace() {
+  //   arrTimers.forEach((i) => clearInterval(i));
+  // }
+
+  // resetBtn.addEventListener('click', stopRace);
+  // }
 
   function checkSelectCar(evt: Event): void {
     const target: HTMLButtonElement = <HTMLButtonElement> evt.target;
@@ -256,7 +304,7 @@ function startApp(): void {
     addRemElemListen('add', '.cars__list', 'click', checkSelectCar);
     addRemElemListen('add', '.cars__btns', 'click', changePageNum);
     addRemElemListen('add', '.set-car__btn-generate', 'click', generateCars);
-    addRemElemListen('add', '.race-btns__start', 'click', startRace);
+    // addRemElemListen('add', '.race-btns__start', 'click', Race);
   }
 
   function changeView(vName: string): void {
