@@ -61,4 +61,28 @@ export default class View {
       this.setNumOfWinners();
     }
   }
+
+  disableCreateUpdCars() {
+    const createCarForm: HTMLFormElement = <HTMLFormElement> this.document.getElementById('create-car');
+    const inputName: HTMLInputElement = createCarForm.carName;
+    const inputColor: HTMLInputElement = createCarForm.carColor;
+    const inputSubmit: HTMLInputElement = <HTMLInputElement>createCarForm.querySelector('.set-car__button');
+    const generateCarBtn: HTMLButtonElement = <HTMLButtonElement> this.document.querySelector('.set-car__btn-generate');
+    inputName.setAttribute('disabled', '');
+    inputColor.setAttribute('disabled', '');
+    inputSubmit.setAttribute('disabled', '');
+    generateCarBtn.setAttribute('disabled', '');
+  }
+
+  enableCreateUpdCars() {
+    const createCarForm: HTMLFormElement = <HTMLFormElement> this.document.getElementById('create-car');
+    const inputName: HTMLInputElement = createCarForm.carName;
+    const inputColor: HTMLInputElement = createCarForm.carColor;
+    const inputSubmit: HTMLInputElement = <HTMLInputElement>createCarForm.querySelector('.set-car__button');
+    const generateCarBtn: HTMLButtonElement = <HTMLButtonElement> this.document.querySelector('.set-car__btn-generate');
+    inputName.removeAttribute('disabled');
+    inputColor.removeAttribute('disabled');
+    inputSubmit.removeAttribute('disabled');
+    generateCarBtn.removeAttribute('disabled');
+  }
 }

@@ -79,6 +79,13 @@ function startApp(): void {
     checkPagination();
   }
 
+  async function startRace(): Promise<void> {
+    const cars = document.querySelectorAll('.cars__car-block');
+    const carIds: number[] = [];
+    cars.forEach((el) => carIds.push(+el.id));
+    console.log(carIds);
+  }
+
   async function driveCar(id: number) {
     const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
     const carBlock: HTMLDivElement = <HTMLDivElement> carsection.querySelector('.car-block__car-wrapper');
@@ -105,6 +112,7 @@ function startApp(): void {
         enableDisableBtn(startBtn, 'enable');
         enableDisableBtn(selectBtn, 'enable');
         enableDisableBtn(removeBtn, 'enable');
+        view.enableCreateUpdCars();
       }
     }
 
@@ -112,6 +120,7 @@ function startApp(): void {
     enableDisableBtn(selectBtn, 'disable');
     enableDisableBtn(removeBtn, 'disable');
     enableDisableBtn(stopBtn, 'enable');
+    view.disableCreateUpdCars();
 
     setTimeout(function drive() {
       margin += pathToMove;
@@ -247,6 +256,7 @@ function startApp(): void {
     addRemElemListen('add', '.cars__list', 'click', checkSelectCar);
     addRemElemListen('add', '.cars__btns', 'click', changePageNum);
     addRemElemListen('add', '.set-car__btn-generate', 'click', generateCars);
+    addRemElemListen('add', '.race-btns__start', 'click', startRace);
   }
 
   function changeView(vName: string): void {

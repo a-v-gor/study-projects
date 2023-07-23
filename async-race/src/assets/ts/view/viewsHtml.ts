@@ -24,7 +24,7 @@ const viewsHtml = {
       <section class="garage__race-btns race-btns">
         <h3 class="title race-btns__title">Race</h3>
         <button class="race-btns__start">Start</button>
-        <button class="race-btns__reset">Reset</button>
+        <button class="race-btns__reset" disabled>Reset</button>
       </section>
       <section class="garage__cars cars">
         <h3 class="title cars-list__title">Cars</h3>
