@@ -90,38 +90,46 @@ function startApp(): void {
     const pathToMove: number = (path / driveTime) * 10;
     const startBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__start');
     const stopBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__stop');
-    let isMoving = true;
+    const selectBtn: HTMLButtonElement = <HTMLButtonElement>carsection.querySelector('.car-block__select');
+    const removeBtn: HTMLButtonElement = <HTMLButtonElement>carsection.querySelector('.car-block__remove');
+    let notBroken = true;
+    let isStopped = false;
     let margin = 0;
 
     async function stopEngine() {
       enableDisableBtn(stopBtn, 'disable');
       const res = await api.stopEngine(id);
       if (res.ok) {
-        isMoving = false;
+        isStopped = true;
         carImg.style.marginLeft = '0px';
         enableDisableBtn(startBtn, 'enable');
+        enableDisableBtn(selectBtn, 'enable');
+        enableDisableBtn(removeBtn, 'enable');
       }
     }
 
     enableDisableBtn(startBtn, 'disable');
+    enableDisableBtn(selectBtn, 'disable');
+    enableDisableBtn(removeBtn, 'disable');
     enableDisableBtn(stopBtn, 'enable');
 
     setTimeout(function drive() {
       margin += pathToMove;
-      if (!isMoving) {
+      if (isStopped) {
         margin = 0;
-      }
-      carImg.style.marginLeft = String(margin).concat('px');
-      if (isMoving && parseInt(carImg.style.marginLeft, 10) < path + 40) {
-        setTimeout(drive, 10);
+      } else {
+        carImg.style.marginLeft = String(margin).concat('px');
+        if (notBroken && parseInt(carImg.style.marginLeft, 10) < path + 40) {
+          setTimeout(drive, 10);
+        }
       }
     }, 0);
     stopBtn.addEventListener('click', stopEngine);
     const driveMode = await api.drive(id);
-    if (!driveMode.ok) {
-      isMoving = false;
-    } else {
+    if (driveMode.ok) {
       console.log(driveMode);
+    } else {
+      notBroken = false;
     }
   }
 
