@@ -419,6 +419,10 @@ function startApp(): void {
   }
 
   function sortWinners(evt: Event) {
+    const oldActive: HTMLSpanElement = <HTMLSpanElement>document.querySelector('.sort-active');
+    if (oldActive !== null) {
+      oldActive.classList.remove('sort-active');
+    }
     const arrow: HTMLSpanElement = <HTMLSpanElement> evt.target;
     if (arrow.localName === 'span') {
       view.drawWinnersTable(arrow.id);
@@ -440,6 +444,7 @@ function startApp(): void {
   function changeView(vName: string): void {
     if (vName === 'Garage') {
       addRemElemListen('remove', '.winners__btns', 'click', changeWinnersPageNum);
+      addRemElemListen('remove', '.winners__table-wrap', 'click', sortWinners);
       returnGarageView();
     } else if (vName === 'Winners') {
       returnWinnersView();

@@ -46,7 +46,17 @@ const viewsHtml = {
       <p class="page-info__text">Total number of winners: <span id="winners-num-text"></span></p>
       <p class="page-info__text">Page #<span id="page-winners-num">1</span></p>
     </div>
-    <div class="winners__table-wrap"></div>
+    <div class="winners__table-wrap">
+      <div class="winners__table win-table">
+        <div class="win-table__th"><span id="id-ASC">⇧</span> № <span id = "id-DESC">⇩</span></div>
+        <div class="win-table__th"> Image</div>
+        <div class="win-table__th"> Name</div>
+        <div class="win-table__th"><span id="wins-ASC">⇧</span> Wins <span id="wins-DESC">⇩</span></div>
+        <div class="win-table__th"><span id="time-ASC">⇧</span> Best time <span id="time-DESC">⇩</span></div>
+      </div>
+      <div class="win-table__body-wrap">
+      </div>
+    </div>
     <div class="winners__btns">
       <button class="winners__btn-prev">Prev</button>
       <button class="winners__btn-next">Next</button>

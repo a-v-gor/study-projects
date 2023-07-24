@@ -175,6 +175,12 @@
   flex-direction: column;
   row-gap: 15px;
   align-items: center;
+
+  &__table {
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr 1fr 2fr;
+    text-align: center;
+  }
 }
 
 .show-winner-block {
@@ -197,10 +203,6 @@
 }
 
 .win-table {
-  display: grid;
-  grid-template-columns: 1fr 2fr 3fr 1fr 2fr;
-  width: fit-content;
-  text-align: center;
 
   &__th {
     padding: 3px;

@@ -62,23 +62,22 @@ export default class View {
   }
 
   async drawWinnersTable(sortStr = '') {
+    let str = sortStr;
     const pageNumElem: HTMLSpanElement = <HTMLSpanElement> this.document.getElementById('page-winners-num');
     const pageNum = +pageNumElem.innerText;
-    const tableWrapper: HTMLElement = <HTMLElement> this.document.querySelector('.winners__table-wrap');
+    const tableWrapper: HTMLElement = <HTMLElement> this.document.querySelector('.win-table__body-wrap');
     const table = document.createElement('div');
-    table.classList.add('winners__table', 'win-table');
+    table.classList.add('winners__table', 'win-table-body');
     tableWrapper.innerHTML = '';
-    table.innerHTML = `
-      <div class="win-table__th"><span id="id-ASC">⇧</span> № <span id = "id-DESC">⇩</span></div>
-      <div class="win-table__th"> Image</div>
-      <div class="win-table__th"> Name</div>
-      <div class="win-table__th"><span id="wins-ASC">⇧</span> Wins <span id="wins-DESC">⇩</span></div>
-      <div class="win-table__th"><span id="time-ASC">⇧</span> Best time <span id="time-DESC">⇩</span></div>`;
+    const activeArr: HTMLSpanElement = <HTMLSpanElement>document.querySelector('.sort-active');
+    if (activeArr !== null) {
+      str = activeArr.id;
+    }
     let winnersInfo;
-    if (sortStr.length) {
+    if (str.length) {
       let sort = '';
       let order = '';
-      [sort, order] = sortStr.split('-');
+      [sort, order] = str.split('-');
       winnersInfo = await this.api.getSortedWinners(pageNum, sort, order);
     } else {
       winnersInfo = await this.api.getWinners(pageNum);

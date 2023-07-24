@@ -97,8 +97,8 @@ export default class State {
       currPageNumSpan.innerText = this.dataWinners.pageNum;
       if (this.dataWinners.sort !== undefined && this.dataWinners.sort.length) {
         const id = this.dataWinners.sort;
-        // const sortArrw: HTMLSpanElement = <HTMLSpanElement>document.getElementById(id);
-        // sortArrw.classList.add('sort-active');
+        const sortArrw: HTMLSpanElement = <HTMLSpanElement>document.getElementById(id);
+        sortArrw.classList.add('sort-active');
       }
     }
   }
