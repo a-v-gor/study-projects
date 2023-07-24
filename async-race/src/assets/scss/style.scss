@@ -60,6 +60,7 @@
 }
 
 .page-info {
+  width: fit-content;
   min-width: 200px;
   padding: 15px;
   background-color: #90ee90;
@@ -165,14 +166,22 @@
   &__engine-btns {
     display: flex;
     flex-direction: column;
+    font-size: 11px;
   }
+}
+
+.winners {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  align-items: center;
 }
 
 .show-winner-block {
   position: absolute;
   top: 45%;
-  left: calc(50% - 75px);
-  width: 200px;
+  left: calc(50% - 125px);
+  width: 250px;
   padding: 15px;
   margin: auto;
   font-size: 46px;
@@ -184,5 +193,27 @@
 
   &_active {
     opacity: 1;
+  }
+}
+
+.win-table {
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr 1fr 2fr;
+  width: fit-content;
+  text-align: center;
+
+  &__th {
+    padding: 3px;
+    font-size: 18px;
+    cursor: default;
+  }
+
+  &__td {
+    padding: 2px;
+    
+    svg {
+    max-width: 50px;
+    max-height: 20px;
+  }
   }
 }

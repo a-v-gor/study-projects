@@ -1,7 +1,9 @@
 import Api from '../api';
 import ICar from '../iCar';
 import State from '../state/state';
+import IWinner from './iWinner';
 import returnCar from './returnCar';
+import returnCarImg from './returnCarImg';
 import viewsHtml from './viewsHtml';
 
 export default class View {
@@ -47,8 +49,53 @@ export default class View {
     });
   }
 
+  async addRawToTable(obj: IWinner, table: HTMLElement) {
+    const car: ICar = await this.api.getCar(obj.id);
+    const carImg = returnCarImg(car.color);
+    const res = table;
+    res.innerHTML += `
+      <div class="win-table__td">${obj.id}</div>
+      <div class="win-table__td">${carImg}</div>
+      <div class="win-table__td">${car.name}</div>
+      <div class="win-table__td">${obj.wins}</div>
+      <div class="win-table__td">${obj.time}</div>`;
+  }
+
+  async drawWinnersTable(sortStr = '') {
+    const pageNumElem: HTMLSpanElement = <HTMLSpanElement> this.document.getElementById('page-winners-num');
+    const pageNum = +pageNumElem.innerText;
+    const tableWrapper: HTMLElement = <HTMLElement> this.document.querySelector('.winners__table-wrap');
+    const table = document.createElement('div');
+    table.classList.add('winners__table', 'win-table');
+    tableWrapper.innerHTML = '';
+    table.innerHTML = `
+      <div class="win-table__th"><span id="id-ASC">⇧</span> № <span id = "id-DESC">⇩</span></div>
+      <div class="win-table__th"> Image</div>
+      <div class="win-table__th"> Name</div>
+      <div class="win-table__th"><span id="wins-ASC">⇧</span> Wins <span id="wins-DESC">⇩</span></div>
+      <div class="win-table__th"><span id="time-ASC">⇧</span> Best time <span id="time-DESC">⇩</span></div>`;
+    let winnersInfo;
+    if (sortStr.length) {
+      let sort = '';
+      let order = '';
+      [sort, order] = sortStr.split('-');
+      winnersInfo = await this.api.getSortedWinners(pageNum, sort, order);
+    } else {
+      winnersInfo = await this.api.getWinners(pageNum);
+    }
+    winnersInfo.forEach((i: IWinner) => this.addRawToTable(i, table));
+    tableWrapper.appendChild(table);
+    if (sortStr.length) {
+      const arrow: HTMLSpanElement = <HTMLSpanElement> this.document.getElementById(sortStr);
+      arrow.classList.add('sort-active');
+    }
+  }
+
   drawView(viewName: string): void {
     if (viewName === 'Garage') {
+      if (this.document.getElementById('winners-num-text') !== null) {
+        this.state.saveWinnersState();
+      }
       this.clearPage();
       this.mainWrap.innerHTML = viewsHtml.garageViewHtml;
       this.setNumOfCars();
@@ -59,6 +106,8 @@ export default class View {
       this.clearPage();
       this.mainWrap.innerHTML = viewsHtml.winnersViewHtml;
       this.setNumOfWinners();
+      this.state.loadWinnersState();
+      this.drawWinnersTable();
     }
   }
 

@@ -2,6 +2,7 @@ import './assets/scss/style.scss';
 import Api from './assets/ts/api';
 import ICar from './assets/ts/iCar';
 import createStartPage from './assets/ts/view/createStartPage';
+import IWinner from './assets/ts/view/iWinner';
 import View from './assets/ts/view/view';
 
 type CallbackType = (() => Promise<void>) | ((event: Event) => void);
@@ -51,7 +52,7 @@ function startApp(): void {
     checkUpdCar();
   }
 
-  async function checkPagination() {
+  async function checkGaragePagination() {
     await view.setNumOfCars();
     const carsNumElem: HTMLSpanElement = <HTMLSpanElement> document.getElementById('cars-num-text');
     const carsNum: number = +carsNumElem.innerText;
@@ -72,11 +73,36 @@ function startApp(): void {
     }
   }
 
+  async function checkWinnersPagination() {
+    await view.setNumOfWinners();
+    const winnersNumElem: HTMLSpanElement = <HTMLSpanElement> document.getElementById('winners-num-text');
+    const winnersNum: number = +winnersNumElem.innerText;
+    const pageNumElem: HTMLSpanElement = <HTMLSpanElement> document.getElementById('page-winners-num');
+    const pageNum: number = +pageNumElem.innerText;
+    const prevBtn: HTMLButtonElement = <HTMLButtonElement>document.querySelector('.winners__btn-prev');
+    const nextBtn: HTMLButtonElement = <HTMLButtonElement>document.querySelector('.winners__btn-next');
+
+    if (pageNum === 1) {
+      prevBtn.disabled = true;
+    } else {
+      prevBtn.disabled = false;
+    }
+    if (pageNum >= Math.ceil(winnersNum / 10)) {
+      nextBtn.disabled = true;
+    } else {
+      nextBtn.disabled = false;
+    }
+  }
+
   async function removeCar(id: number): Promise<void> {
+    const getWinner: IWinner = await api.getWinner(id);
+    if (getWinner.id) {
+      api.removeWinner(id);
+    }
     await api.removeCar(id);
     view.drawCars();
     view.setNumOfCars();
-    checkPagination();
+    checkGaragePagination();
   }
 
   function getMoveTime(velocObj: IVelocityObj): number {
@@ -91,7 +117,7 @@ function startApp(): void {
     } else if (carBlock.offsetWidth > 1000) {
       coeff = 0.16;
     } else if (carBlock.offsetWidth > 900) {
-      coeff = 0.17;
+      coeff = 0.19;
     } else if (carBlock.offsetWidth > 800) {
       coeff = 0.2;
     } else if (carBlock.offsetWidth > 700) {
@@ -99,7 +125,7 @@ function startApp(): void {
     } else if (carBlock.offsetWidth > 600) {
       coeff = 0.28;
     } else {
-      coeff = 0.32;
+      coeff = 0.35;
     }
     const path: number = carBlock.offsetWidth - carBlock.offsetWidth * coeff;
     return path;
@@ -138,25 +164,31 @@ function startApp(): void {
     if (meth === 'add') {
       elemToListen.addEventListener(event, callback);
     } else if (meth === 'remove') {
-      elemToListen.removeEventListener(event, callback);
+      if (elemToListen !== undefined) {
+        elemToListen.removeEventListener(event, callback);
+      }
     }
   }
 
   async function driveCar(id: number) {
+    const changeViewBtns: NodeListOf<HTMLElement> = document.querySelectorAll('.view-btns__btn');
     const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
     const carBlock: HTMLDivElement = <HTMLDivElement>carsection.querySelector('.car-block__car-wrapper');
     const velocObj: IVelocityObj = await api.startEngine(id);
     const driveTime: number = getMoveTime(velocObj);
     const carImg: SVGElement = <SVGElement>carsection.querySelector('svg');
     const pathToMove = returnPathToMove(driveTime);
+    const raceBtn: HTMLButtonElement = <HTMLButtonElement>document.querySelector('.race-btns__start');
     const startBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__start');
     const stopBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__stop');
     const selectBtn: HTMLButtonElement = <HTMLButtonElement>carsection.querySelector('.car-block__select');
     const removeBtn: HTMLButtonElement = <HTMLButtonElement>carsection.querySelector('.car-block__remove');
 
+    enableDisableBtn(raceBtn, 'disable');
     enableDisableBtn(startBtn, 'disable');
     enableDisableBtn(selectBtn, 'disable');
     enableDisableBtn(removeBtn, 'disable');
+    changeViewBtns.forEach((i) => enableDisableBtn(i, 'disable'));
     enableDisableBtn(stopBtn, 'enable');
     view.disableCreateUpdCars();
 
@@ -171,6 +203,8 @@ function startApp(): void {
         enableDisableBtn(startBtn, 'enable');
         enableDisableBtn(selectBtn, 'enable');
         enableDisableBtn(removeBtn, 'enable');
+        enableDisableBtn(raceBtn, 'enable');
+        changeViewBtns.forEach((i) => enableDisableBtn(i, 'enable'));
         view.enableCreateUpdCars();
       }
     }
@@ -185,6 +219,7 @@ function startApp(): void {
   }
 
   async function Race(): Promise<void> {
+    const changeViewBtns: NodeListOf<HTMLElement> = document.querySelectorAll('.view-btns__btn');
     const startBtn: HTMLButtonElement = <HTMLButtonElement> document.querySelector('.race-btns__start');
     const resetBtn: HTMLButtonElement = <HTMLButtonElement> document.querySelector('.race-btns__reset');
     const prevBtn: HTMLButtonElement = <HTMLButtonElement> document.querySelector('.cars__btn-prev');
@@ -209,12 +244,14 @@ function startApp(): void {
       arrTimers.push(timer);
     });
 
+    const startTime = Date.now();
     view.disableCreateUpdCars();
     enableDisableBtn(prevBtn, 'disable');
     enableDisableBtn(nextBtn, 'disable');
     selectBtns.forEach((i) => enableDisableBtn(i, 'disable'));
     removeBtns.forEach((i) => enableDisableBtn(i, 'disable'));
     startBtns.forEach((i) => enableDisableBtn(i, 'disable'));
+    changeViewBtns.forEach((i) => enableDisableBtn(i, 'disable'));
 
     arrRaces.map(async (i, idx) => {
       try {
@@ -226,8 +263,16 @@ function startApp(): void {
     });
 
     const winnerRes = await Promise.any(arrRaces);
+    const endTime = Date.now();
+    const winTime = +((endTime - startTime) / 1000).toFixed(2);
     if (winnerRes !== undefined) {
-      const winnerId: string = <string> winnerRes.url.match(/=\d+/)?.toString().slice(1);
+      const winnerId: string = <string>winnerRes.url.match(/=\d+/)?.toString().slice(1);
+      const getWinner: IWinner = await api.getWinner(+winnerId);
+      if (getWinner.id) {
+        api.updWinner(+winnerId, getWinner.wins + 1, Math.min(getWinner.time, winTime));
+      } else {
+        api.newWinner(+winnerId, 1, winTime);
+      }
       await view.showWinner(+winnerId);
     }
     await Promise.allSettled(arrRaces);
@@ -243,10 +288,11 @@ function startApp(): void {
       view.enableCreateUpdCars();
       enableDisableBtn(resetBtn, 'disable');
       enableDisableBtn(startBtn, 'enable');
-      checkPagination();
+      checkGaragePagination();
       selectBtns.forEach((i) => enableDisableBtn(i, 'enable'));
       removeBtns.forEach((i) => enableDisableBtn(i, 'enable'));
       startBtns.forEach((i) => enableDisableBtn(i, 'enable'));
+      changeViewBtns.forEach((i) => enableDisableBtn(i, 'enable'));
       addRemElemListen('remove', '.race-btns__reset', 'click', stopRace);
       view.hideWinner();
     }
@@ -279,7 +325,7 @@ function startApp(): void {
     view.setNumOfCars();
     form.carName.value = '';
     form.carColor.value = '#ff0000';
-    checkPagination();
+    checkGaragePagination();
   }
 
   async function updateCar(event: Event): Promise<void> {
@@ -296,7 +342,7 @@ function startApp(): void {
     checkUpdCar();
   }
 
-  function changePageNum(event: Event): void {
+  function changeGaragePageNum(event: Event): void {
     const pressedBtn: HTMLButtonElement = <HTMLButtonElement>event.target;
     if (pressedBtn.localName === 'button') {
       const pageNumElem: HTMLSpanElement = <HTMLSpanElement> document.getElementById('page-cars-num');
@@ -307,7 +353,22 @@ function startApp(): void {
         pageNumElem.innerText = String(pageNum - 1);
       }
       view.drawCars();
-      checkPagination();
+      checkGaragePagination();
+    }
+  }
+
+  function changeWinnersPageNum(event: Event): void {
+    const pressedBtn: HTMLButtonElement = <HTMLButtonElement>event.target;
+    if (pressedBtn.localName === 'button') {
+      const pageNumElem: HTMLSpanElement = <HTMLSpanElement> document.getElementById('page-winners-num');
+      const pageNum = +pageNumElem.innerText;
+      if (pressedBtn.className === 'winners__btn-next') {
+        pageNumElem.innerText = String(pageNum + 1);
+      } else if (pressedBtn.className === 'winners__btn-prev') {
+        pageNumElem.innerText = String(pageNum - 1);
+      }
+      view.drawWinnersTable();
+      checkWinnersPagination();
     }
   }
 
@@ -342,31 +403,46 @@ function startApp(): void {
     await Promise.all(results);
     view.drawCars();
     view.setNumOfCars();
-    checkPagination();
+    checkGaragePagination();
   }
 
-  async function returnGarageView(): Promise<void> {
+  function returnGarageView(): void {
     view.drawView('Garage');
-    checkPagination();
+    checkGaragePagination();
     checkUpdCar();
     addRemElemListen('add', '#create-car', 'submit', createCar);
     addRemElemListen('add', '#update-car', 'submit', updateCar);
     addRemElemListen('add', '.cars__list', 'click', checkSelectCar);
-    addRemElemListen('add', '.cars__btns', 'click', changePageNum);
+    addRemElemListen('add', '.cars__btns', 'click', changeGaragePageNum);
     addRemElemListen('add', '.set-car__btn-generate', 'click', generateCars);
     addRemElemListen('add', '.race-btns__start', 'click', Race);
   }
 
+  function sortWinners(evt: Event) {
+    const arrow: HTMLSpanElement = <HTMLSpanElement> evt.target;
+    if (arrow.localName === 'span') {
+      view.drawWinnersTable(arrow.id);
+    }
+  }
+
+  function returnWinnersView() {
+    addRemElemListen('remove', '#create-car', 'submit', createCar);
+    addRemElemListen('remove', '#update-car', 'submit', updateCar);
+    addRemElemListen('remove', '.cars__list', 'click', checkSelectCar);
+    addRemElemListen('remove', '.cars__btns', 'click', changeGaragePageNum);
+    addRemElemListen('remove', '.set-car__btn-generate', 'click', generateCars);
+    view.drawView('Winners');
+    addRemElemListen('add', '.winners__btns', 'click', changeWinnersPageNum);
+    addRemElemListen('add', '.winners__table-wrap', 'click', sortWinners);
+    checkWinnersPagination();
+  }
+
   function changeView(vName: string): void {
     if (vName === 'Garage') {
+      addRemElemListen('remove', '.winners__btns', 'click', changeWinnersPageNum);
       returnGarageView();
     } else if (vName === 'Winners') {
-      addRemElemListen('remove', '#create-car', 'submit', createCar);
-      addRemElemListen('remove', '#update-car', 'submit', updateCar);
-      addRemElemListen('remove', '.cars__list', 'click', checkSelectCar);
-      addRemElemListen('remove', '.cars__btns', 'click', changePageNum);
-      addRemElemListen('remove', '.set-car__btn-generate', 'click', generateCars);
-      view.drawView(vName);
+      returnWinnersView();
     }
   }
 

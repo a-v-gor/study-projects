@@ -3,7 +3,11 @@ import { IDataGarage } from './iDataGarage';
 export default class State {
   dataGarage: IDataGarage;
 
-  // dataWinners: {};
+  dataWinners: {
+    saved: boolean,
+    pageNum: string,
+    sort?: string,
+  };
 
   constructor() {
     this.dataGarage = {
@@ -18,6 +22,11 @@ export default class State {
         carColor: '',
         carId: 0,
       },
+    };
+    this.dataWinners = {
+      saved: false,
+      pageNum: '',
+      sort: '',
     };
   }
 
@@ -73,11 +82,40 @@ export default class State {
     }
   }
 
+  getSetWinnersSettings(operation: string) {
+    const currPageNumSpan: HTMLSpanElement = <HTMLSpanElement>document.getElementById('page-winners-num');
+    if (operation === 'save') {
+      const currPageNum: string = currPageNumSpan.innerText;
+      const sortElem: HTMLSpanElement = <HTMLSpanElement>document.querySelector('.sort-active');
+      if (sortElem !== null) {
+        this.dataWinners.sort = sortElem.id;
+      }
+      this.dataWinners.saved = true;
+      this.dataWinners.pageNum = currPageNum;
+    } else if (operation === 'load' && this.dataWinners.saved) {
+      this.dataWinners.saved = false;
+      currPageNumSpan.innerText = this.dataWinners.pageNum;
+      if (this.dataWinners.sort !== undefined && this.dataWinners.sort.length) {
+        const id = this.dataWinners.sort;
+        // const sortArrw: HTMLSpanElement = <HTMLSpanElement>document.getElementById(id);
+        // sortArrw.classList.add('sort-active');
+      }
+    }
+  }
+
   saveGarageState(): void {
     this.getSetCarSettings('save');
   }
 
   loadGarageState(): void {
     this.getSetCarSettings('load');
+  }
+
+  saveWinnersState(): void {
+    this.getSetWinnersSettings('save');
+  }
+
+  loadWinnersState(): void {
+    this.getSetWinnersSettings('load');
   }
 }

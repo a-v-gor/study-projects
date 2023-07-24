@@ -1,4 +1,5 @@
 import ICar from './iCar';
+import IWinner from './view/iWinner';
 
 export default class Api {
   baseUrl: string;
@@ -21,6 +22,20 @@ export default class Api {
       .catch((error) => error.message);
   }
 
+  getWinners(pageNum: number) {
+    return fetch(`${this.baseUrl}/winners?_limit=10&_page=${pageNum}`)
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
+
+  getSortedWinners(pageNum: number, sort: string, order: string) {
+    return fetch(`${this.baseUrl}/winners?_limit=10&_page=${pageNum}&_sort=${sort}&_order=${order}`)
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
+
   newCar(name: string, color: string): Promise<void> {
     return fetch(`${this.baseUrl}/garage`, {
       method: 'POST',
@@ -28,6 +43,26 @@ export default class Api {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name, color }),
+    })
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
+
+  getWinner(id: number): Promise<IWinner> {
+    return fetch(`${this.baseUrl}/winners/${id}`)
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
+
+  newWinner(id: number, wins: number, time: number): Promise<void> {
+    return fetch(`${this.baseUrl}/winners`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id, wins, time }),
     })
       .then((response: Response) => response.json())
       .then((result) => result)
@@ -54,8 +89,30 @@ export default class Api {
       .catch((error) => error.message);
   }
 
+  updWinner(id: number, wins: number, time: number): Promise<void> {
+    return fetch(`${this.baseUrl}/winners/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ wins, time }),
+    })
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
+
   removeCar(id: number) {
     return fetch(`${this.baseUrl}/garage/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response: Response) => response.json())
+      .then((result) => result)
+      .catch((error) => error.message);
+  }
+
+  removeWinner(id: number) {
+    return fetch(`${this.baseUrl}/winners/${id}`, {
       method: 'DELETE',
     })
       .then((response: Response) => response.json())
