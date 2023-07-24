@@ -34,6 +34,10 @@ const viewsHtml = {
           <button class="cars__btn-next">Next</button>
         </div>
       </section>
+      <section class="show-winner-block">
+        <h3 class="title show-winner-block__title">Winner</h3>
+        <p class="show-winner-block__text"></p>
+      </section>
     </section>`,
   winnersViewHtml: `
   <section class="view winners">

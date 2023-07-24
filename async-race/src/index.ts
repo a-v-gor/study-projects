@@ -83,12 +83,36 @@ function startApp(): void {
     return velocObj.distance / velocObj.velocity;
   }
 
-  function returnPathToMove(driveTime: number, path:number): number {
+  function returnPath() {
+    const carBlock: HTMLDivElement = <HTMLDivElement>document.querySelector('.car-block__car-wrapper');
+    let coeff: number;
+    if (carBlock.offsetWidth > 1100) {
+      coeff = 0.14;
+    } else if (carBlock.offsetWidth > 1000) {
+      coeff = 0.16;
+    } else if (carBlock.offsetWidth > 900) {
+      coeff = 0.17;
+    } else if (carBlock.offsetWidth > 800) {
+      coeff = 0.2;
+    } else if (carBlock.offsetWidth > 700) {
+      coeff = 0.23;
+    } else if (carBlock.offsetWidth > 600) {
+      coeff = 0.28;
+    } else {
+      coeff = 0.32;
+    }
+    const path: number = carBlock.offsetWidth - carBlock.offsetWidth * coeff;
+    return path;
+  }
+
+  function returnPathToMove(driveTime: number): number {
+    const path = returnPath();
     const pathToMove: number = (path / driveTime) * 10;
     return pathToMove;
   }
 
-  function moveCar(id: number, pathToMove: number, path:number): NodeJS.Timer {
+  function moveCar(id: number, pathToMove: number): NodeJS.Timer {
+    const path = returnPath();
     const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
     const carImg: SVGElement = <SVGElement>carsection.querySelector('svg');
     carImg.style.marginLeft = '0px';
@@ -104,32 +128,27 @@ function startApp(): void {
     return timerID;
   }
 
+  function addRemElemListen(
+    meth: string,
+    elemSelector: string,
+    event: string,
+    callback: CallbackType,
+  ): void {
+    const elemToListen: HTMLElement = <HTMLElement>document.querySelector(`${elemSelector}`);
+    if (meth === 'add') {
+      elemToListen.addEventListener(event, callback);
+    } else if (meth === 'remove') {
+      elemToListen.removeEventListener(event, callback);
+    }
+  }
+
   async function driveCar(id: number) {
     const carsection: HTMLElement = <HTMLElement>document.getElementById(String(id));
-    const carBlock: HTMLDivElement = <HTMLDivElement> carsection.querySelector('.car-block__car-wrapper');
+    const carBlock: HTMLDivElement = <HTMLDivElement>carsection.querySelector('.car-block__car-wrapper');
     const velocObj: IVelocityObj = await api.startEngine(id);
     const driveTime: number = getMoveTime(velocObj);
     const carImg: SVGElement = <SVGElement>carsection.querySelector('svg');
-    let coeff: number;
-    if (carBlock.offsetWidth > 1100) {
-      coeff = 0.14;
-    } else if (carBlock.offsetWidth > 1000) {
-      coeff = 0.16;
-    } else if (carBlock.offsetWidth > 900) {
-      coeff = 0.17;
-    } else if (carBlock.offsetWidth > 800) {
-      coeff = 0.2;
-    } else if (carBlock.offsetWidth > 700) {
-      coeff = 0.23;
-    } else if (carBlock.offsetWidth > 600) {
-      coeff = 0.28;
-    } else if (carBlock.offsetWidth > 500) {
-      coeff = 0.32;
-    } else {
-      coeff = 0.001;
-    }
-    const path: number = carBlock.offsetWidth - carBlock.offsetWidth * coeff;
-    const pathToMove = returnPathToMove(driveTime, path);
+    const pathToMove = returnPathToMove(driveTime);
     const startBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__start');
     const stopBtn: HTMLButtonElement = <HTMLButtonElement>carBlock.querySelector('.car-block__stop');
     const selectBtn: HTMLButtonElement = <HTMLButtonElement>carsection.querySelector('.car-block__select');
@@ -141,7 +160,7 @@ function startApp(): void {
     enableDisableBtn(stopBtn, 'enable');
     view.disableCreateUpdCars();
 
-    const timer = moveCar(id, pathToMove, path);
+    const timer = moveCar(id, pathToMove);
 
     async function stopEngine() {
       enableDisableBtn(stopBtn, 'disable');
@@ -157,38 +176,83 @@ function startApp(): void {
     }
 
     stopBtn.addEventListener('click', stopEngine);
-    const res = await api.drive(id);
-    console.log(res);
-    clearInterval(timer);
+    try {
+      await api.drive(id);
+      clearInterval(timer);
+    } catch {
+      clearInterval(timer);
+    }
   }
 
-  // async function Race(): Promise<void> {
-  // const startBtn: HTMLButtonElement =
-  // <HTMLButtonElement>document.querySelector('.race-btns__start');
-  // const resetBtn: HTMLButtonElement =
-  // <HTMLButtonElement>document.querySelector('.race-btns__reset');
-  // const cars = document.querySelectorAll('.cars__car-block');
-  // const carsIds: number[] = [];
-  // cars.forEach((i) => carsIds.push(+i.id));
-  // const arrPromStartCars = carsIds.map((i) => api.startEngine(i));
-  // const arrVeloc = await Promise.all(arrPromStartCars);
-  // const arrTime = arrVeloc.map((i) => getMoveTime(i));
-  // const arrPathsToMove = arrTime.map((i) => returnPathToMove(i));
-  // const arrTimers: NodeJS.Timeout[] = [];
-  // carsIds.forEach((i, idx) => {
-  //   const timer: NodeJS.Timer = moveCar(i, arrPathsToMove[idx]);
-  //   arrTimers.push(timer);
-  // });
+  async function Race(): Promise<void> {
+    const startBtn: HTMLButtonElement = <HTMLButtonElement> document.querySelector('.race-btns__start');
+    const resetBtn: HTMLButtonElement = <HTMLButtonElement> document.querySelector('.race-btns__reset');
+    const prevBtn: HTMLButtonElement = <HTMLButtonElement> document.querySelector('.cars__btn-prev');
+    const nextBtn: HTMLButtonElement = <HTMLButtonElement> document.querySelector('.cars__btn-next');
+    const selectBtns: NodeListOf<HTMLElement> = document.querySelectorAll('.car-block__select');
+    const removeBtns: NodeListOf<HTMLElement> = document.querySelectorAll('.car-block__remove');
+    const startBtns: NodeListOf<HTMLElement> = document.querySelectorAll('.car-block__start');
+    const cars = document.querySelectorAll('.cars__car-block');
+    const carsIds: number[] = [];
+    cars.forEach((i) => carsIds.push(+i.id));
+    const arrPromStartCars = carsIds.map((i) => api.startEngine(i));
+    enableDisableBtn(startBtn, 'disable');
+    const arrVeloc = await Promise.all(arrPromStartCars);
+    const arrTime = arrVeloc.map((i) => getMoveTime(i));
+    const arrPathsToMove = arrTime.map((i) => returnPathToMove(i));
+    const arrTimers: NodeJS.Timeout[] = [];
+    const arrRaces: Promise<Response>[] = [];
+    carsIds.forEach((i, idx) => {
+      const timer: NodeJS.Timer = moveCar(i, arrPathsToMove[idx]);
+      const raceObj = api.drive(i);
+      arrRaces.push(raceObj);
+      arrTimers.push(timer);
+    });
 
-  // enableDisableBtn(startBtn, 'disable');
-  // enableDisableBtn(resetBtn, 'enable');
+    view.disableCreateUpdCars();
+    enableDisableBtn(prevBtn, 'disable');
+    enableDisableBtn(nextBtn, 'disable');
+    selectBtns.forEach((i) => enableDisableBtn(i, 'disable'));
+    removeBtns.forEach((i) => enableDisableBtn(i, 'disable'));
+    startBtns.forEach((i) => enableDisableBtn(i, 'disable'));
 
-  // function stopRace() {
-  //   arrTimers.forEach((i) => clearInterval(i));
-  // }
+    arrRaces.map(async (i, idx) => {
+      try {
+        await i;
+        clearInterval(arrTimers[idx]);
+      } catch {
+        clearInterval(arrTimers[idx]);
+      }
+    });
 
-  // resetBtn.addEventListener('click', stopRace);
-  // }
+    const winnerRes = await Promise.any(arrRaces);
+    if (winnerRes !== undefined) {
+      const winnerId: string = <string> winnerRes.url.match(/=\d+/)?.toString().slice(1);
+      await view.showWinner(+winnerId);
+    }
+    await Promise.allSettled(arrRaces);
+    enableDisableBtn(resetBtn, 'enable');
+
+    function stopRace() {
+      arrTimers.forEach((i) => clearInterval(i));
+      carsIds.forEach((i) => {
+        const carsection: HTMLElement = <HTMLElement> document.getElementById(String(i));
+        const carImg: SVGElement = <SVGElement> carsection.querySelector('svg');
+        carImg.style.marginLeft = '0px';
+      });
+      view.enableCreateUpdCars();
+      enableDisableBtn(resetBtn, 'disable');
+      enableDisableBtn(startBtn, 'enable');
+      checkPagination();
+      selectBtns.forEach((i) => enableDisableBtn(i, 'enable'));
+      removeBtns.forEach((i) => enableDisableBtn(i, 'enable'));
+      startBtns.forEach((i) => enableDisableBtn(i, 'enable'));
+      addRemElemListen('remove', '.race-btns__reset', 'click', stopRace);
+      view.hideWinner();
+    }
+
+    addRemElemListen('add', '.race-btns__reset', 'click', stopRace);
+  }
 
   function checkSelectCar(evt: Event): void {
     const target: HTMLButtonElement = <HTMLButtonElement> evt.target;
@@ -248,7 +312,7 @@ function startApp(): void {
   }
 
   async function generateCars() {
-    const carBrands = ['Audi', 'BMW', 'Chevrolet', 'Ford', 'Geely', 'Haval', 'Honda', 'Hyundai', 'Kia', 'Lada', 'Maserati', 'Mazda', 'Mercedes', 'Nissan', 'Porsche', 'Renault', 'Skoda', 'Toyota', 'Volkswagen', 'УАЗ'];
+    const carBrands = ['Audi', 'BMW', 'Chevrolet', 'Ford', 'Geely', 'Haval', 'Honda', 'Hyundai', 'Kia', 'Lada', 'Maserati', 'Mazda', 'Mercedes', 'Nissan', 'Porsche', 'Renault', 'Skoda', 'Toyota', 'Volkswagen', 'Zaporozhets', 'УАЗ'];
     const carModels = ['Atlas Pro', 'Aveo', 'Ceed', 'Coolray', 'Creta', 'Cruze', 'Dargo', 'Duster', 'Elantra', 'Focus', 'GLE', 'Ghibli', 'Granta', 'Jolion', 'Kuga', 'Largus', 'Logan', 'Niva', 'Polo', 'Q6', 'RAV4', 'Rapid', 'Rio', 'Rio', 'S-Класс', 'S40', 'Seltos', 'Solaris', 'Sonata', 'Sportage', 'Vesta', 'X-Trail', 'X7', 'Патриот'];
 
     function returnRandomElem(arr: string[]): string {
@@ -281,20 +345,6 @@ function startApp(): void {
     checkPagination();
   }
 
-  function addRemElemListen(
-    meth: string,
-    elemSelector: string,
-    event: string,
-    callback: CallbackType,
-  ): void {
-    const elemToListen: HTMLElement = <HTMLElement>document.querySelector(`${elemSelector}`);
-    if (meth === 'add') {
-      elemToListen.addEventListener(event, callback);
-    } else if (meth === 'remove') {
-      elemToListen.removeEventListener(event, callback);
-    }
-  }
-
   async function returnGarageView(): Promise<void> {
     view.drawView('Garage');
     checkPagination();
@@ -304,7 +354,7 @@ function startApp(): void {
     addRemElemListen('add', '.cars__list', 'click', checkSelectCar);
     addRemElemListen('add', '.cars__btns', 'click', changePageNum);
     addRemElemListen('add', '.set-car__btn-generate', 'click', generateCars);
-    // addRemElemListen('add', '.race-btns__start', 'click', Race);
+    addRemElemListen('add', '.race-btns__start', 'click', Race);
   }
 
   function changeView(vName: string): void {

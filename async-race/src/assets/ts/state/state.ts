@@ -67,7 +67,9 @@ export default class State {
       createCarColorInput.value = this.dataGarage.createCar.carColor;
       updateCarNameInput.value = this.dataGarage.updateCar.carName;
       updateCarColorInput.value = this.dataGarage.updateCar.carColor;
-      updateCarIdInput.value = String(this.dataGarage.updateCar.carId);
+      if (this.dataGarage.updateCar.carId) {
+        updateCarIdInput.value = String(this.dataGarage.updateCar.carId);
+      }
     }
   }
 

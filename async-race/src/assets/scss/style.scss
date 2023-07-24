@@ -167,3 +167,22 @@
     flex-direction: column;
   }
 }
+
+.show-winner-block {
+  position: absolute;
+  top: 45%;
+  left: calc(50% - 75px);
+  width: 200px;
+  padding: 15px;
+  margin: auto;
+  font-size: 46px;
+  color: #ffd700;
+  text-align: center;
+  background-color: #000000a8;
+  border-radius: 15px;
+  opacity: 0;
+
+  &_active {
+    opacity: 1;
+  }
+}

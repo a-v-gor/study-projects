@@ -85,4 +85,18 @@ export default class View {
     inputSubmit.removeAttribute('disabled');
     generateCarBtn.removeAttribute('disabled');
   }
+
+  async showWinner(id: number) {
+    const winnerBlock: HTMLElement = <HTMLElement> this.document.querySelector('.show-winner-block');
+    const winnerNameField: HTMLParagraphElement = <HTMLParagraphElement> winnerBlock.querySelector('.show-winner-block__text');
+    const winner: ICar = await this.api.getCar(id);
+    const winnerName: string = winner.name;
+    winnerNameField.innerText = winnerName;
+    winnerBlock.classList.add('show-winner-block_active');
+  }
+
+  hideWinner() {
+    const winnerBlock: HTMLElement = <HTMLElement> this.document.querySelector('.show-winner-block_active');
+    winnerBlock.classList.remove('show-winner-block_active');
+  }
 }

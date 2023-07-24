@@ -1,3 +1,5 @@
+import ICar from './iCar';
+
 export default class Api {
   baseUrl: string;
 
@@ -19,7 +21,7 @@ export default class Api {
       .catch((error) => error.message);
   }
 
-  newCar(name: string, color: string) {
+  newCar(name: string, color: string): Promise<void> {
     return fetch(`${this.baseUrl}/garage`, {
       method: 'POST',
       headers: {
@@ -32,7 +34,7 @@ export default class Api {
       .catch((error) => error.message);
   }
 
-  getCar(id: number) {
+  getCar(id: number): Promise<ICar> {
     return fetch(`${this.baseUrl}/garage/${id}`)
       .then((response: Response) => response.json())
       .then((result) => result)
@@ -76,9 +78,14 @@ export default class Api {
     });
   }
 
-  drive(id: number) {
-    return fetch(`${this.baseUrl}/engine?id=${id}&status=drive`, {
+  async drive(id: number) {
+    const response = await fetch(`${this.baseUrl}/engine?id=${id}&status=drive`, {
       method: 'PATCH',
     });
+    if (response.status !== 200) {
+      throw new Error();
+    } else {
+      return response;
+    }
   }
 }
