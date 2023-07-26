@@ -82,7 +82,11 @@ export default class View {
     } else {
       winnersInfo = await this.api.getWinners(pageNum);
     }
-    winnersInfo.forEach((i: IWinner) => this.addRawToTable(i, table));
+    // eslint-disable-next-line no-restricted-syntax
+    for (const winner of winnersInfo) {
+      // eslint-disable-next-line no-await-in-loop
+      await this.addRawToTable(winner, table);
+    }
     tableWrapper.appendChild(table);
     if (sortStr.length) {
       const arrow: HTMLSpanElement = <HTMLSpanElement> this.document.getElementById(sortStr);
