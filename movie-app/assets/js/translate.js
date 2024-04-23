@@ -4,7 +4,7 @@ const i18Obj = {
     'ru': 'ru',
     'search': 'Search Movies',
     'search-button': 'Search',
-    'search-section-text-1': 'Input the movie name in the field before.',
+    'search-section-text-1': 'You may need to use VPN for correct application work.<br>Input the movie name in the field before.',
     'search-section-text-2': 'Push "Search" with empty field for show most popular movies.',
     'movies-title': 'Movies',
     'tmdb-text': 'The source of information is TMDB.',
